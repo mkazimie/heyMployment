@@ -6,4 +6,5 @@ import pl.coderslab.heymployment.domain.JobOffer;
 
 @Repository
 public interface JobOfferRepository extends JpaRepository<JobOffer, Long > {
+
 }
