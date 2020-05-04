@@ -13,28 +13,33 @@
     <title>Login Form</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Bootstrap Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
+<%@include file="header-landing.jsp"%>
 <body class="bg-light">
 <div class="container">
-    <div class="card mx-auto mt-5">
+    <div class="card mx-auto mt-3">
         <div class="card-header bg-dark display-5 text-white text-center"> Sign Up Form</div>
         <div class="card-body">
             <form method="post">
             <div class="form-group row">
                 <label class="col-md-4 col-form-label text-md-right"> Username: </label>
                 <div class="col-md-6">
-                    <input type="text" name="username" class="form-control" placeholder="Username"/></div>
+                    <input type="text" name="username" class="form-control" placeholder="Username" required/></div>
             </div>
             <div class="form-group row">
                 <label class="col-md-4 col-form-label text-md-right"> Password: </label>
                 <div class="col-md-6">
-                    <input type="password" name="password" class="form-control" placeholder="Password"/></div>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required/></div>
             </div>
             <div class="col-md-6 offset-md-4">
                 <input type="submit" class="btn btn-block btn-primary" value="Sign In">

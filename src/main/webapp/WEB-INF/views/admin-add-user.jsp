@@ -1,13 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: magdalena
-  Date: 22.04.2020
-  Time: 13:29
+  Date: 04.05.2020
+  Time: 23:06
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <html>
 <head>
@@ -22,14 +24,16 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- Bootstrap Fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
-<%@include file="header-landing.jsp"%>
+<%@include file="header-landing.jsp" %>
 <body class="bg-light">
 <div class="container">
     <div class="card mx-auto mt-3">
-        <div class="card-header bg-dark display-5 text-white text-center"> Sign Up Form</div>
+        <div class="card-header bg-dark display-5 text-white text-center"> Add new user</div>
         <div class="card-body">
+            <sec:authorize access="hasRole('ADMIN')">
             <form:form method="post" modelAttribute="user">
 
             <h4 class="errorMessage">${failed}</h4>
@@ -74,24 +78,23 @@
                 </div>
             </div>
             <div class="form-group row">
-                <form:label path="matchingPassword"
-                            class="col-md-4 col-form-label text-md-right"> Confirm Password: </form:label>
+                <form:label path="roles"
+                            class="col-md-4 col-form-label text-md-right"> Set Role: </form:label>
                 <div class="col-md-6">
-                    <form:password path="matchingPassword" class="form-control" placeholder="Confirm Password"/>
-                    <form:errors path="matchingPassword" cssClass="errorMessage"/>
+                    <form:checkboxes path="roles" items="${roles}" itemLabel="name" itemValue="id"
+                                     class="form-control"/>
+                    <form:errors path="roles" cssClass="errorMessage"/>
                 </div>
             </div>
             <div class="col-md-6 offset-md-4">
-                <input type="submit" class="btn btn-primary btn-block" value="Register">
+                <form:hidden path="enabled" value="1"/>
+                <input type="submit" class="btn btn-primary btn-block" value="Save">
             </div>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <div class="col-md-6 offset-md-4">
-                <div class="text-center spacer"> Already registered?</div>
-                <a href="/login" class="btn btn-block btn-link" role="button"> Sign In </a>
-            </div>
         </div>
     </div>
     </form:form>
+    </sec:authorize>
 </div>
 
 

@@ -18,19 +18,27 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Bootstrap Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- Bootstrap Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
 </head>
+<%@include file="header-landing.jsp"%>
 <body>
 <div class="container">
     <div class="col-md-6 offset-md-4 alert alert-success mt-5" role="alert">
         <strong>Well done!</strong> You signed up successfully!
     </div>
-    <div>
-        <img src="images/undraw_confirmation_2uy0.png"/>
-    </div>
     <div class="col-md-6 offset-md-4">
         <div class="text-center spacer"> Go to Login page</div>
         <a href="/login" class="btn btn-block btn-link" role="button"> Sign In </a>
     </div>
+    <div class="justify-center">
+        <img src="img/undraw_check_boxes_m3d0%20(2).png"/>
+    </div>
+
 </div>
 </body>
 </html>
