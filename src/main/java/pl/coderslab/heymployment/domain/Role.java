@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,4 +21,5 @@ public class Role {
 
     @Column(name = "role_name")
     private String name;
+
 }

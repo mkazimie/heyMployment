@@ -28,8 +28,8 @@ public class UserDto {
     private String username;
 
     @NotBlank
-    private String password;
     @Length(min = 5, message = "Your password must have at least 5 characters")
+    private String password;
 
     @NotBlank
     private String matchingPassword;
