@@ -9,9 +9,9 @@ import pl.coderslab.heymployment.exception.UserAlreadyExistsException;
 import pl.coderslab.heymployment.repository.RoleRepository;
 import pl.coderslab.heymployment.repository.UserRepository;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -33,13 +33,23 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username);
     }
 
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 
     @Override
-    public User registerUser(UserDto userDto)
+    public User findById(long id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.get();
+    }
+
+    @Override
+    public void registerUser(UserDto userDto)
             throws UserAlreadyExistsException {
 
-        if (emailExists(userDto.getEmail())){
-            throw new UserAlreadyExistsException("Email already found in our database");
+        if (findByUsername(userDto.getUsername()) != null || findByEmail(userDto.getEmail()) != null)  {
+            throw new UserAlreadyExistsException("An account for that username/email already exists");
         } else {
             User user = new User();
             user.setFirstName(userDto.getFirstName());
@@ -49,17 +59,38 @@ public class UserServiceImpl implements UserService {
             user.setPassword(passwordEncoder.encode(userDto.getPassword()));
             user.setEnabled(1);
             Role userRole = roleRepository.findByName("ROLE_USER");
-            user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+            user.setRoles(new HashSet<>(Arrays.asList(userRole)));
             userRepository.save(user);
-            return user;
         }
     }
 
-
-
-    private boolean emailExists(String email) {
-        return userRepository.findByEmail(email) != null;
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
+
+    @Override
+    public User updateUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+
+    @Override
+    public void deleteUser(long id) {
+        User user = findById(id);
+        userRepository.delete(user);
+    }
+
+    @Override
+    public User createUser(User newUser) throws UserAlreadyExistsException {
+        if (findByUsername(newUser.getUsername()) != null || findByEmail(newUser.getEmail()) != null) {
+            throw new UserAlreadyExistsException("An account for that username/email already exists");
+        } else {
+            newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+            return userRepository.save(newUser);
+        }
+    }
+
 
 }
 
