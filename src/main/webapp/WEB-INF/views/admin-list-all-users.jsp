@@ -28,32 +28,45 @@
 <body>
 <sec:authorize access="hasRole('ADMIN')">
     <%@include file="main-header.jsp" %>
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col"> ID</th>
-            <th scope="col"> First Name</th>
-            <th scope="col"> Last Name</th>
-            <th scope="col"> Username</th>
-            <th scope="col"> User Email</th>
-            <th scope="col"> User Roles</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${users}" var="user">
+    <div class="container mt-5 mx-auto ml-4 mr-4">
+        <h1 class="bd-title"> All Users</h1>
+
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col"> ID</th>
+                <th scope="col"> First Name</th>
+                <th scope="col"> Last Name</th>
+                <th scope="col"> Username</th>
+                <th scope="col"> Email</th>
+                <th scope="col"> Roles</th>
+                <th scope="col"> Enabled</th>
+                <th scope="col"> Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${users}" var="user">
             <tr>
                 <th scope="row">${user.id}</th>
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
                 <td>${user.username}</td>
                 <td>${user.email}</td>
-                <c:forEach items="${user.roles}" var="role">
-                    <td>${role.name}</td>
-                </c:forEach>
+                <td>
+                    <c:forEach items="${user.roles}" var="role">
+                        <i class="fa fa-check" aria-hidden="true"></i>${role.name}
+                    </c:forEach>
+                </td>
+                <td>${user.enabled}</td>
+                <td><a href="/admin/users/block/${user.id}"> Block </a> |
+                    <a href="/admin/users/unblock/${user.id}"> Unblock </a>
+                </td>
+
             </tr>
-        </tbody>
-        </c:forEach>
-    </table>
+            </tbody>
+            </c:forEach>
+        </table>
+    </div>
 </sec:authorize>
 </body>
 </html>
