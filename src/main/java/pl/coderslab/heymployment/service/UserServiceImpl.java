@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
     public void registerUser(UserDto userDto)
             throws UserAlreadyExistsException {
 
-        if (findByUsername(userDto.getUsername()) != null || findByEmail(userDto.getEmail()) != null)  {
+        if (findByUsername(userDto.getUsername()) != null || findByEmail(userDto.getEmail()) != null) {
             throw new UserAlreadyExistsException("An account for that username/email already exists");
         } else {
             User user = new User();
@@ -71,14 +71,29 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
-    }
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            return userRepository.save(user);
+        }
 
     @Override
     public void deleteUser(long id) {
         User user = findById(id);
+        user.setRoles(null);
         userRepository.delete(user);
+    }
+
+    @Override
+    public void blockUser(long id) {
+        User user = findById(id);
+        user.setEnabled(0);
+        userRepository.save(user);
+    }
+
+    @Override
+    public void unblockUser(long id) {
+        User user = findById(id);
+        user.setEnabled(1);
+        userRepository.save(user);
     }
 
     @Override

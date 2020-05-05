@@ -25,6 +25,10 @@ public interface UserService {
     //admin options
     void deleteUser(long id);
 
+    void blockUser(long id);
+
+    void unblockUser(long id);
+
     //admin options
     User createUser(User newUser) throws UserAlreadyExistsException;
 
