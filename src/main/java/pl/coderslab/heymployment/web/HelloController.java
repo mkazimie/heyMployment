@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.UserDto;
 import pl.coderslab.heymployment.exception.UserAlreadyExistsException;
 import pl.coderslab.heymployment.security.CurrentUser;
@@ -23,13 +24,6 @@ public class HelloController {
     public HelloController(UserService userService) {
         this.userService = userService;
     }
-
-    //landing page display
-    @GetMapping("/")
-    public String displayHomePage(){
-        return "hello";
-    }
-
 
 
     //display registration form
@@ -65,11 +59,5 @@ public class HelloController {
         return "login";
     }
 
-    //view for homepage after login
-    @GetMapping("/user/home")
-    public String homeAuthenticated(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("user", currentUser.getUser());
-        return "home";
-    }
 
 }

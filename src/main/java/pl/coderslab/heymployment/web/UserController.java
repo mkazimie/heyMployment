@@ -11,7 +11,7 @@ import pl.coderslab.heymployment.service.UserService;
 
 import javax.validation.Valid;
 
-@Controller("/user")
+@Controller
 public class UserController {
 
     private final UserService userService;
@@ -20,23 +20,30 @@ public class UserController {
         this.userService = userService;
     }
 
+    //view for homepage after login
+    @GetMapping("/user/home")
+    public String homeAuthenticated(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
+        model.addAttribute("currentUser", currentUser.getUser());
+        return "home";
+    }
+
     //edit personal info
-    @GetMapping("/update")
-    public String updateProfileForm(@AuthenticationPrincipal CurrentUser currentUser, Model model){
+    @GetMapping("/user/update")
+    public String updateProfileForm(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
         User user = userService.findById(currentUser.getUser().getId());
         model.addAttribute("user", user);
         return "user-update-profile";
     }
 
-    @PostMapping("/update")
-    public String updateProfileProcess(@ModelAttribute @Valid User user, BindingResult bindingResult){
-        if(!bindingResult.hasErrors()){
+    //save edited personal info
+    @PostMapping("/user/update")
+    public String updateProfileProcess(@ModelAttribute @Valid User user, BindingResult bindingResult, Model model) {
+        if (!bindingResult.hasErrors()) {
             userService.updateUser(user);
             return "redirect:/user/home";
         }
         return "user-update-profile";
     }
-
 
 
 }
