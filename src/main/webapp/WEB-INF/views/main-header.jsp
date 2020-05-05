@@ -11,22 +11,23 @@
             <li class="nav-item">
                 <a class="nav-link color-header" href="/logout"> <i class="fas fa-sign-out-alt"></i>&nbsp; sign out </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link color-header" href="/update"><i class="fas fa-id-badge"></i>&nbsp;
-                    profile </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link color-header" href="#contact"><i class="fas fa-envelope"></i>&nbsp contact </a>
-            </li>
+<%--            <li class="nav-item">--%>
+<%--                <a class="nav-link color-header" href="/user/update"><i class="fas fa-id-badge"></i>&nbsp;--%>
+<%--                    profile </a>--%>
+<%--            </li>--%>
+<%--            <li class="nav-item">--%>
+<%--                <a class="nav-link color-header" href="#contact"><i class="fas fa-envelope"></i>&nbsp contact </a>--%>
+<%--            </li>--%>
             <sec:authorize access="hasRole('ADMIN')">
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/panel">&nbsp;<i class="fas fa-user-shield"></i>&nbsp admin panel </a>
+                    <a class="nav-link" href="/admin/panel">&nbsp;<i class="fas fa-user-shield"></i>&nbsp admin panel
+                    </a>
                 </li>
             </sec:authorize>
-            <a href="/update" class="navbar-brand main-logo mr-4">
-                <i class="fas fa-user"></i>&nbsp;
-                <strong> ${user.username} </strong>
-            </a>
+            <li class="nav-item">
+                <a class="nav-link color-header" href="/user/update"><i class="fas fa-user"></i>&nbsp
+                    <strong> ${currentUser.username} </strong> </a>
+            </li>
         </ul>
     </nav>
 </header>
