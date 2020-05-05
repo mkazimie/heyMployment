@@ -22,13 +22,15 @@
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 
 </head>
-<%@include file="header-landing.jsp" %>
 <body>
-<div class="col-md-6 offset-md-4 alert alert-danger mt-5" role="alert">
-    <strong>Ups!</strong> Access to this content has been denied.
-</div>
-<div>
-    <img src="img/undraw_cancel_u1it%20(3).png"/>
+<nav class="bd-subnavbar pt-2 pb-3 pb-md-2 bg-warning">
+    <div class="container d-flex align-items-md-center py-2">
+        <nav class="nav mx-auto">
+            <p class="lead"> Ups! Access to this content has been denied.</p>
+        </nav>
+    </div>
+</nav>
+<div><img src="/img/undraw_cancel_u1it%20(3).png" class="img-fluid" alt="403-error"/>
 </div>
 </body>
 </html>

@@ -28,18 +28,21 @@
 <body>
 <sec:authorize access="hasRole('ADMIN')">
     <%@include file="main-header.jsp" %>
-    <table class="center">
+    <table class="table">
+        <thead class="thead-dark">
         <tr>
-            <th> Id</th>
-            <th> First Name</th>
-            <th> Last Name</th>
-            <th> Username</th>
-            <th> User Email</th>
-            <th> User Roles</th>
+            <th scope="col"> ID</th>
+            <th scope="col"> First Name</th>
+            <th scope="col"> Last Name</th>
+            <th scope="col"> Username</th>
+            <th scope="col"> User Email</th>
+            <th scope="col"> User Roles</th>
         </tr>
+        </thead>
+        <tbody>
         <c:forEach items="${users}" var="user">
             <tr>
-                <td>${user.id}</td>
+                <th scope="row">${user.id}</th>
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
                 <td>${user.username}</td>
@@ -48,6 +51,7 @@
                     <td>${role.name}</td>
                 </c:forEach>
             </tr>
+        </tbody>
         </c:forEach>
     </table>
 </sec:authorize>

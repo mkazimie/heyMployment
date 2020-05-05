@@ -19,26 +19,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Bootstrap Fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <!-- Bootstrap Fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 </head>
-<%@include file="header-landing.jsp"%>
+<%@include file="header-landing.jsp" %>
 <body>
-<div class="container">
-    <div class="col-md-6 offset-md-4 alert alert-success mt-5" role="alert">
-        <strong>Well done!</strong> You signed up successfully!
+<nav class="bd-subnavbar pt-2 pb-3 pb-md-2 bg-success">
+    <div class="container d-flex align-items-md-center py-2">
+        <nav class="nav mx-auto">
+            <h3 class="lead"> Well done! You signed up successfully!</h3>
+        </nav>
     </div>
-    <div class="col-md-6 offset-md-4">
-        <div class="text-center spacer"> Go to Login page</div>
-        <a href="/login" class="btn btn-block btn-link" role="button"> Sign In </a>
-    </div>
-    <div class="justify-center">
-        <img src="img/undraw_check_boxes_m3d0%20(2).png"/>
-    </div>
-
+</nav>
+<div class="center-content spacer">
+    <h3>Go to Login page</h3>
+    <a href="/login" class="btn btn-block btn-link" role="button"> Sign In </a>
 </div>
+<div><img src="/img/undraw_check_boxes_m3d0%20(2).png" class="img-fluid img-center" alt="success-registration"/>
+</div>
+
+
 </body>
 </html>
