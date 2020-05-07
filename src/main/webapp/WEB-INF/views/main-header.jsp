@@ -1,6 +1,6 @@
 <header class="page-header no-background">
-    <nav class="navbar bg-light static-top ml-4">
-        <a href="/user/home" class="navbar-brand main-logo">
+    <nav class="navbar bg-light static-top">
+        <a href="/user/home" class="navbar-brand main-logo ml-4">
             <strong> heyMployment! </strong>
         </a>
         <ul class="nav nounderline text-uppercase nav-fill">
