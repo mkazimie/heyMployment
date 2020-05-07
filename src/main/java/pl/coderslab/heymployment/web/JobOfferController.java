@@ -1,6 +1,5 @@
 package pl.coderslab.heymployment.web;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +13,6 @@ import pl.coderslab.heymployment.service.CompanyService;
 import pl.coderslab.heymployment.service.JobOfferService;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,7 +33,7 @@ public class JobOfferController {
     public String addJobOffer(Model model) {
         model.addAttribute("jobOffer", new JobOffer());
         model.addAttribute("company", new Company());
-        return "job-offer-first-form";
+        return "job-offer-basic-form";
     }
 
 
@@ -64,7 +62,7 @@ public class JobOfferController {
             return "job-offer-detailed-form";
         }
         model.addAttribute("failed", "Please try again");
-        return "job-offer-first-form";
+        return "job-offer-basic-form";
     }
 
     // process detail form (all fields can be null but have some max size restrictions)
