@@ -27,8 +27,8 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 </head>
-<%@include file="header-landing.jsp" %>
 <body>
+<%@include file="header-landing.jsp" %>
 <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 bg-success">
     <div class="container d-flex align-items-md-center py-2">
         <nav class="nav mx-auto">
