@@ -33,32 +33,79 @@
             <strong> User Panel </strong>
         </div>
     </nav>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12 col-lg-4">
-                <div class="card user-card">
-                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_placeholders_rklh.png" alt="Card image cap">
+        <div class="container">
+            <div class="card-deck mt-5">
+                <div class="card border-secondary">
+                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_placeholders_rklh.png"
+                         alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title"> New Job Offer </h5>
-                        <p class="card-text bg-light"> Add a job posting you liked or already applied for, keep track
-                            of it and make sure to prepare for your interview!
-                        </p>
-                        <a href="/user/offers/add" class="btn btn-primary"> Let's do it ! </a>
+                        <h5 class="card-title"> View Your Job Offers </h5>
+                        <p class="card-text bg-light"> View and Update Your Saved Postings </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/user/offers/all" class="btn btn-primary"> Let's do it! </a>
+                    </div>
+                </div>
+                <div class="card border-secondary">
+                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_youtube_tutorial_2gn3.png"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"> View Your Courses </h5>
+                        <p class="card-text bg-light"> View and Update Your Courses </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#/user/courses/all" class="btn btn-primary"> Let's do it! </a>
+                    </div>
+                </div>
+                <div class="card border-secondary">
+                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_interview_rmcf.png"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"> View Your Interview Prep </h5>
+                        <p class="card-text bg-light"> Prepare For Your Interview By Reviewing These Questions </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#/user/interviews/all" class="btn btn-primary"> Let's do it! </a>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4">
-                <div class="card user-card">
-                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_new_entries_nh3h.png" alt="Card image cap">
+            <div class="card-deck mt-5">
+                <div class="card border-secondary">
+                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_new_entries_nh3h.png"
+                         alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title"> View Your Postings </h5>
-                        <p class="card-text bg-light"> View and Update your postings </p>
-                        <a href="/user/offers/all" class="btn btn-primary"> Let's do it! </a>
+                        <h5 class="card-title"> New Job Offer </h5>
+                        <p class="card-text bg-light"> Add New Job Posting And Keep Track of it</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/user/offers/add" class="btn btn-primary"> Add </a>
+                    </div>
+                </div>
+                <div class="card border-secondary">
+                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_react_y7wq.png"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"> New Course </h5>
+                        <p class="card-text bg-light"> Add a New Course You Completed or Wish To Complete </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#user/courses/add" class="btn btn-primary"> Add </a>
+                    </div>
+                </div>
+                <div class="card border-secondary">
+                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_updates_et2k.png"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"> New Interview Question </h5>
+                        <p class="card-text bg-light"> Come Up With An Interview Question And Store Your Answer</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#/user/interviews/add" class="btn btn-primary"> Add </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 </sec:authorize>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
