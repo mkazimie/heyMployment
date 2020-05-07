@@ -21,6 +21,11 @@ public class JobOfferServiceImpl implements JobOfferService {
         return jobOfferRepository.findAllByUserId(id);
     }
 
+    @Override
+    public List<JobOffer> findAllByStatus(long id, String status) {
+        return jobOfferRepository.findAllByUserIdAndStatus(id, status);
+    }
+
 
     @Override
     public JobOffer findById(long id) {

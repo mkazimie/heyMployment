@@ -108,6 +108,15 @@ public class JobOfferController {
         return "redirect:/user/offers/all";
     }
 
+    @GetMapping("/user/offers/all/{name}")
+    public String displayJobOffersByStatus(@PathVariable String name,
+                                           @AuthenticationPrincipal CurrentUser currentUser, Model model){
+        List<JobOffer> allByStatus = jobOfferService.findAllByStatus(currentUser.getUser().getId(), name);
+        model.addAttribute("allByStatus", allByStatus);
+        return "job-offer-list";
+    }
+
+
 
     @ModelAttribute("currentUser")
     public User currentUser(@AuthenticationPrincipal CurrentUser currentUser) {
@@ -121,7 +130,7 @@ public class JobOfferController {
 
     @ModelAttribute("status")
     public List<String> status() {
-        return Arrays.asList("Wishlist", "Applied", "Interview", "Offer", "Rejected");
+        return Arrays.asList("Wishlist", "Applied", "Interview", "Accepted", "Rejected");
     }
 
 
