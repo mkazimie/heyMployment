@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-12 col-lg-4">
                 <div class="card user-card">
-                    <img class="card-img-top img-scale" src="/img/undraw_placeholders_rklh.png" alt="Card image cap">
+                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_placeholders_rklh.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"> New Job Offer </h5>
                         <p class="card-text bg-light"> Add a job posting you liked or already applied for, keep track
@@ -49,7 +49,7 @@
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card user-card">
-                    <img class="card-img-top img-scale" src="/img/undraw_new_entries_nh3h.png" alt="Card image cap">
+                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_new_entries_nh3h.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"> View Your Postings </h5>
                         <p class="card-text bg-light"> View and Update your postings </p>

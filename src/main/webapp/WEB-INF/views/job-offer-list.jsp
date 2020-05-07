@@ -30,6 +30,20 @@
 <sec:authorize access="isAuthenticated()">
     <div class="container mt-5 mx-auto ml-4 mr-4">
         <h1 class="bd-title"> My Job Offers</h1>
+
+        <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 bg-light text-uppercase nav-fill">
+            <div class="container d-flex align-items-md-center py-2">
+                <nav class="nav mx-auto">
+                    <a href="/user/offers/all" class="btn btn-primary">All</a>
+                    <a href="/user/offers/all/${status[0]}" class="btn btn-primary">${status[0]}</a>
+                    <a href="/user/offers/all/${status[1]}" class="btn btn-primary">${status[1]}</a>
+                    <a href="/user/offers/all/${status[2]}" class="btn btn-primary">${status[2]}</a>
+                    <a href="/user/offers/all/${status[3]}" class="btn btn-primary">${status[3]}</a>
+                    <a href="/user/offers/all/${status[4]}" class="btn btn-primary">${status[4]}</a>
+                </nav>
+            </div>
+        </nav>
+
         <table class="table">
             <thead class="thead-dark">
             <tr>
@@ -46,6 +60,7 @@
                 <th scope="col"> Actions</th>
             </tr>
             </thead>
+
             <tbody>
             <c:forEach items="${offers}" var="offer">
             <tr>
@@ -63,8 +78,29 @@
                     <a href="/user/offers/confirm-delete/${offer.id}"> Delete </a>
                 </td>
             </tr>
-            </tbody>
             </c:forEach>
+            </tbody>
+
+            <tbody>
+            <c:forEach items="${allByStatus}" var="byStatus">
+                <tr>
+                    <td>${byStatus.title}</td>
+                    <td>${byStatus.description}</td>
+                    <td>${byStatus.url}</td>
+                    <td>${byStatus.location}</td>
+                    <td>${byStatus.company.name}</td>
+                    <td>${byStatus.salary}</td>
+                    <td>${byStatus.status}</td>
+                    <td>${byStatus.howAttractive}</td>
+                    <td>${byStatus.appliedOn}</td>
+                    <td>${byStatus.notes}</td>
+                    <td><a href="/user/offers/update/${byStatus.id}"> Edit </a> |
+                        <a href="/user/offers/confirm-delete/${byStatus.id}"> Delete </a>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+
         </table>
     </div>
 </sec:authorize>

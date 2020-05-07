@@ -37,7 +37,8 @@
     <div class="row">
         <div class="col-12 col-lg-4">
             <div class="card admin-card">
-                <img class="card-img-top img-scale" src="/img/undraw_personal_info_0okl.png" alt="Card image cap">
+                <img class="card-img-top img-scale img-fluid" src="/img/undraw_personal_info_0okl.png"
+                     alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"> Add New User</h5>
                     <p class="card-text bg-light"> Create a new simple user or admin </p>
@@ -47,7 +48,7 @@
         </div>
         <div class="col-12 col-lg-4">
             <div class="card admin-card">
-                <img class="card-img-top img-scale" src="/img/undraw_meet_the_team_e5b7.png" alt="Card image cap">
+                <img class="card-img-top img-scale img-fluid" src="/img/undraw_meet_the_team_e5b7.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"> View All Users </h5>
                     <p class="card-text bg-light"> View and manage your users</p>
