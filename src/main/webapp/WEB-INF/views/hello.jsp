@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-img-landing">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -24,11 +24,8 @@
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 
 </head>
-<body class="bg-img-landing">
+<body>
 <%@include file="header-landing.jsp" %>
-
-<div class="container mt-5">
-</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

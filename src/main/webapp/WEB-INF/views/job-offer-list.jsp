@@ -59,7 +59,7 @@
                 <th scope="col"> Salary</th>
                 <th scope="col"> Status</th>
                 <th scope="col"> How Attractive</th>
-                <th scope="col"> Date of Applying</th>
+                <th scope="col"> Applied On</th>
                 <th scope="col"> Notes</th>
                 <th scope="col"> Actions</th>
             </tr>

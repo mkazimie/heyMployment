@@ -83,7 +83,7 @@
         </div>
         <div class="form-group row">
             <form:label path="appliedOn"
-                        class="col-md-4 col-form-label text-md-right"> Date of Applying: </form:label>
+                        class="col-md-4 col-form-label text-md-right"> Applied On: </form:label>
             <div class="col-md-6">
                 <form:input path="appliedOn" type="date" class="form-control" placeholder="yyyy-MM-dd"/>
                 <form:errors path="appliedOn" cssClass="errorMessage"/>
