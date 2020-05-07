@@ -30,81 +30,89 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-<div class="container">
+    <div class="container">
     <div class="card mx-auto mt-3">
-        <div class="card-header bg-dark display-5 text-white text-center"> Job Offer Details </div>
-        <div class="card-body">
-            <form:form method="post" modelAttribute="jobOffer" action="/user/offers/add">
+    <div class="card-header bg-dark display-5 text-white text-center"> Edit Job Offer</div>
+    <div class="card-body">
+    <form:form method="post" modelAttribute="jobOffer" action="/user/offers/add">
 
-            <h5 class="errorMessage center-content">${failed}</h5>
+        <h5 class="errorMessage center-content">${failed}</h5>
 
-            <div class="form-group row">
-                <form:label path="title"
-                            class="col-md-4 col-form-label text-md-right"> Job Title: </form:label>
-                <div class="col-md-6">
-                    <form:input path="title" class="form-control" placeholder="Job Title"/>
-                    <form:errors path="title" cssClass="errorMessage"/>
-                </div>
+        <div class="form-group row">
+            <form:label path="title"
+                        class="col-md-4 col-form-label text-md-right"> Job Title: </form:label>
+            <div class="col-md-6">
+                <form:input path="title" class="form-control" placeholder="Job Title"/>
+                <form:errors path="title" cssClass="errorMessage"/>
             </div>
-            <div class="form-group row">
-                <form:label path="description"
-                            class="col-md-4 col-form-label text-md-right">Description:</form:label>
-                <div class="col-md-6">
-                    <form:textarea path="description" class="form-control" placeholder="Description"/>
-                    <form:errors path="description" cssClass="errorMessage"/>
-                </div>
+        </div>
+        <div class="form-group row">
+            <form:label path="description"
+                        class="col-md-4 col-form-label text-md-right">Description:</form:label>
+            <div class="col-md-6">
+                <form:textarea path="description" class="form-control" placeholder="Description"/>
+                <form:errors path="description" cssClass="errorMessage"/>
             </div>
-            <div class="form-group row">
-                <form:label path="url"
-                            class="col-md-4 col-form-label text-md-right"> Link :</form:label>
-                <div class="col-md-6">
-                    <form:input path="url" class="form-control" placeholder="Link"/>
-                    <form:errors path="url" cssClass="errorMessage"/>
-                </div>
+        </div>
+        <div class="form-group row">
+            <form:label path="url"
+                        class="col-md-4 col-form-label text-md-right"> Link :</form:label>
+            <div class="col-md-6">
+                <form:input path="url" class="form-control" placeholder="Link"/>
+                <form:errors path="url" cssClass="errorMessage"/>
             </div>
-            <div class="form-group row">
-                <form:label path="location" class="col-md-4 col-form-label text-md-right"> Location: </form:label>
-                <div class="col-md-6">
-                    <form:input path="location" class="form-control" placeholder="Location"/>
-                    <form:errors path="location" cssClass="errorMessage"/>
-                </div>
+        </div>
+        <div class="form-group row">
+            <form:label path="jobSearchWebsite"
+                        class="col-md-4 col-form-label text-md-right"> Job Search Website: </form:label>
+            <div class="col-md-6">
+                <form:input path="jobSearchWebsite" class="form-control" placeholder="Website Name"/>
+                <form:errors path="jobSearchWebsite" cssClass="errorMessage"/>
             </div>
-            <div class="form-group row">
-                <form:label path="company.name"
-                            class="col-md-4 col-form-label text-md-right"> Company: </form:label>
-                <div class="col-md-6">
-                    <form:input path="company.name" class="form-control" placeholder="Company"/>
-                    <form:errors path="company.name" cssClass="errorMessage"/>
-                </div>
+        </div>
+        <div class="form-group row">
+            <form:label path="location" class="col-md-4 col-form-label text-md-right"> Location: </form:label>
+            <div class="col-md-6">
+                <form:input path="location" class="form-control" placeholder="Location"/>
+                <form:errors path="location" cssClass="errorMessage"/>
             </div>
-            <div class="form-group row">
-                <form:label path="salary"
-                            class="col-md-4 col-form-label text-md-right"> Salary: </form:label>
-                <div class="col-md-6">
-                    <form:input path="salary" class="form-control" placeholder="Salary"/>
-                    <form:errors path="salary" cssClass="errorMessage"/>
-                </div>
+        </div>
+        <div class="form-group row">
+            <form:label path="company.name"
+                        class="col-md-4 col-form-label text-md-right"> Company: </form:label>
+            <div class="col-md-6">
+                <form:input path="company.name" class="form-control" placeholder="Company"/>
+                <form:errors path="company.name" cssClass="errorMessage"/>
             </div>
-            <div class="form-group row">
-                <form:label path="status"
-                            class="col-md-4 col-form-label text-md-right"> Status </form:label>
-                <div class="col-md-6">
-                    <form:select path="status" class="form-control">
-                        <form:options items="${status}"/>
-                    </form:select>
-                </div>
-                <form:errors path="status" cssClass="errorMessage"/>
+        </div>
+        <div class="form-group row">
+            <form:label path="salary"
+                        class="col-md-4 col-form-label text-md-right"> Salary: </form:label>
+            <div class="col-md-6">
+                <form:input path="salary" class="form-control" placeholder="Salary"/>
+                <form:errors path="salary" cssClass="errorMessage"/>
             </div>
-            <div class="form-group row">
-                <form:label path="howAttractive"
-                            class="col-md-4 col-form-label text-md-right"> How Attractive is the offer? </form:label>
-                <div class="col-md-6">
-                    <form:select path="howAttractive" class="form-control">
-                        <form:options items="${attractiveness}"/>
-                    </form:select>
-                </div>
-                <form:errors path="howAttractive" cssClass="errorMessage"/>
+        </div>
+        <div class="form-group row">
+            <form:label path="status"
+                        class="col-md-4 col-form-label text-md-right"> Status </form:label>
+            <div class="col-md-6">
+                <form:select path="status" class="form-control">
+                    <form:options items="${status}"/>
+                </form:select>
             </div>
+            <form:errors path="status" cssClass="errorMessage"/>
+        </div>
+        <div class="form-group row">
+            <form:label path="howAttractive"
+                        class="col-md-4 col-form-label text-md-right"> How Attractive is the offer? </form:label>
+            <div class="col-md-6">
+                <form:select path="howAttractive" class="form-control">
+                    <form:options items="${attractiveness}"/>
+                </form:select>
+            </div>
+            <form:errors path="howAttractive" cssClass="errorMessage"/>
+        </div>
         </div>
         <div class="form-group row">
             <form:label path="appliedOn"
@@ -126,9 +134,9 @@
             <input type="submit" class="btn btn-primary btn-block" value="Save">
             <form:hidden path="editedVersion" value="true"/>
         </div>
-    </div>
-</div>
-</form:form>
+        </div>
+        </div>
+    </form:form>
 </sec:authorize>
 
 

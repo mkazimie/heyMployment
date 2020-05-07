@@ -30,48 +30,56 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-<div class="container">
+    <div class="container">
     <div class="card mx-auto mt-3">
-        <div class="card-header bg-dark display-5 text-white text-center"> Job Offer Details </div>
-        <div class="card-body">
-            <form:form method="post" modelAttribute="jobOffer" action="/user/offers/add/details">
+    <div class="card-header bg-dark display-5 text-white text-center"> Job Offer Details</div>
+    <div class="card-body">
+    <form:form method="post" modelAttribute="jobOffer" action="/user/offers/add/details">
 
-            <h5 class="errorMessage center-content">${failed}</h5>
+        <h5 class="errorMessage center-content">${failed}</h5>
 
-            <div class="form-group row">
-                <form:label path="description"
-                            class="col-md-4 col-form-label text-md-right"> Job Description :</form:label>
-                <div class="col-md-6">
-                    <form:textarea path="description" class="form-control" placeholder="Description"/>
-                    <form:errors path="description" cssClass="errorMessage"/>
-                </div>
+        <div class="form-group row">
+            <form:label path="description"
+                        class="col-md-4 col-form-label text-md-right"> Job Description :</form:label>
+            <div class="col-md-6">
+                <form:textarea path="description" class="form-control" placeholder="Description"/>
+                <form:errors path="description" cssClass="errorMessage"/>
             </div>
-            <div class="form-group row">
-                <form:label path="url"
-                            class="col-md-4 col-form-label text-md-right"> Link to Offer :</form:label>
-                <div class="col-md-6">
-                    <form:input path="url" class="form-control" placeholder="Link"/>
-                    <form:errors path="url" cssClass="errorMessage"/>
-                </div>
+        </div>
+        <div class="form-group row">
+            <form:label path="url"
+                        class="col-md-4 col-form-label text-md-right"> Link to Offer :</form:label>
+            <div class="col-md-6">
+                <form:input path="url" class="form-control" placeholder="Link"/>
+                <form:errors path="url" cssClass="errorMessage"/>
             </div>
-            <div class="form-group row">
-                <form:label path="salary"
-                            class="col-md-4 col-form-label text-md-right"> Expected Salary: </form:label>
-                <div class="col-md-6">
-                    <form:input path="salary" class="form-control" placeholder="Salary"/>
-                    <form:errors path="salary" cssClass="errorMessage"/>
-                </div>
+        </div>
+        <div class="form-group row">
+            <form:label path="jobSearchWebsite"
+                        class="col-md-4 col-form-label text-md-right"> Job Search Website: </form:label>
+            <div class="col-md-6">
+                <form:input path="jobSearchWebsite" class="form-control" placeholder="Website Name"/>
+                <form:errors path="jobSearchWebsite" cssClass="errorMessage"/>
             </div>
-            <div class="form-group row">
-                <form:label path="howAttractive"
-                            class="col-md-4 col-form-label text-md-right"> How Attractive is the offer? </form:label>
-                <div class="col-md-6">
-                    <form:select path="howAttractive" class="form-control">
-                        <form:options items="${attractiveness}"/>
-                    </form:select>
-                </div>
-                <form:errors path="howAttractive" cssClass="errorMessage"/>
+        </div>
+        <div class="form-group row">
+            <form:label path="salary"
+                        class="col-md-4 col-form-label text-md-right"> Expected Salary: </form:label>
+            <div class="col-md-6">
+                <form:input path="salary" class="form-control" placeholder="Salary"/>
+                <form:errors path="salary" cssClass="errorMessage"/>
             </div>
+        </div>
+        <div class="form-group row">
+            <form:label path="howAttractive"
+                        class="col-md-4 col-form-label text-md-right"> How Attractive is the offer? </form:label>
+            <div class="col-md-6">
+                <form:select path="howAttractive" class="form-control">
+                    <form:options items="${attractiveness}"/>
+                </form:select>
+            </div>
+            <form:errors path="howAttractive" cssClass="errorMessage"/>
+        </div>
         </div>
         <div class="form-group row">
             <form:label path="appliedOn"
@@ -96,10 +104,11 @@
             <form:hidden path="company"/>
             <form:hidden path="location"/>
             <form:hidden path="status"/>
+            <form:hidden path="user.id"/>
         </div>
-    </div>
-</div>
-</form:form>
+        </div>
+        </div>
+    </form:form>
 </sec:authorize>
 
 

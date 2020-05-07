@@ -30,26 +30,30 @@
 <sec:authorize access="isAuthenticated()">
     <div class="container mt-5 mx-auto ml-4 mr-4">
         <h1 class="bd-title"> My Job Offers</h1>
+        <h2><a href="/user/offers/add" class="btn btn-primary"> + </a>
+        </h2>
 
         <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 bg-light text-uppercase nav-fill">
             <div class="container d-flex align-items-md-center py-2">
                 <nav class="nav mx-auto">
-                    <a href="/user/offers/all" class="btn btn-primary">All</a>
-                    <a href="/user/offers/all/${status[0]}" class="btn btn-primary">${status[0]}</a>
-                    <a href="/user/offers/all/${status[1]}" class="btn btn-primary">${status[1]}</a>
-                    <a href="/user/offers/all/${status[2]}" class="btn btn-primary">${status[2]}</a>
-                    <a href="/user/offers/all/${status[3]}" class="btn btn-primary">${status[3]}</a>
-                    <a href="/user/offers/all/${status[4]}" class="btn btn-primary">${status[4]}</a>
+                    <a href="/user/offers/all" class="btn btn-link">All</a>
+                    <a href="/user/offers/all/${status[0]}" class="btn btn-link">${status[0]}</a>
+                    <a href="/user/offers/all/${status[1]}" class="btn btn-link">${status[1]}</a>
+                    <a href="/user/offers/all/${status[2]}" class="btn btn-link">${status[2]}</a>
+                    <a href="/user/offers/all/${status[3]}" class="btn btn-link">${status[3]}</a>
+                    <a href="/user/offers/all/${status[4]}" class="btn btn-link">${status[4]}</a>
                 </nav>
             </div>
         </nav>
 
-        <table class="table">
+        <table class="table css-serial">
             <thead class="thead-dark">
             <tr>
+                <th>#</th>
                 <th scope="col"> Job Title</th>
                 <th scope="col"> Description</th>
                 <th scope="col"> Link</th>
+                <th scope="col"> Job Search Website</th>
                 <th scope="col"> Location</th>
                 <th scope="col"> Company</th>
                 <th scope="col"> Salary</th>
@@ -63,30 +67,48 @@
 
             <tbody>
             <c:forEach items="${offers}" var="offer">
-            <tr>
-                <td>${offer.title}</td>
-                <td>${offer.description}</td>
-                <td>${offer.url}</td>
-                <td>${offer.location}</td>
-                <td>${offer.company.name}</td>
-                <td>${offer.salary}</td>
-                <td>${offer.status}</td>
-                <td>${offer.howAttractive}</td>
-                <td>${offer.appliedOn}</td>
-                <td>${offer.notes}</td>
-                <td><a href="/user/offers/update/${offer.id}"> Edit </a> |
-                    <a href="/user/offers/confirm-delete/${offer.id}"> Delete </a>
-                </td>
-            </tr>
+                <tr>
+                    <td></td>
+                    <td>${offer.title}</td>
+                    <td>${offer.description}</td>
+                    <c:choose>
+                        <c:when test="${not empty offer.url}">
+                            <td><a href="${offer.url}">See Offer</a></td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>n/d</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <td>${offer.jobSearchWebsite}</td>
+                    <td>${offer.location}</td>
+                    <td>${offer.company.name}</td>
+                    <td>${offer.salary}</td>
+                    <td>${offer.status}</td>
+                    <td>${offer.howAttractive}</td>
+                    <td>${offer.appliedOn}</td>
+                    <td>${offer.notes}</td>
+                    <td><a href="/user/offers/update/${offer.id}"> Edit </a> |
+                        <a href="/user/offers/confirm-delete/${offer.id}"> Delete </a>
+                    </td>
+                </tr>
             </c:forEach>
             </tbody>
 
             <tbody>
             <c:forEach items="${allByStatus}" var="byStatus">
                 <tr>
+                    <td></td>
                     <td>${byStatus.title}</td>
                     <td>${byStatus.description}</td>
-                    <td>${byStatus.url}</td>
+                    <c:choose>
+                        <c:when test="${not empty byStatus.url}">
+                            <td><a href="${byStatus.url}">See Offer</a></td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>n/d</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <td>${byStatus.jobSearchWebsite}</td>
                     <td>${byStatus.location}</td>
                     <td>${byStatus.company.name}</td>
                     <td>${byStatus.salary}</td>

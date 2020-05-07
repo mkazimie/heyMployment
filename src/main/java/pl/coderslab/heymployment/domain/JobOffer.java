@@ -51,8 +51,11 @@ public class JobOffer {
 //    @NotNull
     private Company company;
 
+    @Column(name = "job_search_website")
+    private String jobSearchWebsite;
+
     @Column(name = "salary")
-    private double salary;
+    private String salary;
 
     @NotEmpty
     @Size(min = 1, max = 50)

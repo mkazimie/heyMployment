@@ -55,20 +55,23 @@ public class JobOfferController {
                 jobOffer.setCompany(existingCompany);
             }
             JobOffer offer = jobOfferService.saveJobOffer(jobOffer);
-            if(jobOffer.isEditedVersion()){
+            if (jobOffer.isEditedVersion()) {
                 return "redirect:/user/offers/all";
             }
             model.addAttribute("jobOffer", offer);
             return "job-offer-detailed-form";
         }
         model.addAttribute("failed", "Please try again");
+        if (jobOffer.isEditedVersion()) {
+            return "job-offer-edit";
+        }
         return "job-offer-basic-form";
     }
 
     // process detail form (all fields can be null but have some max size restrictions)
     @PostMapping("/user/offers/add/details")
-    public String addDetails(@ModelAttribute("jobOffer") @Valid JobOffer jobOffer, BindingResult result, Model model){
-        if(!result.hasErrors()){
+    public String addDetails(@ModelAttribute("jobOffer") @Valid JobOffer jobOffer, BindingResult result, Model model) {
+        if (!result.hasErrors()) {
             jobOfferService.saveJobOffer(jobOffer);
             return "redirect:/user/offers/all";
         } else {
@@ -81,7 +84,18 @@ public class JobOfferController {
     @GetMapping("/user/offers/all")
     public String displayJobOffers(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<JobOffer> allJobOffers = jobOfferService.findAllJobOffers(currentUser.getUser().getId());
+        model.addAttribute("allHowMany", allJobOffers.size());
         model.addAttribute("offers", allJobOffers);
+        return "job-offer-list";
+    }
+
+    //display job offers by status for current user
+    @GetMapping("/user/offers/all/{name}")
+    public String displayJobOffersByStatus(@PathVariable String name,
+                                           @AuthenticationPrincipal CurrentUser currentUser, Model model) {
+        List<JobOffer> allByStatus = jobOfferService.findAllByStatus(currentUser.getUser().getId(), name);
+        model.addAttribute("allByStatus", allByStatus);
+        model.addAttribute("specificHowMany", allByStatus.size());
         return "job-offer-list";
     }
 
@@ -107,15 +121,6 @@ public class JobOfferController {
         jobOfferService.deleteJobOffer(id);
         return "redirect:/user/offers/all";
     }
-
-    @GetMapping("/user/offers/all/{name}")
-    public String displayJobOffersByStatus(@PathVariable String name,
-                                           @AuthenticationPrincipal CurrentUser currentUser, Model model){
-        List<JobOffer> allByStatus = jobOfferService.findAllByStatus(currentUser.getUser().getId(), name);
-        model.addAttribute("allByStatus", allByStatus);
-        return "job-offer-list";
-    }
-
 
 
     @ModelAttribute("currentUser")
