@@ -25,13 +25,18 @@
     <title>Home Page</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 </head>
-<%@include file="main-header.jsp" %>
 <body class="bg-img-2">
+<%@include file="main-header.jsp" %>
 <sec:authorize access="hasRole('ADMIN')">
-    <h1 class="bd-title ml-5"> Admin Panel</h1>
+    <nav class="navbar bg-dark static-top">
+        <div class="navbar-brand main-logo ml-4 text-white">
+            <strong> Admin Panel </strong>
+        </div>
+    </nav>
+    <div class="container mt-5">
     <div class="row">
-        <div class="col-xl-3 col-md-4">
-            <div class="card ml-5 admin-card">
+        <div class="col-12 col-lg-4">
+            <div class="card admin-card">
                 <img class="card-img-top img-scale" src="/img/undraw_personal_info_0okl.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"> Add New User</h5>
@@ -40,8 +45,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-4">
-            <div class="card ml-5 admin-card">
+        <div class="col-12 col-lg-4">
+            <div class="card admin-card">
                 <img class="card-img-top img-scale" src="/img/undraw_meet_the_team_e5b7.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"> View All Users </h5>
@@ -50,6 +55,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </sec:authorize>
 <!-- Optional JavaScript -->

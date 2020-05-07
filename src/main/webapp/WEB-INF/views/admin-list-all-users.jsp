@@ -26,8 +26,8 @@
 
 </head>
 <body>
+<%@include file="main-header.jsp" %>
 <sec:authorize access="hasRole('ADMIN')">
-    <%@include file="main-header.jsp" %>
     <div class="container mt-5 mx-auto ml-4 mr-4">
         <h1 class="bd-title"> All Users</h1>
 

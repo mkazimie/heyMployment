@@ -27,13 +27,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
-<%@include file="header-landing.jsp" %>
 <body class="bg-light">
+<%@include file="header-landing.jsp" %>
+<sec:authorize access="hasRole('ADMIN')">
 <div class="container">
     <div class="card mx-auto mt-3">
         <div class="card-header bg-dark display-5 text-white text-center"> Add new user</div>
         <div class="card-body">
-            <sec:authorize access="hasRole('ADMIN')">
             <form:form method="post" modelAttribute="user">
 
             <h4 class="errorMessage">${failed}</h4>
