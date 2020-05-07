@@ -18,19 +18,23 @@ public interface UserService {
 
     User updateUser(User user);
 
-    //admin options
+//    admin option temporarily rejected
+//    void deleteUser(long id);
+
+    //admin option
     List<User> getAllUsers();
 
-
-    //admin options
-    void deleteUser(long id);
-
+    //admin option
     void blockUser(long id);
 
+    //admin option
     void unblockUser(long id);
 
-    //admin options
+    //admin option
     User createUser(User newUser) throws UserAlreadyExistsException;
+
+    //create first user after DB drop
+    void saveUser(User user);
 
 
 }

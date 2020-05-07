@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.UserDto;
 import pl.coderslab.heymployment.exception.UserAlreadyExistsException;
@@ -26,6 +27,21 @@ public class HelloController {
     }
 
 
+//    create first admin after DB drop
+//    @GetMapping("/create-admin")
+//    @ResponseBody
+//    public String createAdmin() {
+//        User user = new User();
+//        user.setFirstName("Magda");
+//        user.setLastName("Magda");
+//        user.setUsername("mkazimie");
+//        user.setPassword("heymployment");
+//        user.setEmail("email@email.pl");
+//        userService.saveUser(user);
+//        return "Hi admin: " + user.getUsername();
+//    }
+
+
     //display registration form
     @GetMapping("/register")
     public String register(Model model) {
@@ -34,7 +50,7 @@ public class HelloController {
         return "register";
     }
 
-    //process registration form and create a new user; redirect to registration success page
+    // process registration form and create a new user; redirect to registration success page
     @PostMapping("/register")
     public String processRegistration(@ModelAttribute("user") @Valid UserDto userDto, BindingResult bindingResult,
                                       Model model) {
@@ -50,7 +66,7 @@ public class HelloController {
         return "register";
     }
 
-    //login form displayed only for users not logged in yet
+    //login form displayed only for users not logged in yet (?)
     @GetMapping("/login")
     public String loginForm(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
         if (currentUser != null) {

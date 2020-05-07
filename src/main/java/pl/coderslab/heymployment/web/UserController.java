@@ -31,7 +31,7 @@ public class UserController {
     @GetMapping("/user/update")
     public String updateProfileForm(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
         User user = userService.findById(currentUser.getUser().getId());
-        model.addAttribute("user", user);
+        model.addAttribute("currentUser", user);
         return "user-update-profile";
     }
 

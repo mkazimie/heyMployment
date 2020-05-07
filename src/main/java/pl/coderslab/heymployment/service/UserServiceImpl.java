@@ -9,8 +9,6 @@ import pl.coderslab.heymployment.exception.UserAlreadyExistsException;
 import pl.coderslab.heymployment.repository.RoleRepository;
 import pl.coderslab.heymployment.repository.UserRepository;
 
-import javax.persistence.EntityNotFoundException;
-import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
@@ -71,16 +69,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(User user) {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            return userRepository.save(user);
-        }
-
-    @Override
-    public void deleteUser(long id) {
-        User user = findById(id);
-        user.setRoles(null);
-        userRepository.delete(user);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
     }
+
+    //temporarily rejected method
+//    @Override
+//    public void deleteUser(long id) {
+//        User user = findById(id);
+//        user.setRoles(null);
+//        userRepository.delete(user);
+//    }
 
     @Override
     public void blockUser(long id) {
@@ -105,6 +104,17 @@ public class UserServiceImpl implements UserService {
             return userRepository.save(newUser);
         }
     }
+
+    //use only for creating first user after DB drop
+    @Override
+    public void saveUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEnabled(1);
+        Role userRole = roleRepository.findByName("ROLE_ADMIN");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }
+
 
 
 }

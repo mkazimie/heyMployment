@@ -5,10 +5,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.Role;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.exception.UserAlreadyExistsException;
@@ -33,6 +30,7 @@ public class AdminController {
     }
 
 
+    //display admin panel
     @GetMapping("/admin/panel")
     public String displayAdminPanel() {
         return "admin-panel";
@@ -90,14 +88,13 @@ public class AdminController {
     }
 
 
-
     @ModelAttribute("roles")
     public List<Role> roles() {
         return roleRepository.findAll();
     }
 
     @ModelAttribute("currentUser")
-    public User currentUser(@AuthenticationPrincipal CurrentUser currentUser){
+    public User currentUser(@AuthenticationPrincipal CurrentUser currentUser) {
         return currentUser.getUser();
     }
 
