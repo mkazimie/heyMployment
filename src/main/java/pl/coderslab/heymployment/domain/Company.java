@@ -1,8 +1,6 @@
 package pl.coderslab.heymployment.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
@@ -11,7 +9,8 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -42,4 +41,5 @@ public class Company {
 
     @OneToMany(mappedBy = "company")
     private Set<JobOffer> jobOffers = new HashSet<>();
+
 }

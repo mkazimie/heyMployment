@@ -28,7 +28,7 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<%@include file="header-landing.jsp" %>
+<%@include file="main-header.jsp" %>
 <sec:authorize access="hasRole('ADMIN')">
 <div class="container">
     <div class="card mx-auto mt-3">

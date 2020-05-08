@@ -41,7 +41,7 @@ public class Todo {
 
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Past(message = "* Future Date Not Allowed")
+    @Future(message = "* Past Date Not Allowed")
     @Column(name = "deadline")
     private LocalDate deadline;
 

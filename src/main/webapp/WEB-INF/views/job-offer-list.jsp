@@ -50,6 +50,7 @@
             <thead class="thead-dark">
             <tr>
                 <th>#</th>
+                <th scope="col"> Actions</th>
                 <th scope="col"> Job Title</th>
                 <th scope="col"> Description</th>
                 <th scope="col"> Link</th>
@@ -61,7 +62,6 @@
                 <th scope="col"> How Attractive</th>
                 <th scope="col"> Applied On</th>
                 <th scope="col"> Notes</th>
-                <th scope="col"> Actions</th>
             </tr>
             </thead>
 
@@ -69,6 +69,10 @@
             <c:forEach items="${offers}" var="offer">
                 <tr>
                     <td></td>
+                    <td class="btn-group"><a href="/user/offers/update/${offer.id}" class="btn btn-primary"> Edit </a>
+                        <a href="/user/offers/confirm-delete/${offer.id}" class="btn btn-primary"> Delete </a>
+                        <a href="/user/todos/add/job/${offer.id}" class="btn btn-primary"> Add a TO-DO </a>
+                    </td>
                     <td>${offer.title}</td>
                     <td>${offer.description}</td>
                     <c:choose>
@@ -87,10 +91,7 @@
                     <td>${offer.howAttractive}</td>
                     <td>${offer.appliedOn}</td>
                     <td>${offer.notes}</td>
-                    <td class="btn-group"><a href="/user/offers/update/${offer.id}" class="btn btn-primary"> Edit </a>
-                        <a href="/user/offers/confirm-delete/${offer.id}" class="btn btn-primary"> Delete </a>
-                        <a href="/user/todos/add/job/${offer.id}" class="btn btn-primary"> Add a TO-DO </a>
-                    </td>
+
                 </tr>
             </c:forEach>
             </tbody>
@@ -99,6 +100,10 @@
             <c:forEach items="${allByStatus}" var="byStatus">
                 <tr>
                     <td></td>
+                    <td class="btn-group"><a href="/user/offers/update/${byStatus.id}" class="btn btn-primary"> Edit </a>
+                        <a href="/user/offers/confirm-delete/${byStatus.id}" class="btn btn-primary"> Delete </a>
+                        <a href="/user/todos/add/job/${byStatus.id}" class="btn btn-primary"> Add a TO-DO </a>
+                    </td>
                     <td>${byStatus.title}</td>
                     <td>${byStatus.description}</td>
                     <c:choose>
@@ -117,10 +122,6 @@
                     <td>${byStatus.howAttractive}</td>
                     <td>${byStatus.appliedOn}</td>
                     <td>${byStatus.notes}</td>
-                    <td class="btn-group"><a href="/user/offers/update/${byStatus.id}" class="btn btn-primary"> Edit </a>
-                        <a href="/user/offers/confirm-delete/${byStatus.id}" class="btn btn-primary"> Delete </a>
-                        <a href="/user/todos/add/job/${byStatus.id}" class="btn btn-primary"> Add a TO-DO </a>
-                    </td>
                 </tr>
             </c:forEach>
             </tbody>

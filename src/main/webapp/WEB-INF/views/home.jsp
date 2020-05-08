@@ -57,7 +57,7 @@
                         <p class="card-text bg-light"> Learn More About Your Future Employer </p>
                     </div>
                     <div class="card-footer">
-                        <a href="#/user/companies/all" class="btn btn-primary"> Let's do it! </a>
+                        <a href="/user/companies/all" class="btn btn-primary"> Let's do it! </a>
                     </div>
                 </div>
 
