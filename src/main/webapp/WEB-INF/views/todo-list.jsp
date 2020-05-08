@@ -43,7 +43,7 @@
                 <th scope="col"> Description</th>
                 <th scope="col"> Related Job Offer</th>
                 <th scope="col"> Deadline</th>
-                <th scope="col"> Status</th>
+                <th scope="col"> Done?</th>
                 <th scope="col"> Actions</th>
             </tr>
             </thead>
@@ -62,7 +62,9 @@
                             <td>n/d</td>
                         </c:otherwise>
                     </c:choose>
-                    <td><a href="/user/todos/delete/${todo.id}">DONE</a></td>
+                    <td> ${todo.deadline}</td>
+                    <td><a href="/user/todos/confirm-delete/${todo.id}"><i class="far fa-check-circle"></i>
+                    </a></td>
                     <td><a href="/user/todos/update/${todo.id}"> Edit </a> |
                         <a href="/user/todos/confirm-delete/${todo.id}"> Delete </a>
                     </td>

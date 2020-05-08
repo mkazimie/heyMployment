@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.Todo;
+import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.security.CurrentUser;
 import pl.coderslab.heymployment.service.JobOfferService;
 import pl.coderslab.heymployment.service.TodoService;
@@ -37,9 +38,14 @@ public class TodoController {
 
     // process to-do form and save a to-do NOT WORKING!!!
     @PostMapping("/user/todos/add")
-    public String saveTodo(@ModelAttribute @Valid Todo todo, BindingResult result, Model model) {
+    public String saveTodo(@AuthenticationPrincipal CurrentUser currentUser, @ModelAttribute @Valid Todo todo,
+                           BindingResult result,
+                           Model model) {
         if (!result.hasErrors()) {
-//            to-do.setUser(currentUser.getUser());
+            todo.setUser(currentUser.getUser());
+            if (!(todo.getJobOffer() == null)) {
+                todo.setJobOffer(todo.getJobOffer());
+            }
             todoService.saveTodo(todo);
             return "redirect:/user/todos/all";
         }
@@ -92,4 +98,8 @@ public class TodoController {
         return jobOfferService.findAllJobOffers(currentUser.getUser().getId());
     }
 
+    @ModelAttribute("currentUser")
+    public User currentUser(@AuthenticationPrincipal CurrentUser currentUser) {
+        return currentUser.getUser();
+    }
 }

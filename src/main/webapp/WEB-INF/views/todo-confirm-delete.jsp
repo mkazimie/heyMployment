@@ -34,7 +34,7 @@
         <div class="card mx-auto text-center">
             <h5 class="card-header bg-warning">Confirm Action</h5>
             <div class="card-body">
-                <p class="card-text"> Are you sure you want to delete Job Offer <strong>${todo.name}</strong>?</p>
+                <p class="card-text"> Do you want to check off the task <strong>${todo.name}</strong>?</p>
                 <a href="/user/todos/delete/${todo.id}" class="btn btn-link" role="button"> YES </a>
                 <a href="/user/todos/all" class="btn btn-link" role="button"> NO </a>
             </div>

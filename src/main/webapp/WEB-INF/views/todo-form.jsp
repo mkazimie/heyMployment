@@ -59,6 +59,7 @@
                         class="col-md-4 col-form-label text-md-right"> Related Job Offer: </form:label>
             <div class="col-md-6">
                 <form:select path="jobOffer" class="form-control">
+                    <form:option value="0" label="--Please Select" selected="selected"/>
                     <form:options items="${jobOffers}" itemLabel="title" itemValue="id"/>
                 </form:select>
             </div>
