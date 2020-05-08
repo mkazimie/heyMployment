@@ -25,7 +25,7 @@
     <title>Home Page</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 </head>
-<body class="bg-img">
+<body class="bg-dark">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
     <nav class="navbar bg-dark static-top">
