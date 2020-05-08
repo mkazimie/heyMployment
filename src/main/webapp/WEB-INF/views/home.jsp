@@ -34,6 +34,45 @@
         </div>
     </nav>
         <div class="container">
+
+            <div class="card-deck mt-5">
+
+                <div class="card border-secondary">
+                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_calendar_dutt%20(1).png"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"> Your TO DO List </h5>
+                        <p class="card-text bg-light"> View Your Most Urgent Tasks </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/user/todos/all" class="btn btn-primary"> Let's do it! </a>
+                    </div>
+                </div>
+
+                <div class="card border-secondary">
+                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_financial_data_es63.png"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"> View and Update Companies Info </h5>
+                        <p class="card-text bg-light"> Learn More About Your Future Employer </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#/user/companies/all" class="btn btn-primary"> Let's do it! </a>
+                    </div>
+                </div>
+
+<%--                <div class="card border-secondary">--%>
+<%--                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_interview_rmcf.png"--%>
+<%--                         alt="Card image cap">--%>
+<%--                    <div class="card-body">--%>
+<%--                        <h5 class="card-title"> View Your Interview Prep </h5>--%>
+<%--                        <p class="card-text bg-light"> Prepare For Your Interview By Reviewing These Questions </p>--%>
+<%--                    </div>--%>
+<%--                    <div class="card-footer">--%>
+<%--                        <a href="#/user/interviews/all" class="btn btn-primary"> Let's do it! </a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+
             <div class="card-deck mt-5">
                 <div class="card border-secondary">
                     <img class="card-img-top img-scale img-fluid" src="/img/undraw_placeholders_rklh.png"

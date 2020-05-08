@@ -36,6 +36,9 @@
     <div class="card-body">
     <form:form method="post" modelAttribute="jobOffer">
 
+        <h5 class="errorMessage center-content">${failed}</h5>
+
+
         <div class="form-group row">
             <form:label path="title"
                         class="col-md-4 col-form-label text-md-right"> Job Title: </form:label>
@@ -73,6 +76,7 @@
             </div>
         </div>
         <form:hidden path="id"/>
+        <form:hidden path="company"/>
         <div class="col-md-6 offset-md-4">
             <input type="submit" class="btn btn-primary btn-block" value="Save">
         </div>
