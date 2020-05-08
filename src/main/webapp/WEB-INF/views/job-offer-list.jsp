@@ -87,8 +87,9 @@
                     <td>${offer.howAttractive}</td>
                     <td>${offer.appliedOn}</td>
                     <td>${offer.notes}</td>
-                    <td><a href="/user/offers/update/${offer.id}"> Edit </a> |
-                        <a href="/user/offers/confirm-delete/${offer.id}"> Delete </a>
+                    <td class="btn-group"><a href="/user/offers/update/${offer.id}" class="btn btn-primary"> Edit </a>
+                        <a href="/user/offers/confirm-delete/${offer.id}" class="btn btn-primary"> Delete </a>
+                        <a href="/user/todos/add/job/${offer.id}" class="btn btn-primary"> Add a TO-DO </a>
                     </td>
                 </tr>
             </c:forEach>
@@ -116,8 +117,9 @@
                     <td>${byStatus.howAttractive}</td>
                     <td>${byStatus.appliedOn}</td>
                     <td>${byStatus.notes}</td>
-                    <td><a href="/user/offers/update/${byStatus.id}"> Edit </a> |
-                        <a href="/user/offers/confirm-delete/${byStatus.id}"> Delete </a>
+                    <td class="btn-group"><a href="/user/offers/update/${byStatus.id}" class="btn btn-primary"> Edit </a>
+                        <a href="/user/offers/confirm-delete/${byStatus.id}" class="btn btn-primary"> Delete </a>
+                        <a href="/user/todos/add/job/${byStatus.id}" class="btn btn-primary"> Add a TO-DO </a>
                     </td>
                 </tr>
             </c:forEach>
