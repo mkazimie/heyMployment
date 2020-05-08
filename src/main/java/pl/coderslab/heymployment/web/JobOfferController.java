@@ -14,6 +14,7 @@ import pl.coderslab.heymployment.service.JobOfferService;
 
 import javax.validation.Valid;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -44,21 +45,15 @@ public class JobOfferController {
                               @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         if (!result.hasErrors()) {
             jobOffer.setUser(currentUser.getUser());
-            String companyName = jobOffer.getCompany().getName();
-            Company existingCompany = companyService.findByName(companyName);
-            if (existingCompany == null) {
-                Company company = new Company();
-                company.setName(companyName);
-                companyService.saveCompany(company);
-                jobOffer.setCompany(company);
-            } else {
-                jobOffer.setCompany(existingCompany);
-            }
-            JobOffer offer = jobOfferService.saveJobOffer(jobOffer);
+            Company company = jobOffer.getCompany();
+//            company.setJobOffers(new HashSet<>(Arrays.asList(jobOffer)));
+            companyService.saveCompany(company);
+            jobOffer.setCompany(company);
+            jobOfferService.saveJobOffer(jobOffer);
             if (jobOffer.isEditedVersion()) {
                 return "redirect:/user/offers/all";
             }
-            model.addAttribute("jobOffer", offer);
+            model.addAttribute("jobOffer", jobOffer);
             return "job-offer-detailed-form";
         }
         model.addAttribute("failed", "Please try again");

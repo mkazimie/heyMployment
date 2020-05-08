@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.heymployment.domain.Company;
 import pl.coderslab.heymployment.repository.CompanyRepository;
 
+import java.util.Optional;
+
 @Service
 public class CompanyServiceImpl implements CompanyService {
 
@@ -17,6 +19,12 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Company findByName(String name) {
         return companyRepository.findByName(name);
+    }
+
+    @Override
+    public Company findById(long id) {
+        Optional<Company> company = companyRepository.findById(id);
+        return company.get();
     }
 
     @Override

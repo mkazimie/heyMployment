@@ -3,9 +3,13 @@ package pl.coderslab.heymployment.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 @Data
@@ -20,6 +24,7 @@ public class Todo {
     @Column(name = "to_do_id")
     private long id;
 
+    @NotBlank
     @Column(name = "to_do_name")
     private String name;
 
@@ -34,7 +39,9 @@ public class Todo {
     @JoinColumn(name = "course_id")
     private Course course;
 
-    @Future
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past(message = "* Future Date Not Allowed")
     @Column(name = "deadline")
     private LocalDate deadline;
 
