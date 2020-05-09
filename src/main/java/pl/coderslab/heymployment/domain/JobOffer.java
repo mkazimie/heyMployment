@@ -73,7 +73,7 @@ public class JobOffer {
     @Size(max = 1000)
     private String notes;
 
-    @OneToMany(mappedBy = "jobOffer")
+    @OneToMany(mappedBy = "jobOffer", cascade = CascadeType.REMOVE)
     private Set<Todo> todos = new HashSet<>();
 
     @ManyToOne

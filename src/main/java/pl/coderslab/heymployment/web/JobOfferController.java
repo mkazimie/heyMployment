@@ -33,22 +33,28 @@ public class JobOfferController {
     @GetMapping("/user/offers/add")
     public String addJobOffer(Model model) {
         model.addAttribute("jobOffer", new JobOffer());
-        model.addAttribute("company", new Company());
         return "job-offer-basic-form";
     }
 
 
     // 1) process new job basic form & redirect to detailed form
     // 2) process complete edit-job form
+    //PROBLEM: DISPLAY VALIDATION CONSTRAINT MESSAGE FOR COMPANY NAME BACK IN THE FORM
+    // (CURRENTLY DISPLAYING JUST MESSAGES FOR JOBOFFER FIELDS)
     @PostMapping("/user/offers/add")
     public String addJobOffer(@ModelAttribute @Valid JobOffer jobOffer, BindingResult result,
                               @AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        if (!result.hasErrors()) {
+        if (!(result.hasErrors())) {
             jobOffer.setUser(currentUser.getUser());
-            Company company = jobOffer.getCompany();
-//            company.setJobOffers(new HashSet<>(Arrays.asList(jobOffer)));
-            companyService.saveCompany(company);
-            jobOffer.setCompany(company);
+            Company existingCompany = companyService.findByName(jobOffer.getCompany().getName());
+            if (existingCompany == null){
+                Company newCompany = new Company();
+                newCompany.setName(jobOffer.getCompany().getName());
+                companyService.saveCompany(newCompany);
+                jobOffer.setCompany(newCompany);
+            } else {
+                jobOffer.setCompany(existingCompany);
+            }
             jobOfferService.saveJobOffer(jobOffer);
             if (jobOffer.isEditedVersion()) {
                 return "redirect:/user/offers/all";

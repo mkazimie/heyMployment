@@ -16,6 +16,6 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
 
     List<Company> findAll();
 
-    @Query("SELECT c FROM Company c LEFT JOIN c.jobOffers jo WHERE jo.user = ?1 ORDER BY c.name")
+    @Query("SELECT DISTINCT c FROM Company c LEFT JOIN c.jobOffers jo WHERE jo.user = ?1 ORDER BY c.name")
     List<Company> findAllByUser(User user);
 }

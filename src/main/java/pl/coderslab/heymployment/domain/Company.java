@@ -39,7 +39,6 @@ public class Company {
     @Column(name = "company_website")
     private String website;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.REMOVE)
     private Set<JobOffer> jobOffers = new HashSet<>();
-
 }
