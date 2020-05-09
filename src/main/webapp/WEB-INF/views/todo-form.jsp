@@ -32,7 +32,7 @@
 <sec:authorize access="isAuthenticated()">
     <div class="container">
     <div class="card mx-auto mt-3">
-    <div class="card-header bg-dark display-5 text-white text-center"> TO DO FORM </div>
+    <div class="card-header bg-dark display-5 text-white text-center"> TO DO FORM</div>
     <div class="card-body">
     <form:form method="post" modelAttribute="todo" action="/user/todos/add">
 
@@ -59,11 +59,18 @@
                         class="col-md-4 col-form-label text-md-right"> Related Job Offer: </form:label>
             <div class="col-md-6">
                 <form:select path="jobOffer" class="form-control">
-                    <form:option value="0" label="--Please Select" selected="selected"/>
-                    <form:options items="${jobOffers}" itemLabel="title" itemValue="id"/>
+                    <c:choose>
+                        <c:when test="${not empty jobOffer}">
+                            <form:option value="${jobOffer.id}" label="${jobOffer.title}" selected="selected"/>
+                        </c:when>
+                        <c:otherwise>
+                            <form:option value="0" label="--Please Select" selected="selected"/>
+                            <form:options items="${jobOffers}" itemLabel="title" itemValue="id"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <form:errors path="jobOffer" cssClass="errorMessage"/>
                 </form:select>
             </div>
-            <form:errors path="jobOffer" cssClass="errorMessage"/>
         </div>
         </div>
         <div class="form-group row">
