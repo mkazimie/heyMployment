@@ -51,9 +51,12 @@
             <form:label path="company.name"
                         class="col-md-4 col-form-label text-md-right"> Company: </form:label>
             <div class="col-md-6">
-                <form:input path="company.name" item="${company}" itemLabel="name" itemValue="id"
-                            class="form-control"
+                <form:input path="company.name" class="form-control"
                             placeholder="Company"/>
+<%--                            item="${jobOffer.company.name}" --%>
+                            <%--                itemLabel="name" itemValue="id"--%>
+
+
                 <form:errors path="company.name" cssClass="errorMessage"/>
             </div>
         </div>
@@ -76,7 +79,7 @@
             </div>
         </div>
         <form:hidden path="id"/>
-        <form:hidden path="company"/>
+<%--        <form:hidden path="company"/>--%>
         <div class="col-md-6 offset-md-4">
             <input type="submit" class="btn btn-primary btn-block" value="Save">
         </div>
