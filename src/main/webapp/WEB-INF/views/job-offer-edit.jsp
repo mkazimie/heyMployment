@@ -34,7 +34,7 @@
     <div class="card mx-auto mt-3">
     <div class="card-header bg-dark display-5 text-white text-center"> Edit Job Offer</div>
     <div class="card-body">
-    <form:form method="post" modelAttribute="jobOffer" action="/user/offers/add">
+    <form:form method="post" modelAttribute="jobOffer" action="/user/offers/update">
 
         <h5 class="errorMessage center-content">${failed}</h5>
 
@@ -48,7 +48,7 @@
         </div>
         <div class="form-group row">
             <form:label path="description"
-                        class="col-md-4 col-form-label text-md-right">Description:</form:label>
+                        class="col-md-4 col-form-label text-md-right"> Description:</form:label>
             <div class="col-md-6">
                 <form:textarea path="description" class="form-control" placeholder="Description"/>
                 <form:errors path="description" cssClass="errorMessage"/>
@@ -81,7 +81,7 @@
             <form:label path="company.name"
                         class="col-md-4 col-form-label text-md-right"> Company: </form:label>
             <div class="col-md-6">
-                <form:input path="company.name" class="form-control" placeholder="Company"/>
+                <form:input path="company.name" class="form-control" placeholder="Company" readonly="true"/>
                 <form:errors path="company.name" cssClass="errorMessage"/>
             </div>
         </div>
@@ -133,6 +133,7 @@
         <div class="col-md-6 offset-md-4">
             <input type="submit" class="btn btn-primary btn-block" value="Save">
             <form:hidden path="editedVersion" value="true"/>
+            <form:hidden path="user.id"/>
         </div>
         </div>
         </div>

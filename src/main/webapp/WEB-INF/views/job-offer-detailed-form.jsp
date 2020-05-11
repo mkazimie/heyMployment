@@ -34,7 +34,7 @@
     <div class="card mx-auto mt-3">
     <div class="card-header bg-dark display-5 text-white text-center"> Job Offer Details</div>
     <div class="card-body">
-    <form:form method="post" modelAttribute="jobOffer" action="/user/offers/add/details">
+    <form:form method="post" modelAttribute="offer" action="/user/offers/add/details">
 
         <h5 class="errorMessage center-content">${failed}</h5>
 
@@ -56,9 +56,9 @@
         </div>
         <div class="form-group row">
             <form:label path="jobSearchWebsite"
-                        class="col-md-4 col-form-label text-md-right"> Job Search Website: </form:label>
+                        class="col-md-4 col-form-label text-md-right"> Posted on Website: </form:label>
             <div class="col-md-6">
-                <form:input path="jobSearchWebsite" class="form-control" placeholder="Website Name"/>
+                <form:input path="jobSearchWebsite" class="form-control" placeholder=" Name"/>
                 <form:errors path="jobSearchWebsite" cssClass="errorMessage"/>
             </div>
         </div>
@@ -99,7 +99,6 @@
         </div>
         <div class="col-md-6 offset-md-4">
             <input type="submit" class="btn btn-primary btn-block" value="Save">
-            <form:hidden path="id"/>
             <form:hidden path="title"/>
             <form:hidden path="company"/>
             <form:hidden path="location"/>
