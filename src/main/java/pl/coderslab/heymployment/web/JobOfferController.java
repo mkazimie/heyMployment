@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.Company;
 import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.User;
+import pl.coderslab.heymployment.domain.dto.JobOfferDto;
 import pl.coderslab.heymployment.security.CurrentUser;
 import pl.coderslab.heymployment.service.CompanyService;
 import pl.coderslab.heymployment.service.JobOfferService;
@@ -32,48 +33,34 @@ public class JobOfferController {
     //display form for adding job offer
     @GetMapping("/user/offers/add")
     public String addJobOffer(Model model) {
-        model.addAttribute("jobOffer", new JobOffer());
+        model.addAttribute("jobOffer", new JobOfferDto());
         return "job-offer-basic-form";
     }
 
 
-    // 1) process new job basic form & redirect to detailed form
-    // 2) process complete edit-job form
-    //PROBLEM: DISPLAY VALIDATION CONSTRAINT MESSAGE FOR COMPANY NAME BACK IN THE FORM
-    // (CURRENTLY DISPLAYING JUST MESSAGES FOR JOBOFFER FIELDS)
+    // process basic form and redirect to detailed form
     @PostMapping("/user/offers/add")
-    public String addJobOffer(@ModelAttribute @Valid JobOffer jobOffer, BindingResult result,
+    public String addJobOffer(@ModelAttribute("jobOffer") @Valid JobOfferDto jobOffer, BindingResult result,
                               @AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        if (!(result.hasErrors())) {
-            jobOffer.setUser(currentUser.getUser());
-            Company existingCompany = companyService.findByName(jobOffer.getCompany().getName());
-            if (existingCompany == null){
-                Company newCompany = new Company();
-                newCompany.setName(jobOffer.getCompany().getName());
-                companyService.saveCompany(newCompany);
-                jobOffer.setCompany(newCompany);
-            } else {
-                jobOffer.setCompany(existingCompany);
-            }
-            jobOfferService.saveJobOffer(jobOffer);
-            if (jobOffer.isEditedVersion()) {
-                return "redirect:/user/offers/all";
-            }
-            model.addAttribute("jobOffer", jobOffer);
+        if(!result.hasErrors()){
+            Company company = companyService.getCompanyOrCreateNew(jobOffer);
+            JobOffer jobOfferFromForm = jobOfferService.createJobOfferFromForm(jobOffer);
+            jobOfferFromForm.setCompany(company);
+            jobOfferFromForm.setUser(currentUser.getUser());
+            jobOfferService.saveJobOffer(jobOfferFromForm);
+            model.addAttribute("offer", jobOfferFromForm);
             return "job-offer-detailed-form";
         }
         model.addAttribute("failed", "Please try again");
-        if (jobOffer.isEditedVersion()) {
-            return "job-offer-edit";
-        }
         return "job-offer-basic-form";
+
     }
 
-    // process detail form (all fields can be null but have some max size restrictions)
+    // process detailed form (all fields can be null but have some max size restrictions) & redirect to list of all
     @PostMapping("/user/offers/add/details")
-    public String addDetails(@ModelAttribute("jobOffer") @Valid JobOffer jobOffer, BindingResult result, Model model) {
+    public String addDetails(@ModelAttribute("offer") @Valid JobOffer offer, BindingResult result, Model model) {
         if (!result.hasErrors()) {
-            jobOfferService.saveJobOffer(jobOffer);
+            jobOfferService.saveJobOffer(offer);
             return "redirect:/user/offers/all";
         } else {
             model.addAttribute("failed", "Please try again");
@@ -90,7 +77,7 @@ public class JobOfferController {
         return "job-offer-list";
     }
 
-    //display job offers by status for current user
+    // display job offers by status for current user
     @GetMapping("/user/offers/all/{name}")
     public String displayJobOffersByStatus(@PathVariable String name,
                                            @AuthenticationPrincipal CurrentUser currentUser, Model model) {
@@ -100,6 +87,15 @@ public class JobOfferController {
         return "job-offer-list";
     }
 
+    // display detailed view of a job offer by id
+    @GetMapping("/user/offers/{id}")
+    public String displayDetails(Model model, @PathVariable long id){
+        JobOffer jobOffer = jobOfferService.findById(id);
+        model.addAttribute("jobOffer", jobOffer);
+        return "job-offer-detailed-view";
+    }
+
+
     // edit job offer
     @GetMapping("/user/offers/update/{id}")
     public String updateOffer(Model model, @PathVariable long id) {
@@ -107,6 +103,20 @@ public class JobOfferController {
         model.addAttribute("jobOffer", offer);
         return "job-offer-edit";
     }
+
+    // process job offer editing
+    @PostMapping("/user/offers/update")
+    public String updateOffer(@ModelAttribute @Valid JobOffer jobOffer, BindingResult result, Model model){
+        if (!result.hasErrors()){
+            Company company = companyService.findByName(jobOffer.getCompany().getName());
+            jobOffer.setCompany(company);
+            jobOfferService.saveJobOffer(jobOffer);
+            return "redirect:/user/offers/all";
+        }
+        model.addAttribute("failed", "Please try again");
+        return "job-offer-edit";
+    }
+
 
     // confirm-delete of job offer
     @GetMapping("/user/offers/confirm-delete/{id}")

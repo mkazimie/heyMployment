@@ -1,7 +1,10 @@
 package pl.coderslab.heymployment.service;
 
 import org.springframework.stereotype.Service;
+import pl.coderslab.heymployment.domain.Company;
 import pl.coderslab.heymployment.domain.JobOffer;
+import pl.coderslab.heymployment.domain.dto.JobOfferDto;
+import pl.coderslab.heymployment.repository.CompanyRepository;
 import pl.coderslab.heymployment.repository.JobOfferRepository;
 
 import java.util.List;
@@ -11,9 +14,11 @@ import java.util.Optional;
 public class JobOfferServiceImpl implements JobOfferService {
 
     private final JobOfferRepository jobOfferRepository;
+    private final CompanyRepository companyRepository;
 
-    public JobOfferServiceImpl(JobOfferRepository jobOfferRepository) {
+    public JobOfferServiceImpl(JobOfferRepository jobOfferRepository, CompanyRepository companyRepository) {
         this.jobOfferRepository = jobOfferRepository;
+        this.companyRepository = companyRepository;
     }
 
     @Override
@@ -42,5 +47,15 @@ public class JobOfferServiceImpl implements JobOfferService {
     @Override
     public JobOffer saveJobOffer(JobOffer jobOffer) {
         return jobOfferRepository.save(jobOffer);
+    }
+
+    @Override
+    public JobOffer createJobOfferFromForm(JobOfferDto jobOfferDto){
+        JobOffer jobOffer = new JobOffer();
+        jobOffer.setTitle(jobOfferDto.getTitle());
+        jobOffer.setLocation(jobOfferDto.getLocation());
+        jobOffer.setStatus(jobOfferDto.getStatus());
+        jobOfferRepository.save(jobOffer);
+        return jobOffer;
     }
 }

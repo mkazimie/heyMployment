@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.heymployment.domain.Company;
 import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.User;
+import pl.coderslab.heymployment.domain.dto.JobOfferDto;
 import pl.coderslab.heymployment.repository.CompanyRepository;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    //FIX OPTIONAL
     public Company findById(long id) {
         Optional<Company> company = companyRepository.findById(id);
         return company.get();
@@ -51,4 +53,18 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> findAllByUser(User user) {
         return companyRepository.findAllByUser(user);
     }
+
+    @Override
+    public Company getCompanyOrCreateNew (JobOfferDto jobOfferDto) {
+        String companyName = jobOfferDto.getCompanyName();
+        Company company = companyRepository.findByName(companyName);
+        if (company == null) {
+            company = new Company();
+            company.setName(companyName);
+            company.setLocation(jobOfferDto.getLocation());
+            companyRepository.save(company);
+        }
+        return company;
+    }
+
 }
