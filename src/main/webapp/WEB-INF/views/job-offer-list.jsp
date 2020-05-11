@@ -28,11 +28,13 @@
 <body>
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <div class="container mt-5 mx-auto ml-4 mr-4">
+    <div class="container">
         <h1 class="bd-title"> My Job Offers</h1>
         <h2><a href="/user/offers/add" class="btn btn-primary"> + </a>
         </h2>
 
+        <h5 class="text-center"><button type="button" class="btn btn-primary">${allHowMany} ${specificHowMany}</button>
+        </h5>
         <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 bg-light text-uppercase nav-fill">
             <div class="container d-flex align-items-md-center py-2">
                 <nav class="nav mx-auto">
@@ -64,11 +66,11 @@
                 <th scope="col"> Notes</th>
             </tr>
             </thead>
-
             <tbody>
             <c:forEach items="${offers}" var="offer">
                 <tr>
                     <td></td>
+                    <td class="btn-group"><a href="/user/offers/${offer.id}" class="btn btn-primary"> DETAILS </a>
                     <td class="btn-group"><a href="/user/offers/update/${offer.id}" class="btn btn-primary"> Edit </a>
                         <a href="/user/offers/confirm-delete/${offer.id}" class="btn btn-primary"> Delete </a>
                         <a href="/user/todos/add/job/${offer.id}" class="btn btn-primary"> Add a TO-DO </a>
@@ -100,9 +102,11 @@
             <c:forEach items="${allByStatus}" var="byStatus">
                 <tr>
                     <td></td>
-                    <td class="btn-group"><a href="/user/offers/update/${byStatus.id}" class="btn btn-primary"> Edit </a>
-                        <a href="/user/offers/confirm-delete/${byStatus.id}" class="btn btn-primary"> Delete </a>
-                        <a href="/user/todos/add/job/${byStatus.id}" class="btn btn-primary"> Add a TO-DO </a>
+                    <td class="btn-group">
+                        <a href="/user/offers/${byStatus.id}" class="btn btn-dark"> Details </a>
+                        <a href="/user/offers/update/${byStatus.id}" class="btn btn-primary"> Edit </a>
+                        <a href="/user/offers/confirm-delete/${byStatus.id}" class="btn btn-dark"> Delete </a>
+                        <a href="/user/todos/add/job/${byStatus.id}" class="btn btn-primary"> Add a To-Do </a>
                     </td>
                     <td>${byStatus.title}</td>
                     <td>${byStatus.description}</td>
@@ -111,7 +115,7 @@
                             <td><a href="${byStatus.url}">See Offer</a></td>
                         </c:when>
                         <c:otherwise>
-                            <td>n/d</td>
+                            <td></td>
                         </c:otherwise>
                     </c:choose>
                     <td>${byStatus.jobSearchWebsite}</td>

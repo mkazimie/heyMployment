@@ -4,10 +4,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Getter
@@ -24,9 +21,11 @@ public class Todo {
     private long id;
 
     @NotBlank
+    @Size(min = 5, max = 50, message = "* Name must be between 5 and 50 character long")
     @Column(name = "to_do_name")
     private String name;
 
+    @Size(max = 5000, message = "* Description is too long")
     @Column(name = "to_do_description")
     private String description;
 

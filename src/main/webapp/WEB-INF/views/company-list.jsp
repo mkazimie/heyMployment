@@ -28,6 +28,11 @@
 <body class="bg-dark">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
+    <nav class="navbar bg-dark static-top">
+        <div class="navbar-brand main-logo ml-4 text-white">
+            <strong> Companies </strong>
+        </div>
+    </nav>
     <div class="container">
         <div class="card-deck mt-5">
             <c:forEach items="${companies}" var="company" varStatus="theCount">
@@ -41,16 +46,9 @@
                          alt="Card image cap">
                     <h5 class="card-title"> Company Name: ${company.name} </h5>
                     <h6 class="card-text"> Location: ${company.location} </h6>
-<%--                    <p class="card-text bg-light"> Description: ${company.description} </p>--%>
-<%--                    <p class="card-text bg-light">Website: ${company.website} </p>--%>
-<%--                    <c:forEach items="${company.jobOffers}" var="offer">--%>
-<%--                        <p class="card-text bg-light"><a--%>
-<%--                                href="/user/offers/all/${offer.title}"> Job Offers: ${offer.title}</a>--%>
-<%--                        </p>--%>
-<%--                    </c:forEach>--%>
                 </div>
                 <div class="card-footer">
-                    <a href="#user/companies/${company.id}" class="btn btn-primary"> Details </a>
+                    <a href="/user/companies/${company.id}" class="btn btn-primary"> Details </a>
                 </div>
             </div>
             </c:forEach>

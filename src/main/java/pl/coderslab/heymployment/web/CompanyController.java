@@ -3,14 +3,18 @@ package pl.coderslab.heymployment.web;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.heymployment.domain.Company;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.security.CurrentUser;
 import pl.coderslab.heymployment.service.CompanyService;
 import pl.coderslab.heymployment.service.JobOfferService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -32,6 +36,35 @@ public class CompanyController {
         return "company-list";
 
     }
+
+    // display detailed view of a company by id
+    @GetMapping("/user/companies/{id}")
+    public String displayDetails(Model model, @PathVariable long id){
+        Company company = companyService.findById(id);
+        model.addAttribute("company", company);
+        return "company-detailed-view";
+    }
+
+    // display form for company editing
+    @GetMapping("/user/companies/update/{id}")
+    public String editCompany(Model model, @PathVariable long id){
+        Company company = companyService.findById(id);
+        model.addAttribute("company", company);
+        return "company-edit-form";
+    }
+
+    // process company update
+    @PostMapping("/user/companies/update/{id}")
+    public String editCompany(@ModelAttribute @Valid Company company, BindingResult result, Model model,
+                              @PathVariable long id){
+        if (!result.hasErrors()){
+            companyService.saveCompany(company);
+            return "redirect:/user/companies/{id}";
+        }
+        model.addAttribute("failed", "Please try again");
+        return "company-edit-form";
+    }
+
 
 
     @ModelAttribute("currentUser")
