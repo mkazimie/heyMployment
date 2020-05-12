@@ -28,9 +28,9 @@
     <div class="card mx-auto text-center">
         <h5 class="card-header bg-warning">Confirm Action</h5>
         <div class="card-body">
-            <p class="card-text"> Are you sure you want to delete Job Offer <strong>${offer.title}</strong>?</p>
-            <a href="/user/offers/delete/${offer.id}" class="btn btn-link" role="button"> YES </a>
-            <a href="/user/offers/all" class="btn btn-link" role="button"> NO </a>
+            <p class="card-text"> Are you sure you want to delete Job Offer <strong>${course.name}</strong>?</p>
+            <a href="/user/courses/delete/${course.id}" class="btn btn-link" role="button"> YES </a>
+            <a href="/user/courses/all" class="btn btn-link" role="button"> NO </a>
         </div>
     </div>
 </div>
