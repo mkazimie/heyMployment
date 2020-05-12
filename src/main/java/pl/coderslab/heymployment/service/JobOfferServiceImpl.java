@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.heymployment.domain.Company;
 import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.dto.JobOfferDto;
+import pl.coderslab.heymployment.exception.NoRecordFoundException;
 import pl.coderslab.heymployment.repository.CompanyRepository;
 import pl.coderslab.heymployment.repository.JobOfferRepository;
 
@@ -35,7 +36,7 @@ public class JobOfferServiceImpl implements JobOfferService {
     @Override
     public JobOffer findById(long id) {
         Optional<JobOffer> jobOffer = jobOfferRepository.findById(id);
-        return jobOffer.get();
+        return jobOffer.orElseThrow(() -> new NoRecordFoundException("No Such Record Found in the Database"));
     }
 
 

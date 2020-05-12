@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.heymployment.domain.Role;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.UserDto;
+import pl.coderslab.heymployment.exception.NoRecordFoundException;
 import pl.coderslab.heymployment.exception.UserAlreadyExistsException;
 import pl.coderslab.heymployment.repository.RoleRepository;
 import pl.coderslab.heymployment.repository.UserRepository;
@@ -39,7 +40,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(long id) {
         Optional<User> user = userRepository.findById(id);
-        return user.get();
+        return user.orElseThrow(() -> new NoRecordFoundException("No Such Record Found in the Database"));
     }
 
     @Override
@@ -73,13 +74,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    //temporarily rejected method
-//    @Override
-//    public void deleteUser(long id) {
-//        User user = findById(id);
-//        user.setRoles(null);
-//        userRepository.delete(user);
-//    }
 
     @Override
     public void blockUser(long id) {

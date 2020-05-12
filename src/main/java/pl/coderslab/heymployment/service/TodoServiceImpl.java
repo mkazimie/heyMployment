@@ -2,6 +2,7 @@ package pl.coderslab.heymployment.service;
 
 import org.springframework.stereotype.Service;
 import pl.coderslab.heymployment.domain.Todo;
+import pl.coderslab.heymployment.exception.NoRecordFoundException;
 import pl.coderslab.heymployment.repository.TodoRepository;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public Todo findById(long id) {
         Optional<Todo> todo = todoRepository.findById(id);
-        return todo.get();
+        return todo.orElseThrow(() -> new NoRecordFoundException("No Such Record Found in the Database"));
     }
 
     @Override

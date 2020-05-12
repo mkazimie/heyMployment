@@ -6,8 +6,10 @@ import pl.coderslab.heymployment.domain.Company;
 import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.JobOfferDto;
+import pl.coderslab.heymployment.exception.NoRecordFoundException;
 import pl.coderslab.heymployment.repository.CompanyRepository;
 
+import java.text.Normalizer;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,10 +28,10 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    //FIX OPTIONAL
+    //FIX OK?
     public Company findById(long id) {
         Optional<Company> company = companyRepository.findById(id);
-        return company.get();
+        return company.orElseThrow(() -> new NoRecordFoundException("No Such Record Found in the Database"));
     }
 
     @Override
