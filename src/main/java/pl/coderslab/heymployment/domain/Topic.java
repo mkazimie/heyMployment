@@ -23,4 +23,12 @@ public class Topic {
     @Column(name = "topic_name")
     private String name;
 
+    public Topic(String name) {
+        this.name = name;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "topic " + id + ": " + name + "/n";
+//    }
 }

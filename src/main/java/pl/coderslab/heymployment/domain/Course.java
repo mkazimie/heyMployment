@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.URL;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -26,16 +28,15 @@ public class Course {
     private long id;
 
     @NotBlank
-    @Size(min = 2, max = 50)
+    @Size(min = 2, max = 50, message = "* Name must be between 5 and 50 character long")
     @Column(name = "course_name")
     private String name;
 
-    @Size(min = 5, max = 1000)
+    @Size(max = 1000, message = "* Description is too long")
     @Column(name = "description")
     private String description;
 
-    @NotBlank
-    @Size(min = 2, max = 50)
+    @NotEmpty
     @Column(name = "completion_status")
     private String status;
 
@@ -43,20 +44,20 @@ public class Course {
     @Column(name = "course_url")
     private String url;
 
-    @Size(min = 2, max = 50)
+    @Size(min = 2, max = 50, message = "* The organizing entity name must be between 5 and 50 character long")
     @Column(name = "organized_by")
     private String organizedBy;
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "finish_date")
     private LocalDate finishDate;
 
-    @NotEmpty
-    @ManyToMany
+    @NotNull
+    @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(name = "courses_topics",
             joinColumns = {@JoinColumn(name = "course_id")},
             inverseJoinColumns = {@JoinColumn(name = "topic_id")})
-    private Set<Topic> topics = new HashSet<>();
+    private Set<Topic> topics;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -64,6 +65,7 @@ public class Course {
 
     @OneToMany(mappedBy = "course")
     private Set<Todo> todos = new HashSet<>();
+
 
 
 }
