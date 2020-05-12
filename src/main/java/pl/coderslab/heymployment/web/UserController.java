@@ -12,6 +12,7 @@ import pl.coderslab.heymployment.service.UserService;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -21,14 +22,14 @@ public class UserController {
     }
 
     //view for homepage after login
-    @GetMapping("/user/home")
+    @GetMapping("/home")
     public String homeAuthenticated(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
         model.addAttribute("currentUser", currentUser.getUser());
         return "home";
     }
 
     //edit personal info
-    @GetMapping("/user/update")
+    @GetMapping("/update")
     public String updateProfileForm(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
         User user = userService.findById(currentUser.getUser().getId());
         model.addAttribute("currentUser", user);
@@ -36,7 +37,7 @@ public class UserController {
     }
 
     //save edited personal info
-    @PostMapping("/user/update")
+    @PostMapping("/update")
     public String updateProfileProcess(@ModelAttribute @Valid User user, BindingResult bindingResult, Model model) {
         if (!bindingResult.hasErrors()) {
             userService.updateUser(user);

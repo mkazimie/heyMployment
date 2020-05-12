@@ -18,6 +18,7 @@ import java.util.*;
 
 @Controller
 @Secured("ROLE_ADMIN")
+@RequestMapping("/admin")
 public class AdminController {
 
     private final UserService userService;
@@ -31,14 +32,14 @@ public class AdminController {
 
 
     //display admin panel
-    @GetMapping("/admin/panel")
+    @GetMapping("/panel")
     public String displayAdminPanel() {
         return "admin-panel";
     }
 
 
     //list of all users and admins from admin panel view
-    @GetMapping("/admin/users/all")
+    @GetMapping("/users/all")
     public String displayAllUsers(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<User> allUsers = userService.getAllUsers();
         User current = allUsers.stream()
@@ -52,14 +53,14 @@ public class AdminController {
     }
 
     //add new user/admin by a logged admin
-    @GetMapping("/admin/users/add")
+    @GetMapping("/users/add")
     public String addNewUser(Model model) {
         model.addAttribute("user", new User());
         return "admin-add-user";
     }
 
     //process adding new user/admin and save
-    @PostMapping("/admin/users/add")
+    @PostMapping("/users/add")
     public String addNewUser(@ModelAttribute @Valid User user, BindingResult bindingResult, Model model) {
         if (!bindingResult.hasErrors()) {
             try {
@@ -74,14 +75,14 @@ public class AdminController {
     }
 
     //block a user/admin from the list
-    @GetMapping("/admin/users/block/{id}")
+    @GetMapping("/users/block/{id}")
     public String blockUser(@PathVariable long id) {
         userService.blockUser(id);
         return "redirect:/admin/users/all";
     }
 
     //unblock a user/admin from the list
-    @GetMapping("/admin/users/unblock/{id}")
+    @GetMapping("/users/unblock/{id}")
     public String unblockUser(@PathVariable long id) {
         userService.unblockUser(id);
         return "redirect:/admin/users/all";

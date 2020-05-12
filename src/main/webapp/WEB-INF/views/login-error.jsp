@@ -24,9 +24,9 @@
 <body class="bg-light">
 <%@include file="header-landing.jsp" %>
 <div class="container">
+    <h5 class="card-header bg-danger text-center"> <strong>!</strong> </h5>
     <div class="card card-body center-content">
-        <h4 class="card-header bg-danger"> Ups! </h4>
-        <h5 class="card-text mt-2 mb-4"> Something went wrong... </h5>
+        <h5 class="card-text mt-2 mb-4 text-danger"> Ups! Something went wrong... </h5>
         <p>Go Back to Login Page
             <a href="/login" class="btn btn-block btn-link" role="button"> Sign In </a>
         </p>

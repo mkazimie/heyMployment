@@ -4,10 +4,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.Todo;
 import pl.coderslab.heymployment.domain.User;
@@ -19,6 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@RequestMapping("/user/todos")
 public class TodoController {
 
     private final TodoService todoService;
@@ -30,14 +28,14 @@ public class TodoController {
     }
 
     // display form for adding a to-do from user view
-    @GetMapping("/user/todos/add")
+    @GetMapping("/add")
     public String addTodo(Model model) {
         model.addAttribute("todo", new Todo());
         return "todo-form";
     }
 
     // process to-do form and save a to-do NOT WORKING!!!
-    @PostMapping("/user/todos/add")
+    @PostMapping("/add")
     public String saveTodo(@AuthenticationPrincipal CurrentUser currentUser, @ModelAttribute @Valid Todo todo,
                            BindingResult result,
                            Model model) {
@@ -54,7 +52,7 @@ public class TodoController {
     }
 
     // add a to-do directly to a job offer
-    @GetMapping("/user/todos/add/job/{id}")
+    @GetMapping("/add/job/{id}")
     public String addTodoForJob(@PathVariable long id, Model model) {
         JobOffer jobOffer = jobOfferService.findById(id);
         model.addAttribute("todo", new Todo());
@@ -63,7 +61,7 @@ public class TodoController {
     }
 
     //display all todos for current user
-    @GetMapping("/user/todos/all")
+    @GetMapping("/all")
     public String displayTodos(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<Todo> todos = todoService.findAllByUserId(currentUser.getUser().getId(), false);
         model.addAttribute("todos", todos);
@@ -71,7 +69,7 @@ public class TodoController {
     }
 
     // edit a to-do
-    @GetMapping("/user/todos/update/{id}")
+    @GetMapping("/update/{id}")
     public String updateOffer(Model model, @PathVariable long id) {
         Todo todo = todoService.findById(id);
         model.addAttribute("todo", todo);
@@ -79,7 +77,7 @@ public class TodoController {
     }
 
     // confirm-delete a to-do
-    @GetMapping("/user/todos/confirm-delete/{id}")
+    @GetMapping("/confirm-delete/{id}")
     public String confirmDelete(@PathVariable long id, Model model) {
         Todo todo = todoService.findById(id);
         model.addAttribute("todo", todo);
@@ -87,7 +85,7 @@ public class TodoController {
     }
 
     // delete a to-do
-    @GetMapping("/user/todos/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteTodo(@PathVariable long id) {
         todoService.deleteTodo(id);
         return "redirect:/user/todos/all";

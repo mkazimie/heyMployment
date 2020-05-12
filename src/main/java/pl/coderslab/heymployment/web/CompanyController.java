@@ -4,10 +4,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.Company;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.security.CurrentUser;
@@ -18,6 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@RequestMapping("/user/companies/")
 public class CompanyController {
 
     private final CompanyService companyService;
@@ -29,7 +27,7 @@ public class CompanyController {
     }
 
     //    display all companies for current user
-    @GetMapping("/user/companies/all")
+    @GetMapping("/all")
     public String displayCompanies(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<Company> allCompanies = companyService.findAllByUser(currentUser.getUser());
         model.addAttribute("companies", allCompanies);
@@ -38,7 +36,7 @@ public class CompanyController {
     }
 
     // display detailed view of a company by id
-    @GetMapping("/user/companies/{id}")
+    @GetMapping("/{id}")
     public String displayDetails(Model model, @PathVariable long id){
         Company company = companyService.findById(id);
         model.addAttribute("company", company);
@@ -46,7 +44,7 @@ public class CompanyController {
     }
 
     // display form for company editing
-    @GetMapping("/user/companies/update/{id}")
+    @GetMapping("/update/{id}")
     public String editCompany(Model model, @PathVariable long id){
         Company company = companyService.findById(id);
         model.addAttribute("company", company);
@@ -54,7 +52,7 @@ public class CompanyController {
     }
 
     // process company update
-    @PostMapping("/user/companies/update/{id}")
+    @PostMapping("/update/{id}")
     public String editCompany(@ModelAttribute @Valid Company company, BindingResult result, Model model,
                               @PathVariable long id){
         if (!result.hasErrors()){

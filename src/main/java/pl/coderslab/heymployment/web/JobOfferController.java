@@ -15,10 +15,10 @@ import pl.coderslab.heymployment.service.JobOfferService;
 
 import javax.validation.Valid;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 @Controller
+@RequestMapping("/user/offers/")
 public class JobOfferController {
 
     private final JobOfferService jobOfferService;
@@ -31,7 +31,7 @@ public class JobOfferController {
     }
 
     //display form for adding job offer
-    @GetMapping("/user/offers/add")
+    @GetMapping("/add")
     public String addJobOffer(Model model) {
         model.addAttribute("jobOffer", new JobOfferDto());
         return "job-offer-basic-form";
@@ -39,7 +39,7 @@ public class JobOfferController {
 
 
     // process basic form and redirect to detailed form
-    @PostMapping("/user/offers/add")
+    @PostMapping("/add")
     public String addJobOffer(@ModelAttribute("jobOffer") @Valid JobOfferDto jobOffer, BindingResult result,
                               @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         if(!result.hasErrors()){
@@ -57,7 +57,7 @@ public class JobOfferController {
     }
 
     // process detailed form (all fields can be null but have some max size restrictions) & redirect to list of all
-    @PostMapping("/user/offers/add/details")
+    @PostMapping("/add/details")
     public String addDetails(@ModelAttribute("offer") @Valid JobOffer offer, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             jobOfferService.saveJobOffer(offer);
@@ -69,7 +69,7 @@ public class JobOfferController {
     }
 
     // display all job offers for current user
-    @GetMapping("/user/offers/all")
+    @GetMapping("/all")
     public String displayJobOffers(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<JobOffer> allJobOffers = jobOfferService.findAllJobOffers(currentUser.getUser().getId());
         model.addAttribute("allHowMany", allJobOffers.size());
@@ -78,7 +78,7 @@ public class JobOfferController {
     }
 
     // display job offers by status for current user
-    @GetMapping("/user/offers/all/{name}")
+    @GetMapping("/all/{name}")
     public String displayJobOffersByStatus(@PathVariable String name,
                                            @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         List<JobOffer> allByStatus = jobOfferService.findAllByStatus(currentUser.getUser().getId(), name);
@@ -88,7 +88,7 @@ public class JobOfferController {
     }
 
     // display detailed view of a job offer by id
-    @GetMapping("/user/offers/{id}")
+    @GetMapping("/{id}")
     public String displayDetails(Model model, @PathVariable long id){
         JobOffer jobOffer = jobOfferService.findById(id);
         model.addAttribute("jobOffer", jobOffer);
@@ -97,7 +97,7 @@ public class JobOfferController {
 
 
     // edit job offer
-    @GetMapping("/user/offers/update/{id}")
+    @GetMapping("/update/{id}")
     public String updateOffer(Model model, @PathVariable long id) {
         JobOffer offer = jobOfferService.findById(id);
         model.addAttribute("jobOffer", offer);
@@ -105,7 +105,7 @@ public class JobOfferController {
     }
 
     // process job offer editing
-    @PostMapping("/user/offers/update")
+    @PostMapping("/update")
     public String updateOffer(@ModelAttribute @Valid JobOffer jobOffer, BindingResult result, Model model){
         if (!result.hasErrors()){
             Company company = companyService.findByName(jobOffer.getCompany().getName());
@@ -119,7 +119,7 @@ public class JobOfferController {
 
 
     // confirm-delete of job offer
-    @GetMapping("/user/offers/confirm-delete/{id}")
+    @GetMapping("/confirm-delete/{id}")
     public String confirmDelete(@PathVariable long id, Model model) {
         JobOffer jobOffer = jobOfferService.findById(id);
         model.addAttribute("offer", jobOffer);
@@ -127,7 +127,7 @@ public class JobOfferController {
     }
 
     // delete job offer
-    @GetMapping("/user/offers/delete/{id}")
+    @GetMapping("delete/{id}")
     public String deleteOffer(@PathVariable long id) {
         jobOfferService.deleteJobOffer(id);
         return "redirect:/user/offers/all";
