@@ -1,5 +1,5 @@
 ## heyMployment!
-### Simple Job Search Organizer created using Spring Boot and MySQL
+### Job Search Organizer created using Spring Boot and MySQL
 
 heyMployment helps you manage your job applications, schedule tasks, prepare for your job interviews and document
  your learning pathway.
