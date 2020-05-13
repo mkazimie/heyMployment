@@ -42,8 +42,12 @@ public class JobOfferServiceImpl implements JobOfferService {
 
     @Override
     public void deleteJobOffer(long id) {
-        jobOfferRepository.delete(findById(id));
+        JobOffer jobOffer = findById(id);
+        jobOffer.setCompany(null);
+        jobOfferRepository.delete(jobOffer);
     }
+
+
 
     @Override
     public JobOffer saveJobOffer(JobOffer jobOffer) {

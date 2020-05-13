@@ -87,11 +87,10 @@ public class CourseController {
     // delete course
     @GetMapping("/delete/{id}")
     public String deleteCourse(@PathVariable long id) {
-        Course toDelete = courseService.findById(id);
-        toDelete.getTopics().forEach(toDelete::removeTopics);
-        courseService.deleteCourse(toDelete.getId());
+        courseService.deleteCourse(id);
         return "redirect:/user/courses/all";
     }
+
 
     //    edit course
     @GetMapping("/update/{id}")

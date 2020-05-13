@@ -47,7 +47,6 @@ public class JobOfferController {
             JobOffer jobOfferFromForm = jobOfferService.createJobOfferFromForm(jobOffer);
             jobOfferFromForm.setCompany(company);
             jobOfferFromForm.setUser(currentUser.getUser());
-            jobOfferService.saveJobOffer(jobOfferFromForm);
             model.addAttribute("offer", jobOfferFromForm);
             return "job-offer-detailed-form";
         }
@@ -127,9 +126,15 @@ public class JobOfferController {
     }
 
     // delete job offer
+    // delete company if no job offer related anymore
     @GetMapping("delete/{id}")
     public String deleteOffer(@PathVariable long id) {
+        JobOffer offer = jobOfferService.findById(id);
+        Company company = companyService.findByName(offer.getCompany().getName());
         jobOfferService.deleteJobOffer(id);
+        if (company.getJobOffers().size() == 0){
+            companyService.deleteCompany(company.getId());
+        }
         return "redirect:/user/offers/all";
     }
 

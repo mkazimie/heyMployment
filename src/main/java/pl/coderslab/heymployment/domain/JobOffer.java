@@ -47,7 +47,6 @@ public class JobOffer {
 
     @ManyToOne
     @JoinColumn(name = "company_id")
-    @NotNull
     private Company company;
 
     @Column(name = "job_search_website")
