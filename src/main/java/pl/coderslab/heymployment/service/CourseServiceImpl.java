@@ -43,8 +43,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void deleteCourse(long id) {
-        Course toDelete = findById(id);
-        courseRepository.delete(toDelete);
+        courseRepository.delete(findById(id));
     }
 
 
@@ -60,6 +59,7 @@ public class CourseServiceImpl implements CourseService {
         course.setDescription(courseDto.getDescription());
         course.setStatus(courseDto.getStatus());
         course.setUrl(courseDto.getUrl());
+        course.setFinishDate(courseDto.getFinishDate());
         course.setOrganizedBy(courseDto.getOrganizedBy());
         return course;
     }

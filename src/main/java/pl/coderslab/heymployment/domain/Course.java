@@ -1,8 +1,6 @@
 package pl.coderslab.heymployment.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,9 +11,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -52,12 +52,11 @@ public class Course {
     @Column(name = "finish_date")
     private LocalDate finishDate;
 
-    @NotNull
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany
     @JoinTable(name = "courses_topics",
             joinColumns = {@JoinColumn(name = "course_id")},
             inverseJoinColumns = {@JoinColumn(name = "topic_id")})
-    private Set<Topic> topics;
+    private List<Topic> topics;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -66,6 +65,12 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private Set<Todo> todos = new HashSet<>();
 
+    public void removeTopics(Topic topic) {
+        if (topic != null) {
+            topics.remove(topic);
+        }
+
+    }
 
 
 }

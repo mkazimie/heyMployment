@@ -48,10 +48,10 @@ public class TopicServiceImpl implements TopicService {
 
 
     @Override
-    public Set<Topic> getOrCreateNew(CourseDto courseDto) {
+    public List<Topic> getOrCreateNew(CourseDto courseDto) {
         List<String> dtoTopics = new ArrayList<>(Arrays.asList((courseDto.getMainTopic()),
                 courseDto.getAdditionalTopic1(), courseDto.getAdditionalTopic2()));
-        Set<Topic> topics = new HashSet<>();
+        List<Topic> topics = new ArrayList<>();
 
         for (String dtoTopic : dtoTopics) {
             if (!dtoTopic.isEmpty()) {

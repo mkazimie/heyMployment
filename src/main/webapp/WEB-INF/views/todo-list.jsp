@@ -56,7 +56,7 @@
                     <td>${todo.description}</td>
                     <c:choose>
                         <c:when test="${not empty todo.jobOffer}">
-                            <td><a href="/user/offers/all/${todo.jobOffer.title}">${todo.jobOffer.title}</a></td>
+                            <td><a href="/user/offers/${todo.jobOffer.id}">${todo.jobOffer.title}</a></td>
                         </c:when>
                         <c:otherwise>
                             <td>n/d</td>

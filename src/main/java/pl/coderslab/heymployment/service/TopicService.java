@@ -19,7 +19,7 @@ public interface TopicService {
 
     List<Topic> findAll();
 
-    Set<Topic> getOrCreateNew (CourseDto courseDto);
+    List<Topic> getOrCreateNew (CourseDto courseDto);
 
 
 }

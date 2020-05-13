@@ -1,8 +1,7 @@
 package pl.coderslab.heymployment.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -19,7 +18,7 @@ public class Topic {
     @Column(name = "topic_id")
     private long id;
 
-    @NotBlank
+//    @NotBlank
     @Column(name = "topic_name")
     private String name;
 
@@ -27,8 +26,9 @@ public class Topic {
         this.name = name;
     }
 
-//    @Override
-//    public String toString() {
-//        return "topic " + id + ": " + name + "/n";
-//    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

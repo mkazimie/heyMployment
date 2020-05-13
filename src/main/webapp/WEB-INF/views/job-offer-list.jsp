@@ -35,7 +35,7 @@
 
         <h5 class="text-center"><button type="button" class="btn btn-primary">${allHowMany} ${specificHowMany}</button>
         </h5>
-        <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 bg-light text-uppercase nav-fill">
+        <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
             <div class="container d-flex align-items-md-center py-2">
                 <nav class="nav mx-auto">
                     <a href="/user/offers/all" class="btn btn-link">All</a>
@@ -70,10 +70,11 @@
             <c:forEach items="${offers}" var="offer">
                 <tr>
                     <td></td>
-                    <td class="btn-group"><a href="/user/offers/${offer.id}" class="btn btn-primary"> DETAILS </a>
-                    <td class="btn-group"><a href="/user/offers/update/${offer.id}" class="btn btn-primary"> Edit </a>
-                        <a href="/user/offers/confirm-delete/${offer.id}" class="btn btn-primary"> Delete </a>
-                        <a href="/user/todos/add/job/${offer.id}" class="btn btn-primary"> Add a TO-DO </a>
+                    <td class="btn-group">
+                        <a href="/user/offers/${offer.id}" class="btn btn-link"> Details </a>
+                        <a href="/user/offers/update/${offer.id}" class="btn btn-link"> Edit </a>
+                        <a href="/user/offers/confirm-delete/${offer.id}" class="btn btn-link"> Delete </a>
+                        <a href="/user/todos/add/job/${offer.id}" class="btn btn-link"> Add a To-Do </a>
                     </td>
                     <td>${offer.title}</td>
                     <td>${offer.description}</td>
@@ -103,10 +104,10 @@
                 <tr>
                     <td></td>
                     <td class="btn-group">
-                        <a href="/user/offers/${byStatus.id}" class="btn btn-dark"> Details </a>
-                        <a href="/user/offers/update/${byStatus.id}" class="btn btn-primary"> Edit </a>
-                        <a href="/user/offers/confirm-delete/${byStatus.id}" class="btn btn-dark"> Delete </a>
-                        <a href="/user/todos/add/job/${byStatus.id}" class="btn btn-primary"> Add a To-Do </a>
+                        <a href="/user/offers/${byStatus.id}" class="btn btn-link"> Details </a>
+                        <a href="/user/offers/update/${byStatus.id}" class="btn btn-link"> Edit </a>
+                        <a href="/user/offers/confirm-delete/${byStatus.id}" class="btn btn-link"> Delete </a>
+                        <a href="/user/todos/add/job/${byStatus.id}" class="btn btn-link"> Add a To-Do </a>
                     </td>
                     <td>${byStatus.title}</td>
                     <td>${byStatus.description}</td>

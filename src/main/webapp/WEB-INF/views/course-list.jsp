@@ -31,9 +31,24 @@
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
     <div class="container mt-5 mx-auto ml-4 mr-4">
-        <h1 class="bd-title"> Course List</h1>
+        <h1 class="bd-title"> My Courses</h1>
         <h2><a href="/user/courses/add" class="btn btn-primary"> + </a>
         </h2>
+
+
+        <h5 class="text-center"><button type="button" class="btn btn-primary">${allHowMany} ${specificHowMany}</button>
+        </h5>
+        <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
+            <div class="container d-flex align-items-md-center py-2">
+                <nav class="nav mx-auto">
+                    <a href="/user/courses/all" class="btn btn-link">All</a>
+                    <a href="/user/courses/all/${status[0]}" class="btn btn-link">${status[0]}</a>
+                    <a href="/user/courses/all/${status[1]}" class="btn btn-link">${status[1]}</a>
+                    <a href="/user/courses/all/${status[2]}" class="btn btn-link">${status[2]}</a>
+                </nav>
+            </div>
+        </nav>
+
 
         <table class="table css-serial">
             <thead class="thead-dark">
@@ -47,7 +62,6 @@
                 <th scope="col"> Organized By</th>
                 <th scope="col"> Ends By</th>
                 <th scope="col"> Topics</th>
-                <th scope="col"> To Dos</th>
             </tr>
             </thead>
 
@@ -57,7 +71,7 @@
                     <td></td>
                     <td class="btn-group">
                         <a href="#/user/courses/${course.id}" class="btn btn-link"> Details </a>
-                        <a href="#/user/courses/update/${course.id}" class="btn btn-link"> Edit </a>
+                        <a href="/user/courses/update/${course.id}" class="btn btn-link"> Edit </a>
                         <a href="/user/courses/confirm-delete/${course.id}" class="btn btn-link"> Delete </a>
                         <a href="#/user/todos/add/course/${course.id}" class="btn btn-link"> Add a To-Do </a>
                     </td>
@@ -81,6 +95,41 @@
                 </tr>
             </c:forEach>
             </tbody>
+
+
+            <tbody>
+            <c:forEach items="${allByStatus}" var="byStatus">
+                <tr>
+                    <td></td>
+                    <td class="btn-group">
+                        <a href="#/user/courses/${byStatus.id}" class="btn btn-link"> Details </a>
+                        <a href="/user/courses/update/${byStatus.id}" class="btn btn-link"> Edit </a>
+                        <a href="/user/courses/confirm-delete/${byStatus.id}" class="btn btn-link"> Delete </a>
+                        <a href="#/user/todos/add/course/${byStatus.id}" class="btn btn-link"> Add a To-Do </a>
+                    </td>
+                    <td>${byStatus.name}</td>
+                    <td>${byStatus.description}</td>
+                    <td>${byStatus.status}</td>
+                    <c:choose>
+                        <c:when test="${not empty byStatus.url}">
+                            <td><a href="${byStatus.url}">See Course</a></td>
+                        </c:when>
+                        <c:otherwise>
+                            <td></td>
+                        </c:otherwise>
+                    </c:choose>
+                    <td>${byStatus.organizedBy}</td>
+                    <td>${byStatus.finishDate}</td>
+                    <td><c:forEach items="${byStatus.topics}" var="topic">
+                        <div>${topic.name}</div>
+                    </c:forEach>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+
+
+
         </table>
     </div>
 </sec:authorize>
