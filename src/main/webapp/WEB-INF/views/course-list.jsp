@@ -73,7 +73,7 @@
                         <a href="#/user/courses/${course.id}" class="btn btn-link"> Details </a>
                         <a href="/user/courses/update/${course.id}" class="btn btn-link"> Edit </a>
                         <a href="/user/courses/confirm-delete/${course.id}" class="btn btn-link"> Delete </a>
-                        <a href="#/user/todos/add/course/${course.id}" class="btn btn-link"> Add a To-Do </a>
+                        <a href="/user/todos/add/course/${course.id}" class="btn btn-link"> Add a To-Do </a>
                     </td>
                     <td>${course.name}</td>
                     <td>${course.description}</td>
@@ -105,7 +105,7 @@
                         <a href="#/user/courses/${byStatus.id}" class="btn btn-link"> Details </a>
                         <a href="/user/courses/update/${byStatus.id}" class="btn btn-link"> Edit </a>
                         <a href="/user/courses/confirm-delete/${byStatus.id}" class="btn btn-link"> Delete </a>
-                        <a href="#/user/todos/add/course/${byStatus.id}" class="btn btn-link"> Add a To-Do </a>
+                        <a href="/user/todos/add/course/${byStatus.id}" class="btn btn-link"> Add a To-Do </a>
                     </td>
                     <td>${byStatus.name}</td>
                     <td>${byStatus.description}</td>

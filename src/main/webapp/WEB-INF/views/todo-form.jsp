@@ -72,6 +72,24 @@
                 </form:select>
             </div>
         </div>
+        <div class="form-group row">
+            <form:label path="course"
+                        class="col-md-4 col-form-label text-md-right"> Related Course: </form:label>
+            <div class="col-md-6">
+                <form:select path="course" class="form-control">
+                    <c:choose>
+                        <c:when test="${not empty course}">
+                            <form:option value="${course.id}" label="${course.name}" selected="selected"/>
+                        </c:when>
+                        <c:otherwise>
+                            <form:option value="0" label="--Please Select" selected="selected"/>
+                            <form:options items="${courses}" itemLabel="name" itemValue="id"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <form:errors path="course" cssClass="errorMessage"/>
+                </form:select>
+            </div>
+        </div>
         </div>
         <div class="form-group row">
             <form:label path="deadline"

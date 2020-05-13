@@ -39,12 +39,13 @@
             <thead class="thead-dark">
             <tr>
                 <th>#</th>
-                <th scope="col"> Name</th>
-                <th scope="col"> Description</th>
-                <th scope="col"> Related Job Offer</th>
-                <th scope="col"> Deadline</th>
-                <th scope="col"> Done?</th>
-                <th scope="col"> Actions</th>
+                <th scope="col"> Name </th>
+                <th scope="col"> Description </th>
+                <th scope="col"> Related Job Offer </th>
+                <th scope="col"> Related Course </th>
+                <th scope="col"> Deadline </th>
+                <th scope="col"> Done? </th>
+                <th scope="col"> Actions </th>
             </tr>
             </thead>
 
@@ -57,6 +58,14 @@
                     <c:choose>
                         <c:when test="${not empty todo.jobOffer}">
                             <td><a href="/user/offers/${todo.jobOffer.id}">${todo.jobOffer.title}</a></td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>n/d</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${not empty todo.course}">
+                            <td><a href="/user/offers/${todo.course.id}">${todo.course.name}</a></td>
                         </c:when>
                         <c:otherwise>
                             <td>n/d</td>

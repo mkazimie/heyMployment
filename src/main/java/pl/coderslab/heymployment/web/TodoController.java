@@ -5,10 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.heymployment.domain.Course;
 import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.Todo;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.security.CurrentUser;
+import pl.coderslab.heymployment.service.CourseService;
 import pl.coderslab.heymployment.service.JobOfferService;
 import pl.coderslab.heymployment.service.TodoService;
 
@@ -21,10 +23,12 @@ public class TodoController {
 
     private final TodoService todoService;
     private final JobOfferService jobOfferService;
+    private final CourseService courseService;
 
-    public TodoController(TodoService toDoService, JobOfferService jobOfferService) {
+    public TodoController(TodoService toDoService, JobOfferService jobOfferService, CourseService courseService) {
         this.todoService = toDoService;
         this.jobOfferService = jobOfferService;
+        this.courseService = courseService;
     }
 
     // display form for adding a to-do from user view
@@ -44,6 +48,9 @@ public class TodoController {
             if (!(todo.getJobOffer() == null)) {
                 todo.setJobOffer(todo.getJobOffer());
             }
+            if(!(todo.getCourse()==null)){
+                todo.setCourse(todo.getCourse());
+            }
             todoService.saveTodo(todo);
             return "redirect:/user/todos/all";
         }
@@ -59,6 +66,16 @@ public class TodoController {
         model.addAttribute("jobOffer", jobOffer);
         return "todo-form";
     }
+
+    // add a to-do directly to a course
+    @GetMapping("/add/course/{id}")
+    public String addTodoForCourse(@PathVariable long id, Model model) {
+        Course course = courseService.findById(id);
+        model.addAttribute("todo", new Todo());
+        model.addAttribute("course", course);
+        return "todo-form";
+    }
+
 
     //display all todos for current user
     @GetMapping("/all")
@@ -94,6 +111,11 @@ public class TodoController {
     @ModelAttribute("jobOffers")
     public List<JobOffer> jobOfferList(@AuthenticationPrincipal CurrentUser currentUser) {
         return jobOfferService.findAllJobOffers(currentUser.getUser().getId());
+    }
+
+    @ModelAttribute("courses")
+    public List<Course> courseList(@AuthenticationPrincipal CurrentUser currentUser){
+        return courseService.findAll(currentUser.getUser().getId());
     }
 
     @ModelAttribute("currentUser")
