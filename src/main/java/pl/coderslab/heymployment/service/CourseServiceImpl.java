@@ -8,6 +8,8 @@ import pl.coderslab.heymployment.exception.NoRecordFoundException;
 import pl.coderslab.heymployment.repository.CourseRepository;
 import pl.coderslab.heymployment.repository.TopicRepository;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 @Service

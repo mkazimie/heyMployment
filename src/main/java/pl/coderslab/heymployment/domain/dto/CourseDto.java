@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.validator.DistinctTopicFields;
 
 import javax.persistence.*;
@@ -34,6 +35,7 @@ public class CourseDto {
     @URL
     private String url;
 
+    @NotBlank
     @Size(min = 2, max = 50, message = "* The organizing entity name must be between 5 and 50 character long")
     private String organizedBy;
 
@@ -49,4 +51,6 @@ public class CourseDto {
 
     @Size(max = 50, message = "* Topic name is too long")
     private String additionalTopic2;
+
+    private User user;
 }

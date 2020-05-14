@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user/companies/")
+@RequestMapping("/user/companies")
 public class CompanyController {
 
     private final CompanyService companyService;

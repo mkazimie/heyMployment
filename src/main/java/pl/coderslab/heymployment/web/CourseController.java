@@ -15,10 +15,8 @@ import pl.coderslab.heymployment.service.CourseService;
 import pl.coderslab.heymployment.service.TopicService;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/user/courses")
@@ -34,7 +32,7 @@ public class CourseController {
 
     // display add course form
     @GetMapping("/add")
-    public String addCourse(Model model){
+    public String addCourse(Model model) {
         model.addAttribute("course", new CourseDto());
         return "course-add-form";
     }
@@ -55,10 +53,9 @@ public class CourseController {
     }
 
 
-
     // display all courses
     @GetMapping("/all")
-    public String getAllCourses(Model model, @AuthenticationPrincipal CurrentUser currentUser){
+    public String getAllCourses(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<Course> allCourses = courseService.findAll(currentUser.getUser().getId());
         model.addAttribute("allCourses", allCourses);
         model.addAttribute("allHowMany", allCourses.size());
@@ -68,13 +65,21 @@ public class CourseController {
     // display courses by status
     @GetMapping("/all/{status}")
     public String displayCoursesByStatus(@PathVariable String status,
-                                         @AuthenticationPrincipal CurrentUser currentUser, Model model){
+                                         @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         List<Course> allByStatus = courseService.findAllByStatus(currentUser.getUser().getId(), status);
         model.addAttribute("allByStatus", allByStatus);
         model.addAttribute("specificHowMany", allByStatus.size());
         return "course-list";
-
     }
+
+    // display detailed view of a course by id
+    @GetMapping("/{id}")
+    public String displayDetails(Model model, @PathVariable long id) {
+        Course course = courseService.findById(id);
+        model.addAttribute("course", course);
+        return "course-detailed-view";
+    }
+
 
     // confirm-delete of a course
     @GetMapping("/confirm-delete/{id}")
@@ -91,27 +96,27 @@ public class CourseController {
         return "redirect:/user/courses/all";
     }
 
-
-    //    edit course
+       // edit course
     @GetMapping("/update/{id}")
     public String updateCourse(Model model, @PathVariable long id){
         Course course = courseService.findById(id);
+        List<Topic> topics = course.getTopics();
         model.addAttribute("course", course);
+        model.addAttribute("tops", topics);
         return "course-edit-form";
     }
 
-    // process editing course
+
     @PostMapping("/update")
     public String updateCourse(@ModelAttribute @Valid Course course, BindingResult result, Model model){
         if (!result.hasErrors()){
-            course.setTopics(course.getTopics());
-            courseService.saveCourse(course);
-            return "redirect:/user/courses/all";
-        }
+        course.setTopics(course.getTopics());
+        courseService.saveCourse(course);
+        return "redirect:/user/courses/all";
+    }
         model.addAttribute("failed", "Please try again");
         return "course-edit-form";
-    }
-
+}
 
 
     @ModelAttribute("status")

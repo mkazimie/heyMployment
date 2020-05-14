@@ -52,7 +52,7 @@ public class Course {
     @Column(name = "finish_date")
     private LocalDate finishDate;
 
-    @ManyToMany
+    @ManyToMany(cascade= CascadeType.ALL)
     @JoinTable(name = "courses_topics",
             joinColumns = {@JoinColumn(name = "course_id")},
             inverseJoinColumns = {@JoinColumn(name = "topic_id")})

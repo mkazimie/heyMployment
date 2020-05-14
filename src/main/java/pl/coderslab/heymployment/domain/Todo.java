@@ -49,6 +49,4 @@ public class Todo {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-
 }

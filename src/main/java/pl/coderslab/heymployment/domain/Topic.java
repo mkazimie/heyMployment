@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
@@ -18,14 +19,12 @@ public class Topic {
     @Column(name = "topic_id")
     private long id;
 
-//    @NotBlank
     @Column(name = "topic_name")
     private String name;
 
     public Topic(String name) {
         this.name = name;
     }
-
 
     @Override
     public String toString() {
