@@ -38,8 +38,8 @@
             <div class="card bg-light border-secondary">
                 <h3 class="card-header bg-primary text-center text-white text-uppercase">${company.name}</h3>
                 <div class="card-body">
-                    <img class="card-img-top img-scale img-fluid" src="/img/floriane-vita-FyD3OWBuXnY-unsplash.jpg"
-                         alt="Card image cap">
+<%--                    <img class="card-img-top img-scale img-fluid" src="/img/floriane-vita-FyD3OWBuXnY-unsplash.jpg"--%>
+<%--                         alt="Card image cap">--%>
                     <h5 class="card-title little-space"> Visit Website:
                         <c:choose>
                             <c:when test="${not empty company.website}">

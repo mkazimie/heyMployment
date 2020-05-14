@@ -42,8 +42,8 @@
             </c:if>
             <div class="card border-secondary">
                 <div class="card-body">
-                    <img class="card-img-top img-scale img-fluid" src="/img/max-bender-3rNvnnO7avY-unsplash.jpg"
-                         alt="Card image cap">
+<%--                    <img class="card-img-top img-scale img-fluid" src="/img/max-bender-3rNvnnO7avY-unsplash.jpg"--%>
+<%--                         alt="Card image cap">--%>
                     <h5 class="card-title"> Company Name: ${company.name} </h5>
                     <h6 class="card-text"> Location: ${company.location} </h6>
                 </div>

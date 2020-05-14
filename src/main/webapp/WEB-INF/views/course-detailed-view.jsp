@@ -22,7 +22,7 @@
     <!-- Bootstrap Fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Job Offer Details</title>
+    <title>Course Details</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 </head>
 <body class="bg-light">
@@ -30,34 +30,38 @@
 <sec:authorize access="isAuthenticated()">
     <nav class="navbar bg-dark static-top">
         <div class="navbar-brand main-logo ml-4 text-white">
-            <strong> ${jobOffer.title} Details </strong>
+            <strong> ${course.name} Details </strong>
         </div>
     </nav>
-    <div class="container">
-        <div class="card-deck mr-30 ml-30 mt-5 mb-5">
+
+    <div class="container ">
+        <div class="card-deck mt-5">
             <div class="card border-secondary">
-                <h3 class="card-header bg-primary text-center text-white text-uppercase">${jobOffer.title}</h3>
+                <h3 class="card-header bg-primary text-center text-white text-uppercase">${course.name}</h3>
 <%--                <img class="card-img-top img-fluid img-scale"--%>
 <%--                     src="/img/undraw_online_information_4ui6%20(1).png"--%>
 <%--                     alt="Card image cap">--%>
                 <div class="card-body">
 
-
-                    <div class="ml-5 mr-5">
+                    <div class=" card-text ml-5 mr-5 mt-5">
                         <div class="row justify-content-center">
                             <div class="row-auto">
 
-                                <table class="table table-responsive table-borderless">
+                                <table class="table table-responsive">
                                     <tbody class="table-content text-justify">
                                     <tr>
                                         <th scope="row"> Status</th>
-                                        <td>${jobOffer.status}</td>
+                                        <td>${course.status}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Job Offer Posting</th>
+                                        <th scope="row"> Description</th>
+                                        <td>${course.description}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> Course Website</th>
                                         <c:choose>
-                                            <c:when test="${not empty jobOffer.url}">
-                                                <td><a href="${jobOffer.url}"> ${jobOffer.title} See Posting </a>
+                                            <c:when test="${not empty course.url}">
+                                                <td><a href="${course.url}"> ${course.name} Website </a>
                                                 </td>
                                             </c:when>
                                             <c:otherwise>
@@ -66,34 +70,21 @@
                                         </c:choose>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Posted On</th>
-                                        <td>${jobOffer.jobSearchWebsite}</td>
+                                        <th scope="row"> Organized By</th>
+                                        <td>${course.organizedBy}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Company</th>
-                                        <td><a href="/user/companies/${jobOffer.company.id}">
-                                                ${jobOffer.company.name}</a></td>
+                                        <th scope="row"> Ending Date</th>
+                                        <td>${course.finishDate}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Location</th>
-                                        <td>${jobOffer.location}</td>
+                                        <th scope="row" rowspan="4"> Topics</th>
                                     </tr>
-                                    <tr>
-                                        <th scope="row"> Description</th>
-                                        <td>${jobOffer.description}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> How Attractive is the Offer?</th>
-                                        <td>${jobOffer.howAttractive}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> Applied On</th>
-                                        <td>${jobOffer.appliedOn}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> Notes</th>
-                                        <td>${jobOffer.notes}</td>
-                                    </tr>
+                                    <c:forEach items="${course.topics}" var="topic">
+                                        <tr>
+                                            <td class="not-first-cell"> ${topic.name}</td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
 
@@ -101,26 +92,25 @@
                         </div>
                     </div>
 
-
                     <div class="card-text mr-5 ml-5">
-                        <h5 class="text-center mt-5"> To-Do List</h5>
+                        <h5 class="text-center mt-5"><strong> To-Do List</strong></h5>
                         <div class="btn-wrapper text-center mb-3">
-                            <a href="/user/todos/add/job/${jobOffer.id}" class="btn btn-primary"> + </a>
+                            <a href="/user/todos/add/course/${course.id}" class="btn btn-primary"> + </a>
                         </div>
-                        <table class="table css-serial mb-5">
-                            <thead class="table-active">
-                            <tr>
+                        <table class="table css-serial">
+                            <thead class="thead-dark">
+                            <tr class="text-center">
                                 <th>#</th>
                                 <th scope="col"> Name</th>
                                 <th scope="col"> Description</th>
                                 <th scope="col"> Deadline</th>
-                                <th scope="col"> Done? </th>
+                                <th scope="col"> Done?</th>
                                 <th scope="col"> Actions</th>
                             </tr>
                             </thead>
-                            <c:forEach items="${jobOffer.todos}" var="todo">
+                            <c:forEach items="${course.todos}" var="todo">
                             <tbody>
-                            <tr>
+                            <tr class="text-center">
                                 <td></td>
                                 <td>${todo.name}</td>
                                 <td>${todo.description}</td>
@@ -136,11 +126,10 @@
                         </table>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="btn-wrapper text-center">
-                        <a href="/user/offers/update/${jobOffer.id}" class="btn btn-primary"> Edit Job Offer </a>
-                        <a href="/user/offers/confirm-delete/${jobOffer.id}" class="btn btn-dark"> Delete </a>
-                    </div>
+                <div class="card-footer text-center">
+                    <a href="/user/courses/update/${course.id}" class="btn btn-primary"> Edit Course </a>
+                    <a href="/user/courses/confirm-delete/${course.id}" class="btn btn-dark"> Delete
+                        Course </a>
                 </div>
             </div>
         </div>

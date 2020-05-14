@@ -31,82 +31,82 @@
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
     <div class="container">
-    <div class="card mx-auto mt-3">
-    <div class="card-header bg-dark display-5 text-white text-center"> TO DO FORM</div>
-    <div class="card-body">
-    <form:form method="post" modelAttribute="todo" action="/user/todos/add">
+        <div class="card mx-auto mt-3">
+            <div class="card-header bg-dark display-5 text-white text-center"> TO DO FORM</div>
+            <div class="card-body">
+                <form:form method="post" modelAttribute="todo" action="/user/todos/add">
 
-        <h5 class="errorMessage center-content">${failed}</h5>
+                <h5 class="errorMessage center-content">${failed}</h5>
 
-        <div class="form-group row">
-            <form:label path="name"
-                        class="col-md-4 col-form-label text-md-right"> Name: </form:label>
-            <div class="col-md-6">
-                <form:input path="name" class="form-control" placeholder="Name"/>
-                <form:errors path="name" cssClass="errorMessage"/>
+                <div class="form-group row">
+                    <form:label path="name"
+                                class="col-md-4 col-form-label text-md-right"> Name: </form:label>
+                    <div class="col-md-6">
+                        <form:input path="name" class="form-control" placeholder="Name"/>
+                        <form:errors path="name" cssClass="errorMessage"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <form:label path="description"
+                                class="col-md-4 col-form-label text-md-right"> Description: </form:label>
+                    <div class="col-md-6">
+                        <form:textarea path="description" class="form-control" placeholder="Description"/>
+                        <form:errors path="description" cssClass="errorMessage"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <form:label path="jobOffer"
+                                class="col-md-4 col-form-label text-md-right"> Related Job Offer: </form:label>
+                    <div class="col-md-6">
+                        <form:select path="jobOffer" class="form-control">
+                            <c:choose>
+                                <c:when test="${not empty jobOffer}">
+                                    <form:option value="${jobOffer.id}" label="${jobOffer.title}" selected="selected"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <form:option value="0" label="--Please Select" selected="selected"/>
+                                    <form:options items="${jobOffers}" itemLabel="title" itemValue="id"/>
+                                </c:otherwise>
+                            </c:choose>
+                            <form:errors path="jobOffer" cssClass="errorMessage"/>
+                        </form:select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <form:label path="course"
+                                class="col-md-4 col-form-label text-md-right"> Related Course: </form:label>
+                    <div class="col-md-6">
+                        <form:select path="course" class="form-control">
+                            <c:choose>
+                                <c:when test="${not empty course}">
+                                    <form:option value="${course.id}" label="${course.name}" selected="selected"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <form:option value="0" label="--Please Select" selected="selected"/>
+                                    <form:options items="${courses}" itemLabel="name" itemValue="id"/>
+                                </c:otherwise>
+                            </c:choose>
+                            <form:errors path="course" cssClass="errorMessage"/>
+                        </form:select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <form:label path="deadline"
+                                class="col-md-4 col-form-label text-md-right"> Deadline: </form:label>
+                    <div class="col-md-6">
+                        <form:input path="deadline" type="date" class="form-control" placeholder="yyyy-MM-dd"/>
+                        <form:errors path="deadline" cssClass="errorMessage"/>
+                    </div>
+                </div>
+                <div class="col-md-6 offset-md-4">
+                    <input type="submit" class="btn btn-primary btn-block" value="Save">
+                    <form:hidden path="id"/>
+                    <form:hidden path="user.id"/>
+                    </form:form>
+                </div>
             </div>
         </div>
-        <div class="form-group row">
-            <form:label path="description"
-                        class="col-md-4 col-form-label text-md-right"> Description: </form:label>
-            <div class="col-md-6">
-                <form:textarea path="description" class="form-control" placeholder="Description"/>
-                <form:errors path="description" cssClass="errorMessage"/>
-            </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="jobOffer"
-                        class="col-md-4 col-form-label text-md-right"> Related Job Offer: </form:label>
-            <div class="col-md-6">
-                <form:select path="jobOffer" class="form-control">
-                    <c:choose>
-                        <c:when test="${not empty jobOffer}">
-                            <form:option value="${jobOffer.id}" label="${jobOffer.title}" selected="selected"/>
-                        </c:when>
-                        <c:otherwise>
-                            <form:option value="0" label="--Please Select" selected="selected"/>
-                            <form:options items="${jobOffers}" itemLabel="title" itemValue="id"/>
-                        </c:otherwise>
-                    </c:choose>
-                    <form:errors path="jobOffer" cssClass="errorMessage"/>
-                </form:select>
-            </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="course"
-                        class="col-md-4 col-form-label text-md-right"> Related Course: </form:label>
-            <div class="col-md-6">
-                <form:select path="course" class="form-control">
-                    <c:choose>
-                        <c:when test="${not empty course}">
-                            <form:option value="${course.id}" label="${course.name}" selected="selected"/>
-                        </c:when>
-                        <c:otherwise>
-                            <form:option value="0" label="--Please Select" selected="selected"/>
-                            <form:options items="${courses}" itemLabel="name" itemValue="id"/>
-                        </c:otherwise>
-                    </c:choose>
-                    <form:errors path="course" cssClass="errorMessage"/>
-                </form:select>
-            </div>
-        </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="deadline"
-                        class="col-md-4 col-form-label text-md-right"> Deadline: </form:label>
-            <div class="col-md-6">
-                <form:input path="deadline" type="date" class="form-control" placeholder="yyyy-MM-dd"/>
-                <form:errors path="deadline" cssClass="errorMessage"/>
-            </div>
-        </div>
-        <div class="col-md-6 offset-md-4">
-            <input type="submit" class="btn btn-primary btn-block" value="Save">
-            <form:hidden path="id"/>
-            <form:hidden path="user.id"/>
-        </div>
-        </div>
-        </div>
-    </form:form>
+    </div>
 </sec:authorize>
 
 

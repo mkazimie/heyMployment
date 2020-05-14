@@ -31,85 +31,99 @@
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
     <div class="container">
-    <div class="card mx-auto mt-3">
-    <div class="card-header bg-dark display-5 text-white text-center"> Course Form</div>
-    <div class="card-body">
-    <form:form method="post" modelAttribute="course">
+        <div class="card mx-auto mt-3">
+            <div class="card-header bg-dark display-5 text-white text-center"> Course Form</div>
+            <div class="card-body">
+                <form:form method="post" modelAttribute="course">
 
-        <h5 class="errorMessage center-content">${failed}</h5>
+                    <h5 class="errorMessage center-content">${failed}</h5>
 
 
-        <div class="form-group row">
-            <form:label path="name"
-                        class="col-md-4 col-form-label text-md-right"> Course Name: </form:label>
-            <div class="col-md-6">
-                <form:input path="name" class="form-control" placeholder="Course Name"/>
-                <form:errors path="name" cssClass="errorMessage"/>
-            </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="description"
-                        class="col-md-4 col-form-label text-md-right"> Description: </form:label>
-            <div class="col-md-6">
-                <form:textarea path="description" class="form-control" placeholder="Description"/>
-                <form:errors path="description" cssClass="errorMessage"/>
-            </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="status"
-                        class="col-md-4 col-form-label text-md-right"> Status: </form:label>
-            <div class="col-md-6">
-                <form:select path="status" class="form-control">
-                    <form:option value="0" label="--Please Select--" selected="selected"/>
-                    <form:options items="${status}"/>
-                </form:select>
-                <form:errors path="status" cssClass="errorMessage"/>
-            </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="url"
-                        class="col-md-4 col-form-label text-md-right"> Link To Course:</form:label>
-            <div class="col-md-6">
-                <form:input path="url" class="form-control" placeholder="URL"/>
-                <form:errors path="url" cssClass="errorMessage"/>
-            </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="organizedBy"
-                        class="col-md-4 col-form-label text-md-right"> Organized By:</form:label>
-            <div class="col-md-6">
-                <form:input path="organizedBy" class="form-control" placeholder="Organized By"/>
-                <form:errors path="organizedBy" cssClass="errorMessage"/>
-            </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="finishDate"
-                        class="col-md-4 col-form-label text-md-right"> Ends On: </form:label>
-            <div class="col-md-6">
-                <form:input path="finishDate" type="date" class="form-control" placeholder="yyyy-MM-dd"/>
-                <form:errors path="finishDate" cssClass="errorMessage"/>
-            </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="mainTopic"
-                        class="col-md-4 col-form-label text-md-right"> Topics: </form:label>
-            <div class="col-md-6">
-                <form:input path="mainTopic" class="form-control" placeholder="Main Topic"/>
-                <form:errors path="mainTopic" cssClass="errorMessage"/>
-                <form:input path="additionalTopic1" class="form-control" placeholder="Additional Topic"/>
-                <form:errors path="additionalTopic1" cssClass="errorMessage"/>
-                <form:input path="additionalTopic2" class="form-control" placeholder="Additional Topic"/>
-                <form:errors path="additionalTopic2" cssClass="errorMessage"/>
+                    <div class="form-group row">
+                        <form:label path="name"
+                                    class="col-md-4 col-form-label text-md-right"> Course Name: </form:label>
+                        <div class="col-md-6">
+                            <form:input path="name" class="form-control" placeholder="Course Name"/>
+                            <form:errors path="name" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="description"
+                                    class="col-md-4 col-form-label text-md-right"> Description: </form:label>
+                        <div class="col-md-6">
+                            <form:textarea path="description" class="form-control" placeholder="Description"/>
+                            <form:errors path="description" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="status"
+                                    class="col-md-4 col-form-label text-md-right"> Status: </form:label>
+                        <div class="col-md-6">
+                            <form:select path="status" class="form-control">
+                                <form:option value="Wishlist" label="--Please Select--" selected="selected"/>
+                                <form:options items="${status}"/>
+                            </form:select>
+                            <form:errors path="status" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="url"
+                                    class="col-md-4 col-form-label text-md-right"> Link To Course:</form:label>
+                        <div class="col-md-6">
+                            <form:input path="url" class="form-control" placeholder="URL"/>
+                            <form:errors path="url" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="organizedBy"
+                                    class="col-md-4 col-form-label text-md-right"> Organized By:</form:label>
+                        <div class="col-md-6">
+                            <form:input path="organizedBy" class="form-control" placeholder="Organized By"/>
+                            <form:errors path="organizedBy" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="finishDate"
+                                    class="col-md-4 col-form-label text-md-right"> Ends On: </form:label>
+                        <div class="col-md-6">
+                            <form:input path="finishDate" type="date" class="form-control" placeholder="yyyy-MM-dd"/>
+                            <form:errors path="finishDate" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="mainTopic"
+                                    class="col-md-4 col-form-label text-md-right"> Topics: </form:label>
+                        <div class="col-md-6">
+                            <form:input path="mainTopic" class="form-control" placeholder="Main Topic"/>
+                            <form:errors path="mainTopic" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="additionalTopic1"
+                                    class="col-md-4 col-form-label text-md-right"> </form:label>
+                        <div class="col-md-6">
+                            <form:input path="additionalTopic1" class="form-control" placeholder="Additional Topic"/>
+                            <form:errors path="additionalTopic1" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="additionalTopic2"
+                                    class="col-md-4 col-form-label text-md-right"> </form:label>
+                        <div class="col-md-6">
+                            <form:input path="additionalTopic2" class="form-control" placeholder="Additional Topic"/>
+                            <form:errors path="additionalTopic2" cssClass="errorMessage"/>
+                        </div>
+                    </div>
 
+
+                    <div class="col-md-6 offset-md-4">
+                        <input type="submit" class="btn btn-primary btn-block" value="Save">
+                    </div>
+                </form:form>
             </div>
         </div>
-        <div class="col-md-6 offset-md-4">
-            <input type="submit" class="btn btn-primary btn-block" value="Save">
-        </div>
-        </div>
+    </div>
 
-        </div>
-    </form:form>
 </sec:authorize>
 
 <!-- Optional JavaScript -->

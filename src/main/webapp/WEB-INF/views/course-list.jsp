@@ -52,46 +52,39 @@
 
         <table class="table css-serial">
             <thead class="thead-dark">
-            <tr>
+            <tr class="text-center">
                 <th>#</th>
-                <th scope="col"> Actions</th>
                 <th scope="col"> Name</th>
-                <th scope="col"> Description</th>
+<%--                <th scope="col"> Description</th>--%>
                 <th scope="col"> Status</th>
                 <th scope="col"> Link</th>
                 <th scope="col"> Organized By</th>
-                <th scope="col"> Ends By</th>
                 <th scope="col"> Topics</th>
+                <th scope="col"> + </th>
+
             </tr>
             </thead>
 
             <tbody>
             <c:forEach items="${allCourses}" var="course">
-                <tr>
-                    <td></td>
-                    <td class="btn-group">
-                        <a href="#/user/courses/${course.id}" class="btn btn-link"> Details </a>
-                        <a href="/user/courses/update/${course.id}" class="btn btn-link"> Edit </a>
-                        <a href="/user/courses/confirm-delete/${course.id}" class="btn btn-link"> Delete </a>
-                        <a href="/user/todos/add/course/${course.id}" class="btn btn-link"> Add a To-Do </a>
-                    </td>
-                    <td>${course.name}</td>
-                    <td>${course.description}</td>
-                    <td>${course.status}</td>
+                <tr class="text-center">
+                    <td class="align-middle"></td>
+                    <th scope="col" class="align-middle">${course.name}</th>
+                    <td class="align-middle">${course.status}</td>
                     <c:choose>
                         <c:when test="${not empty course.url}">
-                            <td><a href="${course.url}">See Course</a></td>
+                            <td class="align-middle"><a href="${course.url}"> Course Website </a></td>
                         </c:when>
                         <c:otherwise>
                             <td></td>
                         </c:otherwise>
                     </c:choose>
-                    <td>${course.organizedBy}</td>
-                    <td>${course.finishDate}</td>
-                    <td><c:forEach items="${course.topics}" var="topic">
+                    <td class="align-middle">${course.organizedBy}</td>
+                    <td class="align-middle"><c:forEach items="${course.topics}" var="topic">
                         <div>${topic.name}</div>
                     </c:forEach>
                     </td>
+                    <td class="align-middle"><a href="/user/courses/${course.id}" class="btn btn-primary"> Details </a> </td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -99,37 +92,27 @@
 
             <tbody>
             <c:forEach items="${allByStatus}" var="byStatus">
-                <tr>
-                    <td></td>
-                    <td class="btn-group">
-                        <a href="#/user/courses/${byStatus.id}" class="btn btn-link"> Details </a>
-                        <a href="/user/courses/update/${byStatus.id}" class="btn btn-link"> Edit </a>
-                        <a href="/user/courses/confirm-delete/${byStatus.id}" class="btn btn-link"> Delete </a>
-                        <a href="/user/todos/add/course/${byStatus.id}" class="btn btn-link"> Add a To-Do </a>
-                    </td>
-                    <td>${byStatus.name}</td>
-                    <td>${byStatus.description}</td>
-                    <td>${byStatus.status}</td>
+                <tr class="text-center">
+                    <td class="align-middle"></td>
+                    <th scope="col" class="align-middle">${byStatus.name}</th>
+                    <td class="align-middle">${byStatus.status}</td>
                     <c:choose>
                         <c:when test="${not empty byStatus.url}">
-                            <td><a href="${byStatus.url}">See Course</a></td>
+                            <td class="align-middle"><a href="${byStatus.url}">See Course</a></td>
                         </c:when>
                         <c:otherwise>
                             <td></td>
                         </c:otherwise>
                     </c:choose>
-                    <td>${byStatus.organizedBy}</td>
-                    <td>${byStatus.finishDate}</td>
-                    <td><c:forEach items="${byStatus.topics}" var="topic">
+                    <td class="align-middle">${byStatus.organizedBy}</td>
+                    <td class="align-middle"><c:forEach items="${byStatus.topics}" var="topic">
                         <div>${topic.name}</div>
                     </c:forEach>
                     </td>
+                    <td class="align-middle"><a href="/user/courses/${byStatus.id}" class="btn btn-primary"> Details </a></td>
                 </tr>
             </c:forEach>
             </tbody>
-
-
-
         </table>
     </div>
 </sec:authorize>

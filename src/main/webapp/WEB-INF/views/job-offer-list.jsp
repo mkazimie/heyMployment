@@ -33,7 +33,8 @@
         <h2><a href="/user/offers/add" class="btn btn-primary"> + </a>
         </h2>
 
-        <h5 class="text-center"><button type="button" class="btn btn-primary">${allHowMany} ${specificHowMany}</button>
+        <h5 class="text-center">
+            <button type="button" class="btn btn-primary">${allHowMany} ${specificHowMany}</button>
         </h5>
         <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
             <div class="container d-flex align-items-md-center py-2">
@@ -50,83 +51,59 @@
 
         <table class="table css-serial">
             <thead class="thead-dark">
-            <tr>
+            <tr class="text-center">
                 <th>#</th>
-                <th scope="col"> Actions</th>
                 <th scope="col"> Job Title</th>
-                <th scope="col"> Description</th>
                 <th scope="col"> Link</th>
-                <th scope="col"> Job Search Website</th>
                 <th scope="col"> Location</th>
                 <th scope="col"> Company</th>
-                <th scope="col"> Salary</th>
-                <th scope="col"> Status</th>
-                <th scope="col"> How Attractive</th>
                 <th scope="col"> Applied On</th>
-                <th scope="col"> Notes</th>
+                <th scope="col"> +</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${offers}" var="offer">
-                <tr>
-                    <td></td>
-                    <td class="btn-group">
-                        <a href="/user/offers/${offer.id}" class="btn btn-link"> Details </a>
-                        <a href="/user/offers/update/${offer.id}" class="btn btn-link"> Edit </a>
-                        <a href="/user/offers/confirm-delete/${offer.id}" class="btn btn-link"> Delete </a>
-                        <a href="/user/todos/add/job/${offer.id}" class="btn btn-link"> Add a To-Do </a>
-                    </td>
-                    <td>${offer.title}</td>
-                    <td>${offer.description}</td>
+                <tr class="text-center">
+                    <td class="align-middle"></td>
+                    <th scope="col" class="align-middle">${offer.title}</th>
                     <c:choose>
                         <c:when test="${not empty offer.url}">
-                            <td><a href="${offer.url}">See Offer</a></td>
+                            <td class="align-middle"><a href="${offer.url}">See Offer</a></td>
                         </c:when>
                         <c:otherwise>
-                            <td>n/d</td>
+                            <td></td>
                         </c:otherwise>
                     </c:choose>
-                    <td>${offer.jobSearchWebsite}</td>
-                    <td>${offer.location}</td>
-                    <td>${offer.company.name}</td>
-                    <td>${offer.salary}</td>
-                    <td>${offer.status}</td>
-                    <td>${offer.howAttractive}</td>
-                    <td>${offer.appliedOn}</td>
-                    <td>${offer.notes}</td>
-
+                    <td class="align-middle">${offer.location}</td>
+                    <td class="align-middle"><a href="/user/companies/${offer.company.id}">${offer.company.name}</a>
+                    </td>
+                    <td class="align-middle">${offer.appliedOn}</td>
+                    <td class="align-middle"><a href="/user/offers/${offer.id}" class="btn btn-primary"> Details </a>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
 
             <tbody>
             <c:forEach items="${allByStatus}" var="byStatus">
-                <tr>
+                <tr class="text-center">
                     <td></td>
-                    <td class="btn-group">
-                        <a href="/user/offers/${byStatus.id}" class="btn btn-link"> Details </a>
-                        <a href="/user/offers/update/${byStatus.id}" class="btn btn-link"> Edit </a>
-                        <a href="/user/offers/confirm-delete/${byStatus.id}" class="btn btn-link"> Delete </a>
-                        <a href="/user/todos/add/job/${byStatus.id}" class="btn btn-link"> Add a To-Do </a>
-                    </td>
-                    <td>${byStatus.title}</td>
-                    <td>${byStatus.description}</td>
+                    <th scope="col" class="align-middle">${byStatus.title}</th>
                     <c:choose>
                         <c:when test="${not empty byStatus.url}">
-                            <td><a href="${byStatus.url}">See Offer</a></td>
+                            <td class="align-middle"><a href="${byStatus.url}">See Offer</a></td>
                         </c:when>
                         <c:otherwise>
                             <td></td>
                         </c:otherwise>
                     </c:choose>
-                    <td>${byStatus.jobSearchWebsite}</td>
-                    <td>${byStatus.location}</td>
-                    <td>${byStatus.company.name}</td>
-                    <td>${byStatus.salary}</td>
-                    <td>${byStatus.status}</td>
-                    <td>${byStatus.howAttractive}</td>
-                    <td>${byStatus.appliedOn}</td>
-                    <td>${byStatus.notes}</td>
+                    <td class="align-middle">${byStatus.location}</td>
+                    <td class="align-middle"><a href="/user/companies/${byStatus.company.id}">
+                            ${byStatus.company.name}</a></td>
+                    <td class="align-middle">${byStatus.appliedOn}</td>
+                    <td class="align-middle"><a href="/user/offers/${byStatus.id}" class="btn btn-primary"> Details </a>
+                    </td>
+
                 </tr>
             </c:forEach>
             </tbody>

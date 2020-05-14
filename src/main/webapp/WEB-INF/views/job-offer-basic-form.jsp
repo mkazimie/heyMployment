@@ -31,63 +31,59 @@
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
     <div class="container">
-    <div class="card mx-auto mt-3">
-    <div class="card-header bg-dark display-5 text-white text-center"> Job Offer Form</div>
-    <div class="card-body">
-    <form:form method="post" modelAttribute="jobOffer">
+        <div class="card mx-auto mt-3">
+            <div class="card-header bg-dark display-5 text-white text-center"> Job Offer Form</div>
+            <div class="card-body">
+                <form:form method="post" modelAttribute="jobOffer">
 
-        <h5 class="errorMessage center-content">${failed}</h5>
+                    <h5 class="errorMessage center-content">${failed}</h5>
 
 
-        <div class="form-group row">
-            <form:label path="title"
-                        class="col-md-4 col-form-label text-md-right"> Job Title: </form:label>
-            <div class="col-md-6">
-                <form:input path="title" class="form-control" placeholder="Job Title"/>
-                <form:errors path="title" cssClass="errorMessage"/>
+                    <div class="form-group row">
+                        <form:label path="title"
+                                    class="col-md-4 col-form-label text-md-right"> Job Title: </form:label>
+                        <div class="col-md-6">
+                            <form:input path="title" class="form-control" placeholder="Job Title"/>
+                            <form:errors path="title" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="companyName"
+                                    class="col-md-4 col-form-label text-md-right"> Company: </form:label>
+                        <div class="col-md-6">
+                            <form:input path="companyName" class="form-control"
+                                        placeholder="Company"/>
+                            <form:errors path="companyName" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="location"
+                                    class="col-md-4 col-form-label text-md-right"> Location: </form:label>
+                        <div class="col-md-6">
+                            <form:input path="location" class="form-control" placeholder="Location"/>
+                            <form:errors path="location" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <form:label path="status"
+                                    class="col-md-4 col-form-label text-md-right"> Status </form:label>
+                        <div class="col-md-6">
+                            <form:select path="status" class="form-control">
+                                <form:option value="Wishlist" label="--Please Select--" selected="selected"/>
+                                <form:options items="${status}"/>
+                            </form:select>
+                            <form:errors path="status" cssClass="errorMessage"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-4">
+                        <input type="submit" class="btn btn-primary btn-block" value="Save">
+                    </div>
+                </form:form>
             </div>
         </div>
-        <div class="form-group row">
-            <form:label path="companyName"
-                        class="col-md-4 col-form-label text-md-right"> Company: </form:label>
-            <div class="col-md-6">
-                <form:input path="companyName" class="form-control"
-                            placeholder="Company"/>
-<%--                            item="${jobOffer.company.name}" --%>
-                            <%--                itemLabel="name" itemValue="id"--%>
-
-
-                <form:errors path="companyName" cssClass="errorMessage"/>
-            </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="location" class="col-md-4 col-form-label text-md-right"> Location: </form:label>
-            <div class="col-md-6">
-                <form:input path="location" class="form-control" placeholder="Location"/>
-                <form:errors path="location" cssClass="errorMessage"/>
-            </div>
-        </div>
-        </div>
-        <div class="form-group row">
-            <form:label path="status"
-                        class="col-md-4 col-form-label text-md-right"> Status </form:label>
-            <div class="col-md-6">
-                <form:select path="status" class="form-control">
-                    <form:options items="${status}"/>
-                </form:select>
-                <form:errors path="status" cssClass="errorMessage"/>
-            </div>
-        </div>
-<%--        <form:hidden path="id"/>--%>
-<%--        <form:hidden path="company"/>--%>
-        <div class="col-md-6 offset-md-4">
-            <input type="submit" class="btn btn-primary btn-block" value="Save">
-        </div>
-        </div>
-
-        </div>
-    </form:form>
+    </div>
 </sec:authorize>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
