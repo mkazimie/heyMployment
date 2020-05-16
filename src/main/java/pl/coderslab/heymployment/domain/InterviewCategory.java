@@ -1,15 +1,17 @@
 package pl.coderslab.heymployment.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -24,15 +26,8 @@ public class InterviewCategory {
     @Column(name = "category_name")
     private String name;
 
-    @NotEmpty
-    @ManyToMany
-    @JoinTable(name = "interview_categories_topics",
-            joinColumns = {@JoinColumn(name = "category_id")},
-            inverseJoinColumns = {@JoinColumn(name = "topic_id")})
-    private Set<Topic> topics = new HashSet<>();
-
     @OneToMany(mappedBy = "interviewCategory")
-    private Set<InterviewQuestion> interviewQuestions = new HashSet<>();
+    private List<InterviewQuestion> interviewQuestions = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
