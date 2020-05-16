@@ -90,6 +90,7 @@
                         <form:errors path="finishDate" cssClass="errorMessage"/>
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <form:label path="topics" class="col-md-4 col-form-label text-md-right"> Topics:</form:label>
                     <div class="col-md-6">
@@ -98,6 +99,8 @@
                         <form:errors path="topics" cssClass="errorMessage"/>
                     </div>
                 </div>
+
+
                 <div class="col-md-6 offset-md-4">
                     <input type="submit" class="btn btn-primary btn-block" value="Save">
                     <form:hidden path="user.id"/>

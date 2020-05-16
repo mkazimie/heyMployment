@@ -107,6 +107,7 @@ public class CourseController {
     }
 
 
+    // save updated course
     @PostMapping("/update")
     public String updateCourse(@ModelAttribute @Valid Course course, BindingResult result, Model model){
         if (!result.hasErrors()){

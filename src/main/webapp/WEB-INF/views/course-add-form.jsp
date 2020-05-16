@@ -34,7 +34,7 @@
         <div class="card mx-auto mt-3">
             <div class="card-header bg-dark display-5 text-white text-center"> Course Form</div>
             <div class="card-body">
-                <form:form method="post" modelAttribute="course">
+                <form:form method="post" modelAttribute="course" action="/user/courses/add">
 
                     <h5 class="errorMessage center-content">${failed}</h5>
 

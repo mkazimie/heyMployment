@@ -32,7 +32,7 @@
 <sec:authorize access="isAuthenticated()">
     <div class="container mt-5 mx-auto ml-4 mr-4">
         <h1 class="bd-title"> My Courses</h1>
-        <h2><a href="/user/courses/add" class="btn btn-primary"> + </a>
+        <h2><a href="/user/courses/add" class="btn btn-primary"> Add New Course </a>
         </h2>
 
 
@@ -55,7 +55,6 @@
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Name</th>
-<%--                <th scope="col"> Description</th>--%>
                 <th scope="col"> Status</th>
                 <th scope="col"> Link</th>
                 <th scope="col"> Organized By</th>

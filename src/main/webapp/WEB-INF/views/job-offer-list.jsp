@@ -30,7 +30,7 @@
 <sec:authorize access="isAuthenticated()">
     <div class="container">
         <h1 class="bd-title"> My Job Offers</h1>
-        <h2><a href="/user/offers/add" class="btn btn-primary"> + </a>
+        <h2><a href="/user/offers/add" class="btn btn-primary"> Add New Offer </a>
         </h2>
 
         <h5 class="text-center">

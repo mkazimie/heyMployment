@@ -15,11 +15,9 @@ import java.util.Optional;
 public class JobOfferServiceImpl implements JobOfferService {
 
     private final JobOfferRepository jobOfferRepository;
-    private final CompanyRepository companyRepository;
 
     public JobOfferServiceImpl(JobOfferRepository jobOfferRepository, CompanyRepository companyRepository) {
         this.jobOfferRepository = jobOfferRepository;
-        this.companyRepository = companyRepository;
     }
 
     @Override
