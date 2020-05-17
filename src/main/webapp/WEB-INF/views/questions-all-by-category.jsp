@@ -40,9 +40,9 @@
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Question</th>
+                <th scope="col"> ID </th>
                 <th scope="col"> Has Answer</th>
                 <th scope="col"> Is Ready</th>
-                <th scope="col"> Difficulty</th>
                 <th scope="col"> Added</th>
                 <th scope="col"> Actions</th>
             </tr>
@@ -53,6 +53,7 @@
                 <tr class="text-center">
                     <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${qa.question}</th>
+                    <td class="align-middle">${qa.id}</td>
                     <c:choose>
                         <c:when test="${not empty qa.answer}">
                             <td class="align-middle">Yes</td>
@@ -69,8 +70,6 @@
                             <td class="align-middle">Not Yet</td>
                         </c:otherwise>
                     </c:choose>
-                    <td class="align-middle">${qa.difficulty}</td>
-
                     <td class="align-middle">${qa.added}</td>
 
                     <td class="align-middle"><a href="/user/categories/${cat.id}/questions/${qa.id}">

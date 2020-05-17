@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.InterviewCategory;
 import pl.coderslab.heymployment.domain.InterviewQuestion;
+import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.dto.QuestionDto;
 import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
 import pl.coderslab.heymployment.security.CurrentUser;
@@ -34,7 +35,9 @@ public class InterviewCategoriesQuestionsController {
         this.questionService = questionService;
     }
 
-    // display form for adding categories
+    // CATEGORIES
+
+    // add new category
     @GetMapping("/add")
     public String addCategory(Model model) {
         model.addAttribute("category", new InterviewCategory());
@@ -107,6 +110,8 @@ public class InterviewCategoriesQuestionsController {
         return "redirect:/user/categories/all";
     }
 
+    // QUESTIONS INSIDE CATEGORIES
+
     // add a question to a category
     @GetMapping("/{id}/questions/add")
     public String addQuestion(Model model, @PathVariable long id) {
@@ -116,6 +121,7 @@ public class InterviewCategoriesQuestionsController {
         return "question-add-form";
     }
 
+    // save question inside a given category
     @PostMapping("{id}/questions/add")
     public String saveQuest(@ModelAttribute("qDto") @Valid QuestionDto qDto,
                             BindingResult result, Model model, @PathVariable long id) {
@@ -137,7 +143,54 @@ public class InterviewCategoriesQuestionsController {
         return "questions-all-by-category";
     }
 
+    // display detailed view of a question
+    @GetMapping("/{id}/questions/{questionId}")
+    public String displayDetails(Model model, @PathVariable long id, @PathVariable long questionId){
+        InterviewQuestion question = questionService.findById(questionId);
+        model.addAttribute("question", question);
+        return "question-detailed-view";
+    }
 
+    // edit a question
+    @GetMapping("/{id}/questions/update/{questionId}")
+    public String updateQuestion(Model model, @PathVariable long id, @PathVariable long questionId) {
+        InterviewQuestion question = questionService.findById(questionId);
+        InterviewCategory category = categoryService.findById(id);
+        model.addAttribute("cat", category);
+        model.addAttribute("qa", question);
+        return "question-edit-form";
+    }
+
+    // update record
+    @PostMapping("/{id}/questions/update")
+    public String updateQuestion(@ModelAttribute("qa") @Valid InterviewQuestion qa, BindingResult result,
+                            Model model, @PathVariable long id) {
+        if (!result.hasErrors()) {
+            InterviewCategory category = categoryService.findByName(qa.getInterviewCategory().getName());
+            qa.setInterviewCategory(category);
+            questionService.saveQuestion(qa);
+            return "redirect:/user/categories/{id}/questions/all";
+        }
+        model.addAttribute("failed", "Please try again");
+        return "question-edit-form";
+    }
+
+
+
+    // confirm-delete a category
+    @GetMapping("/{id}/questions/confirm-delete/{questionId}")
+    public String confirmDeleteQuestion(@PathVariable long id, @PathVariable long questionId, Model model) {
+        InterviewQuestion qa = questionService.findById(questionId);
+        model.addAttribute("qa", qa);
+        return "question-confirm-delete";
+    }
+
+    // delete a question
+    @GetMapping("/{id}/questions/delete/{questionId}")
+    public String deleteCat(@PathVariable long id, @PathVariable long questionId) {
+        questionService.deleteQuestion(questionId);
+        return "redirect:/user/categories/{id}/questions/all";
+    }
 
     @ModelAttribute("difficulty")
     public List<String> difficulty() {
