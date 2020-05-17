@@ -10,8 +10,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
+@ToString(exclude = "interviewQuestions")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -32,5 +32,12 @@ public class InterviewCategory {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public void addQuestion(InterviewQuestion question){
+        if(question != null) {
+            interviewQuestions.add(question);
+        }
+    }
+
 
 }

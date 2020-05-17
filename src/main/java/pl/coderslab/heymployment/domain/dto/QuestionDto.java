@@ -1,24 +1,20 @@
 package pl.coderslab.heymployment.domain.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class QuestionDto {
 
     @NotBlank
-    @Size(min = 5, max = 250)
+    @Size(min = 5, max = 250, message = "* Question must contain between 5 and 250 characters")
     private String question;
 
-    @Size(max = 1000)
+    @Size(max = 1000, message = "* Answer can't contain more than 1000 characters")
     private String answer;
 
     private String difficulty;
@@ -26,6 +22,4 @@ public class QuestionDto {
     private boolean ready;
 
     private String interviewCategory;
-
-    private String topic;
 }

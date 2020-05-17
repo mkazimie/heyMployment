@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
+@ToString(exclude = "interviewCategory")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -44,17 +44,11 @@ public class InterviewQuestion {
 
     private LocalDateTime added;
 
-    private LocalDateTime updated;
-
     @PrePersist
     public void prePersist(){
         added = LocalDateTime.now();
     }
 
-    @PreUpdate
-    public void preUpdate(){
-        updated = LocalDateTime.now();
-    }
 
 
 }
