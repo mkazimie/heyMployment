@@ -13,7 +13,7 @@
 
 <html>
 <head>
-    <title> Question Form</title>
+    <title> Add Question</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -34,9 +34,20 @@
         <div class="card mx-auto mt-3">
             <div class="card-header bg-dark display-5 text-white text-center"> Add New Interview QA </div>
             <div class="card-body">
-                <form:form method="post" modelAttribute="qa">
+                <form:form method="post" modelAttribute="qDto">
 
                     <h5 class="errorMessage center-content">${failed}</h5>
+
+                    <div class="form-group row">
+                        <form:label path="interviewCategory"
+                                    class="col-md-4 col-form-label text-md-right"> Category:</form:label>
+                        <div class="col-md-6">
+                            <form:input path="interviewCategory" value="${category.name}" class="form-control"
+                                        placeholder="${category.name}"
+                                        readonly="true"/>
+                            <form:errors path="interviewCategory" cssClass="errorMessage"/>
+                        </div>
+                    </div>
 
 <%--                    question--%>
                     <div class="form-group row">

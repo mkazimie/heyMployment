@@ -11,9 +11,7 @@ import java.util.List;
 @Repository
 public interface InterviewQuestionRepository extends JpaRepository<InterviewQuestion, Long > {
 
-    // idealna opcja: sortuj po updated i jesli nie bylo edytowane to po created ???
-    @Query("SELECT q FROM InterviewQuestion q WHERE q.interviewCategory.name = ?1 ORDER BY q.added DESC, q.updated " +
-            "DESC")
+    @Query("SELECT q FROM InterviewQuestion q WHERE q.interviewCategory.name = ?1 ORDER BY q.added DESC")
     List<InterviewQuestion> findAllByInterviewCategoryName(String name);
 
     @Query("SELECT q FROM InterviewQuestion q WHERE q.interviewCategory.id = ?1 ORDER BY q.added DESC")

@@ -40,11 +40,10 @@
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Question</th>
-                <th scope="col"> Answer</th>
-                <th scope="col"> Status </th>
-                <th scope="col"> Difficulty </th>
+                <th scope="col"> Has Answer</th>
+                <th scope="col"> Is Ready</th>
+                <th scope="col"> Difficulty</th>
                 <th scope="col"> Added</th>
-                <th scope="col"> Updated</th>
                 <th scope="col"> Actions</th>
             </tr>
             </thead>
@@ -54,11 +53,26 @@
                 <tr class="text-center">
                     <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${qa.question}</th>
-                    <td class="align-middle">${qa.answer}</td>
-                    <td class="align-middle">${qa.ready}</td>
+                    <c:choose>
+                        <c:when test="${not empty qa.answer}">
+                            <td class="align-middle">Yes</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td class="align-middle">Not Yet</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${qa.ready == true}">
+                            <td class="align-middle">Yes</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td class="align-middle">Not Yet</td>
+                        </c:otherwise>
+                    </c:choose>
                     <td class="align-middle">${qa.difficulty}</td>
+
                     <td class="align-middle">${qa.added}</td>
-                    <td class="align-middle">${qa.updated}</td>
+
                     <td class="align-middle"><a href="/user/categories/${cat.id}/questions/${qa.id}">
                         Details
                     </a></td>

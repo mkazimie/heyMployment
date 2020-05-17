@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.InterviewCategory;
 import pl.coderslab.heymployment.domain.InterviewQuestion;
+import pl.coderslab.heymployment.domain.dto.QuestionDto;
 import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
 import pl.coderslab.heymployment.security.CurrentUser;
 import pl.coderslab.heymployment.service.CategoryService;
@@ -14,9 +15,12 @@ import pl.coderslab.heymployment.service.QuestionService;
 import pl.coderslab.heymployment.service.TopicService;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user/categories")
@@ -32,7 +36,7 @@ public class InterviewCategoriesQuestionsController {
 
     // display form for adding categories
     @GetMapping("/add")
-    public String addCategory(Model model){
+    public String addCategory(Model model) {
         model.addAttribute("category", new InterviewCategory());
         return "category-form";
     }
@@ -40,14 +44,14 @@ public class InterviewCategoriesQuestionsController {
     // save added category
     @PostMapping("/add")
     public String saveCategory(@ModelAttribute @Valid InterviewCategory category, BindingResult result,
-                               @AuthenticationPrincipal CurrentUser currentUser, Model model){
-        if (!result.hasErrors()){
-            try{
+                               @AuthenticationPrincipal CurrentUser currentUser, Model model) {
+        if (!result.hasErrors()) {
+            try {
                 categoryService.checkCategoryExists(category);
                 category.setUser(currentUser.getUser());
                 categoryService.saveCategory(category);
                 return "redirect:/user/categories/all";
-            } catch (RecordAlreadyExistsException e){
+            } catch (RecordAlreadyExistsException e) {
                 model.addAttribute("failed", "Category already exists in database");
                 return "category-form";
             }
@@ -74,9 +78,9 @@ public class InterviewCategoriesQuestionsController {
 
     // update record
     @PostMapping("/update")
-    public String updateCat(@ModelAttribute ("cat") @Valid InterviewCategory category, BindingResult result,
+    public String updateCat(@ModelAttribute("cat") @Valid InterviewCategory category, BindingResult result,
                             Model model) {
-        if (!result.hasErrors()){
+        if (!result.hasErrors()) {
             categoryService.saveCategory(category);
             return "redirect:/user/categories/all";
         }
@@ -105,37 +109,38 @@ public class InterviewCategoriesQuestionsController {
 
     // add a question to a category
     @GetMapping("/{id}/questions/add")
-    public String addQuestion(Model model, @PathVariable long id){
-        model.addAttribute("qa", new InterviewQuestion());
-        return "question-add";
+    public String addQuestion(Model model, @PathVariable long id) {
+        model.addAttribute("qDto", new QuestionDto());
+        InterviewCategory category = categoryService.findById(id);
+        model.addAttribute("category", category);
+        return "question-add-form";
+    }
+
+    @PostMapping("{id}/questions/add")
+    public String saveQuest(@ModelAttribute("qDto") @Valid QuestionDto qDto,
+                            BindingResult result, Model model, @PathVariable long id) {
+        if (!result.hasErrors()) {
+            questionService.createQuestionFromDto(qDto);
+            return "redirect:/user/categories/{id}/questions/all";
+        }
+        model.addAttribute("failed", "Try again");
+        return "question-add-form";
     }
 
     // display questions from a category
     @GetMapping("/{id}/questions/all")
-    public String displayQuestions(@PathVariable long id, Model model){
+    public String displayQuestions(@PathVariable long id, Model model) {
         InterviewCategory category = categoryService.findById(id);
         List<InterviewQuestion> allQuestionsById = questionService.findAllByCategoryId(id);
-        model.addAttribute("allById", allQuestionsById);
         model.addAttribute("cat", category);
+        model.addAttribute("allById", allQuestionsById);
         return "questions-all-by-category";
     }
 
-    // save new question in certain category
-    @PostMapping("/{id}/questions/add")
-    public String saveQuestion(@ModelAttribute("qa") @Valid InterviewQuestion qa, BindingResult result, Model model,
-                               @PathVariable long id){
-        if (!result.hasErrors()){
-            qa.setInterviewCategory(categoryService.findById(id));
-            questionService.saveQuestion(qa);
-            return "redirect:/user/categories/{id}/questions/all";
-        }
-        model.addAttribute("failed", "Please try again");
-        return "question-add";
-    }
 
 
     @ModelAttribute("difficulty")
-    public List<String> difficulty(){
+    public List<String> difficulty() {
         return Arrays.asList("Extremely Hard", "Difficult", "Moderate", "Easy");
     }
 
