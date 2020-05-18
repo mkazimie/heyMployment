@@ -17,7 +17,9 @@ import pl.coderslab.heymployment.service.TodoService;
 import javax.validation.Valid;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -85,9 +87,10 @@ public class TodoController {
     public String displayTodos(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<Todo> todos = todoService.findAllByUserId(currentUser.getUser().getId(), false);
         for (Todo todo : todos) {
-            LocalDate deadline = todo.getDeadline();
-            LocalDate today = LocalDate.now();
-            todo.setDaysLeft(Period.between(deadline, today).getDays());
+            LocalDateTime deadline = todo.getDeadline();
+            LocalDateTime now = LocalDateTime.now();
+            todo.setHoursLeft(Duration.between(deadline, now).toHours());
+            todo.setFormattedDeadline(deadline);
         }
         model.addAttribute("todos", todos);
         return "todo-list";

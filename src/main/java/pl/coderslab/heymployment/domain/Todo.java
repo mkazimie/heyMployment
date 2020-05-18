@@ -5,8 +5,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 @Getter
 @Setter
@@ -39,25 +43,29 @@ public class Todo {
     private Course course;
 
     @NotNull
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Future(message = "* Past Date Not Allowed")
     @Column(name = "deadline")
-    private LocalDate deadline;
+    private LocalDateTime deadline;
 
     @Column(name = "is_done")
     private boolean done;
 
-    private LocalDateTime added;
-
-    @PrePersist
-    public void prePersist(){
-        added = LocalDateTime.now();
-    }
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @Transient
-    private long daysLeft;
+    private long hoursLeft;
+
+    @Transient
+    private String formattedDeadline;
+
+    public void setFormattedDeadline(LocalDateTime deadline) {
+        DayOfWeek dayOfWeek = deadline.getDayOfWeek();
+        String displayName = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM, HH:mm");
+        this.formattedDeadline = displayName + " " + deadline.format(formatter);;
+    }
 }

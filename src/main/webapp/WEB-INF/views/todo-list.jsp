@@ -53,7 +53,7 @@
             <tbody>
             <c:forEach items="${todos}" var="todo">
                 <c:choose>
-                    <c:when test="${todo.daysLeft >= -1}">
+                    <c:when test="${todo.hoursLeft >= -5}">
                         <tr class="bg-warning">
                     </c:when>
                     <c:otherwise>
@@ -79,7 +79,7 @@
                         <td>n/d</td>
                     </c:otherwise>
                 </c:choose>
-                <td> ${todo.deadline}</td>
+                <td><strong>${todo.formattedDeadline}</strong></td>
                 <td><a href="/user/todos/confirm-delete/${todo.id}"><i class="far fa-check-circle"></i>
                 </a></td>
                 <td><a href="/user/todos/update/${todo.id}"> Edit </a> |

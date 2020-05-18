@@ -94,7 +94,8 @@
                     <form:label path="deadline"
                                 class="col-md-4 col-form-label text-md-right"> Deadline: </form:label>
                     <div class="col-md-6">
-                        <form:input path="deadline" type="date" class="form-control" placeholder="yyyy-MM-dd"/>
+                        <form:input path="deadline" type="datetime-local" class="form-control"
+                                    placeholder="yyyy-MM-dd HH:mm"/>
                         <form:errors path="deadline" cssClass="errorMessage"/>
                     </div>
                 </div>
