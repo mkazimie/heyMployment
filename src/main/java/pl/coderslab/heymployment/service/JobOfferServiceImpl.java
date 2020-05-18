@@ -58,7 +58,6 @@ public class JobOfferServiceImpl implements JobOfferService {
         jobOffer.setTitle(jobOfferDto.getTitle());
         jobOffer.setLocation(jobOfferDto.getLocation());
         jobOffer.setStatus(jobOfferDto.getStatus());
-        jobOfferRepository.save(jobOffer);
         return jobOffer;
     }
 }

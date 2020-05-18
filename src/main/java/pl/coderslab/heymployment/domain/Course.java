@@ -10,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -64,6 +65,21 @@ public class Course {
 
     @OneToMany(mappedBy = "course")
     private Set<Todo> todos = new HashSet<>();
+
+    private LocalDateTime added;
+
+    @PrePersist
+    public void prePersist(){
+        added = LocalDateTime.now();
+    }
+
+    private LocalDateTime updated;
+
+    @PreUpdate
+    public void preUpdate() {
+        updated = LocalDateTime.now();
+    }
+
 
     public void removeTopics(Topic topic) {
         if (topic != null) {

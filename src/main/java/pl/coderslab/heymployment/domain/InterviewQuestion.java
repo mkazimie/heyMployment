@@ -49,6 +49,15 @@ public class InterviewQuestion {
         added = LocalDateTime.now();
     }
 
+    private LocalDateTime updated;
+
+    @PreUpdate
+    public void preUpdate() {
+        updated = LocalDateTime.now();
+    }
+
+
+
 
 
 }

@@ -79,7 +79,7 @@
             <div class="form-group row">
                 <form:label path="roles" class="col-md-4 col-form-label text-md-right"> Set Roles: </form:label>
                 <div class="col-md-6">
-                    <form:checkboxes path="roles" items="${roles}" itemLabel="name" itemValue="id" cssClass="check-space"/>
+                    <form:radiobuttons path="roles" items="${roles}" itemLabel="name" itemValue="id" cssClass="check-space"/>
                     <form:errors path="roles" cssClass="errorMessage"/>
                 </div>
             </div>

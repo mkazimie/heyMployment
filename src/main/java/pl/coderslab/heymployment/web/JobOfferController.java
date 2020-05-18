@@ -47,6 +47,7 @@ public class JobOfferController {
             JobOffer jobOfferFromForm = jobOfferService.createJobOfferFromForm(jobOffer);
             jobOfferFromForm.setCompany(company);
             jobOfferFromForm.setUser(currentUser.getUser());
+            jobOfferService.saveJobOffer(jobOfferFromForm);
             model.addAttribute("offer", jobOfferFromForm);
             return "job-offer-detailed-form";
         }

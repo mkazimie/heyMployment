@@ -29,7 +29,7 @@
 <%@include file="header-landing.jsp" %>
 <div class="container">
     <div class="card mx-auto mt-3">
-        <div class="card-header bg-dark display-5 text-white text-center"> Sign Up Form</div>
+        <div class="card-header bg-dark display-5 text-white text-center"> Sign In Form</div>
         <div class="card-body center-content">
             <form method="post">
                 <div class="form-group row">
@@ -46,7 +46,7 @@
                 <div class="col-md-6 offset-md-4">
                     <input type="submit" class="btn btn-block btn-primary" value="Sign In">
                 </div>
-                <div class="col-md-6 offset-md-4">
+                <div class="col-md-6 offset-md-4 center-content">
                     <div class="text-center spacer"> New User?</div>
                     <a href="/register" class="btn btn-block btn-link" role="button">Create an
                         account </a>

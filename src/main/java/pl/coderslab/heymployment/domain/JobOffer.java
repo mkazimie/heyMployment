@@ -79,6 +79,21 @@ public class JobOffer {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private LocalDateTime added;
+
+    @PrePersist
+    public void prePersist(){
+        added = LocalDateTime.now();
+    }
+
+    private LocalDateTime updated;
+
+    @PreUpdate
+    public void preUpdate() {
+        updated = LocalDateTime.now();
+    }
+
+
     @Transient
     private boolean editedVersion;
 

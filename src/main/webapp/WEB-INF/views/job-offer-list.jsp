@@ -54,10 +54,10 @@
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Job Title</th>
-                <th scope="col"> Link</th>
+<%--                <th scope="col"> Link</th>--%>
                 <th scope="col"> Location</th>
                 <th scope="col"> Company</th>
-                <th scope="col"> Applied On</th>
+<%--                <th scope="col"> Applied On</th>--%>
                 <th scope="col"> +</th>
             </tr>
             </thead>
@@ -66,18 +66,18 @@
                 <tr class="text-center">
                     <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${offer.title}</th>
-                    <c:choose>
-                        <c:when test="${not empty offer.url}">
-                            <td class="align-middle"><a href="${offer.url}">See Offer</a></td>
-                        </c:when>
-                        <c:otherwise>
-                            <td></td>
-                        </c:otherwise>
-                    </c:choose>
+<%--                    <c:choose>--%>
+<%--                        <c:when test="${not empty offer.url}">--%>
+<%--                            <td class="align-middle"><a href="${offer.url}">See Offer</a></td>--%>
+<%--                        </c:when>--%>
+<%--                        <c:otherwise>--%>
+<%--                            <td></td>--%>
+<%--                        </c:otherwise>--%>
+<%--                    </c:choose>--%>
                     <td class="align-middle">${offer.location}</td>
                     <td class="align-middle"><a href="/user/companies/${offer.company.id}">${offer.company.name}</a>
                     </td>
-                    <td class="align-middle">${offer.appliedOn}</td>
+<%--                    <td class="align-middle">${offer.appliedOn}</td>--%>
                     <td class="align-middle"><a href="/user/offers/${offer.id}" class="btn btn-primary"> Details </a>
                     </td>
                 </tr>
@@ -89,18 +89,18 @@
                 <tr class="text-center">
                     <td></td>
                     <th scope="col" class="align-middle">${byStatus.title}</th>
-                    <c:choose>
-                        <c:when test="${not empty byStatus.url}">
-                            <td class="align-middle"><a href="${byStatus.url}">See Offer</a></td>
-                        </c:when>
-                        <c:otherwise>
-                            <td></td>
-                        </c:otherwise>
-                    </c:choose>
+<%--                    <c:choose>--%>
+<%--                        <c:when test="${not empty byStatus.url}">--%>
+<%--                            <td class="align-middle"><a href="${byStatus.url}">See Offer</a></td>--%>
+<%--                        </c:when>--%>
+<%--                        <c:otherwise>--%>
+<%--                            <td></td>--%>
+<%--                        </c:otherwise>--%>
+<%--                    </c:choose>--%>
                     <td class="align-middle">${byStatus.location}</td>
                     <td class="align-middle"><a href="/user/companies/${byStatus.company.id}">
                             ${byStatus.company.name}</a></td>
-                    <td class="align-middle">${byStatus.appliedOn}</td>
+<%--                    <td class="align-middle">${byStatus.appliedOn}</td>--%>
                     <td class="align-middle"><a href="/user/offers/${byStatus.id}" class="btn btn-primary"> Details </a>
                     </td>
 

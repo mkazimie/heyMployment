@@ -106,6 +106,7 @@
 
                     <div class="col-md-6 offset-md-4">
                         <input type="submit" class="btn btn-primary btn-block" value="Save">
+                        <form:hidden path="id"/>
                         <form:hidden path="title"/>
                         <form:hidden path="company"/>
                         <form:hidden path="location"/>

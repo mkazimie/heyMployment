@@ -7,10 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.UserDto;
-import pl.coderslab.heymployment.exception.UserAlreadyExistsException;
+import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
 import pl.coderslab.heymployment.security.CurrentUser;
 import pl.coderslab.heymployment.service.UserService;
 
@@ -57,7 +55,7 @@ public class HelloController {
         if (!bindingResult.hasErrors()) {
             try {
                 userService.registerUser(userDto);
-            } catch (UserAlreadyExistsException e) {
+            } catch (RecordAlreadyExistsException e) {
                 model.addAttribute("failed", "An account for that username/email already exists");
                 return "register";
             }

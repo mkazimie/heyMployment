@@ -33,6 +33,8 @@
             <strong> User Panel </strong>
         </div>
     </nav>
+
+
     <div class="container">
 
         <div class="card-deck mt-5">
@@ -42,8 +44,8 @@
                 <img class="card-img-top img-scale img-fluid" src="/img/hello-i-m-nik-MAgPyHRO0AA-unsplash.jpg"
                      alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"> Welcome to your User Panel </h5>
-                    <p class="card-text"> Access easily your to-do list, manage your saved job offers,
+                    <h5 class="card-title text-center"><strong>Welcome to your User Panel</strong></h5>
+                    <p class="card-text text-justify"> Access easily your to-do list, manage your saved job offers,
                         document your accomplished or ongoing courses or browse through your job interview prep
                         materials with just one click!
                     </p>
@@ -52,11 +54,11 @@
 
                 <%--TODOS--%>
             <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg"
+                <img class="card-img-top img-scale img-fluid" src="/img/kelly-sikkema--1_RZL8BGBM-unsplash.jpg"
                      alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"> To-Do List </h5>
-                    <p class="card-text"> Keep track of the most urgent tasks related to your job application or
+                    <h5 class="card-title text-center"><strong>To-Do List </strong> </h5>
+                    <p class="card-text text-justify"> Keep track of the most urgent tasks related to your job application or
                         ongoing courses.
                     </p>
                 </div>
@@ -67,13 +69,13 @@
                 </div>
             </div>
 
-                <%--                    view offers--%>
+                <%-- JOB OFFERS--%>
             <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/free-to-use-sounds-kOuCX7fh50U-unsplash.jpg"
+                <img class="card-img-top img-scale img-fluid" src="/img/jesus-kiteque-wn-KYaHwcis-unsplash.jpg"
                      alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"> Job Applications </h5>
-                    <p class="card-text"> Save and manage your job applications. </p>
+                    <h5 class="card-title text-center"><strong>Job Applications</strong></h5>
+                    <p class="card-text text-justify"> Store and manage your job applications. </p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
@@ -84,39 +86,16 @@
         </div>
 
 
-            <%--     ADD JOBS: no longer needed, can be access through job list--%>
-            <%--            <div class="card border-secondary">--%>
-            <%--                <img class="card-img-top img-scale img-fluid" src="/img/undraw_new_entries_nh3h.png"--%>
-            <%--                     alt="Card image cap">--%>
-            <%--                <div class="card-body">--%>
-            <%--                    <h5 class="card-title"> New Job Offer </h5>--%>
-            <%--                    <p class="card-text bg-light"> Add New Job Posting And Keep Track of it</p>--%>
-            <%--                </div>--%>
-            <%--                <div class="card-footer">--%>
-            <%--                    <a href="/user/offers/add" class="btn btn-primary"> Add </a>--%>
-            <%--                </div>--%>
-            <%--            </div>--%><%--            <div class="card border-secondary">--%>
-            <%--                <img class="card-img-top img-scale img-fluid" src="/img/undraw_new_entries_nh3h.png"--%>
-            <%--                     alt="Card image cap">--%>
-            <%--                <div class="card-body">--%>
-            <%--                    <h5 class="card-title"> New Job Offer </h5>--%>
-            <%--                    <p class="card-text bg-light"> Add New Job Posting And Keep Track of it</p>--%>
-            <%--                </div>--%>
-            <%--                <div class="card-footer">--%>
-            <%--                    <a href="/user/offers/add" class="btn btn-primary"> Add </a>--%>
-            <%--                </div>--%>
-            <%--            </div>--%>
-
 
         <div class="card-deck mt-5">
 
-                <%--     : COMPANIES--%>
+                <%-- COMPANIES--%>
             <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/annie-spratt-FSFfEQkd1sc-unsplash.jpg"
+                <img class="card-img-top img-scale img-fluid" src="/img/sean-pollock-PhYq704ffdA-unsplash.jpg"
                      alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"> Companies </h5>
-                    <p class="card-text"> Save and manage information on your future employer. </p>
+                    <h5 class="card-title text-center"><strong>Companies</strong></h5>
+                    <p class="card-text text-justify"> Store and manage information about your future employer. </p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
@@ -125,13 +104,13 @@
                 </div>
             </div>
 
-                <%--            view courses--%>
+                <%-- COURSES --%>
             <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/floriane-vita-FyD3OWBuXnY-unsplash.jpg"
+                <img class="card-img-top img-scale img-fluid" src="/img/tu-tram-pham-UOxMPRPUTOA-unsplash%20(1).jpg"
                      alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"> Courses </h5>
-                    <p class="card-text"> Document and keep track of your learning pathway. </p>
+                    <h5 class="card-title text-center"><strong>Courses</strong></h5>
+                    <p class="card-text text-justify"> Document and keep track of your learning pathway. </p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
@@ -140,13 +119,13 @@
                 </div>
             </div>
 
-                <%--    Interview Prep--%>
+                <%-- INTERVIEW PREP--%>
             <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/steve-halama-NPKk_3ZK2DY-unsplash.jpg"
+                <img class="card-img-top img-scale img-fluid" src="/img/quino-al-4SNUcHPiC8c-unsplash.jpg"
                      alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"> Interview Prep </h5>
-                    <p class="card-text"> Store and access easily all the materials necessary to
+                    <h5 class="card-title text-center"><strong>Interview Prep</strong></h5>
+                    <p class="card-text text-justify"> Store and access easily all the materials necessary to
                         succeed in a job interview. </p>
                 </div>
                 <div class="card-footer">
@@ -159,32 +138,6 @@
     </div>
 
 
-    <%--            add course: no longer necessary, can be accessed from the list of courses--%>
-    <%--            <div class="card border-secondary">--%>
-    <%--                <img class="card-img-top img-scale img-fluid" src="/img/undraw_react_y7wq.png"--%>
-    <%--                     alt="Card image cap">--%>
-    <%--                <div class="card-body">--%>
-    <%--                    <h5 class="card-title"> New Course </h5>--%>
-    <%--                    <p class="card-text bg-light"> Add a New Course You Completed or Wish To Complete </p>--%>
-    <%--                </div>--%>
-    <%--                <div class="card-footer">--%>
-    <%--                    <a href="/user/courses/add" class="btn btn-primary"> Add </a>--%>
-    <%--                </div>--%>
-    <%--            </div>--%>
-
-
-    <%--    Interviews add no longer necessary--%>
-    <%--            <div class="card border-secondary">--%>
-    <%--                <img class="card-img-top img-scale img-fluid" src="/img/undraw_updates_et2k.png"--%>
-    <%--                     alt="Card image cap">--%>
-    <%--                <div class="card-body">--%>
-    <%--                    <h5 class="card-title"> New Interview Question </h5>--%>
-    <%--                    <p class="card-text bg-light"> Come Up With An Interview Question And Store Your Answer</p>--%>
-    <%--                </div>--%>
-    <%--                <div class="card-footer">--%>
-    <%--                    <a href="#/user/interviews/add" class="btn btn-primary"> Add </a>--%>
-    <%--                </div>--%>
-    <%--            </div>--%>
 
 
 </sec:authorize>

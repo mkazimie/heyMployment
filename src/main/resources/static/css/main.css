@@ -6,21 +6,6 @@
     background-position: center;
 }
 
-.bg-img {
-    background-image: url(/img/autumn-studio-221wufG10eg-unsplash.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.bg-img-2{
-    background-image: url(/img/fabrizio-conti-T6OZ_Mf1fHQ-unsplash.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-
 .full-screen{
     display: block;
     margin-left: auto;
@@ -58,17 +43,11 @@
 
 .img-scale {
     object-fit: cover;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    max-height: 150px;
-    max-width: 300px;
+    vertical-align: middle;
+    width: 100%;;
+    height: 50%;
 }
 
-.card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
-}
 
 
 .bd-title {
@@ -115,5 +94,9 @@
 }
 .flex-item + .flex-item {
     margin-left: 2%;
+}
+
+.table-content{
+    font-size: 20px;
 }
 

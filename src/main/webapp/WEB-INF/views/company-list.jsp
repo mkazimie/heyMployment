@@ -25,7 +25,7 @@
     <title>Home Page</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 </head>
-<body class="bg-dark">
+<body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
     <nav class="navbar bg-dark static-top">
@@ -41,14 +41,16 @@
         <div class="card-deck mt-5">
             </c:if>
             <div class="card border-secondary">
+                <img class="card-img-top img-scale img-fluid" src="/img/dan-schiumarini-dcL8ESbsGis-unsplash.jpg"
+                     alt="Card image cap">
                 <div class="card-body">
-<%--                    <img class="card-img-top img-scale img-fluid" src="/img/max-bender-3rNvnnO7avY-unsplash.jpg"--%>
-<%--                         alt="Card image cap">--%>
-                    <h5 class="card-title"> Company Name: ${company.name} </h5>
-                    <h6 class="card-text"> Location: ${company.location} </h6>
+                    <h5 class="card-title text-center"> <strong>${company.name}</strong></h5>
+                    <h6 class="card-text text-center"><strong>${company.location}</strong> </h6>
                 </div>
                 <div class="card-footer">
+                    <div class="btn-wrapper text-center">
                     <a href="/user/companies/${company.id}" class="btn btn-primary"> Details </a>
+                    </div>
                 </div>
             </div>
             </c:forEach>

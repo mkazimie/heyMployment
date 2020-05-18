@@ -1,6 +1,7 @@
 package pl.coderslab.heymployment.service;
 
 import pl.coderslab.heymployment.domain.InterviewCategory;
+import pl.coderslab.heymployment.domain.dto.CategoryDto;
 import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
 
 import java.util.List;
@@ -17,7 +18,8 @@ public interface CategoryService {
 
     InterviewCategory saveCategory (InterviewCategory category);
 
-     void checkCategoryExists(InterviewCategory category) throws RecordAlreadyExistsException;
+//     void checkCategoryExists(InterviewCategory category) throws RecordAlreadyExistsException;
 
+    InterviewCategory createCategory(CategoryDto categoryDto) throws RecordAlreadyExistsException;
 
     }

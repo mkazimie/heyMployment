@@ -33,36 +33,39 @@
             <strong> Admin Panel </strong>
         </div>
     </nav>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-6 h-100 mb-3">
-                <div class="card border-secondary">
-                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_personal_info_0okl.png"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"> Add New User</h5>
-                        <p class="card-text bg-light"> Create a new simple user or admin </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/admin/users/add" class="btn btn-primary"> Let's do it ! </a>
+    <div class="container">
+        <div class="card-deck mt-5">
+            <div class="card border-secondary">
+                                    <img class="card-img-top img-scale img-fluid" src="/img/reinhart-julian-WCWgY3L_xVw-unsplash.jpg"
+                                         alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><strong>Add New User</strong> </h5>
+                    <p class="card-text bg-light text-center"> Create a new simple user or admin </p>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-wrapper text-center">
+                        <a href="/admin/users/add" class="btn btn-primary"> Go </a>
                     </div>
                 </div>
             </div>
-            <div class="col-6 h-100 mb-3">
-                <div class="card border-secondary">
-                    <img class="card-img-top img-scale img-fluid" src="/img/undraw_meet_the_team_e5b7.png"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"> View All Users </h5>
-                        <p class="card-text bg-light"> View and manage your users</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/admin/users/all" class="btn btn-primary"> Let's do it ! </a>
+            <div class="card border-secondary">
+                                <img class="card-img-top img-scale img-fluid" src="/img/siyan-ren-jN_VbffJHlI-unsplash.jpg"
+                                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><strong>View All Users</strong> </h5>
+                    <p class="card-text bg-light text-center"> View and manage your users</p>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-wrapper text-center">
+                        <a href="/admin/users/all" class="btn btn-primary"> Go </a>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+    <%--        </div>--%>
+    <%--    </div>--%>
 
 
 </sec:authorize>

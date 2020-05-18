@@ -1,8 +1,8 @@
 package pl.coderslab.heymployment.exception;
 
-public class UserAlreadyExistsException extends RuntimeException {
+public class RecordAlreadyExistsException extends RuntimeException {
 
-    public UserAlreadyExistsException (String message) {
+    public RecordAlreadyExistsException(String message) {
         super(message);
     }
 

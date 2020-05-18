@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.InterviewCategory;
 import pl.coderslab.heymployment.domain.InterviewQuestion;
 import pl.coderslab.heymployment.domain.JobOffer;
+import pl.coderslab.heymployment.domain.dto.CategoryDto;
 import pl.coderslab.heymployment.domain.dto.QuestionDto;
 import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
 import pl.coderslab.heymployment.security.CurrentUser;
@@ -40,22 +41,22 @@ public class InterviewCategoriesQuestionsController {
     // add new category
     @GetMapping("/add")
     public String addCategory(Model model) {
-        model.addAttribute("category", new InterviewCategory());
+        model.addAttribute("category", new CategoryDto());
         return "category-form";
     }
 
     // save added category
     @PostMapping("/add")
-    public String saveCategory(@ModelAttribute @Valid InterviewCategory category, BindingResult result,
+    public String saveCategory(@ModelAttribute("category") @Valid CategoryDto category, BindingResult result,
                                @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         if (!result.hasErrors()) {
             try {
-                categoryService.checkCategoryExists(category);
-                category.setUser(currentUser.getUser());
-                categoryService.saveCategory(category);
+                InterviewCategory cat = categoryService.createCategory(category);
+                cat.setUser(currentUser.getUser());
+                categoryService.saveCategory(cat);
                 return "redirect:/user/categories/all";
             } catch (RecordAlreadyExistsException e) {
-                model.addAttribute("failed", "Category already exists in database");
+                model.addAttribute("failed", "Category already exists in the database");
                 return "category-form";
             }
         }

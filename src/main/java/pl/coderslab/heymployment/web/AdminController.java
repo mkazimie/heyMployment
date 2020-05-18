@@ -8,7 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.Role;
 import pl.coderslab.heymployment.domain.User;
-import pl.coderslab.heymployment.exception.UserAlreadyExistsException;
+import pl.coderslab.heymployment.exception.NoRecordFoundException;
+import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
 import pl.coderslab.heymployment.repository.RoleRepository;
 import pl.coderslab.heymployment.security.CurrentUser;
 import pl.coderslab.heymployment.service.UserService;
@@ -45,7 +46,7 @@ public class AdminController {
         User current = allUsers.stream()
                 .filter(user -> user.getUsername().equals(currentUser.getUsername()))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("No user found"));
+                .orElseThrow(() -> new NoRecordFoundException("No user found"));
         allUsers.remove(current);
         model.addAttribute("users", allUsers);
         model.addAttribute("currentUser", currentUser.getUser());
@@ -65,7 +66,7 @@ public class AdminController {
         if (!bindingResult.hasErrors()) {
             try {
                 userService.createUser(user);
-            } catch (UserAlreadyExistsException e) {
+            } catch (RecordAlreadyExistsException e) {
                 model.addAttribute("failed", "An account for that username/email already exists");
                 return "admin-add-user";
             }

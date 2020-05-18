@@ -38,9 +38,6 @@
         <div class="card-deck mt-5">
             <div class="card border-secondary">
                 <h3 class="card-header bg-primary text-center text-white text-uppercase">${course.name}</h3>
-<%--                <img class="card-img-top img-fluid img-scale"--%>
-<%--                     src="/img/undraw_online_information_4ui6%20(1).png"--%>
-<%--                     alt="Card image cap">--%>
                 <div class="card-body">
 
                     <div class=" card-text ml-5 mr-5 mt-5">

@@ -25,7 +25,7 @@
     <title>Home Page</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 </head>
-<body class="bg-dark">
+<body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
     <nav class="navbar bg-dark static-top">
@@ -38,61 +38,71 @@
             <div class="card bg-light border-secondary">
                 <h3 class="card-header bg-primary text-center text-white text-uppercase">${company.name}</h3>
                 <div class="card-body">
-<%--                    <img class="card-img-top img-scale img-fluid" src="/img/floriane-vita-FyD3OWBuXnY-unsplash.jpg"--%>
-<%--                         alt="Card image cap">--%>
-                    <h5 class="card-title little-space"> Visit Website:
-                        <c:choose>
-                            <c:when test="${not empty company.website}">
-                                <td><a href="${company.website}"> ${company.name} Website</a></td>
-                            </c:when>
-                            <c:otherwise>
-                                <td></td>
-                            </c:otherwise>
-                        </c:choose>
-                    </h5>
-                    <h6 class="card-text little-space"><strong>Location:</strong> ${company.location} </h6>
-                    <div class="card-text little-space"><strong>Description:</strong> ${company.description} </div>
-                    <h5 class="text-center"> Job Offers:</h5>
-                    <div class="card-text">
-                        <table class="table css-serial">
-                            <thead class="thead-dark">
-                            <tr>
-                                <th>#</th>
-                                <th scope="col"> Job Title</th>
-                                <th scope="col"> Link</th>
-                                <th scope="col"> Posted on</th>
-                                <th scope="col"> Status</th>
-                                <th scope="col"> How Attractive</th>
-                                <th scope="col"> Applied On</th>
-                                <th scope="col"> Actions</th>
-                            </tr>
-                            </thead>
-                            <c:forEach items="${company.jobOffers}" var="offer">
-                            <tbody>
-                            <tr>
-                                <td></td>
-                                <td>${offer.title}</td>
-                                <c:choose>
-                                    <c:when test="${not empty offer.url}">
-                                        <td><a href="${offer.url}">See Offer</a></td>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <td>n/d</td>
-                                    </c:otherwise>
-                                </c:choose>
-                                <td>${offer.jobSearchWebsite}</td>
-                                <td>${offer.status}</td>
-                                <td>${offer.howAttractive}</td>
-                                <td>${offer.appliedOn}</td>
-                                <td><a href="/user/offers/${offer.id}">See Details</a></td>
-                            </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
+
+                    <div class=" card-text ml-5 mr-5 mt-5">
+                        <div class="row justify-content-center">
+                            <div class="row-auto">
+
+                                <table class="table table-responsive">
+                                    <tbody class="table-content text-justify">
+                                    <tr>
+                                        <th scope="row"> Visit Website</th>
+                                        <c:choose>
+                                            <c:when test="${not empty company.website}">
+                                                <td><a href="${company.website}"> ${company.name} Website</a></td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td></td>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> Location</th>
+                                        <td>${company.location}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> Description</th>
+                                        <td>${company.description}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
+                    <div class="card-text mr-5 ml-5">
+                        <h5 class="text-center mt-5"><strong> Job Offers: </strong></h5>
+                        <div class="btn-wrapper text-center mb-3">
+                            <a href="/user/offers/add" class="btn btn-primary"> + </a>
+                        </div>
+                        <div class="card-text">
+                            <table class="table css-serial">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th scope="col"> Job Title</th>
+                                    <th scope="col"> Status</th>
+                                    <th scope="col"> How Attractive</th>
+                                    <th scope="col"> Actions</th>
+                                </tr>
+                                </thead>
+                                <c:forEach items="${company.jobOffers}" var="offer">
+                                <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td>${offer.title}</td>
+                                    <td>${offer.status}</td>
+                                    <td>${offer.howAttractive}</td>
+                                    <td><a href="/user/offers/${offer.id}">See Details</a></td>
+                                </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer text-center">
                     <a href="/user/companies/update/${company.id}" class="btn btn-primary"> Edit Company Info </a>
                 </div>
             </div>

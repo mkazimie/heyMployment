@@ -6,7 +6,7 @@ import pl.coderslab.heymployment.domain.Role;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.UserDto;
 import pl.coderslab.heymployment.exception.NoRecordFoundException;
-import pl.coderslab.heymployment.exception.UserAlreadyExistsException;
+import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
 import pl.coderslab.heymployment.repository.RoleRepository;
 import pl.coderslab.heymployment.repository.UserRepository;
 
@@ -45,10 +45,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void registerUser(UserDto userDto)
-            throws UserAlreadyExistsException {
+            throws RecordAlreadyExistsException {
 
         if (findByUsername(userDto.getUsername()) != null || findByEmail(userDto.getEmail()) != null) {
-            throw new UserAlreadyExistsException("An account for that username/email already exists");
+            throw new RecordAlreadyExistsException("An account for that username/email already exists");
         } else {
             User user = new User();
             user.setFirstName(userDto.getFirstName());
@@ -90,9 +90,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(User newUser) throws UserAlreadyExistsException {
+    public User createUser(User newUser) throws RecordAlreadyExistsException {
         if (findByUsername(newUser.getUsername()) != null || findByEmail(newUser.getEmail()) != null) {
-            throw new UserAlreadyExistsException("An account for that username/email already exists");
+            throw new RecordAlreadyExistsException("An account for that username/email already exists");
         } else {
             newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
             return userRepository.save(newUser);

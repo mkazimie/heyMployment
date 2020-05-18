@@ -2,6 +2,7 @@ package pl.coderslab.heymployment.service;
 
 import org.springframework.stereotype.Service;
 import pl.coderslab.heymployment.domain.*;
+import pl.coderslab.heymployment.domain.dto.CategoryDto;
 import pl.coderslab.heymployment.exception.NoRecordFoundException;
 import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
 import pl.coderslab.heymployment.repository.InterviewCategoryRepository;
@@ -58,11 +59,25 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.save(category);
     }
 
-    // FIX METHOD FOR NOT ADDING A DUPLICATE NAME OF CATEGORY
     @Override
-    public void checkCategoryExists(InterviewCategory category) throws RecordAlreadyExistsException {
-        if (categoryRepository.findByName(category.getName()) != null) {
-            throw new RecordAlreadyExistsException("Record already exists in database");
+    public InterviewCategory createCategory(CategoryDto categoryDto) throws RecordAlreadyExistsException{
+        if (findByName(categoryDto.getName()) != null){
+            throw new RecordAlreadyExistsException("Record already exists in the database");
+        } else {
+            InterviewCategory category = new InterviewCategory();
+            category.setName(categoryDto.getName());
+            return category;
         }
     }
+
+
+
+    // FIX METHOD FOR NOT ADDING A DUPLICATE NAME OF CATEGORY
+//    @Override
+//    public void checkCategoryExists(InterviewCategory category) throws RecordAlreadyExistsException {
+//        if (categoryRepository.findByName(category.getName()) != null) {
+//            throw new RecordAlreadyExistsException("Record already exists in database");
+//        }
+//    }
+
 }

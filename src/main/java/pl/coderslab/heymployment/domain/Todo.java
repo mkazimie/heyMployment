@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -45,6 +46,21 @@ public class Todo {
 
     @Column(name = "is_done")
     private boolean done;
+
+    private LocalDateTime added;
+
+    @PrePersist
+    public void prePersist(){
+        added = LocalDateTime.now();
+    }
+
+    private LocalDateTime updated;
+
+    @PreUpdate
+    public void preUpdate() {
+        updated = LocalDateTime.now();
+    }
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
