@@ -14,8 +14,14 @@ import pl.coderslab.heymployment.service.CompanyService;
 import pl.coderslab.heymployment.service.JobOfferService;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Past;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user/offers/")
@@ -42,7 +48,7 @@ public class JobOfferController {
     @PostMapping("/add")
     public String addJobOffer(@ModelAttribute("jobOffer") @Valid JobOfferDto jobOffer, BindingResult result,
                               @AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        if(!result.hasErrors()){
+        if (!result.hasErrors()) {
             Company company = companyService.getCompanyOrCreateNew(jobOffer);
             JobOffer jobOfferFromForm = jobOfferService.createJobOfferFromForm(jobOffer);
             jobOfferFromForm.setCompany(company);
@@ -72,6 +78,7 @@ public class JobOfferController {
     @GetMapping("/all")
     public String displayJobOffers(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<JobOffer> allJobOffers = jobOfferService.findAllJobOffers(currentUser.getUser().getId());
+        dateFormatConverted(allJobOffers);
         model.addAttribute("allHowMany", allJobOffers.size());
         model.addAttribute("offers", allJobOffers);
         return "job-offer-list";
@@ -82,6 +89,7 @@ public class JobOfferController {
     public String displayJobOffersByStatus(@PathVariable String name,
                                            @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         List<JobOffer> allByStatus = jobOfferService.findAllByStatus(currentUser.getUser().getId(), name);
+        dateFormatConverted(allByStatus);
         model.addAttribute("allByStatus", allByStatus);
         model.addAttribute("specificHowMany", allByStatus.size());
         return "job-offer-list";
@@ -89,7 +97,7 @@ public class JobOfferController {
 
     // display detailed view of a job offer by id
     @GetMapping("/{id}")
-    public String displayDetails(Model model, @PathVariable long id){
+    public String displayDetails(Model model, @PathVariable long id) {
         JobOffer jobOffer = jobOfferService.findById(id);
         model.addAttribute("jobOffer", jobOffer);
         return "job-offer-detailed-view";
@@ -106,8 +114,9 @@ public class JobOfferController {
 
     // process job offer editing
     @PostMapping("/update")
-    public String updateOffer(@ModelAttribute @Valid JobOffer jobOffer, BindingResult result, Model model){
-        if (!result.hasErrors()){
+    public String updateOffer(@ModelAttribute ("jobOffer") @Valid JobOffer jobOffer, BindingResult result,
+                              Model model) {
+        if (!result.hasErrors()) {
             Company company = companyService.findByName(jobOffer.getCompany().getName());
             jobOffer.setCompany(company);
             jobOfferService.saveJobOffer(jobOffer);
@@ -133,10 +142,31 @@ public class JobOfferController {
         JobOffer offer = jobOfferService.findById(id);
         Company company = companyService.findByName(offer.getCompany().getName());
         jobOfferService.deleteJobOffer(id);
-        if (company.getJobOffers().size() == 0){
+        if (company.getJobOffers().size() == 0) {
             companyService.deleteCompany(company.getId());
         }
         return "redirect:/user/offers/all";
+    }
+
+
+    public void dateFormatConverted(List<JobOffer> jobOffers) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM, HH:mm");
+        for (JobOffer offer : jobOffers) {
+            LocalDateTime updated = offer.getUpdated();
+            if (updated != null) {
+                offer.setFormatUpdated(updated.format(formatter));
+                //format updated record timestamp
+                offer.setDaysFromUpdated(Duration.between(updated, LocalDateTime.now()).toDays());
+                // display how many days ago updated
+            }
+            LocalDate appliedOn = offer.getAppliedOn();
+            if (appliedOn != null) {
+                offer.setDaysFromApplied(Period.between(appliedOn, LocalDate.now()).getDays());
+//                //how many days ago applied
+            }
+
+        }
+
     }
 
 

@@ -8,10 +8,13 @@ import org.springframework.format.datetime.DateFormatter;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 @Getter
@@ -79,12 +82,6 @@ public class JobOffer {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private LocalDateTime added;
-
-    @PrePersist
-    public void prePersist(){
-        added = LocalDateTime.now();
-    }
 
     private LocalDateTime updated;
 
@@ -93,8 +90,18 @@ public class JobOffer {
         updated = LocalDateTime.now();
     }
 
-
     @Transient
     private boolean editedVersion;
+
+    @Transient
+    private long daysFromApplied;
+
+    @Transient
+    private long daysFromUpdated;
+
+    @Transient
+    private String formatUpdated;
+
+
 
 }

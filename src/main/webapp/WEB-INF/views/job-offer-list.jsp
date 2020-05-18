@@ -54,32 +54,40 @@
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Job Title</th>
-<%--                <th scope="col"> Link</th>--%>
                 <th scope="col"> Location</th>
                 <th scope="col"> Company</th>
-<%--                <th scope="col"> Applied On</th>--%>
+                <th scope="col"> Modified </th>
                 <th scope="col"> +</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${offers}" var="offer">
-                <tr class="text-center">
-                    <td class="align-middle"></td>
-                    <th scope="col" class="align-middle">${offer.title}</th>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${not empty offer.url}">--%>
-<%--                            <td class="align-middle"><a href="${offer.url}">See Offer</a></td>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <td></td>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-                    <td class="align-middle">${offer.location}</td>
-                    <td class="align-middle"><a href="/user/companies/${offer.company.id}">${offer.company.name}</a>
-                    </td>
-<%--                    <td class="align-middle">${offer.appliedOn}</td>--%>
-                    <td class="align-middle"><a href="/user/offers/${offer.id}" class="btn btn-primary"> Details </a>
-                    </td>
+                <c:choose>
+                    <c:when test="${offer.daysFromUpdated >= 7}">
+                        <tr class="bg-warning text-center">
+                    </c:when>
+                    <c:otherwise>
+                        <tr class="text-center">
+                    </c:otherwise>
+                </c:choose>
+                <td class="align-middle"></td>
+                <th scope="col" class="align-middle">${offer.title}</th>
+                <td class="align-middle">${offer.location}</td>
+                <td class="align-middle"><a href="/user/companies/${offer.company.id}">${offer.company.name}</a>
+                </td>
+                <c:choose>
+                    <c:when test="${offer.daysFromUpdated == 0}">
+                        <td class="align-middle"> Today </td>
+                    </c:when>
+                    <c:when test="${offer.daysFromUpdated == 1}">
+                        <td class="align-middle"> Yesterday </td>
+                    </c:when>
+                    <c:otherwise>
+                        <td class="align-middle">${offer.daysFromUpdated} days ago</td>
+                    </c:otherwise>
+                </c:choose>
+                <td class="align-middle"><a href="/user/offers/${offer.id}" class="btn btn-primary"> Details </a>
+                </td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -89,18 +97,20 @@
                 <tr class="text-center">
                     <td></td>
                     <th scope="col" class="align-middle">${byStatus.title}</th>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${not empty byStatus.url}">--%>
-<%--                            <td class="align-middle"><a href="${byStatus.url}">See Offer</a></td>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <td></td>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
                     <td class="align-middle">${byStatus.location}</td>
                     <td class="align-middle"><a href="/user/companies/${byStatus.company.id}">
                             ${byStatus.company.name}</a></td>
-<%--                    <td class="align-middle">${byStatus.appliedOn}</td>--%>
+                    <c:choose>
+                        <c:when test="${byStatus.daysFromUpdated == 0}">
+                            <td class="align-middle"> Today </td>
+                        </c:when>
+                        <c:when test="${byStatus.daysFromUpdated == 1}">
+                            <td class="align-middle"> Yesterday </td>
+                        </c:when>
+                        <c:otherwise>
+                            <td class="align-middle">${byStatus.daysFromUpdated} days ago</td>
+                        </c:otherwise>
+                    </c:choose>
                     <td class="align-middle"><a href="/user/offers/${byStatus.id}" class="btn btn-primary"> Details </a>
                     </td>
 

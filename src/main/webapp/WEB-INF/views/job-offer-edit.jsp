@@ -134,6 +134,7 @@
                         <input type="submit" class="btn btn-primary btn-block" value="Save">
                         <form:hidden path="editedVersion" value="true"/>
                         <form:hidden path="user.id"/>
+                        <form:hidden path="id"/>
                     </div>
                 </form:form>
             </div>
