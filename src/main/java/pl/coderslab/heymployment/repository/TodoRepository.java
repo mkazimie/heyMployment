@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface TodoRepository extends JpaRepository<Todo, Long > {
 
-    @Query("SELECT t FROM Todo t WHERE t.user.id = ?1 and t.done = ?2 ORDER BY t.deadline DESC")
+    @Query("SELECT t FROM Todo t WHERE t.user.id = ?1 and t.done = ?2 ORDER BY t.deadline")
     List<Todo> findAllByUserId(long id, boolean done);
 }
 

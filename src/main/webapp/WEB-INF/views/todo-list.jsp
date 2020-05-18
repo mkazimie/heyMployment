@@ -39,44 +39,52 @@
             <thead class="thead-dark">
             <tr>
                 <th>#</th>
-                <th scope="col"> Name </th>
-                <th scope="col"> Description </th>
-                <th scope="col"> Related Job Offer </th>
-                <th scope="col"> Related Course </th>
-                <th scope="col"> Deadline </th>
-                <th scope="col"> Done? </th>
-                <th scope="col"> Actions </th>
+                <th scope="col"> Name</th>
+                <th scope="col"> Description</th>
+                <th scope="col"> Related Job Offer</th>
+                <th scope="col"> Related Course</th>
+                <th scope="col"> Deadline</th>
+                <th scope="col"> Done?</th>
+                <th scope="col"> Actions</th>
             </tr>
             </thead>
 
+
             <tbody>
             <c:forEach items="${todos}" var="todo">
-                <tr>
-                    <td></td>
-                    <td>${todo.name}</td>
-                    <td>${todo.description}</td>
-                    <c:choose>
-                        <c:when test="${not empty todo.jobOffer}">
-                            <td><a href="/user/offers/${todo.jobOffer.id}">${todo.jobOffer.title}</a></td>
-                        </c:when>
-                        <c:otherwise>
-                            <td>n/d</td>
-                        </c:otherwise>
-                    </c:choose>
-                    <c:choose>
-                        <c:when test="${not empty todo.course}">
-                            <td><a href="/user/courses/${todo.course.id}">${todo.course.name}</a></td>
-                        </c:when>
-                        <c:otherwise>
-                            <td>n/d</td>
-                        </c:otherwise>
-                    </c:choose>
-                    <td> ${todo.deadline}</td>
-                    <td><a href="/user/todos/confirm-delete/${todo.id}"><i class="far fa-check-circle"></i>
-                    </a></td>
-                    <td><a href="/user/todos/update/${todo.id}"> Edit </a> |
-                        <a href="/user/todos/confirm-delete/${todo.id}"> Delete </a>
-                    </td>
+                <c:choose>
+                    <c:when test="${todo.daysLeft >= -1}">
+                        <tr class="bg-warning">
+                    </c:when>
+                    <c:otherwise>
+                        <tr>
+                    </c:otherwise>
+                </c:choose>
+                <td></td>
+                <td>${todo.name}</td>
+                <td>${todo.description}</td>
+                <c:choose>
+                    <c:when test="${not empty todo.jobOffer}">
+                        <td><a href="/user/offers/${todo.jobOffer.id}">${todo.jobOffer.title}</a></td>
+                    </c:when>
+                    <c:otherwise>
+                        <td>n/d</td>
+                    </c:otherwise>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${not empty todo.course}">
+                        <td><a href="/user/courses/${todo.course.id}">${todo.course.name}</a></td>
+                    </c:when>
+                    <c:otherwise>
+                        <td>n/d</td>
+                    </c:otherwise>
+                </c:choose>
+                <td> ${todo.deadline}</td>
+                <td><a href="/user/todos/confirm-delete/${todo.id}"><i class="far fa-check-circle"></i>
+                </a></td>
+                <td><a href="/user/todos/update/${todo.id}"> Edit </a> |
+                    <a href="/user/todos/confirm-delete/${todo.id}"> Delete </a>
+                </td>
                 </tr>
             </c:forEach>
             </tbody>

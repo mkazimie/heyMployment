@@ -54,15 +54,10 @@ public class Todo {
         added = LocalDateTime.now();
     }
 
-    private LocalDateTime updated;
-
-    @PreUpdate
-    public void preUpdate() {
-        updated = LocalDateTime.now();
-    }
-
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Transient
+    private long daysLeft;
 }

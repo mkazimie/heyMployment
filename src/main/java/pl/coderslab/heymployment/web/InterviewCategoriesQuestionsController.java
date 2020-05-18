@@ -144,7 +144,8 @@ public class InterviewCategoriesQuestionsController {
         return "questions-all-by-category";
     }
 
-    // display detailed view of a question
+    // display detailed view of a question 
+    // *
     @GetMapping("/{id}/questions/{questionId}")
     public String displayDetails(Model model, @PathVariable long id, @PathVariable long questionId){
         InterviewQuestion question = questionService.findById(questionId);
@@ -163,6 +164,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
     // update record
+    // *
     @PostMapping("/{id}/questions/update")
     public String updateQuestion(@ModelAttribute("qa") @Valid InterviewQuestion qa, BindingResult result,
                             Model model, @PathVariable long id) {
@@ -179,6 +181,7 @@ public class InterviewCategoriesQuestionsController {
 
 
     // confirm-delete a category
+    // *
     @GetMapping("/{id}/questions/confirm-delete/{questionId}")
     public String confirmDeleteQuestion(@PathVariable long id, @PathVariable long questionId, Model model) {
         InterviewQuestion qa = questionService.findById(questionId);
@@ -187,6 +190,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
     // delete a question
+    // *
     @GetMapping("/{id}/questions/delete/{questionId}")
     public String deleteCat(@PathVariable long id, @PathVariable long questionId) {
         questionService.deleteQuestion(questionId);

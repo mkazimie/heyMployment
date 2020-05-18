@@ -17,8 +17,6 @@ public interface CompanyService {
 
     void deleteCompany(long id);
 
-    List<Company> findAllCompanies();
-
     List<Company> findAllByUser(User user);
 
     Company getCompanyOrCreateNew (JobOfferDto jobOfferDto);

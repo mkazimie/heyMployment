@@ -72,12 +72,5 @@ public class CategoryServiceImpl implements CategoryService {
 
 
 
-    // FIX METHOD FOR NOT ADDING A DUPLICATE NAME OF CATEGORY
-//    @Override
-//    public void checkCategoryExists(InterviewCategory category) throws RecordAlreadyExistsException {
-//        if (categoryRepository.findByName(category.getName()) != null) {
-//            throw new RecordAlreadyExistsException("Record already exists in database");
-//        }
-//    }
 
 }
