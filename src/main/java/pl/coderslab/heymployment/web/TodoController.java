@@ -15,12 +15,11 @@ import pl.coderslab.heymployment.service.JobOfferService;
 import pl.coderslab.heymployment.service.TodoService;
 
 import javax.validation.Valid;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 @RequestMapping("/user/todos")
@@ -53,7 +52,7 @@ public class TodoController {
             if (!(todo.getJobOffer() == null)) {
                 todo.setJobOffer(todo.getJobOffer());
             }
-            if(!(todo.getCourse()==null)){
+            if (!(todo.getCourse() == null)) {
                 todo.setCourse(todo.getCourse());
             }
             todoService.saveTodo(todo);
@@ -88,13 +87,17 @@ public class TodoController {
         List<Todo> todos = todoService.findAllByUserId(currentUser.getUser().getId(), false);
         for (Todo todo : todos) {
             LocalDateTime deadline = todo.getDeadline();
-            LocalDateTime now = LocalDateTime.now();
-            todo.setHoursLeft(Duration.between(deadline, now).toHours());
             todo.setFormattedDeadline(deadline);
+//            todo.setHoursLeft(Duration.between(deadline, LocalDateTime.now()).toHours());
+//            DayOfWeek dayOfWeek = deadline.getDayOfWeek();
+//            String displayName = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM, HH:mm");
+//            todo.setFormattedDeadline(displayName + " " + deadline.format(formatter));
         }
         model.addAttribute("todos", todos);
         return "todo-list";
     }
+
 
     // edit a to-do
     @GetMapping("/update/{id}")
@@ -125,7 +128,7 @@ public class TodoController {
     }
 
     @ModelAttribute("courses")
-    public List<Course> courseList(@AuthenticationPrincipal CurrentUser currentUser){
+    public List<Course> courseList(@AuthenticationPrincipal CurrentUser currentUser) {
         return courseService.findAll(currentUser.getUser().getId());
     }
 

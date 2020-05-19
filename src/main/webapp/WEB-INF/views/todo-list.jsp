@@ -30,14 +30,25 @@
 <body>
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <div class="container mt-5 mx-auto ml-4 mr-4">
-        <h1 class="bd-title"> My TO-DO List</h1>
-        <h2><a href="/user/todos/add" class="btn btn-primary"> + </a>
-        </h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> To Do List </li>
+        </ol>
+    </nav>
 
-        <table class="table css-serial">
+
+    <div class="container mt-5 mx-auto ml-4 mr-4">
+        <div class="row">
+            <div class="col-sm-10 col-12">
+                <h1 class="bd-title"> My To Do List <a href="/user/todos/add" class="btn btn-primary"> +
+                </a></h1>
+            </div>
+        </div>
+
+        <table class="table table-striped css-serial">
             <thead class="thead-dark">
-            <tr>
+            <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Name</th>
                 <th scope="col"> Description</th>
@@ -52,37 +63,42 @@
 
             <tbody>
             <c:forEach items="${todos}" var="todo">
-                <c:choose>
-                    <c:when test="${todo.hoursLeft >= -5}">
-                        <tr class="bg-warning">
-                    </c:when>
-                    <c:otherwise>
-                        <tr>
-                    </c:otherwise>
-                </c:choose>
+<%--                <c:choose>--%>
+<%--                    <c:when test="${todo.hoursLeft >= -5}">--%>
+<%--                        <tr class="bg-warning">--%>
+<%--                    </c:when>--%>
+<%--                    <c:when test="${todo.hoursLeft >= 0}">--%>
+<%--                        <tr class="bg-danger">--%>
+<%--                    </c:when>--%>
+<%--                    <c:otherwise>--%>
+<%--                        <tr>--%>
+<%--                    </c:otherwise>--%>
+<%--                </c:choose>--%>
+                <tr class="text-center">
                 <td></td>
-                <td>${todo.name}</td>
-                <td>${todo.description}</td>
+                <td class="align-middle">${todo.name}</td>
+                <td class="align-middle">${todo.description}</td>
                 <c:choose>
                     <c:when test="${not empty todo.jobOffer}">
-                        <td><a href="/user/offers/${todo.jobOffer.id}">${todo.jobOffer.title}</a></td>
+                        <td class="align-middle"><a href="/user/offers/${todo.jobOffer.id}">${todo.jobOffer.title}</a></td>
                     </c:when>
                     <c:otherwise>
-                        <td>n/d</td>
+                        <td class="align-middle">n/d</td>
                     </c:otherwise>
                 </c:choose>
                 <c:choose>
                     <c:when test="${not empty todo.course}">
-                        <td><a href="/user/courses/${todo.course.id}">${todo.course.name}</a></td>
+                        <td class="align-middle"><a href="/user/courses/${todo.course.id}">${todo.course.name}</a></td>
                     </c:when>
                     <c:otherwise>
-                        <td>n/d</td>
+                        <td class="align-middle">n/d</td>
                     </c:otherwise>
                 </c:choose>
-                <td><strong>${todo.formattedDeadline}</strong></td>
-                <td><a href="/user/todos/confirm-delete/${todo.id}"><i class="far fa-check-circle"></i>
+                <td class="align-middle">${todo.formattedDeadline}</td>
+
+                <td class="align-middle"><a href="/user/todos/confirm-delete/${todo.id}"><i class="far fa-check-circle"></i>
                 </a></td>
-                <td><a href="/user/todos/update/${todo.id}"> Edit </a> |
+                <td class="align-middle"><a href="/user/todos/update/${todo.id}"> Edit </a> |
                     <a href="/user/todos/confirm-delete/${todo.id}"> Delete </a>
                 </td>
                 </tr>

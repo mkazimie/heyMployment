@@ -30,17 +30,29 @@
 <body>
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <div class="container mt-5 mx-auto ml-4 mr-4">
-        <h1 class="bd-title"> Questions from Category ${cat.name} </h1>
-        <h2><a href="/user/categories/${cat.id}/questions/add" class="btn btn-primary"> + </a>
-        </h2>
 
-        <table class="table css-serial">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="/user/categories/all">Categories</a></li>
+            <li class="breadcrumb-item active" aria-current="page">${cat.name} Questions</li>
+        </ol>
+    </nav>
+
+    <div class="container mt-5 mx-auto ml-4 mr-4">
+        <div class="row">
+            <div class="col-sm-10 col-12">
+                <h1 class="bd-title"> Questions <a
+                        href="/user/categories/${cat.id}/questions/add" class="btn btn-primary"> + </a></h1>
+            </div>
+        </div>
+
+        <table class="table table-striped css-serial">
             <thead class="thead-dark">
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Question</th>
-                <th scope="col"> ID </th>
+                <th scope="col"> ID</th>
                 <th scope="col"> Has Answer</th>
                 <th scope="col"> Is Ready</th>
                 <th scope="col"> Added</th>
@@ -72,7 +84,8 @@
                     </c:choose>
                     <td class="align-middle">${qa.added}</td>
 
-                    <td class="align-middle"><a href="/user/categories/${cat.id}/questions/${qa.id}">
+                    <td class="align-middle"><a href="/user/categories/${cat.id}/questions/${qa.id}"
+                                                class="btn btn-primary">
                         Details
                     </a></td>
                 </tr>

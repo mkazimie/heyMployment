@@ -30,6 +30,20 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="/user/categories/all"> Categories</a></li>
+            <li class="breadcrumb-item">
+                <a href="/user/categories/${cat.id}/questions/all">${cat.name}
+                    Questions</a></li>
+            <li class="breadcrumb-item">
+                <a href="/user/categories/${cat.id}/questions/${questionId}">
+                    Details </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Edit </li>
+        </ol>
+    </nav>
+
     <div class="container">
         <div class="card mx-auto mt-3">
             <div class="card-header bg-dark display-5 text-white text-center"> Edit Interview QA </div>

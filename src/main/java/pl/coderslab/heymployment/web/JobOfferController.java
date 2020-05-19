@@ -99,6 +99,7 @@ public class JobOfferController {
     @GetMapping("/{id}")
     public String displayDetails(Model model, @PathVariable long id) {
         JobOffer jobOffer = jobOfferService.findById(id);
+        jobOffer.getTodos().forEach(todo -> todo.setFormattedDeadline(todo.getDeadline()));
         model.addAttribute("jobOffer", jobOffer);
         return "job-offer-detailed-view";
     }

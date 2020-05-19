@@ -30,6 +30,14 @@
 <body class="bg-light">
 <%@include file="header-landing.jsp" %>
 <sec:authorize access="isAuthenticated()">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="/user/todos/all"> To Do List </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Confirm Action </li>
+        </ol>
+    </nav>
+
     <div class="container mt-5">
         <div class="card mx-auto text-center">
             <h5 class="card-header bg-warning">Confirm Action</h5>

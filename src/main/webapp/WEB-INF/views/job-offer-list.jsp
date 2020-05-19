@@ -28,14 +28,27 @@
 <body>
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <div class="container">
-        <h1 class="bd-title"> My Job Offers</h1>
-        <h2><a href="/user/offers/add" class="btn btn-primary"> Add New Offer </a>
-        </h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Job Offers </li>
+        </ol>
+    </nav>
 
-        <h5 class="text-center">
-            <button type="button" class="btn btn-primary">${allHowMany} ${specificHowMany}</button>
-        </h5>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-10 col-12">
+                <h1 class="bd-title"> My Job Offers <a href="/user/offers/add" class="btn btn-primary"> +
+                </a></h1>
+            </div>
+        </div>
+
+        <div class="btn-wrapper text-center mt-5">
+            <button type="button" class="btn btn-dark">${allHowMany} ${specificHowMany}</button>
+        </div>
+
         <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
             <div class="container d-flex align-items-md-center py-2">
                 <nav class="nav mx-auto">
@@ -49,43 +62,25 @@
             </div>
         </nav>
 
-        <table class="table css-serial">
+
+        <table class="table table-striped css-serial">
             <thead class="thead-dark">
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Job Title</th>
                 <th scope="col"> Location</th>
                 <th scope="col"> Company</th>
-                <th scope="col"> Modified </th>
                 <th scope="col"> +</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${offers}" var="offer">
-                <c:choose>
-                    <c:when test="${offer.daysFromUpdated >= 7}">
-                        <tr class="bg-warning text-center">
-                    </c:when>
-                    <c:otherwise>
-                        <tr class="text-center">
-                    </c:otherwise>
-                </c:choose>
+                <tr class="text-center">
                 <td class="align-middle"></td>
                 <th scope="col" class="align-middle">${offer.title}</th>
                 <td class="align-middle">${offer.location}</td>
                 <td class="align-middle"><a href="/user/companies/${offer.company.id}">${offer.company.name}</a>
                 </td>
-                <c:choose>
-                    <c:when test="${offer.daysFromUpdated == 0}">
-                        <td class="align-middle"> Today </td>
-                    </c:when>
-                    <c:when test="${offer.daysFromUpdated == 1}">
-                        <td class="align-middle"> Yesterday </td>
-                    </c:when>
-                    <c:otherwise>
-                        <td class="align-middle">${offer.daysFromUpdated} days ago</td>
-                    </c:otherwise>
-                </c:choose>
                 <td class="align-middle"><a href="/user/offers/${offer.id}" class="btn btn-primary"> Details </a>
                 </td>
                 </tr>
@@ -95,25 +90,13 @@
             <tbody>
             <c:forEach items="${allByStatus}" var="byStatus">
                 <tr class="text-center">
-                    <td></td>
+                    <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${byStatus.title}</th>
                     <td class="align-middle">${byStatus.location}</td>
                     <td class="align-middle"><a href="/user/companies/${byStatus.company.id}">
                             ${byStatus.company.name}</a></td>
-                    <c:choose>
-                        <c:when test="${byStatus.daysFromUpdated == 0}">
-                            <td class="align-middle"> Today </td>
-                        </c:when>
-                        <c:when test="${byStatus.daysFromUpdated == 1}">
-                            <td class="align-middle"> Yesterday </td>
-                        </c:when>
-                        <c:otherwise>
-                            <td class="align-middle">${byStatus.daysFromUpdated} days ago</td>
-                        </c:otherwise>
-                    </c:choose>
                     <td class="align-middle"><a href="/user/offers/${byStatus.id}" class="btn btn-primary"> Details </a>
                     </td>
-
                 </tr>
             </c:forEach>
             </tbody>

@@ -28,16 +28,24 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <nav class="navbar bg-dark static-top">
-        <div class="navbar-brand main-logo ml-4 text-white">
-            <strong> User Panel </strong>
-        </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active ml-4" aria-current="page"><i class="fas fa-home"></i> Home </li>
+        </ol>
     </nav>
+
+
+<%--    <nav class="navbar bg-dark static-top">--%>
+<%--        <div class="navbar-brand main-logo ml-4 text-white">--%>
+<%--            <strong> User Panel </strong>--%>
+<%--        </div>--%>
+<%--    </nav>--%>
+
 
 
     <div class="container">
 
-        <div class="card-deck mt-5">
+        <div class="card-deck mt-3">
 
                 <%--   WELCOME --%>
             <div class="card border-secondary bg-dark text-white">
@@ -45,27 +53,10 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Welcome to your User Panel</strong></h5>
-                    <p class="card-text text-justify"> Access easily your to-do list, manage your saved job offers,
-                        document your accomplished or ongoing courses or browse through your job interview prep
-                        materials with just one click!
+                    <p class="card-text text-justify"> From here you can easily access your saved job offers, keep
+                        track of your to-do list, document your accomplished or ongoing courses and get ready for
+                        your job interview.
                     </p>
-                </div>
-            </div>
-
-                <%--TODOS--%>
-            <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/kelly-sikkema--1_RZL8BGBM-unsplash.jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><strong>To-Do List </strong> </h5>
-                    <p class="card-text text-justify"> Keep track of the most urgent tasks related to your job application or
-                        ongoing courses.
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <div class="btn-wrapper text-center">
-                        <a href="/user/todos/all" class="btn btn-primary"> Go </a>
-                    </div>
                 </div>
             </div>
 
@@ -83,11 +74,30 @@
                     </div>
                 </div>
             </div>
+
+                <%--TODOS--%>
+            <div class="card border-secondary">
+                <img class="card-img-top img-scale img-fluid" src="/img/kelly-sikkema--1_RZL8BGBM-unsplash.jpg"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><strong>To-Do List </strong></h5>
+                    <p class="card-text text-justify"> Keep track of the most urgent tasks related to your job
+                        applications or
+                        ongoing courses.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-wrapper text-center">
+                        <a href="/user/todos/all" class="btn btn-primary"> Go </a>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
 
-
-        <div class="card-deck mt-5">
+        <div class="card-deck mt-3">
 
                 <%-- COMPANIES--%>
             <div class="card border-secondary">
@@ -95,7 +105,7 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Companies</strong></h5>
-                    <p class="card-text text-justify"> Store and manage information about your future employer. </p>
+                    <p class="card-text text-justify"> Store information about your future employer. </p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
@@ -110,7 +120,7 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Courses</strong></h5>
-                    <p class="card-text text-justify"> Document and keep track of your learning pathway. </p>
+                    <p class="card-text text-justify"> Document your learning pathway. </p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
@@ -136,8 +146,6 @@
             </div>
         </div>
     </div>
-
-
 
 
 </sec:authorize>

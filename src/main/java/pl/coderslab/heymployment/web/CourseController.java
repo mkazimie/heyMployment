@@ -76,6 +76,7 @@ public class CourseController {
     @GetMapping("/{id}")
     public String displayDetails(Model model, @PathVariable long id) {
         Course course = courseService.findById(id);
+        course.getTodos().forEach(todo -> todo.setFormattedDeadline(todo.getDeadline()));
         model.addAttribute("course", course);
         return "course-detailed-view";
     }

@@ -17,7 +17,7 @@ import java.util.Locale;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="to_dos")
+@Table(name = "to_dos")
 public class Todo {
 
     @Id
@@ -35,7 +35,7 @@ public class Todo {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name= "job_offer_id")
+    @JoinColumn(name = "job_offer_id")
     private JobOffer jobOffer;
 
     @ManyToOne
@@ -66,6 +66,6 @@ public class Todo {
         DayOfWeek dayOfWeek = deadline.getDayOfWeek();
         String displayName = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM, HH:mm");
-        this.formattedDeadline = displayName + " " + deadline.format(formatter);;
+        this.formattedDeadline = displayName + " " + deadline.format(formatter);
     }
 }

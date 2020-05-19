@@ -30,19 +30,32 @@
 <body>
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <div class="container mt-5 mx-auto ml-4 mr-4">
-        <h1 class="bd-title"> Categories </h1>
-        <h2><a href="/user/categories/add" class="btn btn-primary"> + </a>
-        </h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Categories</li>
+        </ol>
+    </nav>
 
-        <table class="table css-serial">
+
+
+    <div class="container mt-5 mx-auto ml-4 mr-4">
+        <div class="row">
+            <div class="col-sm-10 col-12">
+                <h1 class="bd-title"> Categories <a href="/user/categories/add" class="btn btn-primary"> +
+                </a></h1>
+            </div>
+        </div>
+
+
+        <table class="table table-striped css-serial">
             <thead class="thead-dark">
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Name</th>
                 <th scope="col"> Number of Questions</th>
-                <th scope="col"> See Questions </th>
-                <th scope="col"> Add a question </th>
+                <th scope="col"> See Questions</th>
+                <th scope="col"> Add a question</th>
                 <th scope="col"> Actions</th>
             </tr>
             </thead>
@@ -53,10 +66,12 @@
                     <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${category.name}</th>
                     <td class="align-middle">${category.interviewQuestions.size()}</td>
-                    <td class="align-middle"><a href="/user/categories/${category.id}/questions/all">Questions</a></td>
-                    <td class="align-middle"><a href="/user/categories/${category.id}/questions/add">Add</a></td>
+                    <td class="align-middle"><a href="/user/categories/${category.id}/questions/all"
+                                                class="btn btn-primary">Questions</a></td>
+                    <td class="align-middle"><a href="/user/categories/${category.id}/questions/add"
+                                                class="btn btn-primary"> + </a></td>
                     <td class="align-middle"><a href="/user/categories/update/${category.id}">Edit</a> |
-                    <a href="/user/categories/confirm-delete/${category.id}">Delete</a></td>
+                        <a href="/user/categories/confirm-delete/${category.id}">Delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>

@@ -28,11 +28,19 @@
 <body class="bg-dark">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="hasRole('ADMIN')">
-    <nav class="navbar bg-dark static-top">
-        <div class="navbar-brand main-logo ml-4 text-white">
-            <strong> Admin Panel </strong>
-        </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-user-shield"></i> Admin Panel </li>
+        </ol>
     </nav>
+
+
+<%--    <nav class="navbar bg-dark static-top">--%>
+<%--        <div class="navbar-brand main-logo ml-4 text-white">--%>
+<%--            <strong> Admin Panel </strong>--%>
+<%--        </div>--%>
+<%--    </nav>--%>
     <div class="container">
         <div class="card-deck mt-5">
             <div class="card border-secondary">
@@ -40,7 +48,7 @@
                                          alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Add New User</strong> </h5>
-                    <p class="card-text bg-light text-center"> Create a new simple user or admin </p>
+                    <p class="card-text text-center"> Create a new simple user or admin </p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
@@ -53,7 +61,7 @@
                                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>View All Users</strong> </h5>
-                    <p class="card-text bg-light text-center"> View and manage your users</p>
+                    <p class="card-text text-center"> View and manage your users</p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">

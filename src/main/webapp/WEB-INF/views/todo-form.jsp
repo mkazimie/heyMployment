@@ -30,9 +30,17 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="/user/todos/all"> To Do List </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> To Do Form </li>
+        </ol>
+    </nav>
+
     <div class="container">
         <div class="card mx-auto mt-3">
-            <div class="card-header bg-dark display-5 text-white text-center"> TO DO FORM</div>
+            <div class="card-header bg-dark display-5 text-white text-center"><strong> To Do Form </strong></div>
             <div class="card-body">
                 <form:form method="post" modelAttribute="todo" action="/user/todos/add">
 

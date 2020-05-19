@@ -28,11 +28,20 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <nav class="navbar bg-dark static-top">
-        <div class="navbar-brand main-logo ml-4 text-white">
-            <strong> ${course.name} Details </strong>
-        </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="/user/courses/all"> Courses </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> ${course.name} Details </li>
+        </ol>
     </nav>
+
+
+<%--    <nav class="navbar bg-dark static-top">--%>
+<%--        <div class="navbar-brand main-logo ml-4 text-white">--%>
+<%--            <strong> ${course.name} Details </strong>--%>
+<%--        </div>--%>
+<%--    </nav>--%>
 
     <div class="container ">
         <div class="card-deck mt-5">
@@ -95,7 +104,7 @@
                             <a href="/user/todos/add/course/${course.id}" class="btn btn-primary"> + </a>
                         </div>
                         <table class="table css-serial">
-                            <thead class="thead-dark">
+                            <thead class="table-active">
                             <tr class="text-center">
                                 <th>#</th>
                                 <th scope="col"> Name</th>
@@ -111,7 +120,7 @@
                                 <td></td>
                                 <td>${todo.name}</td>
                                 <td>${todo.description}</td>
-                                <td>${todo.deadline}</td>
+                                <td>${todo.formattedDeadline}</td>
                                 <td><a href="/user/todos/confirm-delete/${todo.id}"><i class="far fa-check-circle"></i>
                                 </a></td>
                                 <td><a href="/user/todos/update/${todo.id}"> Edit </a> |

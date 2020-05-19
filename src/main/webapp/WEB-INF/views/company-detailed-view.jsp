@@ -28,25 +28,30 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <nav class="navbar bg-dark static-top">
-        <div class="navbar-brand main-logo ml-4 text-white">
-            <strong> ${company.name} Details </strong>
-        </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="/user/companies/all"> Companies </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> ${company.name} Details </li>
+        </ol>
     </nav>
+
+
     <div class="container">
         <div class="card-deck mt-5">
             <div class="card bg-light border-secondary">
-                <h3 class="card-header bg-primary text-center text-white text-uppercase">${company.name}</h3>
+<%--                <h3 class="card-header bg-primary text-center text-white text-uppercase">${company.name}</h3>--%>
+                <h3 class="card-header bg-primary text-center text-white">${company.name}</h3>
                 <div class="card-body">
 
                     <div class=" card-text ml-5 mr-5 mt-5">
                         <div class="row justify-content-center">
                             <div class="row-auto">
 
-                                <table class="table table-responsive">
+                                <table class="table table-responsive table-borderless">
                                     <tbody class="table-content text-justify">
                                     <tr>
-                                        <th scope="row"> Visit Website</th>
+                                        <th scope="row"> Website</th>
                                         <c:choose>
                                             <c:when test="${not empty company.website}">
                                                 <td><a href="${company.website}"> ${company.name} Website</a></td>
@@ -72,14 +77,14 @@
                     </div>
 
                     <div class="card-text mr-5 ml-5">
-                        <h5 class="text-center mt-5"><strong> Job Offers: </strong></h5>
+                        <h5 class="text-center mt-5"><strong> Job Offers </strong></h5>
                         <div class="btn-wrapper text-center mb-3">
                             <a href="/user/offers/add" class="btn btn-primary"> + </a>
                         </div>
                         <div class="card-text">
                             <table class="table css-serial">
-                                <thead class="thead-dark">
-                                <tr>
+                                <thead class="table-active">
+                                <tr class="text-center">
                                     <th>#</th>
                                     <th scope="col"> Job Title</th>
                                     <th scope="col"> Status</th>
@@ -89,12 +94,12 @@
                                 </thead>
                                 <c:forEach items="${company.jobOffers}" var="offer">
                                 <tbody>
-                                <tr>
+                                <tr class="text-center">
                                     <td></td>
-                                    <td>${offer.title}</td>
-                                    <td>${offer.status}</td>
-                                    <td>${offer.howAttractive}</td>
-                                    <td><a href="/user/offers/${offer.id}">See Details</a></td>
+                                    <td class="align-middle">${offer.title}</td>
+                                    <td class="align-middle">${offer.status}</td>
+                                    <td class="align-middle">${offer.howAttractive}</td>
+                                    <td class="align-middle"><a href="/user/offers/${offer.id}" class="btn btn-primary"> Details</a></td>
                                 </tr>
                                 </c:forEach>
                                 </tbody>

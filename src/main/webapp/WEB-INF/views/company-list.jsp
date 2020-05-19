@@ -28,11 +28,13 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <nav class="navbar bg-dark static-top">
-        <div class="navbar-brand main-logo ml-4 text-white">
-            <strong> Companies </strong>
-        </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Companies </li>
+        </ol>
     </nav>
+
     <div class="container">
         <div class="card-deck mt-5">
             <c:forEach items="${companies}" var="company" varStatus="theCount">

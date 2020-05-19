@@ -23,16 +23,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Bootstrap Fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 </head>
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
+<sec:authorize access="isAuthenticated()">
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"> Profile </li>
+    </ol>
+</nav>
+
 <div class="container">
     <div class="card mx-auto mt-3">
-        <div class="card-header bg-dark display-5 text-center"> Edit your profile info</div>
+        <div class="card-header bg-dark display-5 text-center text-white"> Edit your profile info</div>
         <div class="card-body">
-            <sec:authorize access="isAuthenticated()">
             <form:form method="post" modelAttribute="currentUser">
 
             <div class="form-group row">

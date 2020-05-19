@@ -25,19 +25,33 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 </head>
-<body>
+<body class="bg-dark">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="hasRole('ADMIN')">
-    <div class="container mt-5 mx-auto ml-4 mr-4">
-        <h1 class="bd-title"> All Users</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item ml-4"><a href="/admin/panel"><i class="fas fa-user-shield"></i> Admin Panel </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> All Users </li>
+        </ol>
+    </nav>
 
-        <table class="table">
-            <thead class="thead-dark">
-            <tr>
+    <div class="container mt-5 mx-auto ml-4 mr-4">
+        <div class="row">
+            <div class="col-sm-10 col-12">
+                <h1 class="bd-title text-white"> All Users <a
+                        href="/admin/users/add" class="btn btn-primary"> + </a></h1>
+            </div>
+        </div>
+
+        <table class="table table-striped table-light css-serial">
+            <thead class="thead-primary">
+            <tr class="text-center">
+                <th>#</th>
+                <th scope="col"> Username</th>
                 <th scope="col"> ID</th>
                 <th scope="col"> First Name</th>
                 <th scope="col"> Last Name</th>
-                <th scope="col"> Username</th>
                 <th scope="col"> Email</th>
                 <th scope="col"> Roles</th>
                 <th scope="col"> Enabled</th>
@@ -46,11 +60,12 @@
             </thead>
             <tbody>
             <c:forEach items="${users}" var="user">
-            <tr>
-                <th scope="row">${user.id}</th>
+            <tr class="text-center">
+                <td></td>
+                <th scope="row">${user.username}</th>
+                <td>${user.id}</td>
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
-                <td>${user.username}</td>
                 <td>${user.email}</td>
                 <td>
                     <c:forEach items="${user.roles}" var="role">

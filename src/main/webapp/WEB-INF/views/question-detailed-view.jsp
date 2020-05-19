@@ -28,11 +28,17 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <nav class="navbar bg-dark static-top">
-        <div class="navbar-brand main-logo ml-4 text-white">
-            <strong> Question of ID ${question.id} Details </strong>
-        </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="/user/categories/all">Categories</a></li>
+            <li class="breadcrumb-item">
+                <a href="/user/categories/${question.interviewCategory.id}/questions/all">${question.interviewCategory.name}
+                Questions</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Details</li>
+        </ol>
     </nav>
+
     <div class="container">
         <div class="card-deck mr-30 ml-30 mt-5 mb-5">
             <div class="card border-secondary">
@@ -47,23 +53,24 @@
                                 <table class="table table-responsive table-borderless">
                                     <tbody class="table-content text-justify">
                                     <tr>
-                                        <th scope="row"> Question: </th>
+                                        <th scope="row"> Question:</th>
                                         <td>${question.question}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Answer: </th>
+                                        <th scope="row"> Answer:</th>
                                         <c:choose>
                                             <c:when test="${not empty question.answer}">
                                                 <td>${question.answer}</td>
                                             </c:when>
                                             <c:otherwise>
                                                 <td><a
-                                                        href="/user/categories/${question.interviewCategory.id}/questions/update/${question.id}}"> Add Answer </a> </td>
+                                                        href="/user/categories/${question.interviewCategory.id}/questions/update/${question.id}}">
+                                                    Add Answer </a></td>
                                             </c:otherwise>
                                         </c:choose>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Ready? </th>
+                                        <th scope="row"> Ready?</th>
                                         <c:choose>
                                             <c:when test="${question.ready == true}">
                                                 <td class="align-middle">Yes</td>
@@ -74,11 +81,11 @@
                                         </c:choose>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Difficulty Level: </th>
+                                        <th scope="row"> Difficulty Level:</th>
                                         <td>${question.difficulty}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Added On: </th>
+                                        <th scope="row"> Added On:</th>
                                         <td>${question.added}</td>
                                     </tr>
                                     </tbody>

@@ -30,6 +30,15 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+        <li class="breadcrumb-item"><a href="/user/companies/all"> Companies </a></li>
+        <li class="breadcrumb-item"><a href="/user/companies/${company.id}"> ${company.name} Details </a></li>
+        <li class="breadcrumb-item active" aria-current="page"> ${company.name} Edit </li>
+    </ol>
+</nav>
+
 <div class="container">
     <div class="card mx-auto mt-3">
         <div class="card-header bg-dark display-5 text-white text-center"> Edit Company Details</div>
@@ -58,7 +67,7 @@
                 <form:label path="description"
                             class="col-md-4 col-form-label text-md-right"> Description: </form:label>
                 <div class="col-md-6">
-                    <form:input path="description" class="form-control" placeholder="Description"/>
+                    <form:textarea path="description" class="form-control" placeholder="Description"/>
                     <form:errors path="description" cssClass="errorMessage"/>
                 </div>
             </div>

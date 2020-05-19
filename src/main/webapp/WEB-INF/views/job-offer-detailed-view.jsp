@@ -28,11 +28,19 @@
 <body class="bg-light">
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
-    <nav class="navbar bg-dark static-top">
-        <div class="navbar-brand main-logo ml-4 text-white">
-            <strong> ${jobOffer.title} Details </strong>
-        </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="/user/offers/all"> Job Offers </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> ${jobOffer.title} Details </li>
+        </ol>
     </nav>
+
+<%--    <nav class="navbar bg-dark static-top">--%>
+<%--        <div class="navbar-brand main-logo ml-4 text-white">--%>
+<%--            <strong> ${jobOffer.title} Details </strong>--%>
+<%--        </div>--%>
+<%--    </nav>--%>
     <div class="container">
         <div class="card-deck mr-30 ml-30 mt-5 mb-5">
             <div class="card border-secondary">
@@ -103,13 +111,13 @@
 
 
                     <div class="card-text mr-5 ml-5">
-                        <h5 class="text-center mt-5"> To-Do List</h5>
+                        <h5 class="text-center mt-5"><strong> To-Do List </strong></h5>
                         <div class="btn-wrapper text-center mb-3">
                             <a href="/user/todos/add/job/${jobOffer.id}" class="btn btn-primary"> + </a>
                         </div>
-                        <table class="table css-serial mb-5">
+                        <table class="table table-striped css-serial mb-5">
                             <thead class="table-active">
-                            <tr>
+                            <tr class="text-center">
                                 <th>#</th>
                                 <th scope="col"> Name</th>
                                 <th scope="col"> Description</th>
@@ -120,11 +128,11 @@
                             </thead>
                             <c:forEach items="${jobOffer.todos}" var="todo">
                             <tbody>
-                            <tr>
+                            <tr class="text-center">
                                 <td></td>
                                 <td>${todo.name}</td>
                                 <td>${todo.description}</td>
-                                <td>${todo.deadline}</td>
+                                <td>${todo.formattedDeadline}</td>
                                 <td><a href="/user/todos/confirm-delete/${todo.id}"><i class="far fa-check-circle"></i>
                                 </a></td>
                                 <td><a href="/user/todos/update/${todo.id}"> Edit </a> |

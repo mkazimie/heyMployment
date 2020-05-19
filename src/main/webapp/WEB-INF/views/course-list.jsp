@@ -30,13 +30,24 @@
 <body>
 <%@include file="main-header.jsp" %>
 <sec:authorize access="isAuthenticated()">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Courses </li>
+        </ol>
+    </nav>
+
+
     <div class="container mt-5 mx-auto ml-4 mr-4">
-        <h1 class="bd-title"> My Courses</h1>
-        <h2><a href="/user/courses/add" class="btn btn-primary"> Add New Course </a>
-        </h2>
 
+    <div class="row">
+        <div class="col-sm-10 col-12">
+            <h1 class="bd-title"> My Courses <a href="/user/courses/add" class="btn btn-primary"> +
+            </a></h1>
+        </div>
+    </div>
 
-        <h5 class="text-center"><button type="button" class="btn btn-primary">${allHowMany} ${specificHowMany}</button>
+        <h5 class="text-center"><button type="button" class="btn btn-dark">${allHowMany} ${specificHowMany}</button>
         </h5>
         <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
             <div class="container d-flex align-items-md-center py-2">
@@ -50,12 +61,11 @@
         </nav>
 
 
-        <table class="table css-serial">
+        <table class="table table-striped css-serial">
             <thead class="thead-dark">
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Name</th>
-                <th scope="col"> Status</th>
                 <th scope="col"> Link</th>
                 <th scope="col"> Organized By</th>
                 <th scope="col"> Topics</th>
@@ -69,7 +79,6 @@
                 <tr class="text-center">
                     <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${course.name}</th>
-                    <td class="align-middle">${course.status}</td>
                     <c:choose>
                         <c:when test="${not empty course.url}">
                             <td class="align-middle"><a href="${course.url}"> Course Website </a></td>
