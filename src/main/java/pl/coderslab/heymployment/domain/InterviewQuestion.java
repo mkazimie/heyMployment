@@ -56,6 +56,11 @@ public class InterviewQuestion {
         updated = LocalDateTime.now();
     }
 
+    @Transient
+    private String formatAddedDate;
+
+    @Transient
+    private String formatUpdatedDate;
 
 
 

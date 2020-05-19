@@ -55,7 +55,8 @@
                 <th scope="col"> ID</th>
                 <th scope="col"> Has Answer</th>
                 <th scope="col"> Is Ready</th>
-                <th scope="col"> Added</th>
+                <th scope="col"> Added </th>
+                <th scope="col"> Updated </th>
                 <th scope="col"> Actions</th>
             </tr>
             </thead>
@@ -82,7 +83,8 @@
                             <td class="align-middle">Not Yet</td>
                         </c:otherwise>
                     </c:choose>
-                    <td class="align-middle">${qa.added}</td>
+                    <td class="align-middle">${qa.formatAddedDate}</td>
+                    <td class="align-middle">${qa.formatUpdatedDate}</td>
 
                     <td class="align-middle"><a href="/user/categories/${cat.id}/questions/${qa.id}"
                                                 class="btn btn-primary">

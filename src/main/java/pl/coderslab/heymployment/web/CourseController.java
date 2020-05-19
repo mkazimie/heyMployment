@@ -5,10 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.heymployment.domain.Company;
-import pl.coderslab.heymployment.domain.Course;
-import pl.coderslab.heymployment.domain.JobOffer;
-import pl.coderslab.heymployment.domain.Topic;
+import pl.coderslab.heymployment.domain.*;
 import pl.coderslab.heymployment.domain.dto.CourseDto;
 import pl.coderslab.heymployment.security.CurrentUser;
 import pl.coderslab.heymployment.service.CourseService;
@@ -125,6 +122,12 @@ public class CourseController {
     public List<String> status() {
         return Arrays.asList("Wishlist", "Ongoing", "Completed");
     }
+
+    @ModelAttribute("currentUser")
+    public User currentUser(@AuthenticationPrincipal CurrentUser currentUser) {
+        return currentUser.getUser();
+    }
+
 
 
 }

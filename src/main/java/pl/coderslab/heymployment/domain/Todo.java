@@ -2,6 +2,7 @@ package pl.coderslab.heymployment.domain;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.coderslab.heymployment.web.InterviewCategoriesQuestionsController;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -63,9 +64,8 @@ public class Todo {
     private String formattedDeadline;
 
     public void setFormattedDeadline(LocalDateTime deadline) {
-        DayOfWeek dayOfWeek = deadline.getDayOfWeek();
-        String displayName = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM, HH:mm");
-        this.formattedDeadline = displayName + " " + deadline.format(formatter);
+        String displayName = deadline.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM / HH:mm");
+        this.formattedDeadline = displayName + " / " + deadline.format(formatter);
     }
 }

@@ -103,7 +103,6 @@
                 <tr class="text-center">
                     <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${byStatus.name}</th>
-                    <td class="align-middle">${byStatus.status}</td>
                     <c:choose>
                         <c:when test="${not empty byStatus.url}">
                             <td class="align-middle"><a href="${byStatus.url}">See Course</a></td>

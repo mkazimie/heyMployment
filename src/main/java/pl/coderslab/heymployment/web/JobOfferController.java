@@ -78,7 +78,7 @@ public class JobOfferController {
     @GetMapping("/all")
     public String displayJobOffers(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<JobOffer> allJobOffers = jobOfferService.findAllJobOffers(currentUser.getUser().getId());
-        dateFormatConverted(allJobOffers);
+//        dateFormatConverted(allJobOffers);
         model.addAttribute("allHowMany", allJobOffers.size());
         model.addAttribute("offers", allJobOffers);
         return "job-offer-list";
@@ -89,7 +89,7 @@ public class JobOfferController {
     public String displayJobOffersByStatus(@PathVariable String name,
                                            @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         List<JobOffer> allByStatus = jobOfferService.findAllByStatus(currentUser.getUser().getId(), name);
-        dateFormatConverted(allByStatus);
+//        dateFormatConverted(allByStatus);
         model.addAttribute("allByStatus", allByStatus);
         model.addAttribute("specificHowMany", allByStatus.size());
         return "job-offer-list";
@@ -150,25 +150,25 @@ public class JobOfferController {
     }
 
 
-    public void dateFormatConverted(List<JobOffer> jobOffers) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM, HH:mm");
-        for (JobOffer offer : jobOffers) {
-            LocalDateTime updated = offer.getUpdated();
-            if (updated != null) {
-                offer.setFormatUpdated(updated.format(formatter));
-                //format updated record timestamp
-                offer.setDaysFromUpdated(Duration.between(updated, LocalDateTime.now()).toDays());
-                // display how many days ago updated
-            }
-            LocalDate appliedOn = offer.getAppliedOn();
-            if (appliedOn != null) {
-                offer.setDaysFromApplied(Period.between(appliedOn, LocalDate.now()).getDays());
-//                //how many days ago applied
-            }
-
-        }
-
-    }
+//    public void dateFormatConverted(List<JobOffer> jobOffers) {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM / HH:mm");
+//        for (JobOffer offer : jobOffers) {
+//            LocalDateTime updated = offer.getUpdated();
+//            if (updated != null) {
+//                offer.setFormatUpdated(updated.format(formatter));
+//                //format updated record timestamp
+//                offer.setDaysFromUpdated(Duration.between(updated, LocalDateTime.now()).toDays());
+//                // display how many days ago updated
+//            }
+//            LocalDate appliedOn = offer.getAppliedOn();
+//            if (appliedOn != null) {
+//                offer.setDaysFromApplied(Period.between(appliedOn, LocalDate.now()).getDays());
+////                //how many days ago applied
+//            }
+//
+//        }
+//
+//    }
 
 
     @ModelAttribute("currentUser")

@@ -88,11 +88,6 @@ public class TodoController {
         for (Todo todo : todos) {
             LocalDateTime deadline = todo.getDeadline();
             todo.setFormattedDeadline(deadline);
-//            todo.setHoursLeft(Duration.between(deadline, LocalDateTime.now()).toHours());
-//            DayOfWeek dayOfWeek = deadline.getDayOfWeek();
-//            String displayName = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM, HH:mm");
-//            todo.setFormattedDeadline(displayName + " " + deadline.format(formatter));
         }
         model.addAttribute("todos", todos);
         return "todo-list";

@@ -54,7 +54,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Welcome to your User Panel</strong></h5>
                     <p class="card-text text-justify"> From here you can easily access your saved job offers, keep
-                        track of your to-do list, document your accomplished or ongoing courses and get ready for
+                        track of your to-do list, store your accomplished or ongoing courses and prepare for
                         your job interview.
                     </p>
                 </div>
@@ -66,7 +66,7 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Job Applications</strong></h5>
-                    <p class="card-text text-justify"> Store and manage your job applications. </p>
+                    <p class="card-text text-center"> Store and manage your job applications. </p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
@@ -81,9 +81,7 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>To-Do List </strong></h5>
-                    <p class="card-text text-justify"> Keep track of the most urgent tasks related to your job
-                        applications or
-                        ongoing courses.
+                    <p class="card-text text-center"> Keep track of your most urgent tasks.
                     </p>
                 </div>
                 <div class="card-footer">
@@ -105,7 +103,7 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Companies</strong></h5>
-                    <p class="card-text text-justify"> Store information about your future employer. </p>
+                    <p class="card-text text-center"> Store information on your future employer. </p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
@@ -120,7 +118,7 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Courses</strong></h5>
-                    <p class="card-text text-justify"> Document your learning pathway. </p>
+                    <p class="card-text text-center"> Document your learning pathway. </p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
@@ -135,8 +133,7 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Interview Prep</strong></h5>
-                    <p class="card-text text-justify"> Store and access easily all the materials necessary to
-                        succeed in a job interview. </p>
+                    <p class="card-text text-center"> Access your job interview materials. </p>
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.InterviewCategory;
 import pl.coderslab.heymployment.domain.InterviewQuestion;
 import pl.coderslab.heymployment.domain.JobOffer;
+import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.CategoryDto;
 import pl.coderslab.heymployment.domain.dto.QuestionDto;
 import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
@@ -17,10 +18,12 @@ import pl.coderslab.heymployment.service.QuestionService;
 import pl.coderslab.heymployment.service.TopicService;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -139,6 +142,7 @@ public class InterviewCategoriesQuestionsController {
     public String displayQuestions(@PathVariable long id, Model model) {
         InterviewCategory category = categoryService.findById(id);
         List<InterviewQuestion> allQuestionsById = questionService.findAllByCategoryId(id);
+        allQuestionsById.forEach(this::dateFormatConverted);
         model.addAttribute("cat", category);
         model.addAttribute("allById", allQuestionsById);
         return "questions-all-by-category";
@@ -147,8 +151,9 @@ public class InterviewCategoriesQuestionsController {
     // display detailed view of a question 
     // *
     @GetMapping("/{id}/questions/{questionId}")
-    public String displayDetails(Model model, @PathVariable long id, @PathVariable long questionId){
+    public String displayDetails(Model model, @PathVariable long id, @PathVariable long questionId) {
         InterviewQuestion question = questionService.findById(questionId);
+        dateFormatConverted(question);
         model.addAttribute("question", question);
         return "question-detailed-view";
     }
@@ -167,7 +172,7 @@ public class InterviewCategoriesQuestionsController {
     // *
     @PostMapping("/{id}/questions/update")
     public String updateQuestion(@ModelAttribute("qa") @Valid InterviewQuestion qa, BindingResult result,
-                            Model model, @PathVariable long id) {
+                                 Model model, @PathVariable long id) {
         if (!result.hasErrors()) {
             InterviewCategory category = categoryService.findByName(qa.getInterviewCategory().getName());
             qa.setInterviewCategory(category);
@@ -177,7 +182,6 @@ public class InterviewCategoriesQuestionsController {
         model.addAttribute("failed", "Please try again");
         return "question-edit-form";
     }
-
 
 
     // confirm-delete a category
@@ -192,14 +196,39 @@ public class InterviewCategoriesQuestionsController {
     // delete a question
     // *
     @GetMapping("/{id}/questions/delete/{questionId}")
-    public String deleteCat(@PathVariable long id, @PathVariable long questionId) {
+    public String deleteQuestion(@PathVariable long id, @PathVariable long questionId) {
         questionService.deleteQuestion(questionId);
         return "redirect:/user/categories/{id}/questions/all";
     }
+
+    public void dateFormatConverted(InterviewQuestion question) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM / [HH:mm]");
+        LocalDateTime added = question.getAdded();
+        if (added != null) {
+            question.setFormatAddedDate(displayWeekDay(added.getDayOfWeek()) + " / " + added.format(formatter));
+            //format added record timestamp
+        }
+        LocalDateTime updated = question.getUpdated();
+        if (updated != null) {
+            question.setFormatUpdatedDate(displayWeekDay(updated.getDayOfWeek()) + " / " + updated.format(formatter));
+            //format updated record timestamp
+        }
+    }
+
+    public String displayWeekDay(DayOfWeek day) {
+        return day.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
+    }
+
 
     @ModelAttribute("difficulty")
     public List<String> difficulty() {
         return Arrays.asList("Extremely Hard", "Difficult", "Moderate", "Easy");
     }
+
+    @ModelAttribute("currentUser")
+    public User currentUser(@AuthenticationPrincipal CurrentUser currentUser) {
+        return currentUser.getUser();
+    }
+
 
 }

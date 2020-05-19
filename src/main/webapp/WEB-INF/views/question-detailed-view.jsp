@@ -86,7 +86,11 @@
                                     </tr>
                                     <tr>
                                         <th scope="row"> Added On:</th>
-                                        <td>${question.added}</td>
+                                        <td>${question.formatAddedDate}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> Updated On:</th>
+                                        <td>${question.formatUpdatedDate}</td>
                                     </tr>
                                     </tbody>
                                 </table>
