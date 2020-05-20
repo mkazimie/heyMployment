@@ -23,15 +23,15 @@ public class Company {
     private long id;
 
     @NotBlank
-    @Size(min = 5, max = 50, message = "* Name must be between 5 and 50 characters long")
+    @Size(min = 2, max = 50)
     @Column(name = "company_name")
     private String name;
 
-    @Size(max = 50)
+    @Size(max = 50, message = "* Location cannot contain more than 50 characters")
     @Column(name = "company_location")
     private String location;
 
-    @Size(max = 1000)
+    @Size(max = 1000, message = "* Description cannot contain more than 1000 characters")
     @Column(name = "company_description")
     private String description;
 

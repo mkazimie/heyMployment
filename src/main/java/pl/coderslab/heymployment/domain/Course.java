@@ -29,11 +29,11 @@ public class Course {
     private long id;
 
     @NotBlank
-    @Size(min = 2, max = 50, message = "* Name must be between 5 and 50 character long")
+    @Size(min = 2, max = 50)
     @Column(name = "course_name")
     private String name;
 
-    @Size(max = 1000, message = "* Description is too long")
+    @Size(max = 1000, message = "* * Description cannot contain more than 1000 characters")
     @Column(name = "description")
     private String description;
 
@@ -45,7 +45,7 @@ public class Course {
     @Column(name = "course_url")
     private String url;
 
-    @Size(min = 2, max = 50, message = "* The organizing entity name must be between 5 and 50 character long")
+    @Size(min = 2, max = 50)
     @Column(name = "organized_by")
     private String organizedBy;
 
@@ -80,13 +80,6 @@ public class Course {
         updated = LocalDateTime.now();
     }
 
-
-    public void removeTopics(Topic topic) {
-        if (topic != null) {
-            topics.remove(topic);
-        }
-
-    }
 
 
 }

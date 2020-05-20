@@ -28,7 +28,7 @@ public class InterviewQuestion {
     @Column(name = "question_content")
     private String question;
 
-    @Size(max = 5000)
+    @Size(max = 5000, message = "Answer cannot contain more than 5000 characters")
     @Column(name = "answer_content")
     private String answer;
 

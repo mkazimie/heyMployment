@@ -15,8 +15,8 @@ import javax.validation.constraints.Size;
 public class CategoryDto {
 
 
-    @NotBlank(message = "* This field can't be empty")
-    @Size(min = 2, max = 20, message = "* Name must contain between 2 and 20 characters")
+    @NotBlank
+    @Size(min = 2, max = 50)
     private String name;
 
 

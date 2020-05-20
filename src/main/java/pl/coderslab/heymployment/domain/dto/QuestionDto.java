@@ -11,10 +11,10 @@ import javax.validation.constraints.Size;
 public class QuestionDto {
 
     @NotBlank
-    @Size(min = 5, max = 250, message = "* Question must contain between 5 and 250 characters")
+    @Size(min = 5, max = 250)
     private String question;
 
-    @Size(max = 1000, message = "* Answer can't contain more than 1000 characters")
+    @Size(max = 1000, message = "* Answer cannot contain more than 1000 characters")
     private String answer;
 
     private String difficulty;

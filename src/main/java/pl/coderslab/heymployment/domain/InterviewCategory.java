@@ -33,11 +33,5 @@ public class InterviewCategory {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public void addQuestion(InterviewQuestion question){
-        if(question != null) {
-            interviewQuestions.add(question);
-        }
-    }
-
 
 }

@@ -23,7 +23,7 @@ public class CourseDto {
 
 
     @NotBlank
-    @Size(min = 2, max = 50, message = "* Name must be between 5 and 50 character long")
+    @Size(min = 2, max = 50)
     private String name;
 
     @Size(max = 1000, message = "* Description is too long")
@@ -36,20 +36,20 @@ public class CourseDto {
     private String url;
 
     @NotBlank
-    @Size(min = 2, max = 50, message = "* The organizing entity name must be between 5 and 50 character long")
+    @Size(min = 2, max = 50)
     private String organizedBy;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate finishDate;
 
     @NotBlank
-    @Size(max = 50, message = "* Topic name is too long")
+    @Size(max = 50, message = "* Topic name cannot contain more than 50 characters")
     private String mainTopic;
 
-    @Size(max = 50, message = "* Topic name is too long")
+    @Size(max = 50, message = "* Topic name cannot contain more than 50 characters")
     private String additionalTopic1;
 
-    @Size(max = 50, message = "* Topic name is too long")
+    @Size(max = 50, message = "* Topic name cannot contain more than 50 characters")
     private String additionalTopic2;
 
     private User user;

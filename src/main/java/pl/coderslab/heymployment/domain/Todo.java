@@ -27,11 +27,11 @@ public class Todo {
     private long id;
 
     @NotBlank
-    @Size(min = 5, max = 50, message = "* Name must be between 5 and 50 character long")
+    @Size(min = 5, max = 50)
     @Column(name = "to_do_name")
     private String name;
 
-    @Size(max = 5000, message = "* Description is too long")
+    @Size(max = 5000, message = "* Description cannot contain more than 5000 characters")
     @Column(name = "to_do_description")
     private String description;
 
@@ -45,7 +45,7 @@ public class Todo {
 
     @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Future(message = "* Past Date Not Allowed")
+    @Future
     @Column(name = "deadline")
     private LocalDateTime deadline;
 

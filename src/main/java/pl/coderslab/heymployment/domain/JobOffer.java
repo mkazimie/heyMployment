@@ -31,7 +31,7 @@ public class JobOffer {
     private long id;
 
     @NotBlank
-    @Size(min = 5, max = 50, message = "* Title must be between 5 and 50 character long")
+    @Size(min = 5, max = 50)
     @Column(name = "job_title")
     private String title;
 
@@ -44,7 +44,7 @@ public class JobOffer {
     private String url;
 
     @NotBlank
-    @Size(min = 3, max = 50, message = "* Location must be between 5 and 50 character long")
+    @Size(min = 3, max = 50)
     @Column(name = "job_location")
     private String location;
 
@@ -67,7 +67,7 @@ public class JobOffer {
     private String howAttractive;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Past(message = "* Future date not allowed")
+    @Past
     @Column(name = "applied_on")
     private LocalDate appliedOn;
 

@@ -16,15 +16,15 @@ import javax.validation.constraints.Size;
 public class JobOfferDto {
 
     @NotBlank
-    @Size(min = 5, max = 50, message = "* Title must be between 5 and 50 character long")
+    @Size(min = 5, max = 50)
     private String title;
 
     @NotBlank
-    @Size(min = 3, max = 50, message = "* Location must be between 5 and 50 character long")
+    @Size(min = 2, max = 50)
     private String location;
 
     @NotBlank
-    @Size(min = 5, max = 50, message = "* Name must be between 5 and 50 characters long")
+    @Size(min = 2, max = 50)
     private String companyName;
 
     @NotEmpty
