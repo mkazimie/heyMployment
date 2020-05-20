@@ -35,14 +35,14 @@
             <li class="breadcrumb-item">
                 <a href="/user/categories/${question.interviewCategory.id}/questions/all">${question.interviewCategory.name}
                 Questions</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Details</li>
+            <li class="breadcrumb-item active" aria-current="page"> Q${question.id} Details</li>
         </ol>
     </nav>
 
     <div class="container">
         <div class="card-deck mr-30 ml-30 mt-5 mb-5">
             <div class="card border-secondary">
-                <h3 class="card-header bg-primary text-center text-white text-uppercase">${question.id}</h3>
+                <h3 class="card-header bg-primary text-center text-white text-uppercase">Q${question.id}</h3>
                 <div class="card-body">
 
 
@@ -64,7 +64,7 @@
                                             </c:when>
                                             <c:otherwise>
                                                 <td><a
-                                                        href="/user/categories/${question.interviewCategory.id}/questions/update/${question.id}}">
+                                                        href="/user/categories/${question.interviewCategory.id}/questions/update/${question.id}">
                                                     Add Answer </a></td>
                                             </c:otherwise>
                                         </c:choose>

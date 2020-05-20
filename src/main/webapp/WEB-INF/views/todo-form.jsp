@@ -40,7 +40,7 @@
 
     <div class="container">
         <div class="card mx-auto mt-3">
-            <div class="card-header bg-dark display-5 text-white text-center"><strong> To Do Form </strong></div>
+            <div class="card-header bg-dark form-header text-white text-center"><strong> To Do Form </strong></div>
             <div class="card-body">
                 <form:form method="post" modelAttribute="todo" action="/user/todos/add">
 

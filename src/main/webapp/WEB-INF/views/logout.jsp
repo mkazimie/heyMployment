@@ -32,7 +32,7 @@
     <div class="container">
         <div class="card mx-auto mt-5">
             <form action="<c:url value="/logout"/>" method="post">
-                <div class="card-header bg-dark display-5 text-white text-center">
+                <div class="card-header bg-dark form-header text-white text-center">
                     Sign Out
                 </div>
                 <div class="card-body">

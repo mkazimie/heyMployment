@@ -220,6 +220,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
 
+
     @ModelAttribute("difficulty")
     public List<String> difficulty() {
         return Arrays.asList("Extremely Hard", "Difficult", "Moderate", "Easy");

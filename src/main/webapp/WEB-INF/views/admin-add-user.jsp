@@ -40,7 +40,7 @@
 
 <div class="container">
     <div class="card mx-auto mt-5">
-        <div class="card-header bg-primary display-5 text-white text-center"><strong> Add new user </strong></div>
+        <div class="card-header thead-primary form-header text-center">Add new user </div>
         <div class="card-body">
             <form:form method="post" modelAttribute="user">
 

@@ -66,7 +66,7 @@
                 <tr class="text-center">
                     <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${qa.question}</th>
-                    <td class="align-middle">${qa.id}</td>
+                    <td class="align-middle"> Q${qa.id}</td>
                     <c:choose>
                         <c:when test="${not empty qa.answer}">
                             <td class="align-middle">Yes</td>

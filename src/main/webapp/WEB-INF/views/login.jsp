@@ -29,7 +29,7 @@
 <%@include file="header-landing.jsp" %>
 <div class="container">
     <div class="card mx-auto mt-3">
-        <div class="card-header bg-dark display-5 text-white text-center"> Sign In Form</div>
+        <div class="card-header bg-dark form-header text-white text-center"> Sign In Form</div>
         <div class="card-body center-content">
             <form method="post">
                 <div class="form-group row">

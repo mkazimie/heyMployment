@@ -28,7 +28,7 @@
 <%@include file="header-landing.jsp"%>
 <div class="container">
     <div class="card mx-auto mt-3">
-        <div class="card-header bg-dark display-5 text-white text-center"> Sign Up Form</div>
+        <div class="card-header bg-dark form-header text-white text-center"> Sign Up Form</div>
         <div class="card-body">
             <form:form method="post" modelAttribute="user">
 
