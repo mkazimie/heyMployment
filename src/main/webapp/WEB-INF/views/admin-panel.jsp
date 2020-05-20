@@ -44,7 +44,8 @@
     <div class="container">
         <div class="card-deck mt-5">
             <div class="card border-secondary">
-                                    <img class="card-img-top img-scale img-fluid" src="/img/reinhart-julian-WCWgY3L_xVw-unsplash.jpg"
+                                    <img class="card-img-top img-scale img-fluid"
+                                         src="/img/Optimized-reinhart-julian-WCWgY3L_xVw-unsplash.jpg"
                                          alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Add New User</strong> </h5>
@@ -57,7 +58,7 @@
                 </div>
             </div>
             <div class="card border-secondary">
-                                <img class="card-img-top img-scale img-fluid" src="/img/siyan-ren-jN_VbffJHlI-unsplash.jpg"
+                                <img class="card-img-top img-scale img-fluid" src="/img/Optimized-siyan-ren-jN_VbffJHlI-unsplash.jpg"
                                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>View All Users</strong> </h5>

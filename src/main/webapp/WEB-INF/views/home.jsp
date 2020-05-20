@@ -62,7 +62,7 @@
 
                 <%-- JOB OFFERS--%>
             <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/jesus-kiteque-wn-KYaHwcis-unsplash.jpg"
+                <img class="card-img-top img-scale img-fluid" src="/img/Optimized-jesus-kiteque-wn-KYaHwcis-unsplash.jpg"
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Job Applications</strong></h5>
@@ -99,7 +99,7 @@
 
                 <%-- COMPANIES--%>
             <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/sean-pollock-PhYq704ffdA-unsplash.jpg"
+                <img class="card-img-top img-scale img-fluid" src="/img/Optimized-sean-pollock-PhYq704ffdA-unsplash.jpg"
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Companies</strong></h5>
@@ -114,7 +114,7 @@
 
                 <%-- COURSES --%>
             <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/tu-tram-pham-UOxMPRPUTOA-unsplash%20(1).jpg"
+                <img class="card-img-top img-scale img-fluid" src="/img/Optimized-thisisengineering-raeng-GzDrm7SYQ0g-unsplash%20(1).jpg"
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><strong>Courses</strong></h5>
