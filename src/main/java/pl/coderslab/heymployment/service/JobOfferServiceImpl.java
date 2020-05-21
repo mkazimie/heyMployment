@@ -60,4 +60,9 @@ public class JobOfferServiceImpl implements JobOfferService {
         jobOffer.setStatus(jobOfferDto.getStatus());
         return jobOffer;
     }
+
+    @Override
+    public List<JobOffer> offersByMonth(long id, Integer month){
+        return jobOfferRepository.findAllByUserIdAndUpdatedMonth(id, month);
+    }
 }

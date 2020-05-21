@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-sm-10 col-12">
                 <h1 class="bd-title"> My Job Offers <a href="/user/offers/add" class="btn btn-primary"> +
-                </a></h1>
+                </a> <a href="/user/offers/raport" class="btn btn-dark align-right text-right"> Monthly Raport </a> </h1>
             </div>
         </div>
 
@@ -52,12 +52,12 @@
         <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
             <div class="container d-flex align-items-md-center py-2">
                 <nav class="nav mx-auto">
-                    <a href="/user/offers/all" class="btn btn-link">All</a>
-                    <a href="/user/offers/all/${status[0]}" class="btn btn-link">${status[0]}</a>
-                    <a href="/user/offers/all/${status[1]}" class="btn btn-link">${status[1]}</a>
-                    <a href="/user/offers/all/${status[2]}" class="btn btn-link">${status[2]}</a>
-                    <a href="/user/offers/all/${status[3]}" class="btn btn-link">${status[3]}</a>
-                    <a href="/user/offers/all/${status[4]}" class="btn btn-link">${status[4]}</a>
+                    <a href="/user/offers" class="btn btn-link">All</a>
+                    <a href="/user/offers/${status[0]}" class="btn btn-link">${status[0]}</a>
+                    <a href="/user/offers/${status[1]}" class="btn btn-link">${status[1]}</a>
+                    <a href="/user/offers/${status[2]}" class="btn btn-link">${status[2]}</a>
+                    <a href="/user/offers/${status[3]}" class="btn btn-link">${status[3]}</a>
+                    <a href="/user/offers/${status[4]}" class="btn btn-link">${status[4]}</a>
                 </nav>
             </div>
         </nav>
@@ -70,7 +70,7 @@
                 <th scope="col"> Job Title</th>
                 <th scope="col"> Location</th>
                 <th scope="col"> Company</th>
-                <th scope="col"> +</th>
+                <th scope="col"> + </th>
             </tr>
             </thead>
             <tbody>
@@ -81,7 +81,8 @@
                 <td class="align-middle">${offer.location}</td>
                 <td class="align-middle"><a href="/user/companies/${offer.company.id}">${offer.company.name}</a>
                 </td>
-                <td class="align-middle"><a href="/user/offers/${offer.id}" class="btn btn-primary"> Details </a>
+                <td class="align-middle"><a href="/user/offers/details/${offer.id}" class="btn btn-primary"> Details
+                </a>
                 </td>
                 </tr>
             </c:forEach>
@@ -95,7 +96,8 @@
                     <td class="align-middle">${byStatus.location}</td>
                     <td class="align-middle"><a href="/user/companies/${byStatus.company.id}">
                             ${byStatus.company.name}</a></td>
-                    <td class="align-middle"><a href="/user/offers/${byStatus.id}" class="btn btn-primary"> Details </a>
+                    <td class="align-middle"><a href="/user/offers/details/${byStatus.id}" class="btn btn-primary">
+                        Details </a>
                     </td>
                 </tr>
             </c:forEach>
