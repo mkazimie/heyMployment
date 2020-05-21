@@ -137,7 +137,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
-                        <a href="/user/categories/all" class="btn btn-primary"> Go </a>
+                        <a href="/user/categories/" class="btn btn-primary"> Go </a>
                     </div>
                 </div>
             </div>

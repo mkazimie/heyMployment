@@ -33,7 +33,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="/user/categories/all">Categories</a></li>
+            <li class="breadcrumb-item"><a href="/user/categories/">Categories</a></li>
             <li class="breadcrumb-item active" aria-current="page"> Delete </li>
         </ol>
     </nav>
@@ -45,7 +45,7 @@
             <div class="card-body">
                 <p class="card-text"> Do you want to delete category <strong>${category.name}</strong>?</p>
                 <a href="/user/categories/delete/${category.id}" class="btn btn-link" role="button"> YES </a>
-                <a href="/user/categories/all" class="btn btn-link" role="button"> NO </a>
+                <a href="/user/categories/" class="btn btn-link" role="button"> NO </a>
             </div>
         </div>
     </div>

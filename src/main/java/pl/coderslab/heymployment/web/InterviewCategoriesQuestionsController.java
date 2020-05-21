@@ -57,7 +57,7 @@ public class InterviewCategoriesQuestionsController {
                 InterviewCategory cat = categoryService.createCategory(category);
                 cat.setUser(currentUser.getUser());
                 categoryService.saveCategory(cat);
-                return "redirect:/user/categories/all";
+                return "redirect:/user/categories/";
             } catch (RecordAlreadyExistsException e) {
                 model.addAttribute("failed", "Category already exists in the database");
                 return "category-form";
@@ -68,7 +68,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
     // display all categories
-    @GetMapping("/all")
+    @GetMapping("/")
     public String displayCategories(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<InterviewCategory> categories = categoryService.findAll(currentUser.getUser().getId());
         model.addAttribute("categories", categories);
@@ -89,7 +89,7 @@ public class InterviewCategoriesQuestionsController {
                             Model model) {
         if (!result.hasErrors()) {
             categoryService.saveCategory(category);
-            return "redirect:/user/categories/all";
+            return "redirect:/user/categories/";
         }
         model.addAttribute("failed", "Please try again");
         return "category-edit-form";
@@ -111,7 +111,7 @@ public class InterviewCategoriesQuestionsController {
     @GetMapping("/delete/{id}")
     public String deleteCat(@PathVariable long id) {
         categoryService.deleteCategory(id);
-        return "redirect:/user/categories/all";
+        return "redirect:/user/categories/";
     }
 
     // QUESTIONS INSIDE CATEGORIES
@@ -131,14 +131,14 @@ public class InterviewCategoriesQuestionsController {
                             BindingResult result, Model model, @PathVariable long id) {
         if (!result.hasErrors()) {
             questionService.createQuestionFromDto(qDto);
-            return "redirect:/user/categories/{id}/questions/all";
+            return "redirect:/user/categories/{id}/questions";
         }
         model.addAttribute("failed", "Try again");
         return "question-add-form";
     }
 
     // display questions from a category
-    @GetMapping("/{id}/questions/all")
+    @GetMapping("/{id}/questions")
     public String displayQuestions(@PathVariable long id, Model model) {
         InterviewCategory category = categoryService.findById(id);
         List<InterviewQuestion> allQuestionsById = questionService.findAllByCategoryId(id);
@@ -177,7 +177,7 @@ public class InterviewCategoriesQuestionsController {
             InterviewCategory category = categoryService.findByName(qa.getInterviewCategory().getName());
             qa.setInterviewCategory(category);
             questionService.saveQuestion(qa);
-            return "redirect:/user/categories/{id}/questions/all";
+            return "redirect:/user/categories/{id}/questions";
         }
         model.addAttribute("failed", "Please try again");
         return "question-edit-form";
@@ -198,7 +198,7 @@ public class InterviewCategoriesQuestionsController {
     @GetMapping("/{id}/questions/delete/{questionId}")
     public String deleteQuestion(@PathVariable long id, @PathVariable long questionId) {
         questionService.deleteQuestion(questionId);
-        return "redirect:/user/categories/{id}/questions/all";
+        return "redirect:/user/categories/{id}/questions";
     }
 
     public void dateFormatConverted(InterviewQuestion question) {

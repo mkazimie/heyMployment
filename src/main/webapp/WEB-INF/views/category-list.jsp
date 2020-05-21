@@ -66,7 +66,7 @@
                     <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${category.name}</th>
                     <td class="align-middle">${category.interviewQuestions.size()}</td>
-                    <td class="align-middle"><a href="/user/categories/${category.id}/questions/all"
+                    <td class="align-middle"><a href="/user/categories/${category.id}/questions"
                                                 class="btn btn-primary">Questions</a></td>
                     <td class="align-middle"><a href="/user/categories/${category.id}/questions/add"
                                                 class="btn btn-primary"> + </a></td>

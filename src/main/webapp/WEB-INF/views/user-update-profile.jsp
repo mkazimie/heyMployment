@@ -39,7 +39,7 @@
 
 <div class="container">
     <div class="card mx-auto mt-3">
-        <div class="card-header bg-dark display-5 text-center text-white"> Edit your profile info</div>
+        <div class="card-header bg-dark form-header text-center text-white"> Edit your profile info</div>
         <div class="card-body">
             <form:form method="post" modelAttribute="currentUser">
 
