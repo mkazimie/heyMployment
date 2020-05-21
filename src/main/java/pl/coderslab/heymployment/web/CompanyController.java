@@ -19,11 +19,9 @@ import java.util.List;
 public class CompanyController {
 
     private final CompanyService companyService;
-    private final JobOfferService jobOfferService;
 
-    public CompanyController(CompanyService companyService, JobOfferService jobOfferService) {
+    public CompanyController(CompanyService companyService) {
         this.companyService = companyService;
-        this.jobOfferService = jobOfferService;
     }
 
     //    display all companies for current user

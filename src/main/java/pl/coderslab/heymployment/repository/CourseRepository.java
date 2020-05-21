@@ -9,7 +9,7 @@ import pl.coderslab.heymployment.domain.JobOffer;
 import java.util.List;
 
 @Repository
-public interface CourseRepository extends JpaRepository<Course, Long > {
+public interface CourseRepository extends JpaRepository<Course, Long> {
 
 
     @Query("SELECT c FROM Course c WHERE c.user.id = ?1 ORDER BY c.id DESC")
@@ -18,8 +18,8 @@ public interface CourseRepository extends JpaRepository<Course, Long > {
     @Query("SELECT c FROM Course c WHERE c.user.id = ?1 and c.status = ?2 ORDER BY c.id DESC")
     List<Course> findAllByUserIdAndStatus(long id, String status);
 
-    @Query("SELECT c FROM Course c JOIN c.topics t WHERE t.name = ?1")
-    List<Course> findAllByTopics(String topicName);
+    @Query("SELECT c FROM Course c LEFT JOIN c.topics t WHERE t.name LIKE ?1%")
+    List<Course> findAllByTopics(String topicPrefix);
 
 }
 

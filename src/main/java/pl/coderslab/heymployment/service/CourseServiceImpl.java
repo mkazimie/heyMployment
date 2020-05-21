@@ -34,8 +34,8 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> findAllByTopic(String topic) {
-        return courseRepository.findAllByTopics(topic);
+    public List<Course> findAllByTopic(String topicPrefix) {
+        return courseRepository.findAllByTopics(topicPrefix);
     }
 
     @Override

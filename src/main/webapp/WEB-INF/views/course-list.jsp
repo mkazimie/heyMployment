@@ -47,7 +47,8 @@
         </div>
     </div>
 
-        <h5 class="text-center"><button type="button" class="btn btn-dark">${allHowMany} ${specificHowMany}</button>
+        <h5 class="text-center"><button type="button" class="btn btn-dark">${allCourses.size()} ${allByStatus.size()}
+                ${allByTopic.size()}</button>
         </h5>
         <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
             <div class="container d-flex align-items-md-center py-2">
@@ -60,6 +61,10 @@
             </div>
         </nav>
 
+        <form:form action="/user/courses/find" method="post">
+            FIND BY TOPIC <input type="text" name="topicPrefix"/>
+            <input type="submit" class="btn btn-primary" value="Submit"/>
+        </form:form>
 
         <table class="table table-striped css-serial">
             <thead class="thead-dark">
@@ -122,6 +127,34 @@
                 </tr>
             </c:forEach>
             </tbody>
+
+            <tbody>
+            <c:forEach items="${allByTopic}" var="byTopic">
+                <tr class="text-center">
+                    <td class="align-middle"></td>
+                    <th scope="col" class="align-middle">${byTopic.name}</th>
+                    <c:choose>
+                        <c:when test="${not empty byTopic.url}">
+                            <td class="align-middle"><a href="${byTopic.url}">See Course</a></td>
+                        </c:when>
+                        <c:otherwise>
+                            <td></td>
+                        </c:otherwise>
+                    </c:choose>
+                    <td class="align-middle">${byTopic.organizedBy}</td>
+                    <td class="align-middle"><c:forEach items="${byTopic.topics}" var="topic">
+                        <div>${topic.name}</div>
+                    </c:forEach>
+                    </td>
+                    <td class="align-middle"><a href="/user/courses/details/${byTopic.id}" class="btn btn-primary">
+                        Details </a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+
+
+
+
         </table>
     </div>
 </sec:authorize>

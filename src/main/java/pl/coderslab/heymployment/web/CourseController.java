@@ -55,7 +55,7 @@ public class CourseController {
     public String getAllCourses(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<Course> allCourses = courseService.findAll(currentUser.getUser().getId());
         model.addAttribute("allCourses", allCourses);
-        model.addAttribute("allHowMany", allCourses.size());
+//        model.addAttribute("allHowMany", allCourses.size());
         return "course-list";
     }
 
@@ -65,7 +65,7 @@ public class CourseController {
                                          @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         List<Course> allByStatus = courseService.findAllByStatus(currentUser.getUser().getId(), status);
         model.addAttribute("allByStatus", allByStatus);
-        model.addAttribute("specificHowMany", allByStatus.size());
+//        model.addAttribute("specificHowMany", allByStatus.size());
         return "course-list";
     }
 
@@ -107,15 +107,25 @@ public class CourseController {
 
     // save updated course
     @PostMapping("/update")
-    public String updateCourse(@ModelAttribute @Valid Course course, BindingResult result, Model model){
-        if (!result.hasErrors()){
-        course.setTopics(course.getTopics());
-        courseService.saveCourse(course);
-        return "redirect:/user/courses";
-    }
+    public String updateCourse(@ModelAttribute @Valid Course course, BindingResult result, Model model) {
+        if (!result.hasErrors()) {
+            course.setTopics(course.getTopics());
+            courseService.saveCourse(course);
+            return "redirect:/user/courses";
+        }
         model.addAttribute("failed", "Please try again");
         return "course-edit-form";
-}
+    }
+
+    @PostMapping("/find")
+    public String findByTopic(@RequestParam String topicPrefix, Model model){
+        List<Course> allByTopic = courseService.findAllByTopic(topicPrefix);
+        model.addAttribute("allByTopic", allByTopic);
+        return "course-list";
+    }
+
+
+
 
 
     @ModelAttribute("status")

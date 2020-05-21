@@ -28,7 +28,6 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    //FIX OK?
     public Company findById(long id) {
         Optional<Company> company = companyRepository.findById(id);
         return company.orElseThrow(() -> new NoRecordFoundException("No Such Record Found in the Database"));
