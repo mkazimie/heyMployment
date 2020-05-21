@@ -80,7 +80,8 @@
                 <td class="align-middle">${todo.description}</td>
                 <c:choose>
                     <c:when test="${not empty todo.jobOffer}">
-                        <td class="align-middle"><a href="/user/offers/${todo.jobOffer.id}">${todo.jobOffer.title}</a></td>
+                        <td class="align-middle"><a
+                                href="/user/offers/details/${todo.jobOffer.id}">${todo.jobOffer.title}</a></td>
                     </c:when>
                     <c:otherwise>
                         <td class="align-middle">n/d</td>

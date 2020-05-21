@@ -27,8 +27,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="/user/offers/all"> Job Offers </a></li>
-            <li class="breadcrumb-item"><a href="/user/offers/${offer.id}"> ${offer.title} Details </a></li>
+            <li class="breadcrumb-item"><a href="/user/offers"> Job Offers </a></li>
+            <li class="breadcrumb-item"><a href="/user/offers/details/${offer.id}"> ${offer.title} Details </a></li>
             <li class="breadcrumb-item active" aria-current="page"> ${offer.title} Delete </li>
         </ol>
     </nav>
@@ -40,7 +40,7 @@
         <div class="card-body">
             <p class="card-text"> Are you sure you want to delete Job Offer <strong>${offer.title}</strong>?</p>
             <a href="/user/offers/delete/${offer.id}" class="btn btn-link" role="button"> YES </a>
-            <a href="/user/offers/all" class="btn btn-link" role="button"> NO </a>
+            <a href="/user/offers" class="btn btn-link" role="button"> NO </a>
         </div>
     </div>
 </div>
