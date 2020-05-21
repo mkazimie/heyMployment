@@ -100,7 +100,6 @@ public class CourseController {
         Course course = courseService.findById(id);
         List<Topic> topics = course.getTopics();
         model.addAttribute("course", course);
-        model.addAttribute("tops", topics);
         return "course-edit-form";
     }
 
@@ -118,8 +117,8 @@ public class CourseController {
     }
 
     @PostMapping("/find")
-    public String findByTopic(@RequestParam String topicPrefix, Model model){
-        List<Course> allByTopic = courseService.findAllByTopic(topicPrefix);
+    public String findByTopic(@RequestParam String topic, Model model){
+        List<Course> allByTopic = courseService.findAllByTopic(topic);
         model.addAttribute("allByTopic", allByTopic);
         return "course-list";
     }

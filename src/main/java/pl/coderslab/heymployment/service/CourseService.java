@@ -11,7 +11,7 @@ public interface CourseService {
 
     List<Course> findAllByStatus(long id, String status);
 
-    List<Course> findAllByTopic(String topicPrefix);
+    List<Course> findAllByTopic(String topic);
 
     Course findById(long id);
 

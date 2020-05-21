@@ -62,9 +62,17 @@
         </nav>
 
         <form:form action="/user/courses/find" method="post">
-            FIND BY TOPIC <input type="text" name="topicPrefix"/>
-            <input type="submit" class="btn btn-primary" value="Submit"/>
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="topic"><strong>Find By Topic</strong></label>
+                <input type="text" id="topic" name="topic" class="form-control mx-sm-3">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i></button>
+                <a href="/user/courses/" class="btn btn-dark ml-2"><i class="fas fa-times"></i></a>
+            </div>
+        </div>
         </form:form>
+
 
         <table class="table table-striped css-serial">
             <thead class="thead-dark">
