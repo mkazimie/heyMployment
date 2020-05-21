@@ -43,7 +43,7 @@ public class CourseController {
             courseFromForm.setUser(currentUser.getUser());
             courseFromForm.setTopics(topicService.getOrCreateNew(course));
             courseService.saveCourse(courseFromForm);
-            return "redirect:/user/courses/all";
+            return "redirect:/user/courses";
         }
         model.addAttribute("failed", "Please try again");
         return "course-add-form";
@@ -51,7 +51,7 @@ public class CourseController {
 
 
     // display all courses
-    @GetMapping("/all")
+    @GetMapping("/")
     public String getAllCourses(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<Course> allCourses = courseService.findAll(currentUser.getUser().getId());
         model.addAttribute("allCourses", allCourses);
@@ -60,7 +60,7 @@ public class CourseController {
     }
 
     // display courses by status
-    @GetMapping("/all/{status}")
+    @GetMapping("/{status}")
     public String displayCoursesByStatus(@PathVariable String status,
                                          @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         List<Course> allByStatus = courseService.findAllByStatus(currentUser.getUser().getId(), status);
@@ -70,7 +70,7 @@ public class CourseController {
     }
 
     // display detailed view of a course by id
-    @GetMapping("/{id}")
+    @GetMapping("/details/{id}")
     public String displayDetails(Model model, @PathVariable long id) {
         Course course = courseService.findById(id);
         course.getTodos().forEach(todo -> todo.setFormattedDeadline(todo.getDeadline()));
@@ -91,7 +91,7 @@ public class CourseController {
     @GetMapping("/delete/{id}")
     public String deleteCourse(@PathVariable long id) {
         courseService.deleteCourse(id);
-        return "redirect:/user/courses/all";
+        return "redirect:/user/courses";
     }
 
        // edit course
@@ -111,7 +111,7 @@ public class CourseController {
         if (!result.hasErrors()){
         course.setTopics(course.getTopics());
         courseService.saveCourse(course);
-        return "redirect:/user/courses/all";
+        return "redirect:/user/courses";
     }
         model.addAttribute("failed", "Please try again");
         return "course-edit-form";

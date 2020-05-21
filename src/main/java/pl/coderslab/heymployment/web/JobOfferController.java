@@ -22,7 +22,7 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/user/offers")
 public class JobOfferController {
 
     private final JobOfferService jobOfferService;
@@ -35,7 +35,7 @@ public class JobOfferController {
     }
 
     //display form for adding job offer
-    @GetMapping("/offers/add")
+    @GetMapping("/add")
     public String addJobOffer(Model model) {
         model.addAttribute("jobOffer", new JobOfferDto());
         return "job-offer-basic-form";
@@ -43,7 +43,7 @@ public class JobOfferController {
 
 
     // process basic form and redirect to detailed form
-    @PostMapping("/offers/add")
+    @PostMapping("/add")
     public String addJobOffer(@ModelAttribute("jobOffer") @Valid JobOfferDto jobOffer, BindingResult result,
                               @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         if (!result.hasErrors()) {
@@ -61,7 +61,7 @@ public class JobOfferController {
     }
 
     // process detailed form (all fields can be null but some have max size restrictions) & redirect to list of all
-    @PostMapping("offers/add/details")
+    @PostMapping("/add/details")
     public String addDetails(@ModelAttribute("offer") @Valid JobOffer offer, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             jobOfferService.saveJobOffer(offer);
@@ -73,7 +73,7 @@ public class JobOfferController {
     }
 
     // display all job offers for current user
-    @GetMapping("/offers")
+    @GetMapping("/")
     public String displayJobOffers(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<JobOffer> allJobOffers = jobOfferService.findAllJobOffers(currentUser.getUser().getId());
 //        dateFormatConverted(allJobOffers);
@@ -83,7 +83,7 @@ public class JobOfferController {
     }
 
     // display job offers by status for current user
-    @GetMapping("/offers/{name}")
+    @GetMapping("/{name}")
     public String displayJobOffersByStatus(@PathVariable String name,
                                            @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         List<JobOffer> allByStatus = jobOfferService.findAllByStatus(currentUser.getUser().getId(), name);
@@ -94,7 +94,7 @@ public class JobOfferController {
     }
 
     // display detailed view of a job offer by id
-    @GetMapping("/offers/details/{id}")
+    @GetMapping("/details/{id}")
     public String displayDetails(Model model, @PathVariable long id) {
         JobOffer jobOffer = jobOfferService.findById(id);
         jobOffer.getTodos().forEach(todo -> todo.setFormattedDeadline(todo.getDeadline()));
@@ -104,7 +104,7 @@ public class JobOfferController {
 
 
     // edit job offer
-    @GetMapping("/offers/update/{id}")
+    @GetMapping("/update/{id}")
     public String updateOffer(Model model, @PathVariable long id) {
         JobOffer offer = jobOfferService.findById(id);
         model.addAttribute("jobOffer", offer);
@@ -127,7 +127,7 @@ public class JobOfferController {
 
 
     // confirm-delete of job offer
-    @GetMapping("/offers/confirm-delete/{id}")
+    @GetMapping("/confirm-delete/{id}")
     public String confirmDelete(@PathVariable long id, Model model) {
         JobOffer jobOffer = jobOfferService.findById(id);
         model.addAttribute("offer", jobOffer);
@@ -136,7 +136,7 @@ public class JobOfferController {
 
     // delete job offer
     // delete company if no job offer related anymore
-    @GetMapping("/offers/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteOffer(@PathVariable long id) {
         JobOffer offer = jobOfferService.findById(id);
         Company company = companyService.findByName(offer.getCompany().getName());
@@ -170,7 +170,7 @@ public class JobOfferController {
 
 
     // RAPORT DISPLAY ON JOB OFFERS
-    @GetMapping("offers/raport")
+    @GetMapping("/raport")
     public String displayStatistics(Model model, @AuthenticationPrincipal CurrentUser currentUser){
         Month month = LocalDate.now().getMonth();
         String monthName = month.getDisplayName(TextStyle.FULL, Locale.ENGLISH);

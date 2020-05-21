@@ -33,7 +33,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="/user/todos/all"> To Do List </a></li>
+            <li class="breadcrumb-item"><a href="/user/todos/"> To Do List </a></li>
             <li class="breadcrumb-item active" aria-current="page"> Confirm Action </li>
         </ol>
     </nav>
@@ -44,7 +44,7 @@
             <div class="card-body">
                 <p class="card-text"> Do you want to check off the task <strong>${todo.name}</strong>?</p>
                 <a href="/user/todos/delete/${todo.id}" class="btn btn-link" role="button"> YES </a>
-                <a href="/user/todos/all" class="btn btn-link" role="button"> NO </a>
+                <a href="/user/todos/" class="btn btn-link" role="button"> NO </a>
             </div>
         </div>
     </div>

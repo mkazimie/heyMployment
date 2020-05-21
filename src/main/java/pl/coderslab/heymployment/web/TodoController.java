@@ -16,10 +16,7 @@ import pl.coderslab.heymployment.service.TodoService;
 
 import javax.validation.Valid;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.util.List;
-import java.util.Locale;
 
 @Controller
 @RequestMapping("/user/todos")
@@ -56,7 +53,7 @@ public class TodoController {
                 todo.setCourse(todo.getCourse());
             }
             todoService.saveTodo(todo);
-            return "redirect:/user/todos/all";
+            return "redirect:/user/todos/";
         }
         model.addAttribute("failed", "Please try again");
         return "todo-form";
@@ -82,7 +79,7 @@ public class TodoController {
 
 
     //display all todos for current user
-    @GetMapping("/all")
+    @GetMapping("/")
     public String displayTodos(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<Todo> todos = todoService.findAllByUserId(currentUser.getUser().getId(), false);
         for (Todo todo : todos) {
@@ -114,7 +111,7 @@ public class TodoController {
     @GetMapping("/delete/{id}")
     public String deleteTodo(@PathVariable long id) {
         todoService.deleteTodo(id);
-        return "redirect:/user/todos/all";
+        return "redirect:/user/todos/";
     }
 
     @ModelAttribute("jobOffers")

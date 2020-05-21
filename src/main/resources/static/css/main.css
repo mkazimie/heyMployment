@@ -58,11 +58,6 @@
     display: inline-block;
 }
 
-.bt-r{
-    float: right;
-    display: inline-block;
-}
-
 
 .center-content{
     text-align: center;
@@ -105,4 +100,6 @@
 .table-content, .form-header{
     font-size: 20px;
 }
+
+
 

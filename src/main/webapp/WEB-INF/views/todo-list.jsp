@@ -89,7 +89,9 @@
                 </c:choose>
                 <c:choose>
                     <c:when test="${not empty todo.course}">
-                        <td class="align-middle"><a href="/user/courses/${todo.course.id}">${todo.course.name}</a></td>
+                        <td
+                                class="align-middle"><a
+                                href="/user/courses/details/${todo.course.id}">${todo.course.name}</a></td>
                     </c:when>
                     <c:otherwise>
                         <td class="align-middle">n/d</td>

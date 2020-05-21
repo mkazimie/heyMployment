@@ -70,7 +70,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
-                        <a href="/user/offers" class="btn btn-primary"> Go </a>
+                        <a href="/user/offers/" class="btn btn-primary"> Go </a>
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
-                        <a href="/user/todos/all" class="btn btn-primary"> Go </a>
+                        <a href="/user/todos/" class="btn btn-primary"> Go </a>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
-                        <a href="/user/companies/all" class="btn btn-primary"> Go </a>
+                        <a href="/user/companies/" class="btn btn-primary"> Go </a>
                     </div>
                 </div>
             </div>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
-                        <a href="/user/courses/all" class="btn btn-primary"> Go </a>
+                        <a href="/user/courses/" class="btn btn-primary"> Go </a>
                     </div>
                 </div>
             </div>

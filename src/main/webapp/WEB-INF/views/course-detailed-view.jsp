@@ -31,17 +31,11 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="/user/courses/all"> Courses </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> ${course.name} Details </li>
+            <li class="breadcrumb-item"><a href="/user/courses/"> Courses </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> ${course.name} Details</li>
         </ol>
     </nav>
 
-
-<%--    <nav class="navbar bg-dark static-top">--%>
-<%--        <div class="navbar-brand main-logo ml-4 text-white">--%>
-<%--            <strong> ${course.name} Details </strong>--%>
-<%--        </div>--%>
-<%--    </nav>--%>
 
     <div class="container ">
         <div class="card-deck mt-5">
@@ -99,10 +93,12 @@
                     </div>
 
                     <div class="card-text mr-5 ml-5">
-                        <h5 class="text-center mt-5"><strong> To-Do List</strong></h5>
                         <div class="btn-wrapper text-center mb-3">
+                            <h5><a href="/user/todos/"><strong> To-Do List </strong></a></h5>
                             <a href="/user/todos/add/course/${course.id}" class="btn btn-primary"> + </a>
                         </div>
+
+
                         <table class="table css-serial">
                             <thead class="table-active">
                             <tr class="text-center">

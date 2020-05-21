@@ -52,7 +52,7 @@
         <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
             <div class="container d-flex align-items-md-center py-2">
                 <nav class="nav mx-auto">
-                    <a href="/user/offers" class="btn btn-link">All</a>
+                    <a href="/user/offers/" class="btn btn-link">All</a>
                     <a href="/user/offers/${status[0]}" class="btn btn-link">${status[0]}</a>
                     <a href="/user/offers/${status[1]}" class="btn btn-link">${status[1]}</a>
                     <a href="/user/offers/${status[2]}" class="btn btn-link">${status[2]}</a>

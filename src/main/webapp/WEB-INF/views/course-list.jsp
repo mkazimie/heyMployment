@@ -52,10 +52,10 @@
         <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
             <div class="container d-flex align-items-md-center py-2">
                 <nav class="nav mx-auto">
-                    <a href="/user/courses/all" class="btn btn-link">All</a>
-                    <a href="/user/courses/all/${status[0]}" class="btn btn-link">${status[0]}</a>
-                    <a href="/user/courses/all/${status[1]}" class="btn btn-link">${status[1]}</a>
-                    <a href="/user/courses/all/${status[2]}" class="btn btn-link">${status[2]}</a>
+                    <a href="/user/courses/" class="btn btn-link">All</a>
+                    <a href="/user/courses/${status[0]}" class="btn btn-link">${status[0]}</a>
+                    <a href="/user/courses/${status[1]}" class="btn btn-link">${status[1]}</a>
+                    <a href="/user/courses/${status[2]}" class="btn btn-link">${status[2]}</a>
                 </nav>
             </div>
         </nav>
@@ -92,7 +92,8 @@
                         <div>${topic.name}</div>
                     </c:forEach>
                     </td>
-                    <td class="align-middle"><a href="/user/courses/${course.id}" class="btn btn-primary"> Details </a> </td>
+                    <td class="align-middle"><a href="/user/courses/details/${course.id}" class="btn btn-primary">
+                        Details </a> </td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -116,7 +117,8 @@
                         <div>${topic.name}</div>
                     </c:forEach>
                     </td>
-                    <td class="align-middle"><a href="/user/courses/${byStatus.id}" class="btn btn-primary"> Details </a></td>
+                    <td class="align-middle"><a href="/user/courses/details/${byStatus.id}" class="btn btn-primary">
+                        Details </a></td>
                 </tr>
             </c:forEach>
             </tbody>

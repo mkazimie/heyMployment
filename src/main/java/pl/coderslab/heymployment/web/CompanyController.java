@@ -27,7 +27,7 @@ public class CompanyController {
     }
 
     //    display all companies for current user
-    @GetMapping("/all")
+    @GetMapping("/")
     public String displayCompanies(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<Company> allCompanies = companyService.findAllByUser(currentUser.getUser());
         model.addAttribute("companies", allCompanies);

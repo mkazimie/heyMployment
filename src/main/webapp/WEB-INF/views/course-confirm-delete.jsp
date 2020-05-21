@@ -27,8 +27,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="/user/courses/all"> Courses </a></li>
-            <li class="breadcrumb-item"><a href="/user/courses/${course.id}"> ${course.name} Details </a></li>
+            <li class="breadcrumb-item"><a href="/user/courses/"> Courses </a></li>
+            <li class="breadcrumb-item"><a href="/user/courses/details/${course.id}"> ${course.name} Details </a></li>
             <li class="breadcrumb-item active" aria-current="page"> ${course.name} Delete  </li>
         </ol>
     </nav>
@@ -39,7 +39,7 @@
         <div class="card-body">
             <p class="card-text"> Are you sure you want to remove the Course <strong>${course.name}</strong>?</p>
             <a href="/user/courses/delete/${course.id}" class="btn btn-link" role="button"> YES </a>
-            <a href="/user/courses/all" class="btn btn-link" role="button"> NO </a>
+            <a href="/user/courses/" class="btn btn-link" role="button"> NO </a>
         </div>
     </div>
 </div>

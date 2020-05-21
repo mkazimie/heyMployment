@@ -33,7 +33,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="/user/offers"> Job Offers </a></li>
+            <li class="breadcrumb-item"><a href="/user/offers/"> Job Offers </a></li>
             <li
                     class="breadcrumb-item"><a href="/user/offers/details/${jobOffer.id}"> ${jobOffer.title} Details
             </a></li>
