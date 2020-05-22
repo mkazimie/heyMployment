@@ -16,4 +16,8 @@ public interface InterviewQuestionRepository extends JpaRepository<InterviewQues
 
     @Query("SELECT q FROM InterviewQuestion q WHERE q.interviewCategory.id = ?1 ORDER BY q.added DESC")
     List<InterviewQuestion> findAllByInterviewCategoryId(long id);
+
+    @Query("SELECT q FROM InterviewQuestion q WHERE q.interviewCategory.id = ?1 AND q.question LIKE %?2% OR q.answer " +
+            "LIKE %?2%")
+    List<InterviewQuestion> findAllByQuestionLikeOrAnswerLike(long id, String keyword);
 }

@@ -17,4 +17,6 @@ public interface QuestionService {
     InterviewQuestion saveQuestion (InterviewQuestion question);
 
     InterviewQuestion createQuestionFromDto(QuestionDto qDto);
+
+    List<InterviewQuestion> findByKeyword(long id, String keyword);
 }

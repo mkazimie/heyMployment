@@ -60,4 +60,9 @@ public class QuestionServiceImpl implements QuestionService {
         questionRepository.save(question);
         return question;
     }
+
+    @Override
+    public List<InterviewQuestion> findByKeyword(long id, String keyword) {
+        return questionRepository.findAllByQuestionLikeOrAnswerLike(id, keyword);
+    }
 }

@@ -5,10 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.heymployment.domain.InterviewCategory;
-import pl.coderslab.heymployment.domain.InterviewQuestion;
-import pl.coderslab.heymployment.domain.JobOffer;
-import pl.coderslab.heymployment.domain.User;
+import pl.coderslab.heymployment.domain.*;
 import pl.coderslab.heymployment.domain.dto.CategoryDto;
 import pl.coderslab.heymployment.domain.dto.QuestionDto;
 import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
@@ -220,6 +217,16 @@ public class InterviewCategoriesQuestionsController {
     }
 
 
+
+
+    @PostMapping("/{id}/questions/find")
+    public String findByTopic(@RequestParam String keyword, @PathVariable long id, Model model){
+        List<InterviewQuestion> byKeyword = questionService.findByKeyword(id, keyword);
+        InterviewCategory category = categoryService.findById(id);
+        model.addAttribute("allByKeyword", byKeyword);
+        model.addAttribute("currentCat", category);
+        return "questions-all-by-category";
+    }
 
     @ModelAttribute("difficulty")
     public List<String> difficulty() {
