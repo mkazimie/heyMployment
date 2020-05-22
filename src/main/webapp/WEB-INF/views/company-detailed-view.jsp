@@ -99,7 +99,8 @@
                                     <td class="align-middle">${offer.title}</td>
                                     <td class="align-middle">${offer.status}</td>
                                     <td class="align-middle">${offer.howAttractive}</td>
-                                    <td class="align-middle"><a href="/user/offers/${offer.id}" class="btn btn-primary"> Details</a></td>
+                                    <td class="align-middle"><a href="/user/offers/details/${offer.id}"
+                                                                class="btn btn-primary"> Details</a></td>
                                 </tr>
                                 </c:forEach>
                                 </tbody>

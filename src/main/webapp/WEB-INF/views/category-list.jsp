@@ -51,7 +51,7 @@
                 <div class="form-inline">
                     <div class="form-group">
                         <label for="keyword"><strong> Filter questions by keyword </strong></label>
-                        <input type="text" id="keyword" name="keyword" class="form-control mx-sm-3">
+                        <input type="text" id="keyword" name="keyword" class="form-control mx-sm-3" required="required">
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-search"></i></button>
                         <a href="/user/categories/" class="btn btn-dark ml-2"><i
@@ -103,6 +103,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
 
 </body>
 </html>

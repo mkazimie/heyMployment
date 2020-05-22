@@ -31,7 +31,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Job Offers </li>
+            <li class="breadcrumb-item active" aria-current="page"> Job Offers</li>
         </ol>
     </nav>
 
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-sm-10 col-12">
                 <h1 class="bd-title"> My Job Offers <a href="/user/offers/add" class="btn btn-primary"> +
-                </a> <a href="/user/offers/raport" class="btn btn-dark align-right text-right"> Monthly Raport </a> </h1>
+                </a> <a href="/user/offers/raport" class="btn btn-dark align-right text-right"> Monthly Raport </a></h1>
             </div>
         </div>
 
@@ -62,28 +62,28 @@
             </div>
         </nav>
 
-
-        <table class="table table-striped css-serial">
+        <table class="table table-striped css-serial" id="myTable">
             <thead class="thead-dark">
             <tr class="text-center">
                 <th>#</th>
-                <th scope="col"> Job Title</th>
-                <th scope="col"> Location</th>
-                <th scope="col"> Company</th>
-                <th scope="col"> + </th>
+                <th scope="col" class="sort-column" onclick="sortTable(0)"> Job Title</th>
+                <th scope="col" class="sort-column" onclick="sortTable(1)"> Location</th>
+                <th scope="col" class="sort-column" onclick="sortTable(2)"> Company</th>
+                <th scope="col"> +</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${offers}" var="offer">
                 <tr class="text-center">
-                <td class="align-middle"></td>
-                <th scope="col" class="align-middle">${offer.title}</th>
-                <td class="align-middle">${offer.location}</td>
-                <td class="align-middle"><a href="/user/companies/${offer.company.id}">${offer.company.name}</a>
-                </td>
-                <td class="align-middle"><a href="/user/offers/details/${offer.id}" class="btn btn-primary"> Details
-                </a>
-                </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"><strong> ${offer.title}</strong>
+                    </td>
+                    <td class="align-middle">${offer.location}</td>
+                    <td class="align-middle"><a href="/user/companies/${offer.company.id}">${offer.company.name}</a>
+                    </td>
+                    <td class="align-middle"><a href="/user/offers/details/${offer.id}" class="btn btn-primary"> Details
+                    </a>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -92,7 +92,8 @@
             <c:forEach items="${allByStatus}" var="byStatus">
                 <tr class="text-center">
                     <td class="align-middle"></td>
-                    <th scope="col" class="align-middle">${byStatus.title}</th>
+                    <td class="align-middle"><strong>
+                            ${byStatus.title}</strong></td>
                     <td class="align-middle">${byStatus.location}</td>
                     <td class="align-middle"><a href="/user/companies/${byStatus.company.id}">
                             ${byStatus.company.name}</a></td>
@@ -117,6 +118,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+<script type="text/javascript" src="<c:url value="js/main.js" />"></script>
 
 </body>
 </html>

@@ -48,7 +48,7 @@
                     If you remove this category, all questions will be removed as well.
                     Do you want to proceed?
                     <a href="/user/categories/delete/${category.id}" class="btn btn-link" role="button"> YES </a>
-                    <a href="/user/categories/all" class="btn btn-link" role="button"> NO </a>
+                    <a href="/user/categories/" class="btn btn-link" role="button"> NO </a>
             </div>
         </div>
     </div>
