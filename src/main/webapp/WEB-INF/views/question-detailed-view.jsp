@@ -33,8 +33,7 @@
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="/user/categories/">Categories</a></li>
             <li class="breadcrumb-item">
-                <a href="/user/categories/${question.interviewCategory.id}/questions">${question.interviewCategory.name}
-                Questions</a></li>
+                <a href="/user/categories/${question.interviewCategory.id}/questions">${question.interviewCategory.name}</a></li>
             <li class="breadcrumb-item active" aria-current="page"> Q${question.id} Details</li>
         </ol>
     </nav>

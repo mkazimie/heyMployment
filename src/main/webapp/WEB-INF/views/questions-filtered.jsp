@@ -34,8 +34,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="/user/categories/"> Categories </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> ${cat.name} </li>
+            <li class="breadcrumb-item"><a href="/user/categories/">Categories</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Filtered Questions</li>
         </ol>
 
     </nav>
@@ -43,29 +43,21 @@
     <div class="container mt-5 mx-auto ml-4 mr-4">
         <div class="row">
             <div class="col-sm-10 col-12">
-                <h1 class="bd-title"> Questions <a
-                        href="/user/categories/${cat.id}/questions/add" class="btn btn-primary"> + </a></h1>
+                <h1 class="bd-title">
+                    <button class="btn btn-dark mr-2">${allByWord.size()}</button>
+                    Corresponding questions found:
+                    <a href="/user/categories/" class="btn btn-primary"> <i class="fas fa-undo"></i> </a>
+                </h1>
             </div>
         </div>
 
-<%--        <form:form action="/user/categories/${cat.id}${currentCat.id}/questions/find" method="post">--%>
-<%--            <div class="form-inline">--%>
-<%--                <div class="form-group">--%>
-<%--                    <label for="keyword"><strong>Find By Keyword</strong></label>--%>
-<%--                    <input type="text" id="keyword" name="keyword" class="form-control mx-sm-3" required="required">--%>
-<%--                    <button type="submit" class="btn btn-primary">--%>
-<%--                        <i class="fas fa-search"></i></button>--%>
-<%--                    <a href="/user/categories/${currentCat.id}/questions/" class="btn btn-dark ml-2"><i--%>
-<%--                            class="fas fa-times"></i></a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </form:form>--%>
 
-        <table class="table table-striped css-serial">
+        <table class="table table-striped css-serial mt-5">
             <thead class="thead-dark">
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Question</th>
+                <th scope="col"> Category</th>
                 <th scope="col"> ID</th>
                 <th scope="col"> Has Answer</th>
                 <th scope="col"> Is Ready</th>
@@ -76,10 +68,12 @@
             </thead>
 
             <tbody>
-            <c:forEach items="${allById}" var="qa">
+            <c:forEach items="${allByWord}" var="qa">
                 <tr class="text-center">
                     <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${qa.question}</th>
+                    <td class="align-middle"><a href="/user/categories/${qa.interviewCategory.id}/questions/">
+                            ${qa.interviewCategory.name}</a></td>
                     <td class="align-middle"> Q${qa.id}</td>
                     <c:choose>
                         <c:when test="${not empty qa.answer}">
@@ -100,47 +94,13 @@
                     <td class="align-middle">${qa.formatAddedDate}</td>
                     <td class="align-middle">${qa.formatUpdatedDate}</td>
 
-                    <td class="align-middle"><a href="/user/categories/${cat.id}/questions/${qa.id}"
+                    <td class="align-middle"><a href="/user/categories/${qa.interviewCategory.id}/questions/${qa.id}"
                                                 class="btn btn-primary">
                         Details
                     </a></td>
                 </tr>
             </c:forEach>
             </tbody>
-
-<%--            <tbody>--%>
-<%--            <c:forEach items="${allByKeyword}" var="keywordQA">--%>
-<%--                <tr class="text-center">--%>
-<%--                    <td class="align-middle"></td>--%>
-<%--                    <th scope="col" class="align-middle">${keywordQA.question}</th>--%>
-<%--                    <td class="align-middle"> Q${keywordQA.id}</td>--%>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${not empty keywordQA.answer}">--%>
-<%--                            <td class="align-middle">Yes</td>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <td class="align-middle">Not Yet</td>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${keywordQA.ready == true}">--%>
-<%--                            <td class="align-middle">Yes</td>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <td class="align-middle">Not Yet</td>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-<%--                    <td class="align-middle">${keywordQA.formatAddedDate}</td>--%>
-<%--                    <td class="align-middle">${keywordQA.formatUpdatedDate}</td>--%>
-
-<%--                    <td class="align-middle"><a--%>
-<%--                            href="/user/categories/${keywordQA.interviewCategory.id}/questions/${keywordQA.id}"--%>
-<%--                            class="btn btn-primary">--%>
-<%--                        Details--%>
-<%--                    </a></td>--%>
-<%--                </tr>--%>
-<%--            </c:forEach>--%>
-<%--            </tbody>--%>
 
         </table>
     </div>

@@ -217,16 +217,14 @@ public class InterviewCategoriesQuestionsController {
     }
 
 
-
-
-    @PostMapping("/{id}/questions/find")
-    public String findByTopic(@RequestParam String keyword, @PathVariable long id, Model model){
-        List<InterviewQuestion> byKeyword = questionService.findByKeyword(id, keyword);
-        InterviewCategory category = categoryService.findById(id);
-        model.addAttribute("allByKeyword", byKeyword);
-        model.addAttribute("currentCat", category);
-        return "questions-all-by-category";
+    // display users questions filtered by word
+    @PostMapping("/questions/filter")
+    public String findByWord(@RequestParam String keyword, Model model, @AuthenticationPrincipal CurrentUser currentUser){
+        List<InterviewQuestion> allByWord = questionService.findByWord(currentUser.getUser(), keyword);
+        model.addAttribute("allByWord", allByWord);
+        return "questions-filtered";
     }
+
 
     @ModelAttribute("difficulty")
     public List<String> difficulty() {

@@ -1,5 +1,6 @@
 package pl.coderslab.heymployment.service;
 import pl.coderslab.heymployment.domain.InterviewQuestion;
+import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.QuestionDto;
 
 import java.util.List;
@@ -18,5 +19,5 @@ public interface QuestionService {
 
     InterviewQuestion createQuestionFromDto(QuestionDto qDto);
 
-    List<InterviewQuestion> findByKeyword(long id, String keyword);
+    List<InterviewQuestion> findByWord(User user, String word);
 }

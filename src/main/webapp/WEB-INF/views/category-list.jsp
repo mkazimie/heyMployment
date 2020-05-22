@@ -38,7 +38,6 @@
     </nav>
 
 
-
     <div class="container mt-5 mx-auto ml-4 mr-4">
         <div class="row">
             <div class="col-sm-10 col-12">
@@ -47,6 +46,20 @@
             </div>
         </div>
 
+        <div class="mt-5">
+            <form:form action="/user/categories/questions/filter" method="post">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="keyword"><strong> Filter questions by keyword </strong></label>
+                        <input type="text" id="keyword" name="keyword" class="form-control mx-sm-3">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i></button>
+                        <a href="/user/categories/" class="btn btn-dark ml-2"><i
+                                class="fas fa-times"></i></a>
+                    </div>
+                </div>
+            </form:form>
+        </div>
 
         <table class="table table-striped css-serial">
             <thead class="thead-dark">

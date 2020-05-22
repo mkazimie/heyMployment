@@ -3,6 +3,7 @@ package pl.coderslab.heymployment.service;
 import org.springframework.stereotype.Service;
 import pl.coderslab.heymployment.domain.InterviewCategory;
 import pl.coderslab.heymployment.domain.InterviewQuestion;
+import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.QuestionDto;
 import pl.coderslab.heymployment.exception.NoRecordFoundException;
 import pl.coderslab.heymployment.repository.InterviewCategoryRepository;
@@ -61,8 +62,9 @@ public class QuestionServiceImpl implements QuestionService {
         return question;
     }
 
+
     @Override
-    public List<InterviewQuestion> findByKeyword(long id, String keyword) {
-        return questionRepository.findAllByQuestionLikeOrAnswerLike(id, keyword);
+    public List<InterviewQuestion> findByWord(User user, String word) {
+        return questionRepository.findAllByCategoryUserAndQuestionLikeOrAnswerLike(user, word);
     }
 }
