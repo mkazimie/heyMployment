@@ -73,7 +73,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <form:option value="0" label="--Please Select" selected="selected"/>
-                                    <form:options items="${jobOffers}" itemLabel="title" itemValue="id"/>
+                                    <form:options items="${jobOffers}" itemLabel="jobFullTitle" itemValue="id"/>
                                 </c:otherwise>
                             </c:choose>
                             <form:errors path="jobOffer" cssClass="errorMessage"/>
@@ -91,7 +91,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <form:option value="0" label="--Please Select" selected="selected"/>
-                                    <form:options items="${courses}" itemLabel="name" itemValue="id"/>
+                                    <form:options items="${courses}" itemLabel="courseFullName" itemValue="id"/>
                                 </c:otherwise>
                             </c:choose>
                             <form:errors path="course" cssClass="errorMessage"/>

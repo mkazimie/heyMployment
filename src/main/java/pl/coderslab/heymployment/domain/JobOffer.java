@@ -102,6 +102,9 @@ public class JobOffer {
     @Transient
     private String formatUpdated;
 
+    public String getJobFullTitle(){
+        return title + " - " + company.getName();
+    }
 
 
 }

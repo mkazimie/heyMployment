@@ -80,6 +80,9 @@ public class Course {
         updated = LocalDateTime.now();
     }
 
+    public String getCourseFullName(){
+        return name + " - " + organizedBy;
+    }
 
 
 }
