@@ -2,6 +2,7 @@ package pl.coderslab.heymployment.service;
 
 import org.springframework.stereotype.Service;
 import pl.coderslab.heymployment.domain.Course;
+import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.Topic;
 import pl.coderslab.heymployment.domain.dto.CourseDto;
 import pl.coderslab.heymployment.exception.NoRecordFoundException;
@@ -44,18 +45,13 @@ public class CourseServiceImpl implements CourseService {
         return course.orElseThrow(() -> new NoRecordFoundException("No Such Record Found in the Database"));
     }
 
-    // delete course and its topics directly from DB
     @Override
     public void deleteCourse(long id) {
         Course toDelete = findById(id);
-        List<Topic> topics = toDelete.getTopics();
-        for (Iterator<Topic> it = topics.iterator(); it.hasNext(); ) {
-            Topic next = it.next();
-            it.remove();
-            topicRepository.delete(next);
-        }
         courseRepository.delete(toDelete);
     }
+
+
 
 
     @Override

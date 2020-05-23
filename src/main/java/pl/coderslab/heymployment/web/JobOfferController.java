@@ -65,7 +65,7 @@ public class JobOfferController {
     public String addDetails(@ModelAttribute("offer") @Valid JobOffer offer, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             jobOfferService.saveJobOffer(offer);
-            return "redirect:/user/offers";
+            return "redirect:/user/offers/";
         } else {
             model.addAttribute("failed", "Please try again");
             return "job-offer-detailed-form";
@@ -119,7 +119,7 @@ public class JobOfferController {
             Company company = companyService.findByName(jobOffer.getCompany().getName());
             jobOffer.setCompany(company);
             jobOfferService.saveJobOffer(jobOffer);
-            return "redirect:/user/offers";
+            return "redirect:/user/offers/";
         }
         model.addAttribute("failed", "Please try again");
         return "job-offer-edit";
@@ -144,7 +144,7 @@ public class JobOfferController {
         if (company.getJobOffers().size() == 0) {
             companyService.deleteCompany(company.getId());
         }
-        return "redirect:/user/offers";
+        return "redirect:/user/offers/";
     }
 
 

@@ -43,7 +43,7 @@ public class CourseController {
             courseFromForm.setUser(currentUser.getUser());
             courseFromForm.setTopics(topicService.getOrCreateNew(course));
             courseService.saveCourse(courseFromForm);
-            return "redirect:/user/courses";
+            return "redirect:/user/courses/";
         }
         model.addAttribute("failed", "Please try again");
         return "course-add-form";
@@ -87,18 +87,26 @@ public class CourseController {
         return "course-confirm-delete";
     }
 
-    // delete course
+    // delete course & delete topic if no course related
     @GetMapping("/delete/{id}")
     public String deleteCourse(@PathVariable long id) {
-        courseService.deleteCourse(id);
-        return "redirect:/user/courses";
-    }
-
-       // edit course
-    @GetMapping("/update/{id}")
-    public String updateCourse(Model model, @PathVariable long id){
         Course course = courseService.findById(id);
         List<Topic> topics = course.getTopics();
+        course.setTopics(null);
+        courseService.deleteCourse(id);
+        for (Topic topic : topics) {
+            if (topic.getCourses().size() == 0) {
+                topicService.deleteTopic(topic.getId());
+            }
+        }
+        return "redirect:/user/courses/";
+    }
+
+
+    // edit course
+    @GetMapping("/update/{id}")
+    public String updateCourse(Model model, @PathVariable long id) {
+        Course course = courseService.findById(id);
         model.addAttribute("course", course);
         return "course-edit-form";
     }
@@ -110,21 +118,18 @@ public class CourseController {
         if (!result.hasErrors()) {
             course.setTopics(course.getTopics());
             courseService.saveCourse(course);
-            return "redirect:/user/courses";
+            return "redirect:/user/courses/";
         }
         model.addAttribute("failed", "Please try again");
         return "course-edit-form";
     }
 
     @PostMapping("/find")
-    public String findByTopic(@RequestParam String topic, Model model){
+    public String findByTopic(@RequestParam String topic, Model model) {
         List<Course> allByTopic = courseService.findAllByTopic(topic);
         model.addAttribute("allByTopic", allByTopic);
         return "course-list";
     }
-
-
-
 
 
     @ModelAttribute("status")
@@ -136,7 +141,6 @@ public class CourseController {
     public User currentUser(@AuthenticationPrincipal CurrentUser currentUser) {
         return currentUser.getUser();
     }
-
 
 
 }
