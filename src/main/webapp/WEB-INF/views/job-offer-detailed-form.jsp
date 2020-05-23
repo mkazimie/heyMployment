@@ -121,6 +121,7 @@
                         <form:hidden path="location"/>
                         <form:hidden path="status"/>
                         <form:hidden path="user.id"/>
+                        <form:hidden path="added"/>
                     </div>
                 </form:form>
             </div>

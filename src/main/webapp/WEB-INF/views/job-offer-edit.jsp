@@ -147,6 +147,7 @@
                         <form:hidden path="editedVersion" value="true"/>
                         <form:hidden path="user.id"/>
                         <form:hidden path="id"/>
+                        <form:hidden path="added"/>
                     </div>
                 </form:form>
             </div>

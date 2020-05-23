@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.Company;
+import pl.coderslab.heymployment.domain.InterviewQuestion;
 import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.JobOfferDto;
@@ -15,6 +16,7 @@ import pl.coderslab.heymployment.service.JobOfferService;
 
 import javax.validation.Valid;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Arrays;
 import java.util.List;
@@ -97,6 +99,7 @@ public class JobOfferController {
     @GetMapping("/details/{id}")
     public String displayDetails(Model model, @PathVariable long id) {
         JobOffer jobOffer = jobOfferService.findById(id);
+        dateFormatConverted(jobOffer);
         jobOffer.getTodos().forEach(todo -> todo.setFormattedDeadline(todo.getDeadline()));
         model.addAttribute("jobOffer", jobOffer);
         return "job-offer-detailed-view";
@@ -112,8 +115,8 @@ public class JobOfferController {
     }
 
     // process job offer editing
-    @PostMapping("/offers/update")
-    public String updateOffer(@ModelAttribute ("jobOffer") @Valid JobOffer jobOffer, BindingResult result,
+    @PostMapping("/update")
+    public String updateOffer(@ModelAttribute("jobOffer") @Valid JobOffer jobOffer, BindingResult result,
                               Model model) {
         if (!result.hasErrors()) {
             Company company = companyService.findByName(jobOffer.getCompany().getName());
@@ -148,30 +151,23 @@ public class JobOfferController {
     }
 
 
-//    public void dateFormatConverted(List<JobOffer> jobOffers) {
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM / HH:mm");
-//        for (JobOffer offer : jobOffers) {
-//            LocalDateTime updated = offer.getUpdated();
-//            if (updated != null) {
-//                offer.setFormatUpdated(updated.format(formatter));
-//                //format updated record timestamp
-//                offer.setDaysFromUpdated(Duration.between(updated, LocalDateTime.now()).toDays());
-//                // display how many days ago updated
-//            }
-//            LocalDate appliedOn = offer.getAppliedOn();
-//            if (appliedOn != null) {
-//                offer.setDaysFromApplied(Period.between(appliedOn, LocalDate.now()).getDays());
-////                //how many days ago applied
-//            }
-//
-//        }
-//
-//    }
+    public void dateFormatConverted(JobOffer offer) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM / HH:mm");
+        LocalDateTime added = offer.getAdded();
+        offer.setFormatAdded(displayWeekDay(added.getDayOfWeek()) + " / " + added.format(formatter));
+        LocalDateTime updated = offer.getUpdated();
+        offer.setFormatUpdated(displayWeekDay(updated.getDayOfWeek()) + " / " + updated.format(formatter));
+    }
+
+
+    public String displayWeekDay(DayOfWeek day) {
+        return day.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
+    }
 
 
     // RAPORT DISPLAY ON JOB OFFERS
     @GetMapping("/raport")
-    public String displayStatistics(Model model, @AuthenticationPrincipal CurrentUser currentUser){
+    public String displayStatistics(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         Month month = LocalDate.now().getMonth();
         String monthName = month.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
         List<JobOffer> offersByMonth = jobOfferService.offersByMonth(currentUser.getUser().getId(), month.getValue());

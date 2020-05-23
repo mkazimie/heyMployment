@@ -56,52 +56,96 @@
                             <div class="row-auto">
 
                                 <table class="table table-responsive table-borderless">
-                                    <tbody class="table-content text-justify">
+                                    <tbody class="table-content ">
                                     <tr>
                                         <th scope="row"> Status</th>
-                                        <td>${jobOffer.status}</td>
+                                        <td class="text-justify">${jobOffer.status}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"> Job Offer Posting</th>
                                         <c:choose>
                                             <c:when test="${not empty jobOffer.url}">
-                                                <td><a href="${jobOffer.url}"> ${jobOffer.title} See Posting </a>
+                                                <td class="text-justify"><a href="${jobOffer.url}"> ${jobOffer.title}
+                                                    Posting </a>
                                                 </td>
                                             </c:when>
                                             <c:otherwise>
-                                                <td></td>
+                                                <td><a href="/user/offers/update/${jobOffer.id}"> Add </a>
+                                                </td>
                                             </c:otherwise>
                                         </c:choose>
                                     </tr>
                                     <tr>
                                         <th scope="row"> Posted On</th>
-                                        <td>${jobOffer.jobSearchWebsite}</td>
+                                        <c:choose>
+                                            <c:when test="${not empty jobOffer.jobSearchWebsite}">
+                                                <td class="text-justify">${jobOffer.jobSearchWebsite}</td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td><a href="/user/offers/update/${jobOffer.id}"> Add </a>
+                                                </td>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tr>
                                     <tr>
                                         <th scope="row"> Company</th>
-                                        <td><a href="/user/companies/${jobOffer.company.id}">
+                                        <td class="text-justify"><a href="/user/companies/${jobOffer.company.id}">
                                                 ${jobOffer.company.name}</a></td>
                                     </tr>
                                     <tr>
                                         <th scope="row"> Location</th>
-                                        <td>${jobOffer.location}</td>
+                                        <td class="text-justify">${jobOffer.location}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"> Description</th>
-                                        <td>${jobOffer.description}</td>
+                                        <c:choose>
+                                            <c:when test="${not empty jobOffer.description}">
+                                                <td class="text-justify">${jobOffer.description}</td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td><a href="/user/offers/update/${jobOffer.id}"> Add </a>
+                                                </td>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> How Attractive is the Offer?</th>
-                                        <td>${jobOffer.howAttractive}</td>
+                                        <th scope="row">  Attractive ? </th>
+                                        <td class="text-justify">${jobOffer.howAttractive}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Applied On</th>
-                                        <td>${jobOffer.appliedOn}</td>
+                                        <th scope="row"> Applied On </th>
+                                        <c:choose>
+                                            <c:when test="${not empty jobOffer.appliedOn}">
+                                                <td class="text-justify">${jobOffer.appliedOn}</td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td><a href="/user/offers/update/${jobOffer.id}"> Add </a>
+                                                </td>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tr>
                                     <tr>
                                         <th scope="row"> Notes</th>
-                                        <td>${jobOffer.notes}</td>
+                                        <c:choose>
+                                            <c:when test="${not empty jobOffer.notes}">
+                                                <td class="text-justify">${jobOffer.notes}</td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td><a href="/user/offers/update/${jobOffer.id}"> Add </a>
+                                                </td>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tr>
+                                    <tr>
+                                        <th scope="row"> Added </th>
+                                        <td class="text-justify">${jobOffer.formatAdded}</td>
+                                    </tr>
+                                    <c:if test="${not empty jobOffer.updated}">
+                                        <tr>
+                                            <th scope="row"> Updated </th>
+                                            <td class="text-justify">${jobOffer.formatUpdated}</td>
+                                        </tr>
+                                    </c:if>
                                     </tbody>
                                 </table>
 
@@ -170,5 +214,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </body>
 </html>

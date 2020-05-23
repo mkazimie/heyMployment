@@ -11,10 +11,13 @@ import java.util.List;
 @Repository
 public interface JobOfferRepository extends JpaRepository<JobOffer, Long > {
 
-    @Query("SELECT j FROM JobOffer j WHERE j.user.id = ?1 ORDER BY j.updated DESC")
+    @Query("SELECT j FROM JobOffer j WHERE j.user.id = ?1 ORDER BY CASE WHEN j.updated > j.added THEN j.updated " +
+            "ELSE j.added END DESC")
     List<JobOffer> findAllByUserId(long id);
 
-    @Query("SELECT j FROM JobOffer j WHERE j.user.id = ?1 and j.status = ?2 ORDER BY j.updated DESC")
+
+    @Query("SELECT j FROM JobOffer j WHERE j.user.id = ?1 and j.status = ?2 ORDER BY CASE WHEN j.updated > j.added THEN j.updated " +
+            "ELSE j.added END DESC")
     List<JobOffer> findAllByUserIdAndStatus(long id, String status);
 
 

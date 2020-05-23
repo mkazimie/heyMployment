@@ -135,6 +135,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
     // display questions from a category
+    // NIE WCHODZIĆ PRZEZ KATEGORIĘ?
     @GetMapping("/{id}/questions")
     public String displayQuestions(@PathVariable long id, Model model) {
         InterviewCategory category = categoryService.findById(id);
@@ -146,7 +147,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
     // display detailed view of a question 
-    // *
+    // * NIE WCHODZIĆ PRZEZ KATEGORIĘ!
     @GetMapping("/{id}/questions/{questionId}")
     public String displayDetails(Model model, @PathVariable long id, @PathVariable long questionId) {
         InterviewQuestion question = questionService.findById(questionId);
@@ -201,10 +202,9 @@ public class InterviewCategoriesQuestionsController {
     public void dateFormatConverted(InterviewQuestion question) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM / [HH:mm]");
         LocalDateTime added = question.getAdded();
-        if (added != null) {
-            question.setFormatAddedDate(displayWeekDay(added.getDayOfWeek()) + " / " + added.format(formatter));
-            //format added record timestamp
-        }
+        question.setFormatAddedDate(displayWeekDay(added.getDayOfWeek()) + " / " + added.format(formatter));
+        //format added record timestamp
+
         LocalDateTime updated = question.getUpdated();
         if (updated != null) {
             question.setFormatUpdatedDate(displayWeekDay(updated.getDayOfWeek()) + " / " + updated.format(formatter));
@@ -219,7 +219,7 @@ public class InterviewCategoriesQuestionsController {
 
     // display users questions filtered by word
     @PostMapping("/questions/filter")
-    public String findByWord(@RequestParam String keyword, Model model, @AuthenticationPrincipal CurrentUser currentUser){
+    public String findByWord(@RequestParam String keyword, Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<InterviewQuestion> allByWord = questionService.findByWord(currentUser.getUser(), keyword);
         model.addAttribute("allByWord", allByWord);
         return "questions-filtered";

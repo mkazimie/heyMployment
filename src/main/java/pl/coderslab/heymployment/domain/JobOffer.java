@@ -83,6 +83,13 @@ public class JobOffer {
     private User user;
 
 
+    private LocalDateTime added;
+
+    @PrePersist
+    public void prePersist(){
+        added = LocalDateTime.now();
+    }
+
     private LocalDateTime updated;
 
     @PreUpdate
@@ -93,11 +100,14 @@ public class JobOffer {
     @Transient
     private boolean editedVersion;
 
-    @Transient
-    private long daysFromApplied;
+//    @Transient
+//    private long daysFromApplied;
+//
+//    @Transient
+//    private long daysFromUpdated;
 
     @Transient
-    private long daysFromUpdated;
+    private String formatAdded;
 
     @Transient
     private String formatUpdated;

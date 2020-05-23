@@ -12,10 +12,12 @@ import java.util.List;
 @Repository
 public interface InterviewQuestionRepository extends JpaRepository<InterviewQuestion, Long> {
 
-    @Query("SELECT q FROM InterviewQuestion q WHERE q.interviewCategory.name = ?1 ORDER BY q.added DESC")
+    @Query("SELECT q FROM InterviewQuestion q WHERE q.interviewCategory.name = ?1 ORDER BY CASE  WHEN q.updated > q" +
+            ".added THEN q.updated ELSE q.added END DESC")
     List<InterviewQuestion> findAllByInterviewCategoryName(String name);
 
-    @Query("SELECT q FROM InterviewQuestion q WHERE q.interviewCategory.id = ?1 ORDER BY q.added DESC")
+    @Query("SELECT q FROM InterviewQuestion q WHERE q.interviewCategory.id = ?1 ORDER BY CASE  WHEN q.updated > q" +
+            ".added THEN q.updated ELSE q.added END DESC")
     List<InterviewQuestion> findAllByInterviewCategoryId(long id);
 
     @Query("SELECT q FROM InterviewQuestion q LEFT JOIN q.interviewCategory cat WHERE cat.user = ?1  AND q" +
