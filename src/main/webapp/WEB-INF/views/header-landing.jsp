@@ -4,13 +4,26 @@
             <strong> heyMployment! </strong>
         </a>
         <ul class="nav nounderline text-uppercase nav-fill">
+            <c:choose>
+                <c:when test="${empty currentUser}">
+                    <li class="nav-item">
+                        <a class="nav-link color-header" href="/register"><i class="far fa-id-card"></i>&nbsp; register
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-header" href="/login"><i class="fas fa-sign-in-alt"></i>&nbsp; login
+                        </a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="nav-item">
+                        <a class="nav-link color-header" href="/user/home"><i class="fas fa-home"></i> home
+                        </a>
+                    </li>
+                </c:otherwise>
+            </c:choose>
             <li class="nav-item">
-                <a class="nav-link color-header" href="/register"><i class="far fa-id-card"></i>&nbsp; register </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link color-header" href="/login"><i class="fas fa-sign-in-alt"></i>&nbsp; login </a>
-            </li>
-            <li class="nav-item">
+
                 <a class="nav-link" href="/"><i class="fas fa-info"></i>&nbsp; about </a>
             </li>
             <li class="nav-item mr-4">

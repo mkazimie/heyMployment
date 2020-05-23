@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.UserDto;
 import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
 import pl.coderslab.heymployment.security.CurrentUser;
@@ -24,6 +25,16 @@ public class HelloController {
         this.userService = userService;
     }
 
+    //        registry.addViewController("/").setViewName("hello");
+
+
+    @GetMapping("/")
+    public String displayHome (@AuthenticationPrincipal CurrentUser currentUser, Model model){
+        if (currentUser != null){
+            model.addAttribute("currentUser", currentUser);
+        }
+        return "hello";
+    }
 
 //    create first admin after DB drop
 //    @GetMapping("/create-admin")
@@ -72,6 +83,11 @@ public class HelloController {
         }
         return "login";
     }
+
+
+
+
+
 
 
 }
