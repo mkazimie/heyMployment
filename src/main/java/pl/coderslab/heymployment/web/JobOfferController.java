@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.Company;
-import pl.coderslab.heymployment.domain.InterviewQuestion;
 import pl.coderslab.heymployment.domain.JobOffer;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.JobOfferDto;
@@ -21,6 +20,7 @@ import java.time.format.TextStyle;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -165,46 +165,19 @@ public class JobOfferController {
     }
 
 
-    // RAPORT DISPLAY ON JOB OFFERS
-    @GetMapping("/raport")
+    // REPORT JOB OFFERS ADDED THIS MONTH
+
+    @GetMapping("/report")
     public String displayStatistics(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         Month month = LocalDate.now().getMonth();
         String monthName = month.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
         List<JobOffer> offersByMonth = jobOfferService.offersByMonth(currentUser.getUser().getId(), month.getValue());
-//        List<String> status = status();
-//        List<JobOffer> specificByMonth = new ArrayList<>();
-//        for (int i = 0; i < status.size(); i++) {
-//            for (JobOffer jobOffer : offersByMonth) {
-//                if (jobOffer.getStatus().equals(status.get(i))){
-//                    specificByMonth.add(jobOffer);
-//                    model.addAttribute("specificByMonth"+i, specificByMonth.size());
-//                }
-//            }
-//        }
-        List<JobOffer> wishlistByMonth = offersByMonth.stream()
-                .filter(jobOffer -> jobOffer.getStatus().equals("Wishlist"))
-                .collect(Collectors.toList());
-        List<JobOffer> appliedByMonth = offersByMonth.stream()
-                .filter(jobOffer -> jobOffer.getStatus().equals("Applied"))
-                .collect(Collectors.toList());
-        List<JobOffer> interviewByMonth = offersByMonth.stream()
-                .filter(jobOffer -> jobOffer.getStatus().equals("Interview"))
-                .collect(Collectors.toList());
-        List<JobOffer> rejectedByMonth = offersByMonth.stream()
-                .filter(jobOffer -> jobOffer.getStatus().equals("Rejected"))
-                .collect(Collectors.toList());
-        List<JobOffer> acceptedByMonth = offersByMonth.stream()
-                .filter(jobOffer -> jobOffer.getStatus().equals("Accepted"))
-                .collect(Collectors.toList());
-        model.addAttribute("appliedByMonth", appliedByMonth.size());
-        model.addAttribute("interviewByMonth", interviewByMonth.size());
-        model.addAttribute("wishlistByMonth", wishlistByMonth.size());
-        model.addAttribute("rejectedByMonth", rejectedByMonth.size());
-        model.addAttribute("acceptedByMonth", acceptedByMonth.size());
-
+        Map<String, List<JobOffer>> map = offersByMonth.stream()
+                .collect(Collectors.groupingBy(JobOffer::getStatus));
+        model.addAttribute("map", map);
         model.addAttribute("offersThisMonth", offersByMonth.size());
         model.addAttribute("month", monthName);
-        return "job-offer-raport";
+        return "job-offer-report";
     }
 
     @ModelAttribute("currentUser")

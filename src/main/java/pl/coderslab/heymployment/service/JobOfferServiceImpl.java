@@ -65,4 +65,5 @@ public class JobOfferServiceImpl implements JobOfferService {
     public List<JobOffer> offersByMonth(long id, Integer month){
         return jobOfferRepository.findAllByUserIdAndUpdatedMonth(id, month);
     }
+
 }

@@ -39,43 +39,35 @@
     <div class="container mt-5 mx-auto ml-4 mr-4">
         <div class="row">
             <div class="col-sm-10 col-12">
-                <h1 class="bd-title"> Monthly Raport for ${month} </h1>
+                <h1 class="bd-title"> Monthly Report for ${month} </h1>
             </div>
         </div>
         <h3 class="text-center"> Job Offers </h3>
-        <table class="table table-striped">
+        <table class="table table-striped" id="myTable">
             <thead class="thead-dark">
             <tr class="text-center">
-                <th scope="col"> Status</th>
-                <th scope="col"> Number of Offers</th>
+                <th scope="col" class="sort-column"> Status</th>
+                <th scope="col" class="sort-column"> Number of Offers</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="text-center">
-                <td>Wishlist</td>
-                <td>${wishlistByMonth} </td>
-            </tr>
-            <tr class="text-center">
-                <td>Applied</td>
-                <td>${appliedByMonth}</td>
-            </tr>
-            <tr class="text-center">
-                <td>Interview</td>
-                <td>${interviewByMonth}</td>
-            </tr>
-            <tr class="text-center">
-                <td>Rejected</td>
-                <td>${rejectedByMonth}</td>
-            </tr>
-            <tr class="text-center">
-                <td>Accepted</td>
-                <td>${acceptedByMonth}</td>
-            </tr>
-            <tr class="text-center table-info">
-                <th scope="col"> All</th>
-                <th scope="col">${offersThisMonth} </th>
-            </tr>
+<%--            <tr class="text-center table-info">--%>
+<%--                <td><strong> All </strong></td>--%>
+<%--                <td><strong> ${offersThisMonth} </strong></td>--%>
+<%--            </tr>--%>
+            <c:forEach var="entry" items="${map}">
+                <tr class="text-center sort-me">
+                    <td><c:out value="${entry.key}"/></td>
+                    <td><c:out value="${entry.value.size()}"/></td>
+                </tr>
+            </c:forEach>
             </tbody>
+            <tfoot>
+            <tr class="text-center table-info">
+                <td><strong> All </strong></td>
+                <td><strong> ${offersThisMonth} </strong></td>
+            </tr>
+            </tfoot>
         </table>
     </div>
 
@@ -92,7 +84,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-
+<script src="<c:url value='/js/main.js'/>" type="text/javascript"></script>
 
 </body>
 </html>
