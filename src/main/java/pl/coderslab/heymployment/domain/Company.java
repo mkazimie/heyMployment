@@ -31,7 +31,7 @@ public class Company {
     @Column(name = "company_location")
     private String location;
 
-    @Size(max = 1000, message = "* Description cannot contain more than 1000 characters")
+    @Size(max = 5000, message = "* Description cannot contain more than 5000 characters")
     @Column(name = "company_description")
     private String description;
 

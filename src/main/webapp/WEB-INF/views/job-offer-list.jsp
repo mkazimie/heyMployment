@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-sm-10 col-12">
                 <h1 class="bd-title"> My Job Offers <a href="/user/offers/add" class="btn btn-primary"> +
-                </a> <a href="/user/offers/raport" class="btn btn-dark align-right text-right"> Monthly Raport </a></h1>
+                </a> <a href="/user/offers/report" class="btn btn-dark align-right text-right"> Monthly Report </a></h1>
             </div>
         </div>
 
@@ -66,10 +66,10 @@
             <thead class="thead-dark">
             <tr class="text-center">
                 <th>#</th>
-                <th scope="col" class="sort-column" onclick="sortTable(0)"> Job Title</th>
-                <th scope="col" class="sort-column" onclick="sortTable(1)"> Location</th>
-                <th scope="col" class="sort-column" onclick="sortTable(2)"> Company</th>
-                <th scope="col"> +</th>
+                <th scope="col" class="sort-column"> Job Title</th>
+                <th scope="col" class="sort-column"> Location</th>
+                <th scope="col" class="sort-column"> Company</th>
+                <th scope="col"> + </th>
             </tr>
             </thead>
             <tbody>
@@ -118,7 +118,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="<c:url value="js/main.js" />"></script>
-
+<script src="<c:url value='/js/main.js'/>" type="text/javascript"></script>
 </body>
 </html>

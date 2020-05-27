@@ -32,7 +32,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="/user/companies/"> Companies </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> ${company.name} Details </li>
+            <li class="breadcrumb-item active" aria-current="page"> ${company.name} Details</li>
         </ol>
     </nav>
 
@@ -40,7 +40,7 @@
     <div class="container">
         <div class="card-deck mt-5">
             <div class="card bg-light border-secondary">
-<%--                <h3 class="card-header bg-primary text-center text-white text-uppercase">${company.name}</h3>--%>
+                    <%--                <h3 class="card-header bg-primary text-center text-white text-uppercase">${company.name}</h3>--%>
                 <h3 class="card-header bg-primary text-center text-white">${company.name}</h3>
                 <div class="card-body">
 
@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="card-text mr-5 ml-5">
-                        <h5 class="text-center mt-5"><strong> Job Offers </strong></h5>
+                        <h5 class="text-center mt-5"><a href="/user/offers/"> <strong> Job Offers </strong> </a></h5>
                         <div class="btn-wrapper text-center mb-3">
                             <a href="/user/offers/add" class="btn btn-primary"> + </a>
                         </div>

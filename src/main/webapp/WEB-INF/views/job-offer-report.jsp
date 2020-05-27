@@ -32,29 +32,25 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="/user/offers/"> Job Offers </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Raport</li>
+            <li class="breadcrumb-item active" aria-current="page"> Report</li>
         </ol>
     </nav>
 
     <div class="container mt-5 mx-auto ml-4 mr-4">
         <div class="row">
             <div class="col-sm-10 col-12">
-                <h1 class="bd-title"> Monthly Report for ${month} </h1>
+                <h1 class="bd-title"> Monthly Report for <strong>${month}</strong></h1>
             </div>
         </div>
         <h3 class="text-center"> Job Offers </h3>
-        <table class="table table-striped" id="myTable">
+        <table class="table table-striped">
             <thead class="thead-dark">
             <tr class="text-center">
-                <th scope="col" class="sort-column"> Status</th>
-                <th scope="col" class="sort-column"> Number of Offers</th>
+                <th scope="col"> Status <i class="fas fa-sort"></i></th>
+                <th scope="col"> Number of Offers <i class="fas fa-sort"></i></th>
             </tr>
             </thead>
             <tbody>
-<%--            <tr class="text-center table-info">--%>
-<%--                <td><strong> All </strong></td>--%>
-<%--                <td><strong> ${offersThisMonth} </strong></td>--%>
-<%--            </tr>--%>
             <c:forEach var="entry" items="${map}">
                 <tr class="text-center sort-me">
                     <td><c:out value="${entry.key}"/></td>
