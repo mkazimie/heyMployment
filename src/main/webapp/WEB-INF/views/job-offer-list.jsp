@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-sm-10 col-12">
                 <h1 class="bd-title"> My Job Offers <a href="/user/offers/add" class="btn btn-primary"> +
-                </a> <a href="/user/offers/report" class="btn btn-dark align-right text-right"> Monthly Report </a></h1>
+                </a> <a href="/user/offers/reports" class="btn btn-dark align-right text-right"> Reports </a></h1>
             </div>
         </div>
 

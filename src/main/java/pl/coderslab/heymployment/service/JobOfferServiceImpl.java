@@ -62,8 +62,13 @@ public class JobOfferServiceImpl implements JobOfferService {
     }
 
     @Override
-    public List<JobOffer> offersByMonth(long id, Integer month){
+    public List<JobOffer> offersThisMonth(long id, Integer month){
         return jobOfferRepository.findAllByUserIdAndUpdatedMonth(id, month);
+    }
+
+    @Override
+    public List<JobOffer> offersThisYear(long id, Integer year) {
+        return jobOfferRepository.findAllByUserIdAndUpdatedYear(id, year);
     }
 
 }

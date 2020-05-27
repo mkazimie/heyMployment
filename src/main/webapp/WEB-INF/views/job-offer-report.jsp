@@ -9,6 +9,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+
+
 <html>
 <head>
     <title>Job Offer List</title>
@@ -32,17 +34,18 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="/user/offers/"> Job Offers </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Report</li>
+            <li class="breadcrumb-item active" aria-current="page"> Reports </li>
         </ol>
     </nav>
 
     <div class="container mt-5 mx-auto ml-4 mr-4">
+        <h1 class="text-center"> Job Offers Reports </h1>
         <div class="row">
             <div class="col-sm-10 col-12">
-                <h1 class="bd-title"> Monthly Report for <strong>${month}</strong></h1>
+                <h1 class="bd-title"> Monthly Report for ${month}</h1>
             </div>
         </div>
-        <h3 class="text-center"> Job Offers </h3>
+            <%--        MONTHLY TABLE PER STATUS--%>
         <table class="table table-striped">
             <thead class="thead-dark">
             <tr class="text-center">
@@ -50,11 +53,11 @@
                 <th scope="col"> Number of Offers <i class="fas fa-sort"></i></th>
             </tr>
             </thead>
-            <tbody>
-            <c:forEach var="entry" items="${map}">
+            <tbody class="stat-sort">
+            <c:forEach var="entryStat" items="${monthlyMapStatus}">
                 <tr class="text-center sort-me">
-                    <td><c:out value="${entry.key}"/></td>
-                    <td><c:out value="${entry.value.size()}"/></td>
+                    <td><c:out value="${entryStat.key}"/></td>
+                    <td><c:out value="${entryStat.value.size()}"/></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -65,8 +68,39 @@
             </tr>
             </tfoot>
         </table>
-    </div>
 
+
+
+
+        <div class="row">
+            <div class="col-sm-10 col-12">
+                <h1 class="bd-title"> Annual Report for ${year}  </h1>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr class="text-center">
+                <th scope="col"> Status <i class="fas fa-sort"></i></th>
+                <th scope="col"> Number of Offers <i class="fas fa-sort"></i></th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="yearEntry" items="${annualMapStatus}">
+                <tr class="text-center sort-me">
+                    <td><c:out value="${yearEntry.key}"/></td>
+                    <td><c:out value="${yearEntry.value.size()}"/></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+            <tfoot>
+            <tr class="text-center table-primary">
+                <td><strong> All </strong></td>
+                <td><strong> ${offersThisYear} </strong></td>
+            </tr>
+            </tfoot>
+        </table>
+
+    </div>
 
 </sec:authorize>
 <!-- Optional JavaScript -->

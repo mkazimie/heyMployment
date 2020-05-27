@@ -25,4 +25,10 @@ public interface JobOfferRepository extends JpaRepository<JobOffer, Long > {
             nativeQuery = true)
     List<JobOffer> findAllByUserIdAndUpdatedMonth(long id, Integer month);
 
+
+    @Query(value = "SELECT * FROM job_offers WHERE user_id = ?1 AND YEAR(updated) =?2",
+            nativeQuery = true)
+    List<JobOffer> findAllByUserIdAndUpdatedYear(long id, Integer year);
+
+
 }

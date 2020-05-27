@@ -22,4 +22,3 @@ function comparer(index) {
 function getCellValue(row, index) {
     return $(row).children('td').eq(index).text()
 }
-

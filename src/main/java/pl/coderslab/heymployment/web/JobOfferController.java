@@ -17,10 +17,7 @@ import javax.validation.Valid;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -167,16 +164,39 @@ public class JobOfferController {
 
     // REPORT JOB OFFERS ADDED THIS MONTH
 
-    @GetMapping("/report")
+    @GetMapping("/reports")
     public String displayStatistics(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
+        // month
         Month month = LocalDate.now().getMonth();
         String monthName = month.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
-        List<JobOffer> offersByMonth = jobOfferService.offersByMonth(currentUser.getUser().getId(), month.getValue());
-        Map<String, List<JobOffer>> map = offersByMonth.stream()
+        List<JobOffer> offersByMonth = jobOfferService.offersThisMonth(currentUser.getUser().getId(), month.getValue());
+        Map<String, List<JobOffer>> monthlyMapStatus = offersByMonth.stream()
                 .collect(Collectors.groupingBy(JobOffer::getStatus));
-        model.addAttribute("map", map);
+        model.addAttribute("monthlyMapStatus", monthlyMapStatus);
         model.addAttribute("offersThisMonth", offersByMonth.size());
         model.addAttribute("month", monthName);
+        // year
+        int year = LocalDate.now().getYear();
+        List<JobOffer> offersThisYear = jobOfferService.offersThisYear(currentUser.getUser().getId(), year);
+        Map<String, List<JobOffer>> annualMapStatus = offersThisYear.stream()
+                .collect(Collectors.groupingBy(JobOffer::getStatus));
+        model.addAttribute("year", year);
+        model.addAttribute("annualMapStatus", annualMapStatus);
+        model.addAttribute("offersThisYear", offersThisYear.size());
+
+
+        //for pie chart (???)
+//
+//        // month
+//        Map<String, List<JobOffer>> monthlyMapLocation = offersByMonth.stream()
+//                .collect(Collectors.groupingBy(JobOffer::getLocation));
+//        model.addAttribute("monthlyMapLocation", monthlyMapLocation);
+//
+//        // year
+//        Map<String, List<JobOffer>> annualMapLocation = offersByMonth.stream()
+//                .collect(Collectors.groupingBy(JobOffer::getLocation));
+//        model.addAttribute("annualMapLocation", annualMapLocation);
+
         return "job-offer-report";
     }
 

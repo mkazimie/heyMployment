@@ -19,6 +19,8 @@ public interface JobOfferService {
 
     JobOffer createJobOfferFromForm(JobOfferDto jobOfferDto);
 
-     List<JobOffer> offersByMonth(long id, Integer month);
+     List<JobOffer> offersThisMonth(long id, Integer month);
+
+     List<JobOffer> offersThisYear(long id, Integer year);
 
     }
