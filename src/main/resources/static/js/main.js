@@ -22,3 +22,24 @@ function comparer(index) {
 function getCellValue(row, index) {
     return $(row).children('td').eq(index).text()
 }
+
+// NAVBAR
+
+$(document).ready(function () {
+    $(function(){
+        var current_page_URL = window.location.href;
+
+        $('.nav-pills a').each(function() {
+
+            if ($(this).attr('href') !== '#') {
+
+                var target_URL = $(this).prop('href');
+
+                if (target_URL === current_page_URL) {
+                    $('.nav-pills a').removeClass('active');
+                    $(this).addClass('active');
+
+                    return false;
+                }
+            }
+        }); }); });

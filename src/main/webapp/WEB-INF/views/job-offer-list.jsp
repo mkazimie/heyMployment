@@ -49,29 +49,39 @@
             <button type="button" class="btn btn-dark">${allHowMany} ${specificHowMany}</button>
         </div>
 
-        <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
-            <div class="container d-flex align-items-md-center py-2">
-                <nav class="nav mx-auto">
-                    <a href="/user/offers/" class="btn btn-link">All</a>
-                    <a href="/user/offers/${status[0]}" class="btn btn-link">${status[0]}</a>
-                    <a href="/user/offers/${status[1]}" class="btn btn-link">${status[1]}</a>
-                    <a href="/user/offers/${status[2]}" class="btn btn-link">${status[2]}</a>
-                    <a href="/user/offers/${status[3]}" class="btn btn-link">${status[3]}</a>
-                    <a href="/user/offers/${status[4]}" class="btn btn-link">${status[4]}</a>
-                </nav>
-            </div>
-        </nav>
+
+        <ul class="nav nav-pills justify-content-center pt-2 pb-3 pb-md-2 text-uppercase">
+            <li class="nav-item">
+                <a href="/user/offers/" class="nav-link">All</a>
+            </li>
+            <li class="nav-item">
+                <a href="/user/offers/${status[0]}" class="nav-link">${status[0]}</a>
+            </li>
+            <li class="nav-item">
+                <a href="/user/offers/${status[1]}" class="nav-link">${status[1]}</a>
+            </li>
+            <li class="nav-item">
+                <a href="/user/offers/${status[2]}" class="nav-link">${status[2]}</a>
+            </li>
+            <li class="nav-item">
+                <a href="/user/offers/${status[3]}" class="nav-link">${status[3]}</a>
+            </li>
+            <li class="nav-item">
+                <a href="/user/offers/${status[4]}" class="nav-link">${status[4]}</a>
+            </li>
+        </ul>
 
         <table class="table table-striped css-serial" id="myTable">
             <thead class="thead-dark">
             <tr class="text-center">
                 <th>#</th>
-                <th scope="col" class="sort-column"> Job Title</th>
-                <th scope="col" class="sort-column"> Location</th>
-                <th scope="col" class="sort-column"> Company</th>
-                <th scope="col"> + </th>
+                <th scope="col"> Job Title</th>
+                <th scope="col"> Location</th>
+                <th scope="col"> Company</th>
+                <th scope="col"> +</th>
             </tr>
             </thead>
+
             <tbody>
             <c:forEach items="${offers}" var="offer">
                 <tr class="text-center">
@@ -87,6 +97,7 @@
                 </tr>
             </c:forEach>
             </tbody>
+
 
             <tbody>
             <c:forEach items="${allByStatus}" var="byStatus">
@@ -109,6 +120,7 @@
 </sec:authorize>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -119,5 +131,6 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script src="<c:url value='/js/main.js'/>" type="text/javascript"></script>
+
 </body>
 </html>
