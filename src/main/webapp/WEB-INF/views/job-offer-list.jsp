@@ -71,14 +71,16 @@
             </li>
         </ul>
 
-        <table class="table table-striped css-serial" id="myTable">
+        <table class="table table-striped css-serial">
             <thead class="thead-dark">
             <tr class="text-center">
                 <th>#</th>
-                <th scope="col"> Job Title</th>
-                <th scope="col"> Location</th>
-                <th scope="col"> Company</th>
-                <th scope="col"> +</th>
+                <th scope="col"> Job Title </th>
+                <th scope="col"> Location  </th>
+                <th scope="col"> Company </th>
+                <th scope="col"> Added  </th>
+                <th scope="col"> Updated </th>
+                <th scope="col"> + </th>
             </tr>
             </thead>
 
@@ -91,6 +93,8 @@
                     <td class="align-middle">${offer.location}</td>
                     <td class="align-middle"><a href="/user/companies/${offer.company.id}">${offer.company.name}</a>
                     </td>
+                    <td>${offer.formatAdded}</td>
+                    <td>${offer.formatUpdated}</td>
                     <td class="align-middle"><a href="/user/offers/details/${offer.id}" class="btn btn-primary"> Details
                     </a>
                     </td>
@@ -108,6 +112,8 @@
                     <td class="align-middle">${byStatus.location}</td>
                     <td class="align-middle"><a href="/user/companies/${byStatus.company.id}">
                             ${byStatus.company.name}</a></td>
+                    <td>${byStatus.formatAdded}</td>
+                    <td>${byStatus.formatUpdated}</td>
                     <td class="align-middle"><a href="/user/offers/details/${byStatus.id}" class="btn btn-primary">
                         Details </a>
                     </td>

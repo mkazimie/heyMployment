@@ -40,12 +40,14 @@
 
     <div class="container mt-5 mx-auto ml-4 mr-4">
         <h1 class="text-center"> Job Offers Reports </h1>
+
+            <%--        MONTHLY REPORT --%>
+
         <div class="row">
             <div class="col-sm-10 col-12">
                 <h1 class="bd-title"> Monthly Report for ${month}</h1>
             </div>
         </div>
-            <%--        MONTHLY TABLE PER STATUS--%>
         <table class="table table-striped">
             <thead class="thead-dark">
             <tr class="text-center">
@@ -53,7 +55,7 @@
                 <th scope="col"> Number of Offers <i class="fas fa-sort"></i></th>
             </tr>
             </thead>
-            <tbody class="stat-sort">
+            <tbody>
             <c:forEach var="entryStat" items="${monthlyMapStatus}">
                 <tr class="text-center sort-me">
                     <td><c:out value="${entryStat.key}"/></td>
@@ -70,7 +72,7 @@
         </table>
 
 
-
+                <%--ANNUAL REPORT--%>
 
         <div class="row">
             <div class="col-sm-10 col-12">

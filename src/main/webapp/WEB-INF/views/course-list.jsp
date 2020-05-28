@@ -33,44 +33,51 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Courses </li>
+            <li class="breadcrumb-item active" aria-current="page"> Courses</li>
         </ol>
     </nav>
 
 
     <div class="container mt-5 mx-auto ml-4 mr-4">
 
-    <div class="row">
-        <div class="col-sm-10 col-12">
-            <h1 class="bd-title"> My Courses <a href="/user/courses/add" class="btn btn-primary"> +
-            </a></h1>
-        </div>
-    </div>
-
-        <h5 class="text-center"><button type="button" class="btn btn-dark">${allCourses.size()} ${allByStatus.size()}
-                ${allByTopic.size()}</button>
-        </h5>
-        <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 text-uppercase nav-fill">
-            <div class="container d-flex align-items-md-center py-2">
-                <nav class="nav mx-auto">
-                    <a href="/user/courses/" class="btn btn-link">All</a>
-                    <a href="/user/courses/${status[0]}" class="btn btn-link">${status[0]}</a>
-                    <a href="/user/courses/${status[1]}" class="btn btn-link">${status[1]}</a>
-                    <a href="/user/courses/${status[2]}" class="btn btn-link">${status[2]}</a>
-                </nav>
+        <div class="row">
+            <div class="col-sm-10 col-12">
+                <h1 class="bd-title"> My Courses <a href="/user/courses/add" class="btn btn-primary"> +
+                </a></h1>
             </div>
-        </nav>
+        </div>
+
+        <h5 class="text-center">
+            <button type="button" class="btn btn-dark">${allCourses.size()} ${allByStatus.size()}
+                    ${allByTopic.size()}</button>
+        </h5>
+
+
+        <ul class="nav nav-pills justify-content-center pt-2 pb-3 pb-md-2 text-uppercase">
+            <li class="nav-item">
+                <a href="/user/courses/" class="nav-link"> All </a>
+            </li>
+            <li class="nav-item">
+                <a href="/user/courses/${status[0]}" class="nav-link">${status[0]}</a>
+            </li>
+            <li class="nav-item">
+                <a href="/user/courses/${status[1]}" class="nav-link">${status[1]}</a>
+            </li>
+            <li class="nav-item">
+                <a href="/user/courses/${status[2]}" class="nav-link">${status[2]}</a>
+            </li>
+        </ul>
 
         <form:form action="/user/courses/find" method="post">
-        <div class="form-inline">
-            <div class="form-group">
-                <label for="topic"><strong>Find By Topic</strong></label>
-                <input type="text" id="topic" name="topic" class="form-control mx-sm-3" required="required">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-search"></i></button>
-                <a href="/user/courses/" class="btn btn-dark ml-2"><i class="fas fa-times"></i></a>
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="topic"><strong>Find By Topic</strong></label>
+                    <input type="text" id="topic" name="topic" class="form-control mx-sm-3" required="required">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i></button>
+                    <a href="/user/courses/" class="btn btn-dark ml-2"><i class="fas fa-times"></i></a>
+                </div>
             </div>
-        </div>
         </form:form>
 
 
@@ -82,7 +89,7 @@
                 <th scope="col"> Link</th>
                 <th scope="col"> Organized By</th>
                 <th scope="col"> Topics</th>
-                <th scope="col"> + </th>
+                <th scope="col"> +</th>
 
             </tr>
             </thead>
@@ -106,7 +113,7 @@
                     </c:forEach>
                     </td>
                     <td class="align-middle"><a href="/user/courses/details/${course.id}" class="btn btn-primary">
-                        Details </a> </td>
+                        Details </a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -161,8 +168,6 @@
             </tbody>
 
 
-
-
         </table>
     </div>
 </sec:authorize>
@@ -177,6 +182,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-
+<script src="<c:url value='/js/main.js'/>" type="text/javascript"></script>
 </body>
 </html>

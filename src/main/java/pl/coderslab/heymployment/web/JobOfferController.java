@@ -75,7 +75,7 @@ public class JobOfferController {
     @GetMapping("/")
     public String displayJobOffers(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<JobOffer> allJobOffers = jobOfferService.findAllJobOffers(currentUser.getUser().getId());
-//        dateFormatConverted(allJobOffers);
+        allJobOffers.forEach(this::dateFormatConverted);
         model.addAttribute("allHowMany", allJobOffers.size());
         model.addAttribute("offers", allJobOffers);
         return "job-offer-list";
@@ -86,7 +86,7 @@ public class JobOfferController {
     public String displayJobOffersByStatus(@PathVariable String name,
                                            @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         List<JobOffer> allByStatus = jobOfferService.findAllByStatus(currentUser.getUser().getId(), name);
-//        dateFormatConverted(allByStatus);
+        allByStatus.forEach(this::dateFormatConverted);
         model.addAttribute("allByStatus", allByStatus);
         model.addAttribute("specificHowMany", allByStatus.size());
         return "job-offer-list";
