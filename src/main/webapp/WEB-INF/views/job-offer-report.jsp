@@ -48,11 +48,12 @@
                 <h1 class="bd-title"> Monthly Report for ${month}</h1>
             </div>
         </div>
-        <table class="table table-striped">
+        <table class="table table-striped" id="monthly-table">
             <thead class="thead-dark">
             <tr class="text-center">
-                <th scope="col"> Status <i class="fas fa-sort"></i></th>
-                <th scope="col"> Number of Offers <i class="fas fa-sort"></i></th>
+                <th scope="col"> Status <i class="fas fa-sort" onclick="sortTable(0)"></i></th>
+                <th scope="col"> Number of Offers <i class="fas fa-sort" onclick="sortTable(1)">
+                </i></th>
             </tr>
             </thead>
             <tbody>
@@ -79,11 +80,11 @@
                 <h1 class="bd-title"> Annual Report for ${year}  </h1>
             </div>
         </div>
-        <table class="table table-striped">
+        <table class="table table-striped" id="annual-table">
             <thead class="thead-dark">
             <tr class="text-center">
-                <th scope="col"> Status <i class="fas fa-sort"></i></th>
-                <th scope="col"> Number of Offers <i class="fas fa-sort"></i></th>
+                <th scope="col"> Status <i class="fas fa-sort" onclick="sortTable(0)"></i></th>
+                <th scope="col"> Number of Offers <i class="fas fa-sort" onclick="sortTable(1)"></i></th>
             </tr>
             </thead>
             <tbody>

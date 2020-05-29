@@ -22,7 +22,7 @@
     <!-- Bootstrap Fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Home Page</title>
+    <title> Companies </title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 </head>
 <body class="bg-light">
@@ -31,34 +31,76 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Companies </li>
+            <li class="breadcrumb-item active" aria-current="page"> Companies</li>
         </ol>
     </nav>
-
     <div class="container">
-        <div class="card-deck mt-5">
-            <c:forEach items="${companies}" var="company" varStatus="theCount">
-            <c:if test="${theCount.index % 3 == 0}">
-        </div>
-        <div class="card-deck mt-5">
-            </c:if>
-            <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/dan-schiumarini-dcL8ESbsGis-unsplash.jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-center"> <strong>${company.name}</strong></h5>
-                    <h6 class="card-text text-center"><strong>${company.location}</strong> </h6>
-                </div>
-                <div class="card-footer">
-                    <div class="btn-wrapper text-center">
-                    <a href="/user/companies/${company.id}" class="btn btn-primary"> Details </a>
+
+        <!-- Page Heading -->
+        <h1 class="my-4">Companies</h1>
+
+        <div class="row">
+            <c:forEach items="${companies}" var="company" varStatus="count">
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                            <%--                        <img class="card-img-top" src="/img/Optimized-scott-webb-TYso4-CK-as-unsplash.jpg" alt="">--%>
+                        <c:choose>
+                            <c:when test="${count.index % 3 == 0}">
+                                <img class="card-img-top" src="/img/Optimized-sunyu-9aCD5kzPwa8-unsplash%20(1).jpg"
+                                     alt="">
+                            </c:when>
+                            <c:when test="${count.index % 3 == 2}">
+                                <img class="card-img-top" src="/img/Optimized-nick-wessaert-JI01fn0U7Cg-unsplash.jpg"
+                                     alt="">
+                            </c:when>
+                            <c:when test="${count.index % 3 == 1}">
+                                <img class="card-img-top" src="/img/Optimized-scott-webb--udZnjsCzsE-unsplash.jpg"
+                                     alt="">
+                            </c:when>
+                        </c:choose>
+                            <%--                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
+                        <div class="card-body">
+                            <h4 class="card-title">${company.name} </h4>
+                            <p class="card-text">${company.location}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-wrapper text-center">
+                                <a href="/user/companies/${company.id}" class="btn btn-primary"> Details </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             </c:forEach>
-        </div>
-    </div>
 
+        </div>
+        <!-- /.row -->
+
+        <!-- Pagination -->
+            <%--        <ul class="pagination justify-content-center">--%>
+            <%--            <li class="page-item">--%>
+            <%--                <a class="page-link" href="#" aria-label="Previous">--%>
+            <%--                    <span aria-hidden="true">&laquo;</span>--%>
+            <%--                    <span class="sr-only">Previous</span>--%>
+            <%--                </a>--%>
+            <%--            </li>--%>
+            <%--            <li class="page-item">--%>
+            <%--                <a class="page-link" href="#">1</a>--%>
+            <%--            </li>--%>
+            <%--            <li class="page-item">--%>
+            <%--                <a class="page-link" href="#">2</a>--%>
+            <%--            </li>--%>
+            <%--            <li class="page-item">--%>
+            <%--                <a class="page-link" href="#">3</a>--%>
+            <%--            </li>--%>
+            <%--            <li class="page-item">--%>
+            <%--                <a class="page-link" href="#" aria-label="Next">--%>
+            <%--                    <span aria-hidden="true">&raquo;</span>--%>
+            <%--                    <span class="sr-only">Next</span>--%>
+            <%--                </a>--%>
+            <%--            </li>--%>
+            <%--        </ul>--%>
+
+    </div>
 
 </sec:authorize>
 <!-- Optional JavaScript -->

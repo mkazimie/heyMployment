@@ -9,7 +9,6 @@ import pl.coderslab.heymployment.domain.Company;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.security.CurrentUser;
 import pl.coderslab.heymployment.service.CompanyService;
-import pl.coderslab.heymployment.service.JobOfferService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -30,7 +29,6 @@ public class CompanyController {
         List<Company> allCompanies = companyService.findAllByUser(currentUser.getUser());
         model.addAttribute("companies", allCompanies);
         return "company-list";
-
     }
 
     // display detailed view of a company by id
