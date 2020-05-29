@@ -69,7 +69,7 @@
         </ul>
 
         <form:form action="/user/courses/find" method="post">
-            <div class="form-inline">
+            <div class="form-inline mt-5">
                 <div class="form-group">
                     <label for="topic"><strong>Find By Topic</strong></label>
                     <input type="text" id="topic" name="topic" class="form-control mx-sm-3" required="required">

@@ -48,18 +48,6 @@
             </div>
         </div>
 
-<%--        <form:form action="/user/categories/${cat.id}${currentCat.id}/questions/find" method="post">--%>
-<%--            <div class="form-inline">--%>
-<%--                <div class="form-group">--%>
-<%--                    <label for="keyword"><strong>Find By Keyword</strong></label>--%>
-<%--                    <input type="text" id="keyword" name="keyword" class="form-control mx-sm-3" required="required">--%>
-<%--                    <button type="submit" class="btn btn-primary">--%>
-<%--                        <i class="fas fa-search"></i></button>--%>
-<%--                    <a href="/user/categories/${currentCat.id}/questions/" class="btn btn-dark ml-2"><i--%>
-<%--                            class="fas fa-times"></i></a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </form:form>--%>
 
         <table class="table table-striped css-serial">
             <thead class="thead-dark">
@@ -99,8 +87,7 @@
                     </c:choose>
                     <td class="align-middle">${qa.formatAddedDate}</td>
                     <td class="align-middle">${qa.formatUpdatedDate}</td>
-
-                    <td class="align-middle"><a href="/user/categories/${cat.id}/questions/${qa.id}"
+                    <td class="align-middle"><a href="/user/questions/${qa.id}"
                                                 class="btn btn-primary">
                         Details
                     </a></td>
@@ -108,39 +95,6 @@
             </c:forEach>
             </tbody>
 
-<%--            <tbody>--%>
-<%--            <c:forEach items="${allByKeyword}" var="keywordQA">--%>
-<%--                <tr class="text-center">--%>
-<%--                    <td class="align-middle"></td>--%>
-<%--                    <th scope="col" class="align-middle">${keywordQA.question}</th>--%>
-<%--                    <td class="align-middle"> Q${keywordQA.id}</td>--%>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${not empty keywordQA.answer}">--%>
-<%--                            <td class="align-middle">Yes</td>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <td class="align-middle">Not Yet</td>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${keywordQA.ready == true}">--%>
-<%--                            <td class="align-middle">Yes</td>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <td class="align-middle">Not Yet</td>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-<%--                    <td class="align-middle">${keywordQA.formatAddedDate}</td>--%>
-<%--                    <td class="align-middle">${keywordQA.formatUpdatedDate}</td>--%>
-
-<%--                    <td class="align-middle"><a--%>
-<%--                            href="/user/categories/${keywordQA.interviewCategory.id}/questions/${keywordQA.id}"--%>
-<%--                            class="btn btn-primary">--%>
-<%--                        Details--%>
-<%--                    </a></td>--%>
-<%--                </tr>--%>
-<%--            </c:forEach>--%>
-<%--            </tbody>--%>
 
         </table>
     </div>

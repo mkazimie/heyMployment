@@ -41,9 +41,9 @@
         <div class="card-deck mt-5">
             <div class="card bg-light border-secondary">
                     <%--                <h3 class="card-header bg-primary text-center text-white text-uppercase">${company.name}</h3>--%>
-                <h3 class="card-header bg-primary text-center text-white">${company.name}</h3>
+                <h3 class="card-header bg-secondary text-white text-center">${company.name}</h3>
                 <div class="card-body">
-
+                    <img class="card-img-top card-img-adjust " src="/img/Optimized-scott-webb-TYso4-CK-as-unsplash.jpg" alt="">
                     <div class=" card-text ml-5 mr-5 mt-5">
                         <div class="row justify-content-center">
                             <div class="row-auto">
@@ -76,11 +76,14 @@
                         </div>
                     </div>
 
-                    <div class="card-text mr-5 ml-5">
-                        <h5 class="text-center mt-5"><a href="/user/offers/"> <strong> Job Offers </strong> </a></h5>
-                        <div class="btn-wrapper text-center mb-3">
-                            <a href="/user/offers/add" class="btn btn-primary"> + </a>
+                    <div class="card-text mr-5 ml-5 mt-5">
+                        <div class="row justify-content-center">
+                            <h5><a href="/user/offers/"> <strong> Job Offers </strong> </a> &nbsp;
+                                <a href="/user/offers/add" class="btn btn-primary align-middle"> <i
+                                        class="fas fa-plus"></i>
+                                </a></h5>
                         </div>
+
                         <div class="card-text">
                             <table class="table css-serial">
                                 <thead class="table-active">

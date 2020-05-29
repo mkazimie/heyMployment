@@ -25,7 +25,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/user/categories")
+@RequestMapping("/user")
 public class InterviewCategoriesQuestionsController {
 
     private final CategoryService categoryService;
@@ -39,14 +39,14 @@ public class InterviewCategoriesQuestionsController {
     // CATEGORIES
 
     // add new category
-    @GetMapping("/add")
+    @GetMapping("/categories/add")
     public String addCategory(Model model) {
         model.addAttribute("category", new CategoryDto());
         return "category-form";
     }
 
     // save added category
-    @PostMapping("/add")
+    @PostMapping("/categories/add")
     public String saveCategory(@ModelAttribute("category") @Valid CategoryDto category, BindingResult result,
                                @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         if (!result.hasErrors()) {
@@ -65,7 +65,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
     // display all categories
-    @GetMapping("/")
+    @GetMapping("/categories/")
     public String displayCategories(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<InterviewCategory> categories = categoryService.findAll(currentUser.getUser().getId());
         model.addAttribute("categories", categories);
@@ -73,7 +73,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
     // edit a category
-    @GetMapping("/update/{id}")
+    @GetMapping("/categories/update/{id}")
     public String updateCat(Model model, @PathVariable long id) {
         InterviewCategory category = categoryService.findById(id);
         model.addAttribute("cat", category);
@@ -81,7 +81,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
     // update record
-    @PostMapping("/update")
+    @PostMapping("/categories/update")
     public String updateCat(@ModelAttribute("cat") @Valid InterviewCategory category, BindingResult result,
                             Model model) {
         if (!result.hasErrors()) {
@@ -93,7 +93,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
     // confirm-delete a category: normal warning and additional warning if category has questions assigned
-    @GetMapping("/confirm-delete/{id}")
+    @GetMapping("/categories/confirm-delete/{id}")
     public String confirmDelete(@PathVariable long id, Model model) {
         InterviewCategory category = categoryService.findById(id);
         List<InterviewQuestion> interviewQuestions = category.getInterviewQuestions();
@@ -105,7 +105,7 @@ public class InterviewCategoriesQuestionsController {
     }
 
     // delete a category
-    @GetMapping("/delete/{id}")
+    @GetMapping("/categories/delete/{id}")
     public String deleteCat(@PathVariable long id) {
         categoryService.deleteCategory(id);
         return "redirect:/user/categories/";
@@ -114,7 +114,7 @@ public class InterviewCategoriesQuestionsController {
     // QUESTIONS INSIDE CATEGORIES
 
     // add a question to a category
-    @GetMapping("/{id}/questions/add")
+    @GetMapping("/categories/{id}/questions/add")
     public String addQuestion(Model model, @PathVariable long id) {
         model.addAttribute("qDto", new QuestionDto());
         InterviewCategory category = categoryService.findById(id);
@@ -122,21 +122,21 @@ public class InterviewCategoriesQuestionsController {
         return "question-add-form";
     }
 
-    // save question inside a given category
-    @PostMapping("{id}/questions/add")
+    // save question inside a given category   * MODIFIED PATH
+    @PostMapping("/questions/add")
     public String saveQuest(@ModelAttribute("qDto") @Valid QuestionDto qDto,
-                            BindingResult result, Model model, @PathVariable long id) {
+                            BindingResult result, Model model) {
         if (!result.hasErrors()) {
-            questionService.createQuestionFromDto(qDto);
-            return "redirect:/user/categories/{id}/questions";
+            InterviewQuestion questionFromDto = questionService.createQuestionFromDto(qDto);
+            long catId = questionFromDto.getInterviewCategory().getId();
+            return "redirect:/user/categories/" + catId + "/questions";
         }
         model.addAttribute("failed", "Try again");
         return "question-add-form";
     }
 
     // display questions from a category
-    // NIE WCHODZIĆ PRZEZ KATEGORIĘ?
-    @GetMapping("/{id}/questions")
+    @GetMapping("/categories/{id}/questions")
     public String displayQuestions(@PathVariable long id, Model model) {
         InterviewCategory category = categoryService.findById(id);
         List<InterviewQuestion> allQuestionsById = questionService.findAllByCategoryId(id);
@@ -146,57 +146,55 @@ public class InterviewCategoriesQuestionsController {
         return "questions-all-by-category";
     }
 
-    // display detailed view of a question 
-    // * NIE WCHODZIĆ PRZEZ KATEGORIĘ!
-    @GetMapping("/{id}/questions/{questionId}")
-    public String displayDetails(Model model, @PathVariable long id, @PathVariable long questionId) {
+    // display detailed view of a question   * MODIFIED PATH
+    @GetMapping("/questions/{questionId}")
+    public String displayDetails(Model model, @PathVariable long questionId) {
         InterviewQuestion question = questionService.findById(questionId);
         dateFormatConverted(question);
         model.addAttribute("question", question);
         return "question-detailed-view";
     }
 
-    // edit a question
-    @GetMapping("/{id}/questions/update/{questionId}")
-    public String updateQuestion(Model model, @PathVariable long id, @PathVariable long questionId) {
+    // edit a question   * MODIFIED PATH
+    @GetMapping("/questions/update/{questionId}")
+    public String updateQuestion(Model model, @PathVariable long questionId) {
+
         InterviewQuestion question = questionService.findById(questionId);
-        InterviewCategory category = categoryService.findById(id);
+        InterviewCategory category = question.getInterviewCategory();
         model.addAttribute("cat", category);
         model.addAttribute("qa", question);
         return "question-edit-form";
     }
 
-    // update record
-    // *
-    @PostMapping("/{id}/questions/update")
+    // update record  * MODIFIED PATH
+    @PostMapping("/questions/update")
     public String updateQuestion(@ModelAttribute("qa") @Valid InterviewQuestion qa, BindingResult result,
-                                 Model model, @PathVariable long id) {
+                                 Model model) {
         if (!result.hasErrors()) {
             InterviewCategory category = categoryService.findByName(qa.getInterviewCategory().getName());
             qa.setInterviewCategory(category);
             questionService.saveQuestion(qa);
-            return "redirect:/user/categories/{id}/questions";
+            return "redirect:/user/questions/" + qa.getId();
         }
         model.addAttribute("failed", "Please try again");
         return "question-edit-form";
     }
 
 
-    // confirm-delete a category
-    // *
-    @GetMapping("/{id}/questions/confirm-delete/{questionId}")
-    public String confirmDeleteQuestion(@PathVariable long id, @PathVariable long questionId, Model model) {
+    // confirm-delete a category   * MODIFIED PATH
+    @GetMapping("/questions/confirm-delete/{questionId}")
+    public String confirmDeleteQuestion(@PathVariable long questionId, Model model) {
         InterviewQuestion qa = questionService.findById(questionId);
         model.addAttribute("qa", qa);
         return "question-confirm-delete";
     }
 
-    // delete a question
-    // *
-    @GetMapping("/{id}/questions/delete/{questionId}")
-    public String deleteQuestion(@PathVariable long id, @PathVariable long questionId) {
+    // delete a question   * MODIFIED PATH
+    @GetMapping("/questions/delete/{questionId}")
+    public String deleteQuestion(@PathVariable long questionId) {
+        long categoryId = questionService.findById(questionId).getInterviewCategory().getId();
         questionService.deleteQuestion(questionId);
-        return "redirect:/user/categories/{id}/questions";
+        return "redirect:/user/categories/" + categoryId + "/questions";
     }
 
     public void dateFormatConverted(InterviewQuestion question) {
@@ -218,7 +216,7 @@ public class InterviewCategoriesQuestionsController {
 
 
     // display users questions filtered by word
-    @PostMapping("/questions/filter")
+    @PostMapping("/categories/questions/filter")
     public String findByWord(@RequestParam String keyword, Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<InterviewQuestion> allByWord = questionService.findByWord(currentUser.getUser(), keyword);
         model.addAttribute("allByWord", allByWord);

@@ -38,8 +38,8 @@
                 <a href="/user/categories/${cat.id}/questions">${cat.name}
                     Questions</a></li>
             <li class="breadcrumb-item">
-                <a href="/user/categories/${cat.id}/questions/${questionId}">
-                    Details </a></li>
+                <a href="/user/questions/${questionId}">
+                    Q${questionId} Details </a></li>
             <li class="breadcrumb-item active" aria-current="page"> Edit </li>
         </ol>
     </nav>
@@ -48,7 +48,7 @@
         <div class="card mx-auto mt-3">
             <div class="card-header bg-dark form-header text-white text-center"> Edit Interview QA </div>
             <div class="card-body">
-                <form:form method="post" modelAttribute="qa" action="/user/categories/${cat.id}/questions/update">
+                <form:form method="post" modelAttribute="qa" action="/user/questions/update">
 
                     <h5 class="errorMessage center-content">${failed}</h5>
 
@@ -63,14 +63,6 @@
                         </div>
                     </div>
 
-<%--                    <div class="form-group row">--%>
-<%--                        <form:label path="company.name"--%>
-<%--                                    class="col-md-4 col-form-label text-md-right"> Company: </form:label>--%>
-<%--                        <div class="col-md-6">--%>
-<%--                            <form:input path="company.name" class="form-control" placeholder="Company" readonly="true"/>--%>
-<%--                            <form:errors path="company.name" cssClass="errorMessage"/>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
 
 <%--                    question--%>
                     <div class="form-group row">

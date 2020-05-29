@@ -41,7 +41,7 @@
     <div class="container">
         <div class="card-deck mr-30 ml-30 mt-5 mb-5">
             <div class="card border-secondary">
-                <h3 class="card-header bg-primary text-center text-white text-uppercase">Q${question.id}</h3>
+                <h3 class="card-header bg-secondary text-center text-white text-uppercase">Q${question.id}</h3>
                 <div class="card-body">
 
 
@@ -101,9 +101,9 @@
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
-                        <a href="/user/categories/${question.interviewCategory.id}/questions/update/${question.id}"
+                        <a href="/user/questions/update/${question.id}"
                            class="btn btn-primary"> Edit Question </a>
-                        <a href="/user/categories/${question.interviewCategory.id}/questions/confirm-delete/${question.id}"
+                        <a href="/user/questions/confirm-delete/${question.id}"
                            class="btn btn-dark"> Delete Question </a>
 
                     </div>

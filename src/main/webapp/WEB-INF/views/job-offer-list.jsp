@@ -75,11 +75,11 @@
             <thead class="thead-dark">
             <tr class="text-center">
                 <th>#</th>
-                <th scope="col"> Job Title <i class="fas fa-sort"></i> </th>
-                <th scope="col"> Location <i class="fas fa-sort"></i> </th>
-                <th scope="col"> Company <i class="fas fa-sort"></i></th>
-                <th scope="col"> Added  <i class="fas fa-sort"></i></th>
-                <th scope="col"> Updated <i class="fas fa-sort"></i> </th>
+                <th scope="col"> Job Title</th>
+                <th scope="col"> Location </th>
+                <th scope="col"> Company</th>
+                <th scope="col"> Added  </th>
+                <th scope="col"> Updated </th>
                 <th scope="col"> + </th>
             </tr>
             </thead>

@@ -43,7 +43,7 @@
         <div class="card mx-auto mt-3">
             <div class="card-header bg-dark form-header text-white text-center"> Add New Interview QA </div>
             <div class="card-body">
-                <form:form method="post" modelAttribute="qDto">
+                <form:form method="post" modelAttribute="qDto" action="/user/questions/add">
 
                     <h5 class="errorMessage center-content">${failed}</h5>
 
@@ -84,7 +84,7 @@
                                     class="col-md-4 col-form-label text-md-right"> Difficulty Level </form:label>
                         <div class="col-md-6">
                             <form:select path="difficulty" class="form-control">
-                                <form:option value="OK" label="--Please Select--" selected="selected"/>
+                                <form:option value="Moderate" label="--Please Select--" selected="selected"/>
                                 <form:options items="${difficulty}"/>
                             </form:select>
                             <form:errors path="difficulty" cssClass="errorMessage"/>
