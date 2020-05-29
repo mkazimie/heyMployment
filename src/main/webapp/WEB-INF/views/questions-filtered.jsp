@@ -13,7 +13,7 @@
 
 <html>
 <head>
-    <title> QA List</title>
+    <title> Questions Filtered </title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 
     <meta charset="utf-8">

@@ -13,7 +13,7 @@
 
 <html>
 <head>
-    <title> Course List</title>
+    <title> Courses </title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 
     <meta charset="utf-8">

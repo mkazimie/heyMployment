@@ -43,7 +43,7 @@
                 <h3 class="card-header bg-secondary text-center text-white text-uppercase">${course.name}</h3>
                 <div class="card-body">
 
-                    <div class=" card-text ml-5 mr-5 mt-5">
+                    <div class=" ml-5 mr-5">
                         <div class="row justify-content-center">
                             <div class="row-auto">
 
@@ -55,7 +55,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row"> Description</th>
-                                        <td>${course.description}</td>
+                                        <td class="textarea-style">${course.description}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"> Course Website</th>

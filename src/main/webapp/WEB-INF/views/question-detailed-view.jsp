@@ -22,7 +22,7 @@
     <!-- Bootstrap Fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Job Offer Details</title>
+    <title>Question Details</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 </head>
 <body class="bg-light">
@@ -53,13 +53,13 @@
                                     <tbody class="table-content text-justify">
                                     <tr>
                                         <th scope="row"> Question:</th>
-                                        <td>${question.question}</td>
+                                        <td class="textarea-style"><strong>${question.question}</strong></td>
                                     </tr>
                                     <tr>
                                         <th scope="row"> Answer:</th>
                                         <c:choose>
                                             <c:when test="${not empty question.answer}">
-                                                <td>${question.answer}</td>
+                                                <td class="textarea-style">${question.answer}</td>
                                             </c:when>
                                             <c:otherwise>
                                                 <td><a

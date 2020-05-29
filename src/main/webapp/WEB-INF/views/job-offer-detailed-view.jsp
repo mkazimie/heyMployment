@@ -36,11 +36,6 @@
         </ol>
     </nav>
 
-    <%--    <nav class="navbar bg-dark static-top">--%>
-    <%--        <div class="navbar-brand main-logo ml-4 text-white">--%>
-    <%--            <strong> ${jobOffer.title} Details </strong>--%>
-    <%--        </div>--%>
-    <%--    </nav>--%>
     <div class="container">
         <div class="card-deck mr-30 ml-30 mt-5 mb-5">
             <div class="card border-secondary">
@@ -56,16 +51,16 @@
                             <div class="row-auto">
 
                                 <table class="table table-responsive table-borderless">
-                                    <tbody class="table-content ">
+                                    <tbody class="table-content text-justify">
                                     <tr>
                                         <th scope="row"> Status</th>
-                                        <td class="text-justify">${jobOffer.status}</td>
+                                        <td>${jobOffer.status}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Job Offer Posting</th>
+                                        <th scope="row"> Posting URL </th>
                                         <c:choose>
                                             <c:when test="${not empty jobOffer.url}">
-                                                <td class="text-justify"><a href="${jobOffer.url}"> ${jobOffer.title}
+                                                <td><a href="${jobOffer.url}"> ${jobOffer.title}
                                                     Posting </a>
                                                 </td>
                                             </c:when>
@@ -79,7 +74,7 @@
                                         <th scope="row"> Posted On</th>
                                         <c:choose>
                                             <c:when test="${not empty jobOffer.jobSearchWebsite}">
-                                                <td class="text-justify">${jobOffer.jobSearchWebsite}</td>
+                                                <td>${jobOffer.jobSearchWebsite}</td>
                                             </c:when>
                                             <c:otherwise>
                                                 <td><a href="/user/offers/update/${jobOffer.id}"> Add </a>
@@ -89,7 +84,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row"> Company</th>
-                                        <td class="text-justify"><a href="/user/companies/${jobOffer.company.id}">
+                                        <td><a href="/user/companies/${jobOffer.company.id}">
                                                 ${jobOffer.company.name}</a></td>
                                     </tr>
                                     <tr>
@@ -100,7 +95,7 @@
                                         <th scope="row"> Description</th>
                                         <c:choose>
                                             <c:when test="${not empty jobOffer.description}">
-                                                <td class="text-justify">${jobOffer.description}</td>
+                                                <td class="textarea-style">${jobOffer.description}></td>
                                             </c:when>
                                             <c:otherwise>
                                                 <td><a href="/user/offers/update/${jobOffer.id}"> Add </a>
@@ -109,14 +104,14 @@
                                         </c:choose>
                                     </tr>
                                     <tr>
-                                        <th scope="row">  Attractive ? </th>
-                                        <td class="text-justify">${jobOffer.howAttractive}</td>
+                                        <th scope="row">  Attractive? </th>
+                                        <td>${jobOffer.howAttractive}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"> Applied On </th>
                                         <c:choose>
                                             <c:when test="${not empty jobOffer.appliedOn}">
-                                                <td class="text-justify">${jobOffer.appliedOn}</td>
+                                                <td>${jobOffer.appliedOn}</td>
                                             </c:when>
                                             <c:otherwise>
                                                 <td><a href="/user/offers/update/${jobOffer.id}"> Add </a>
@@ -128,7 +123,7 @@
                                         <th scope="row"> Notes</th>
                                         <c:choose>
                                             <c:when test="${not empty jobOffer.notes}">
-                                                <td class="text-justify">${jobOffer.notes}</td>
+                                                <td class="textarea-style">${jobOffer.notes}</td>
                                             </c:when>
                                             <c:otherwise>
                                                 <td><a href="/user/offers/update/${jobOffer.id}"> Add </a>
@@ -138,17 +133,16 @@
                                     </tr>
                                     <tr>
                                         <th scope="row"> Added </th>
-                                        <td class="text-justify">${jobOffer.formatAdded}</td>
+                                        <td>${jobOffer.formatAdded}</td>
                                     </tr>
                                     <c:if test="${not empty jobOffer.updated}">
                                         <tr>
                                             <th scope="row"> Updated </th>
-                                            <td class="text-justify">${jobOffer.formatUpdated}</td>
+                                            <td>${jobOffer.formatUpdated}</td>
                                         </tr>
                                     </c:if>
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>

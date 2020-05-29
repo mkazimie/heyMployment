@@ -11,7 +11,7 @@
 
 <html>
 <head>
-    <title>Job Offer List</title>
+    <title>Job Offers </title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 
     <meta charset="utf-8">
@@ -88,7 +88,7 @@
             <c:forEach items="${offers}" var="offer">
                 <tr class="text-center">
                     <td class="align-middle"></td>
-                    <td class="align-middle">${offer.title}</td>
+                    <td class="align-middle"><strong>${offer.title}</strong></td>
                     <td class="align-middle">${offer.location}</td>
                     <td class="align-middle"><a href="/user/companies/${offer.company.id}">${offer.company.name}</a></td>
                     <td>${offer.formatAdded}</td>

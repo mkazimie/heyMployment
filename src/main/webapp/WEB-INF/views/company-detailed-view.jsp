@@ -22,7 +22,7 @@
     <!-- Bootstrap Fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Home Page</title>
+    <title>Company Details</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 </head>
 <body class="bg-light">
@@ -67,7 +67,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row"> Description</th>
-                                        <td>${company.description}</td>
+                                        <td class="textarea-style">${company.description}</td>
                                     </tr>
 
                                     </tbody>

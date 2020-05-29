@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <title>Login Form</title>
+    <title>Confirm Delete</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 
     <!-- Required meta tags -->

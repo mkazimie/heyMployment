@@ -13,7 +13,7 @@
 
 <html>
 <head>
-    <title>Register Form</title>
+    <title>Add New User</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">

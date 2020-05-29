@@ -12,7 +12,7 @@
 
 <html>
 <head>
-    <title>Sign Out</title>
+    <title>Logout</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">

@@ -13,7 +13,7 @@
 
 <html>
 <head>
-    <title>Job Offer List</title>
+    <title> Todos </title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 
     <meta charset="utf-8">
@@ -63,17 +63,6 @@
 
             <tbody>
             <c:forEach items="${todos}" var="todo">
-<%--                <c:choose>--%>
-<%--                    <c:when test="${todo.hoursLeft >= -5}">--%>
-<%--                        <tr class="bg-warning">--%>
-<%--                    </c:when>--%>
-<%--                    <c:when test="${todo.hoursLeft >= 0}">--%>
-<%--                        <tr class="bg-danger">--%>
-<%--                    </c:when>--%>
-<%--                    <c:otherwise>--%>
-<%--                        <tr>--%>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
                 <tr class="text-center">
                 <td></td>
                 <td class="align-middle">${todo.name}</td>

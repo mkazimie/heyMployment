@@ -13,7 +13,7 @@
 
 <html>
 <head>
-    <title>Detailed Form</title>
+    <title>Todo Form</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">

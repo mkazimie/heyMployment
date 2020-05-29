@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Successful Registration</title>
+    <title> Register Success</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 
     <meta charset="utf-8">

@@ -13,7 +13,7 @@
 
 <html>
 <head>
-    <title> Edit Company Details </title>
+    <title> Company Form </title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">

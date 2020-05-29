@@ -119,7 +119,7 @@ public class JobOfferController {
             Company company = companyService.findByName(jobOffer.getCompany().getName());
             jobOffer.setCompany(company);
             jobOfferService.saveJobOffer(jobOffer);
-            return "redirect:/user/offers/";
+            return "redirect:/user/offers/details/" + jobOffer.getId();
         }
         model.addAttribute("failed", "Please try again");
         return "job-offer-edit";

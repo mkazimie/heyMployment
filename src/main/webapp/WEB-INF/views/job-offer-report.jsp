@@ -13,7 +13,7 @@
 
 <html>
 <head>
-    <title>Job Offer List</title>
+    <title>Job Offers Reports</title>
     <link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 
     <meta charset="utf-8">
