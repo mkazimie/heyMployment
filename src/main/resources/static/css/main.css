@@ -114,3 +114,13 @@
 .textarea-style{
     white-space: pre-wrap;
 }
+
+.form-group > input {
+    border-radius: 2rem;
+    height: auto;
+}
+
+.form-group > label{
+    margin-left: 8px;
+}
+

@@ -34,7 +34,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="/user/courses/"> Courses </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Add </li>
+            <li class="breadcrumb-item active" aria-current="page"> Add</li>
         </ol>
     </nav>
 
@@ -47,26 +47,24 @@
                     <h5 class="errorMessage center-content">${failed}</h5>
 
 
-                    <div class="form-group row">
-                        <form:label path="name"
-                                    class="col-md-4 col-form-label text-md-right"> Course Name: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="name" class="col-form-label"> Course Name: </form:label>
                             <form:input path="name" class="form-control" placeholder="Course Name"/>
                             <form:errors path="name" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="description"
-                                    class="col-md-4 col-form-label text-md-right"> Description: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="description" class="col-form-label"> Description: </form:label>
                             <form:textarea path="description" class="form-control" placeholder="Description"/>
                             <form:errors path="description" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="status"
-                                    class="col-md-4 col-form-label text-md-right"> Status: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="status"
+                                        class="col-form-label"> Status: </form:label>
                             <form:select path="status" class="form-control">
                                 <form:option value="Wishlist" label="--Please Select--" selected="selected"/>
                                 <form:options items="${status}"/>
@@ -74,64 +72,61 @@
                             <form:errors path="status" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="url"
-                                    class="col-md-4 col-form-label text-md-right"> Link To Course:</form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="url"
+                                        class=" col-form-label"> Link To Course:</form:label>
                             <form:input path="url" class="form-control" placeholder="URL"/>
                             <form:errors path="url" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="organizedBy"
-                                    class="col-md-4 col-form-label text-md-right"> Organized By:</form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="organizedBy" class="col-form-label"> Organized By:</form:label>
                             <form:input path="organizedBy" class="form-control" placeholder="Organized By"/>
                             <form:errors path="organizedBy" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="finishDate"
-                                    class="col-md-4 col-form-label text-md-right"> Ends On: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="finishDate" class="col-form-label"> Ends On: </form:label>
                             <form:input path="finishDate" type="date" class="form-control" placeholder="yyyy-MM-dd"/>
                             <form:errors path="finishDate" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="mainTopic"
-                                    class="col-md-4 col-form-label text-md-right"> Topics: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="mainTopic" class="col-form-label"> Topics: </form:label>
                             <form:input path="mainTopic" class="form-control" placeholder="Main Topic"/>
                             <form:errors path="mainTopic" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="additionalTopic1"
-                                    class="col-md-4 col-form-label text-md-right"> </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="additionalTopic1" class="col-form-label"> </form:label>
                             <form:input path="additionalTopic1" class="form-control" placeholder="Additional Topic"/>
                             <form:errors path="additionalTopic1" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="additionalTopic2"
-                                    class="col-md-4 col-form-label text-md-right"> </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="additionalTopic2" class="col-form-label"> </form:label>
                             <form:input path="additionalTopic2" class="form-control" placeholder="Additional Topic"/>
                             <form:errors path="additionalTopic2" cssClass="errorMessage"/>
                         </div>
                     </div>
 
 
-                    <div class="col-md-6 offset-md-4">
-                        <input type="submit" class="btn btn-primary btn-block" value="Save">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="col-md-8 text-center mt-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Save">
+                            <a href="/user/courses/" class="btn btn-block btn-link" role="button"> Discard </a>
+                        </div>
                     </div>
                 </form:form>
             </div>
         </div>
     </div>
-
 </sec:authorize>
 
 <!-- Optional JavaScript -->

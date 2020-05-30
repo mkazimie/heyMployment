@@ -30,118 +30,121 @@
 <sec:authorize access="isAuthenticated()">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active ml-4" aria-current="page"><i class="fas fa-home"></i> Home </li>
+            <li class="breadcrumb-item active ml-4" aria-current="page"><i class="fas fa-home"></i> Home</li>
         </ol>
     </nav>
 
 
-<%--    <nav class="navbar bg-dark static-top">--%>
-<%--        <div class="navbar-brand main-logo ml-4 text-white">--%>
-<%--            <strong> User Panel </strong>--%>
-<%--        </div>--%>
-<%--    </nav>--%>
-
-
-
     <div class="container">
 
-        <div class="card-deck mt-3">
+        <div class="row">
 
                 <%--   WELCOME --%>
-            <div class="card border-secondary bg-dark text-white">
-                <img class="card-img-top img-scale img-fluid" src="/img/hello-i-m-nik-MAgPyHRO0AA-unsplash.jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><strong>Welcome to your User Panel</strong></h5>
-                    <p class="card-text text-justify"> From here you can easily access your saved job offers, keep
-                        track of your to-do list, store your accomplished or ongoing courses and prepare for
-                        your job interview.
-                    </p>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100 border-secondary bg-dark text-white">
+                    <img class="card-img-top img-scale img-fluid" src="/img/hello-i-m-nik-MAgPyHRO0AA-unsplash.jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><strong>Welcome to your User Panel</strong></h5>
+                        <p class="card-text text-justify"> From here you can easily access your saved job offers, keep
+                            track of your to-do list, store your accomplished or ongoing courses and prepare for
+                            your job interview.
+                        </p>
+                    </div>
                 </div>
             </div>
 
                 <%-- JOB OFFERS--%>
-            <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/Optimized-jesus-kiteque-wn-KYaHwcis-unsplash.jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><strong>Job Applications</strong></h5>
-                    <p class="card-text text-center"> Store and manage your job applications. </p>
-                </div>
-                <div class="card-footer">
-                    <div class="btn-wrapper text-center">
-                        <a href="/user/offers/" class="btn btn-primary"> Go </a>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card  h-100 border-secondary">
+                    <img class="card-img-top img-scale img-fluid"
+                         src="/img/Optimized-jesus-kiteque-wn-KYaHwcis-unsplash.jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><strong>Job Applications</strong></h5>
+                        <p class="card-text text-center"> Store and manage your job applications. </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-wrapper text-center">
+                            <a href="/user/offers/" class="btn btn-primary"> Go </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
                 <%--TODOS--%>
-            <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/kelly-sikkema--1_RZL8BGBM-unsplash.jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><strong>To-Do List </strong></h5>
-                    <p class="card-text text-center"> Keep track of your most urgent tasks.
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <div class="btn-wrapper text-center">
-                        <a href="/user/todos/" class="btn btn-primary"> Go </a>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100 border-secondary">
+                    <img class="card-img-top img-scale img-fluid" src="/img/kelly-sikkema--1_RZL8BGBM-unsplash.jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><strong>To-Do List </strong></h5>
+                        <p class="card-text text-center"> Keep track of your most urgent tasks.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-wrapper text-center">
+                            <a href="/user/todos/" class="btn btn-primary"> Go </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-        </div>
-
-
-        <div class="card-deck mt-3">
-
                 <%-- COMPANIES--%>
-            <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/Optimized-sean-pollock-PhYq704ffdA-unsplash.jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><strong>Companies</strong></h5>
-                    <p class="card-text text-center"> Store information on your future employer. </p>
-                </div>
-                <div class="card-footer">
-                    <div class="btn-wrapper text-center">
-                        <a href="/user/companies/" class="btn btn-primary"> Go </a>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100 border-secondary">
+                    <img class="card-img-top img-scale img-fluid"
+                         src="/img/Optimized-sean-pollock-PhYq704ffdA-unsplash.jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><strong>Companies</strong></h5>
+                        <p class="card-text text-center"> Store information on your future employer. </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-wrapper text-center">
+                            <a href="/user/companies/" class="btn btn-primary"> Go </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
                 <%-- COURSES --%>
-            <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/Optimized-thisisengineering-raeng-GzDrm7SYQ0g-unsplash%20(1).jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><strong>Courses</strong></h5>
-                    <p class="card-text text-center"> Document your learning pathway. </p>
-                </div>
-                <div class="card-footer">
-                    <div class="btn-wrapper text-center">
-                        <a href="/user/courses/" class="btn btn-primary"> Go </a>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100 border-secondary">
+                    <img class="card-img-top img-scale img-fluid"
+                         src="/img/Optimized-thisisengineering-raeng-GzDrm7SYQ0g-unsplash%20(1).jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><strong>Courses</strong></h5>
+                        <p class="card-text text-center"> Document your learning pathway. </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-wrapper text-center">
+                            <a href="/user/courses/" class="btn btn-primary"> Go </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
                 <%-- INTERVIEW PREP--%>
-            <div class="card border-secondary">
-                <img class="card-img-top img-scale img-fluid" src="/img/quino-al-4SNUcHPiC8c-unsplash.jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><strong>Interview Prep</strong></h5>
-                    <p class="card-text text-center"> Access your job interview materials. </p>
-                </div>
-                <div class="card-footer">
-                    <div class="btn-wrapper text-center">
-                        <a href="/user/categories/" class="btn btn-primary"> Go </a>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100 border-secondary">
+                    <img class="card-img-top img-scale img-fluid" src="/img/quino-al-4SNUcHPiC8c-unsplash.jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><strong>Interview Prep</strong></h5>
+                        <p class="card-text text-center"> Access your job interview materials. </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-wrapper text-center">
+                            <a href="/user/categories/" class="btn btn-primary"> Go </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 

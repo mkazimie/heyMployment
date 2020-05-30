@@ -34,29 +34,31 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="/user/categories/">Categories</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Add </li>
+            <li class="breadcrumb-item active" aria-current="page"> Add</li>
         </ol>
     </nav>
 
     <div class="container">
         <div class="card mx-auto mt-3">
-            <div class="card-header bg-dark form-header text-white text-center"> Add New Category </div>
+            <div class="card-header bg-dark form-header text-white text-center"> Add New Category</div>
             <div class="card-body">
                 <form:form method="post" modelAttribute="category">
 
                     <h5 class="errorMessage center-content">${failed}</h5>
 
-
-                    <div class="form-group row">
-                        <form:label path="name"
-                                    class="col-md-4 col-form-label text-md-right"> Category Name: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="name" class="col-form-label"> Category Name: </form:label>
                             <form:input path="name" class="form-control" placeholder="Name"/>
                             <form:errors path="name" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="col-md-6 offset-md-4">
-                        <input type="submit" class="btn btn-primary btn-block" value="Save">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="col-md-8 text-center mt-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Save">
+                            <a href="/user/categories/" class="btn btn-block btn-link" role="button">
+                                Discard </a>
+                        </div>
                     </div>
                 </form:form>
             </div>

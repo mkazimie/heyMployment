@@ -43,7 +43,6 @@
             <c:forEach items="${companies}" var="company" varStatus="count">
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="card h-100">
-                            <%--                        <img class="card-img-top" src="/img/Optimized-scott-webb-TYso4-CK-as-unsplash.jpg" alt="">--%>
                         <c:choose>
                             <c:when test="${count.index % 3 == 0}">
                                 <img class="card-img-top" src="/img/Optimized-sunyu-9aCD5kzPwa8-unsplash%20(1).jpg"

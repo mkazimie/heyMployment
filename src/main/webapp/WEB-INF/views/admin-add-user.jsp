@@ -40,53 +40,50 @@
 
 <div class="container">
     <div class="card mx-auto mt-5">
-        <div class="card-header thead-primary form-header text-center">Add new user </div>
+        <div class="card-header thead-primary form-header text-center"> Add new user</div>
         <div class="card-body">
             <form:form method="post" modelAttribute="user">
 
             <h4 class="errorMessage">${failed}</h4>
 
-            <div class="form-group row">
-                <form:label path="firstName"
-                            class="col-md-4 col-form-label text-md-right"> First Name: </form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="firstName" class="col-form-label"> First Name: </form:label>
                     <form:input path="firstName" class="form-control" placeholder="First Name"/>
                     <form:errors path="firstName" cssClass="errorMessage"/>
                 </div>
             </div>
-            <div class="form-group row">
-                <form:label path="lastName"
-                            class="col-md-4 col-form-label text-md-right">Last Name:</form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="lastName" class="col-form-label">Last Name:</form:label>
                     <form:input path="lastName" class="form-control" placeholder="Last Name"/>
                     <form:errors path="lastName" cssClass="errorMessage"/>
                 </div>
             </div>
-            <div class="form-group row">
-                <form:label path="username"
-                            class="col-md-4 col-form-label text-md-right">Username:</form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="username" class="col-form-label">Username:</form:label>
                     <form:input path="username" class="form-control" placeholder="Username"/>
                     <form:errors path="username" cssClass="errorMessage"/>
                 </div>
             </div>
-            <div class="form-group row">
-                <form:label path="email" class="col-md-4 col-form-label text-md-right"> Email:</form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="email" class="col-form-label"> Email:</form:label>
                     <form:input path="email" class="form-control" placeholder="Email"/>
                     <form:errors path="email" cssClass="errorMessage"/>
                 </div>
             </div>
-            <div class="form-group row">
-                <form:label path="password" class="col-md-4 col-form-label text-md-right"> Password: </form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="password" class="col-form-label"> Password: </form:label>
                     <form:password path="password" class="form-control" placeholder="Password"/>
                     <form:errors path="password" cssClass="errorMessage"/>
                 </div>
             </div>
-            <div class="form-group row">
-                <form:label path="roles" class="col-md-4 col-form-label text-md-right"> Set Roles: </form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="roles" class="col-form-label"> Set Roles: </form:label>
                     <form:radiobuttons path="roles" items="${roles}" itemLabel="name" itemValue="id"
                                        cssClass="check-space"/>
                     <form:errors path="roles" cssClass="errorMessage"/>
@@ -98,10 +95,11 @@
         <div class="card-footer">
             <div class="btn-wrapper text-center">
                 <input type="submit" class="btn btn-primary" value="Save">
+                <a href="/admin/panel" class="btn btn-block btn-link" role="button"> Discard </a>
             </div>
         </div>
+        </form:form>
     </div>
-    </form:form>
     </sec:authorize>
 </div>
 

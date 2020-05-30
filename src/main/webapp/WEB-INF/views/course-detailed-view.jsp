@@ -41,13 +41,15 @@
         <div class="card-deck mt-5">
             <div class="card border-secondary">
                 <h3 class="card-header bg-secondary text-center text-white text-uppercase">${course.name}</h3>
+                <img class="card-img-top card-img-adjust " src="/img/Optimized-markus-spiske-qjnAnF0jIGk-unsplash.jpg"
+                     alt="">
                 <div class="card-body">
 
-                    <div class=" ml-5 mr-5">
+                    <div class="card-text ml-5 mr-5 mt-3">
                         <div class="row justify-content-center">
                             <div class="row-auto">
 
-                                <table class="table table-responsive">
+                                <table class="table table-responsive table-borderless">
                                     <tbody class="table-content text-justify">
                                     <tr>
                                         <th scope="row"> Status</th>
@@ -93,9 +95,11 @@
                     </div>
 
                     <div class="card-text mr-5 ml-5">
-                        <div class="btn-wrapper text-center mb-3">
-                            <h5><a href="/user/todos/"><strong> To-Do List </strong></a></h5>
-                            <a href="/user/todos/add/course/${course.id}" class="btn btn-primary"> + </a>
+                        <div class="row justify-content-center">
+                            <h5><a href="/user/todos/"> <strong> To-Dos </strong> </a> &nbsp;
+                                <a href="/user/todos/add/course/${course.id}"
+                                   class="btn btn-primary btn-sm align-middle"> +
+                                </a></h5>
                         </div>
 
 

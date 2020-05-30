@@ -40,11 +40,11 @@
     <div class="container">
         <div class="card-deck mt-5">
             <div class="card bg-light border-secondary">
-                    <%--                <h3 class="card-header bg-primary text-center text-white text-uppercase">${company.name}</h3>--%>
                 <h3 class="card-header bg-secondary text-white text-center">${company.name}</h3>
+                <img class="card-img-top card-img-adjust " src="/img/Optimized-scott-webb-TYso4-CK-as-unsplash.jpg"
+                     alt="">
                 <div class="card-body">
-                    <img class="card-img-top card-img-adjust " src="/img/Optimized-scott-webb-TYso4-CK-as-unsplash.jpg" alt="">
-                    <div class=" card-text ml-5 mr-5 mt-5">
+                    <div class="card-text ml-5 mr-5 mt-3">
                         <div class="row justify-content-center">
                             <div class="row-auto">
 
@@ -79,8 +79,7 @@
                     <div class="card-text mr-5 ml-5 mt-5">
                         <div class="row justify-content-center">
                             <h5><a href="/user/offers/"> <strong> Job Offers </strong> </a> &nbsp;
-                                <a href="/user/offers/add" class="btn btn-primary align-middle"> <i
-                                        class="fas fa-plus"></i>
+                                <a href="/user/offers/add" class="btn btn-primary btn-sm align-middle"> +
                                 </a></h5>
                         </div>
 
@@ -112,7 +111,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="/user/companies/update/${company.id}" class="btn btn-primary"> Edit Company Info </a>
+                    <a href="/user/companies/update/${company.id}" class="btn btn-primary"> Edit </a>
                 </div>
             </div>
         </div>

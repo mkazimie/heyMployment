@@ -22,78 +22,76 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- Bootstrap Fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<%@include file="header-landing.jsp"%>
+<%@include file="header-landing.jsp" %>
 <div class="container">
     <div class="card mx-auto mt-3">
-        <div class="card-header bg-dark form-header text-white text-center"> Sign Up Form</div>
+        <div class="card-header bg-dark form-header text-white text-center"> Registration Form</div>
         <div class="card-body">
             <form:form method="post" modelAttribute="user">
 
-            <h5 class="errorMessage center-content">${failed}</h5>
+                <h5 class="errorMessage center-content">${failed}</h5>
 
-            <div class="form-group row">
-                <form:label path="firstName"
-                            class="col-md-4 col-form-label text-md-right"> First Name: </form:label>
-                <div class="col-md-6">
-                    <form:input path="firstName" class="form-control" placeholder="First Name"/>
-                    <form:errors path="firstName" cssClass="errorMessage"/>
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="firstName" class="col-form-label"> First Name: </form:label>
+                        <form:input path="firstName" class="form-control" placeholder="First Name"/>
+                        <form:errors path="firstName" cssClass="errorMessage"/>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <form:label path="lastName"
-                            class="col-md-4 col-form-label text-md-right">Last Name:</form:label>
-                <div class="col-md-6">
-                    <form:input path="lastName" class="form-control" placeholder="Last Name"/>
-                    <form:errors path="lastName" cssClass="errorMessage"/>
+
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="lastName" class="col-form-label">Last Name:</form:label>
+                        <form:input path="lastName" class="form-control" placeholder="Last Name"/>
+                        <form:errors path="lastName" cssClass="errorMessage"/>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <form:label path="username"
-                            class="col-md-4 col-form-label text-md-right">Username:</form:label>
-                <div class="col-md-6">
-                    <form:input path="username" class="form-control" placeholder="Username"/>
-                    <form:errors path="username" cssClass="errorMessage"/>
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="username" class="col-form-label">Username:</form:label>
+                        <form:input path="username" class="form-control" placeholder="Username"/>
+                        <form:errors path="username" cssClass="errorMessage"/>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <form:label path="email" class="col-md-4 col-form-label text-md-right"> Email:</form:label>
-                <div class="col-md-6">
-                    <form:input path="email" class="form-control" placeholder="Email"/>
-                    <form:errors path="email" cssClass="errorMessage"/>
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="email" class="col-form-label"> Email:</form:label>
+                        <form:input path="email" class="form-control" placeholder="Email"/>
+                        <form:errors path="email" cssClass="errorMessage"/>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <form:label path="password"
-                            class="col-md-4 col-form-label text-md-right"> Password: </form:label>
-                <div class="col-md-6">
-                    <form:password path="password" class="form-control" placeholder="Password"/>
-                    <form:errors path="password" cssClass="errorMessage"/>
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="password" class="col-form-label"> Password: </form:label>
+                        <form:password path="password" class="form-control" placeholder="Password"/>
+                        <form:errors path="password" cssClass="errorMessage"/>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <form:label path="matchingPassword"
-                            class="col-md-4 col-form-label text-md-right"> Confirm Password: </form:label>
-                <div class="col-md-6">
-                    <form:password path="matchingPassword" class="form-control" placeholder="Confirm Password"/>
-                    <form:errors path="matchingPassword" cssClass="errorMessage"/>
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="matchingPassword" class="col-form-label"> Confirm Password: </form:label>
+                        <form:password path="matchingPassword" class="form-control" placeholder="Confirm Password"/>
+                        <form:errors path="matchingPassword" cssClass="errorMessage"/>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 offset-md-4">
-                <input type="submit" class="btn btn-primary btn-block" value="Register">
-            </div>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <div class="col-md-6 offset-md-4">
-                <div class="text-center spacer"> Already registered?</div>
-                <a href="/login" class="btn btn-block btn-link" role="button"> Sign In </a>
-            </div>
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="col-md-8 text-center mt-3">
+                        <input type="submit" class="btn btn-primary btn-lg" value="Register">
+                    </div>
+                </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <div class="justify-content-center">
+                    <div class="text-center spacer"> Already registered?</div>
+                    <a href="/login" class="btn btn-block btn-link" role="button"><strong> Sign In </strong></a>
+                </div>
+            </form:form>
         </div>
     </div>
-    </form:form>
 </div>
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

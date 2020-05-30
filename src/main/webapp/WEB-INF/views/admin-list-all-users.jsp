@@ -31,8 +31,9 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item ml-4"><a href="/admin/panel"><i class="fas fa-user-shield"></i> Admin Panel </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> All Users </li>
+            <li class="breadcrumb-item ml-4"><a href="/admin/panel"><i class="fas fa-user-shield"></i> Admin Panel </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page"> All Users</li>
         </ol>
     </nav>
 
@@ -73,10 +74,15 @@
                     </c:forEach>
                 </td>
                 <td>${user.enabled}</td>
-                <td><a href="/admin/users/block/${user.id}"> Block </a> |
-                    <a href="/admin/users/unblock/${user.id}"> Unblock </a>
-                </td>
-
+                <c:choose>
+                    <c:when test="${user.enabled == 1}">
+                        <td><a href="/admin/users/block/${user.id}"> Block </a></td>
+                    </c:when>
+                    <c:otherwise>
+                        <td><a href="/admin/users/unblock/${user.id}"> Unblock </a>
+                        </td>
+                    </c:otherwise>
+                </c:choose>
             </tr>
             </tbody>
             </c:forEach>

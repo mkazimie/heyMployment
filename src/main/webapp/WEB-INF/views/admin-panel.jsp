@@ -35,12 +35,6 @@
         </ol>
     </nav>
 
-
-<%--    <nav class="navbar bg-dark static-top">--%>
-<%--        <div class="navbar-brand main-logo ml-4 text-white">--%>
-<%--            <strong> Admin Panel </strong>--%>
-<%--        </div>--%>
-<%--    </nav>--%>
     <div class="container">
         <div class="card-deck mt-5">
             <div class="card border-secondary">
