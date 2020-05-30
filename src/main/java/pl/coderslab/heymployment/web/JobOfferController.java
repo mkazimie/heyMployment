@@ -153,7 +153,9 @@ public class JobOfferController {
         LocalDateTime added = offer.getAdded();
         offer.setFormatAdded(displayWeekDay(added.getDayOfWeek()) + " / " + added.format(formatter));
         LocalDateTime updated = offer.getUpdated();
-        offer.setFormatUpdated(displayWeekDay(updated.getDayOfWeek()) + " / " + updated.format(formatter));
+        if (updated != null) {
+            offer.setFormatUpdated(displayWeekDay(updated.getDayOfWeek()) + " / " + updated.format(formatter));
+        }
     }
 
 

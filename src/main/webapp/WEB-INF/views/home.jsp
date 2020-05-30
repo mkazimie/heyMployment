@@ -42,7 +42,7 @@
                 <%--   WELCOME --%>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card h-100 border-secondary bg-dark text-white">
-                    <img class="card-img-top img-scale img-fluid" src="/img/hello-i-m-nik-MAgPyHRO0AA-unsplash.jpg"
+                    <img class="card-img-top" src="/img/hello-i-m-nik-MAgPyHRO0AA-unsplash.jpg"
                          alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title text-center"><strong>Welcome to your User Panel</strong></h5>
@@ -57,7 +57,7 @@
                 <%-- JOB OFFERS--%>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card  h-100 border-secondary">
-                    <img class="card-img-top img-scale img-fluid"
+                    <img class="card-img-top"
                          src="/img/Optimized-jesus-kiteque-wn-KYaHwcis-unsplash.jpg"
                          alt="Card image cap">
                     <div class="card-body">
@@ -75,7 +75,7 @@
                 <%--TODOS--%>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card h-100 border-secondary">
-                    <img class="card-img-top img-scale img-fluid" src="/img/kelly-sikkema--1_RZL8BGBM-unsplash.jpg"
+                    <img class="card-img-top" src="/img/kelly-sikkema--1_RZL8BGBM-unsplash.jpg"
                          alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title text-center"><strong>To-Do List </strong></h5>
@@ -94,7 +94,7 @@
                 <%-- COMPANIES--%>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card h-100 border-secondary">
-                    <img class="card-img-top img-scale img-fluid"
+                    <img class="card-img-top"
                          src="/img/Optimized-sean-pollock-PhYq704ffdA-unsplash.jpg"
                          alt="Card image cap">
                     <div class="card-body">
@@ -112,7 +112,7 @@
                 <%-- COURSES --%>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card h-100 border-secondary">
-                    <img class="card-img-top img-scale img-fluid"
+                    <img class="card-img-top"
                          src="/img/Optimized-thisisengineering-raeng-GzDrm7SYQ0g-unsplash%20(1).jpg"
                          alt="Card image cap">
                     <div class="card-body">
@@ -130,7 +130,7 @@
                 <%-- INTERVIEW PREP--%>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card h-100 border-secondary">
-                    <img class="card-img-top img-scale img-fluid" src="/img/quino-al-4SNUcHPiC8c-unsplash.jpg"
+                    <img class="card-img-top" src="/img/quino-al-4SNUcHPiC8c-unsplash.jpg"
                          alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title text-center"><strong>Interview Prep</strong></h5>

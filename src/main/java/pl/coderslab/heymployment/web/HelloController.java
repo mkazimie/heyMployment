@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.UserDto;
 import pl.coderslab.heymployment.exception.RecordAlreadyExistsException;
 import pl.coderslab.heymployment.security.CurrentUser;
@@ -30,6 +31,14 @@ public class HelloController {
             model.addAttribute("currentUser", currentUser);
         }
         return "hello";
+    }
+
+    @GetMapping("/logout")
+            public String logOut(@AuthenticationPrincipal CurrentUser currentUser, Model model){
+        if (currentUser != null){
+            model.addAttribute("currentUser", currentUser);
+        }
+        return "/logout";
     }
 
 //    create first admin after DB drop
