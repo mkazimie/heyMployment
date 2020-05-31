@@ -99,6 +99,7 @@ public class JobOfferController {
         dateFormatConverted(jobOffer);
         jobOffer.getTodos().forEach(todo -> todo.setFormattedDeadline(todo.getDeadline()));
         model.addAttribute("jobOffer", jobOffer);
+        model.addAttribute("now", LocalDateTime.now());
         return "job-offer-detailed-view";
     }
 
@@ -148,7 +149,7 @@ public class JobOfferController {
     }
 
 
-    public void dateFormatConverted(JobOffer offer) {
+    private void dateFormatConverted(JobOffer offer) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM / HH:mm");
         LocalDateTime added = offer.getAdded();
         offer.setFormatAdded(displayWeekDay(added.getDayOfWeek()) + " / " + added.format(formatter));
@@ -159,12 +160,12 @@ public class JobOfferController {
     }
 
 
-    public String displayWeekDay(DayOfWeek day) {
+    private String displayWeekDay(DayOfWeek day) {
         return day.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
     }
 
 
-    // REPORT JOB OFFERS ADDED THIS MONTH
+    // REPORT JOB OFFERS ADDED THIS MONTH & THIS YEAR
 
     @GetMapping("/reports")
     public String displayStatistics(Model model, @AuthenticationPrincipal CurrentUser currentUser) {

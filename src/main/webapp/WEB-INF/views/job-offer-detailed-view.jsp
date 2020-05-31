@@ -57,7 +57,7 @@
                                         <td>${jobOffer.status}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Posting URL </th>
+                                        <th scope="row"> Posting URL</th>
                                         <c:choose>
                                             <c:when test="${not empty jobOffer.url}">
                                                 <td><a href="${jobOffer.url}"> ${jobOffer.title}
@@ -104,11 +104,11 @@
                                         </c:choose>
                                     </tr>
                                     <tr>
-                                        <th scope="row">  Attractive? </th>
+                                        <th scope="row"> Attractive?</th>
                                         <td>${jobOffer.howAttractive}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Applied On </th>
+                                        <th scope="row"> Applied On</th>
                                         <c:choose>
                                             <c:when test="${not empty jobOffer.appliedOn}">
                                                 <td>${jobOffer.appliedOn}</td>
@@ -132,12 +132,12 @@
                                         </c:choose>
                                     </tr>
                                     <tr>
-                                        <th scope="row"> Added </th>
+                                        <th scope="row"> Added</th>
                                         <td>${jobOffer.formatAdded}</td>
                                     </tr>
                                     <c:if test="${not empty jobOffer.updated}">
                                         <tr>
-                                            <th scope="row"> Updated </th>
+                                            <th scope="row"> Updated</th>
                                             <td>${jobOffer.formatUpdated}</td>
                                         </tr>
                                     </c:if>
@@ -168,7 +168,17 @@
                             </thead>
                             <c:forEach items="${jobOffer.todos}" var="todo">
                             <tbody>
+                            <c:choose>
+                            <c:when test="${todo.deadline lt now}">
+                            <tr class="text-center table-danger">
+                                </c:when>
+                                <c:when test="${todo.hoursLeft ge -3 and todo.hoursLeft le 0}">
+                            <tr class="text-center table-warning">
+                                </c:when>
+                                <c:otherwise>
                             <tr class="text-center">
+                                </c:otherwise>
+                                </c:choose>
                                 <td></td>
                                 <td>${todo.name}</td>
                                 <td>${todo.description}</td>

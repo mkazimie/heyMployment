@@ -52,13 +52,15 @@ public class Todo {
     @Column(name = "is_done")
     private boolean done;
 
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @Transient
     private long hoursLeft;
+
+    @Transient
+    private int status;
 
     @Transient
     private String formattedDeadline;

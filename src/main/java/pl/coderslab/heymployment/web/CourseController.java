@@ -12,6 +12,7 @@ import pl.coderslab.heymployment.service.CourseService;
 import pl.coderslab.heymployment.service.TopicService;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -75,6 +76,7 @@ public class CourseController {
         Course course = courseService.findById(id);
         course.getTodos().forEach(todo -> todo.setFormattedDeadline(todo.getDeadline()));
         model.addAttribute("course", course);
+        model.addAttribute("now", LocalDateTime.now());
         return "course-detailed-view";
     }
 

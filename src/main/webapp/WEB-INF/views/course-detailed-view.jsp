@@ -116,7 +116,17 @@
                             </thead>
                             <c:forEach items="${course.todos}" var="todo">
                             <tbody>
+                            <c:choose>
+                            <c:when test="${todo.deadline lt now}">
+                            <tr class="text-center table-danger">
+                                </c:when>
+                                <c:when test="${todo.hoursLeft ge -3 and todo.hoursLeft le 0}">
+                            <tr class="text-center table-warning">
+                                </c:when>
+                                <c:otherwise>
                             <tr class="text-center">
+                                </c:otherwise>
+                                </c:choose>
                                 <td></td>
                                 <td>${todo.name}</td>
                                 <td>${todo.description}</td>

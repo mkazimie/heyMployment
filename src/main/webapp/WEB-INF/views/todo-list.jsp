@@ -67,6 +67,9 @@
                     <c:when test="${todo.deadline lt now}">
                         <tr class="text-center table-danger">
                     </c:when>
+                    <c:when test="${todo.hoursLeft ge -3 and todo.hoursLeft le 0}">
+                        <tr class="text-center table-warning">
+                    </c:when>
                     <c:otherwise>
                         <tr class="text-center">
                     </c:otherwise>

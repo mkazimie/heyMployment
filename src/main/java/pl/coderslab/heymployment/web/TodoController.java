@@ -16,6 +16,7 @@ import pl.coderslab.heymployment.service.TodoService;
 
 import javax.validation.Valid;
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Controller
@@ -86,6 +87,7 @@ public class TodoController {
         for (Todo todo : todos) {
             LocalDateTime deadline = todo.getDeadline();
             todo.setFormattedDeadline(deadline);
+            todo.setHoursLeft(ChronoUnit.HOURS.between(deadline, now));
         }
         model.addAttribute("todos", todos);
         model.addAttribute("now", now);
