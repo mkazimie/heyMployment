@@ -82,11 +82,13 @@ public class TodoController {
     @GetMapping("/")
     public String displayTodos(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<Todo> todos = todoService.findAllByUserId(currentUser.getUser().getId(), false);
+        LocalDateTime now = LocalDateTime.now();
         for (Todo todo : todos) {
             LocalDateTime deadline = todo.getDeadline();
             todo.setFormattedDeadline(deadline);
         }
         model.addAttribute("todos", todos);
+        model.addAttribute("now", now);
         return "todo-list";
     }
 

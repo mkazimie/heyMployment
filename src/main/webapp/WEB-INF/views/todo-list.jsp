@@ -33,7 +33,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> To Do List </li>
+            <li class="breadcrumb-item active" aria-current="page"> To Do List</li>
         </ol>
     </nav>
 
@@ -63,7 +63,14 @@
 
             <tbody>
             <c:forEach items="${todos}" var="todo">
-                <tr class="text-center">
+                <c:choose>
+                    <c:when test="${todo.deadline lt now}">
+                        <tr class="text-center table-danger">
+                    </c:when>
+                    <c:otherwise>
+                        <tr class="text-center">
+                    </c:otherwise>
+                </c:choose>
                 <td></td>
                 <td class="align-middle">${todo.name}</td>
                 <td class="align-middle">${todo.description}</td>
@@ -87,8 +94,8 @@
                     </c:otherwise>
                 </c:choose>
                 <td class="align-middle">${todo.formattedDeadline}</td>
-
-                <td class="align-middle"><a href="/user/todos/confirm-delete/${todo.id}"><i class="far fa-check-circle"></i>
+                <td class="align-middle"><a href="/user/todos/confirm-delete/${todo.id}"><i
+                        class="far fa-check-circle"></i>
                 </a></td>
                 <td class="align-middle"><a href="/user/todos/update/${todo.id}"> Edit </a> |
                     <a href="/user/todos/confirm-delete/${todo.id}"> Delete </a>
