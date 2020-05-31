@@ -149,9 +149,11 @@
 
 
                     <div class="card-text mr-5 ml-5">
-                        <div class="btn-wrapper text-center mb-3">
-                            <h5><a href="/user/todos/"><strong> To-Do List </strong></a></h5>
-                            <a href="/user/todos/add/job/${jobOffer.id}" class="btn btn-primary"> + </a>
+                        <div class="row justify-content-center">
+                            <h5><a href="/user/todos/"> <strong> To-Do List </strong> </a> &nbsp;
+                                <a href="/user/todos/add/job/${jobOffer.id}"
+                                   class="btn btn-primary btn-sm align-middle"> +
+                                </a></h5>
                         </div>
 
 
@@ -197,7 +199,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
-                        <a href="/user/offers/update/${jobOffer.id}" class="btn btn-primary"> Edit Job Offer </a>
+                        <a href="/user/offers/update/${jobOffer.id}" class="btn btn-primary"> Edit </a>
                         <a href="/user/offers/confirm-delete/${jobOffer.id}" class="btn btn-dark"> Delete </a>
                     </div>
                 </div>

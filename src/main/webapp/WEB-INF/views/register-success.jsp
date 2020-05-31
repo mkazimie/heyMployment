@@ -37,8 +37,10 @@
     </div>
 </nav>
 <div class="center-content spacer">
-    <h3>Go to Login page</h3>
-    <a href="/login" class="btn btn-block btn-link" role="button"> Sign In </a>
+    <h3> Go to Login page </h3>
+    <div class="btn-wrapper text-center mt-3">
+    <a href="/login" class="btn btn-primary btn-lg" role="button"> Sign In </a>
+    </div>
 </div>
 <div><img src="/img/undraw_check_boxes_m3d0%20(2).png" class="img-fluid img-center" alt="success-registration"/>
 </div>

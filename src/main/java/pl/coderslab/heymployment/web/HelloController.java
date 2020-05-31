@@ -37,8 +37,9 @@ public class HelloController {
             public String logOut(@AuthenticationPrincipal CurrentUser currentUser, Model model){
         if (currentUser != null){
             model.addAttribute("currentUser", currentUser);
+            return "logout";
         }
-        return "/logout";
+        return "redirect:/login";
     }
 
 //    create first admin after DB drop

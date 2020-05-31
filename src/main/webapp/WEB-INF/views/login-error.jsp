@@ -23,15 +23,15 @@
 </head>
 <body class="bg-light">
 <%@include file="header-landing.jsp" %>
-<div class="container">
-    <h5 class="card-header bg-danger text-center"> <strong>!</strong> </h5>
+<div class="container mx-auto">
+    <h5 class="card-header bg-danger text-center"> <strong> Login Attempt Failed </strong> </h5>
     <div class="card card-body center-content">
-        <h5 class="card-text mt-2 mb-4 text-danger"> Ups! Something went wrong... </h5>
-        <p>Go Back to Login Page
-            <a href="/login" class="btn btn-block btn-link" role="button"> Sign In </a>
+        <h5 class="card-text mt-2 mb-4 text-danger text-center"> Ups! Something went wrong... </h5>
+        <p> Try Again!
+            <a href="/login" class="btn btn-block btn-link btn-lg" role="button"> Sign In </a>
         </p>
-        <p>New User?
-            <a href="/register" class="btn btn-block btn-link" role="button"> Create an Account </a>
+        <p> New User?
+            <a href="/register" class="btn btn-block btn-link btn-lg" role="button"> Create an Account </a>
         </p>
     </div>
 </div>

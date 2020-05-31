@@ -50,9 +50,10 @@
             <h5 class="card-header bg-warning">Confirm Action</h5>
             <div class="card-body">
                 <p class="card-text"> Do you want to remove Question <strong>${qa.question}</strong>?</p>
-                <a href="/user/questions/delete/${qa.id}" class="btn btn-link"
-                   role="button"> YES </a>
-                <a href="/user/categories/${qa.interviewCategory.id}/questions" class="btn btn-link" role="button"> NO </a>
+                <a href="/user/questions/delete/${qa.id}" class="btn btn-dark"
+                   role="button"> Yes </a>
+                <a href="/user/categories/${qa.interviewCategory.id}/questions" class="btn btn-primary"
+                   role="button"> No </a>
             </div>
         </div>
     </div>

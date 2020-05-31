@@ -33,7 +33,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page"> Profile </li>
+        <li class="breadcrumb-item active" aria-current="page"> Profile</li>
     </ol>
 </nav>
 
@@ -43,51 +43,53 @@
         <div class="card-body">
             <form:form method="post" modelAttribute="currentUser">
 
-            <div class="form-group row">
-                <form:label path="firstName"
-                            class="col-md-4 col-form-label text-md-right"> First Name: </form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="firstName"
+                                class="col-form-label"> First Name: </form:label>
                     <form:input path="firstName" class="form-control"/>
                     <form:errors path="firstName" cssClass="errorMessage"/>
                 </div>
             </div>
-            <div class="form-group row">
-                <form:label path="lastName"
-                            class="col-md-4 col-form-label text-md-right">Last Name:</form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="lastName"
+                                class="col-form-label">Last Name:</form:label>
                     <form:input path="lastName" class="form-control"/>
                     <form:errors path="lastName" cssClass="errorMessage"/>
                 </div>
             </div>
-            <div class="form-group row">
-                <form:label path="username"
-                            class="col-md-4 col-form-label text-md-right">Username:</form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="username"
+                                class="col-form-label">Username:</form:label>
                     <form:input path="username" class="form-control" readonly="true"/>
                     <form:errors path="username" cssClass="errorMessage"/>
                 </div>
             </div>
-            <div class="form-group row">
-                <form:label path="email" class="col-md-4 col-form-label text-md-right"> Email:</form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="email" class="col-form-label"> Email:</form:label>
                     <form:input path="email" class="form-control" readonly="true"/>
                     <form:errors path="email" cssClass="errorMessage"/>
                 </div>
             </div>
-            <div class="form-group row">
-                <form:label path="password"
-                            class="col-md-4 col-form-label text-md-right"> Password: </form:label>
-                <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="form-group col-md-8">
+                    <form:label path="password"
+                                class="col-form-label"> Password: </form:label>
                     <form:password path="password" class="form-control"/>
                     <form:errors path="password" cssClass="errorMessage"/>
                 </div>
             </div>
-            <div class="col-md-6 offset-md-4">
-                <form:hidden path="id"/>
-                <form:hidden path="enabled"/>
-                <form:hidden path="roles"/>
-                <input type="submit" class="btn btn-primary btn-block" value="Save Changes">
-                <a href="/user/home" class="btn btn-block btn-link" role="button"> Discard </a>
+            <div class="d-flex justify-content-center align-items-center container ">
+                <div class="col-md-8 text-center mt-3">
+                    <form:hidden path="id"/>
+                    <form:hidden path="enabled"/>
+                    <form:hidden path="roles"/>
+                    <input type="submit" class="btn btn-primary btn-block" value="Save Changes">
+                    <a href="/user/home" class="btn btn-block btn-link" role="button"> Discard </a>
+                </div>
             </div>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </div>

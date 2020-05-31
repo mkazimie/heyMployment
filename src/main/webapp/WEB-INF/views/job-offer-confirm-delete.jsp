@@ -39,8 +39,8 @@
         <h5 class="card-header bg-warning">Confirm Action</h5>
         <div class="card-body">
             <p class="card-text"> Are you sure you want to delete Job Offer <strong>${offer.title}</strong>?</p>
-            <a href="/user/offers/delete/${offer.id}" class="btn btn-link" role="button"> YES </a>
-            <a href="/user/offers/" class="btn btn-link" role="button"> NO </a>
+            <a href="/user/offers/delete/${offer.id}" class="btn btn-dark" role="button"> Yes </a>
+            <a href="/user/offers/" class="btn btn-primary" role="button"> No </a>
         </div>
     </div>
 </div>

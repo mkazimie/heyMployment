@@ -34,7 +34,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="/user/todos/"> To Do List </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> To Do Form </li>
+            <li class="breadcrumb-item active" aria-current="page"> To Do Form</li>
         </ol>
     </nav>
 
@@ -46,26 +46,26 @@
 
                 <h5 class="errorMessage center-content">${failed}</h5>
 
-                <div class="form-group row">
-                    <form:label path="name"
-                                class="col-md-4 col-form-label text-md-right"> Name: </form:label>
-                    <div class="col-md-6">
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="name"
+                                    class="col-form-label"> Name: </form:label>
                         <form:input path="name" class="form-control" placeholder="Name"/>
                         <form:errors path="name" cssClass="errorMessage"/>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <form:label path="description"
-                                class="col-md-4 col-form-label text-md-right"> Description: </form:label>
-                    <div class="col-md-6">
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="description"
+                                    class="col-form-label"> Description: </form:label>
                         <form:textarea path="description" class="form-control" placeholder="Description"/>
                         <form:errors path="description" cssClass="errorMessage"/>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <form:label path="jobOffer"
-                                class="col-md-4 col-form-label text-md-right"> Related Job Offer: </form:label>
-                    <div class="col-md-6">
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="jobOffer"
+                                    class="col-form-label"> Related Job Offer: </form:label>
                         <form:select path="jobOffer" class="form-control">
                             <c:choose>
                                 <c:when test="${not empty jobOffer}">
@@ -80,10 +80,10 @@
                         </form:select>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <form:label path="course"
-                                class="col-md-4 col-form-label text-md-right"> Related Course: </form:label>
-                    <div class="col-md-6">
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="course"
+                                    class="col-form-label"> Related Course: </form:label>
                         <form:select path="course" class="form-control">
                             <c:choose>
                                 <c:when test="${not empty course}">
@@ -98,20 +98,23 @@
                         </form:select>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <form:label path="deadline"
-                                class="col-md-4 col-form-label text-md-right"> Deadline: </form:label>
-                    <div class="col-md-6">
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="form-group col-md-8">
+                        <form:label path="deadline"
+                                    class="col-form-label"> Deadline: </form:label>
                         <form:input path="deadline" type="datetime-local" class="form-control"
                                     placeholder="yyyy-MM-dd HH:mm"/>
                         <form:errors path="deadline" cssClass="errorMessage"/>
                     </div>
                 </div>
-                <div class="col-md-6 offset-md-4">
-                    <input type="submit" class="btn btn-primary btn-block" value="Save">
-                    <form:hidden path="id"/>
-                    <form:hidden path="user.id"/>
-                    </form:form>
+                <div class="d-flex justify-content-center align-items-center container ">
+                    <div class="col-md-8 text-center mt-3">
+                        <input type="submit" class="btn btn-primary btn-block" value="Save">
+                        <a href="/user/todos/" class="btn btn-block btn-link" role="button"> Discard </a>
+                        <form:hidden path="id"/>
+                        <form:hidden path="user.id"/>
+                        </form:form>
+                    </div>
                 </div>
             </div>
         </div>

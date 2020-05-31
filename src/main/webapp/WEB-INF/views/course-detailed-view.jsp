@@ -96,7 +96,7 @@
 
                     <div class="card-text mr-5 ml-5">
                         <div class="row justify-content-center">
-                            <h5><a href="/user/todos/"> <strong> To-Dos </strong> </a> &nbsp;
+                            <h5><a href="/user/todos/"> <strong> To-Do List </strong> </a> &nbsp;
                                 <a href="/user/todos/add/course/${course.id}"
                                    class="btn btn-primary btn-sm align-middle"> +
                                 </a></h5>
@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="/user/courses/update/${course.id}" class="btn btn-primary"> Edit Course </a>
+                    <a href="/user/courses/update/${course.id}" class="btn btn-primary"> Edit </a>
                     <a href="/user/courses/confirm-delete/${course.id}" class="btn btn-dark"> Delete
                         Course </a>
                 </div>

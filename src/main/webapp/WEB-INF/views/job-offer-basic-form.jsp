@@ -34,7 +34,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="/user/offers/"> Job Offers </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Add Step1 </li>
+            <li class="breadcrumb-item active" aria-current="page"> Add Step1</li>
         </ol>
     </nav>
 
@@ -48,35 +48,31 @@
                     <h5 class="errorMessage center-content">${failed}</h5>
 
 
-                    <div class="form-group row">
-                        <form:label path="title"
-                                    class="col-md-4 col-form-label text-md-right"> Job Title: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="title" class="col-form-label"> Job Title: </form:label>
                             <form:input path="title" class="form-control" placeholder="Job Title"/>
                             <form:errors path="title" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="companyName"
-                                    class="col-md-4 col-form-label text-md-right"> Company: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="companyName" class="col-form-label"> Company: </form:label>
                             <form:input path="companyName" class="form-control"
                                         placeholder="Company"/>
                             <form:errors path="companyName" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="location"
-                                    class="col-md-4 col-form-label text-md-right"> Location: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="location" class="col-form-label"> Location: </form:label>
                             <form:input path="location" class="form-control" placeholder="Location"/>
                             <form:errors path="location" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="status"
-                                    class="col-md-4 col-form-label text-md-right"> Status </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="status" class="col-form-label"> Status </form:label>
                             <form:select path="status" class="form-control">
                                 <form:option value="Wishlist" label="--Please Select--" selected="selected"/>
                                 <form:options items="${status}"/>
@@ -84,8 +80,12 @@
                             <form:errors path="status" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="col-md-6 offset-md-4">
-                        <input type="submit" class="btn btn-primary btn-block" value="Save">
+
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="col-md-8 text-center mt-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Save">
+                            <a href="/user/offers/" class="btn btn-block btn-link" role="button"> Discard </a>
+                        </div>
                     </div>
                 </form:form>
             </div>

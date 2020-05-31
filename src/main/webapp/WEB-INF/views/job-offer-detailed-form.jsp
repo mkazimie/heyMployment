@@ -35,7 +35,7 @@
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="/user/offers/"> Job Offers </a></li>
             <li class="breadcrumb-item"><a href="/user/offers/add"> Add Step1 </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Add Step 2 </li>
+            <li class="breadcrumb-item active" aria-current="page"> Add Step 2</li>
         </ol>
     </nav>
 
@@ -47,46 +47,46 @@
 
                     <h5 class="errorMessage center-content">${failed}</h5>
 
-                    <div class="form-group row">
-                        <form:label path="description"
-                                    class="col-md-4 col-form-label text-md-right"> Job Description :</form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="description"
+                                        class="col-form-label"> Job Description :</form:label>
                             <form:textarea path="description" class="form-control" placeholder="Description"/>
                             <form:errors path="description" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <form:label path="url"
-                                    class="col-md-4 col-form-label text-md-right"> Link to Offer :</form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="url"
+                                        class="col-form-label"> Link to Offer :</form:label>
                             <form:input path="url" class="form-control" placeholder="Link"/>
                             <form:errors path="url" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <form:label path="jobSearchWebsite"
-                                    class="col-md-4 col-form-label text-md-right"> Posted on Website: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="jobSearchWebsite"
+                                        class="col-form-label"> Posted on Website: </form:label>
                             <form:input path="jobSearchWebsite" class="form-control" placeholder=" Name"/>
                             <form:errors path="jobSearchWebsite" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <form:label path="salary"
-                                    class="col-md-4 col-form-label text-md-right"> Expected Salary: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="salary"
+                                        class="col-form-label"> Expected Salary: </form:label>
                             <form:input path="salary" class="form-control" placeholder="Salary"/>
                             <form:errors path="salary" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <form:label path="howAttractive"
-                                    class="col-md-4 col-form-label text-md-right"> How Attractive is the offer? </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="howAttractive"
+                                        class="col-form-label"> How Attractive is the offer? </form:label>
                             <form:select path="howAttractive" class="form-control">
                                 <form:option value="OK" label="--Please Select--" selected="selected"/>
                                 <form:options items="${attractiveness}"/>
@@ -95,33 +95,36 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <form:label path="appliedOn"
-                                    class="col-md-4 col-form-label text-md-right"> Applied On: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="appliedOn"
+                                        class="col-form-label"> Applied On: </form:label>
                             <form:input path="appliedOn" type="date" class="form-control" placeholder="yyyy-MM-dd"/>
                             <form:errors path="appliedOn" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <form:label path="notes"
-                                    class="col-md-4 col-form-label text-md-right"> Notes: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="notes"
+                                        class="col-form-label"> Notes: </form:label>
                             <form:textarea path="notes" class="form-control" placeholder="Additional Notes"/>
                             <form:errors path="notes" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-                    <div class="col-md-6 offset-md-4">
-                        <input type="submit" class="btn btn-primary btn-block" value="Save">
-                        <form:hidden path="id"/>
-                        <form:hidden path="title"/>
-                        <form:hidden path="company"/>
-                        <form:hidden path="location"/>
-                        <form:hidden path="status"/>
-                        <form:hidden path="user.id"/>
-                        <form:hidden path="added"/>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="col-md-8 text-center mt-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Save">
+                            <a href="/user/offers/" class="btn btn-block btn-link" role="button"> Skip </a>
+                            <form:hidden path="id"/>
+                            <form:hidden path="title"/>
+                            <form:hidden path="company"/>
+                            <form:hidden path="location"/>
+                            <form:hidden path="status"/>
+                            <form:hidden path="user.id"/>
+                            <form:hidden path="added"/>
+                        </div>
                     </div>
                 </form:form>
             </div>

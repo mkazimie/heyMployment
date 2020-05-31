@@ -40,22 +40,22 @@
             <li class="breadcrumb-item">
                 <a href="/user/questions/${questionId}">
                     Q${questionId} Details </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Edit </li>
+            <li class="breadcrumb-item active" aria-current="page"> Edit</li>
         </ol>
     </nav>
 
     <div class="container">
         <div class="card mx-auto mt-3">
-            <div class="card-header bg-dark form-header text-white text-center"> Edit Interview QA </div>
+            <div class="card-header bg-dark form-header text-white text-center"> Edit Interview QA</div>
             <div class="card-body">
                 <form:form method="post" modelAttribute="qa" action="/user/questions/update">
 
                     <h5 class="errorMessage center-content">${failed}</h5>
 
-                    <div class="form-group row">
-                        <form:label path="interviewCategory.name"
-                                    class="col-md-4 col-form-label text-md-right"> Category:</form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="interviewCategory.name"
+                                        class="col-form-label"> Category:</form:label>
                             <form:input path="interviewCategory.name" class="form-control"
                                         placeholder="Category"
                                         readonly="true"/>
@@ -64,31 +64,31 @@
                     </div>
 
 
-<%--                    question--%>
-                    <div class="form-group row">
-                        <form:label path="question"
-                                    class="col-md-4 col-form-label text-md-right"> Question:</form:label>
-                        <div class="col-md-6">
+                    <%--                    question--%>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="question"
+                                        class="col-form-label"> Question:</form:label>
                             <form:textarea path="question" class="form-control" placeholder="Question"/>
                             <form:errors path="question" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-<%--                    answer--%>
-                    <div class="form-group row">
-                        <form:label path="answer"
-                                    class="col-md-4 col-form-label text-md-right"> Answer:</form:label>
-                        <div class="col-md-6">
+                    <%--                    answer--%>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="answer"
+                                        class="col-form-label"> Answer:</form:label>
                             <form:textarea path="answer" class="form-control" placeholder="Answer"/>
                             <form:errors path="answer" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-<%--                    difficulty level--%>
-                    <div class="form-group row">
-                        <form:label path="difficulty"
-                                    class="col-md-4 col-form-label text-md-right"> Difficulty Level </form:label>
-                        <div class="col-md-6">
+                    <%--                    difficulty level--%>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="difficulty"
+                                        class=" col-form-label"> Difficulty Level </form:label>
                             <form:select path="difficulty" class="form-control">
                                 <form:option value="OK" label="--Please Select--" selected="selected"/>
                                 <form:options items="${difficulty}"/>
@@ -97,18 +97,21 @@
                         </div>
                     </div>
 
-<%--                    ready?--%>
-                    <div class="form-group row">
-                        <form:label path="ready"
-                                    class="col-md-4 col-form-label text-md-right"> Ready? </form:label>
-                        <div class="col-md-6">
+                    <%--                    ready?--%>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="ready"
+                                        class="col-form-label"> Ready? </form:label>
                             <form:checkbox path="ready" class="form-control"/>
                             <form:errors path="ready" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-                    <div class="col-md-6 offset-md-4">
-                        <input type="submit" class="btn btn-primary btn-block" value="Save">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="col-md-8 text-center mt-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Save">
+                            <a href="/user/questions/${questionId}" class="btn btn-block btn-link" role="button"> Discard </a>
+                        </div>
                         <form:hidden path="id"/>
                         <form:hidden path="added"/>
                     </div>

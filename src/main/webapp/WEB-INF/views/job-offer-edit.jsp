@@ -37,7 +37,7 @@
             <li
                     class="breadcrumb-item"><a href="/user/offers/details/${jobOffer.id}"> ${jobOffer.title} Details
             </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> ${jobOffer.title} Edit </li>
+            <li class="breadcrumb-item active" aria-current="page"> ${jobOffer.title} Edit</li>
         </ol>
     </nav>
 
@@ -50,104 +50,107 @@
 
                     <h5 class="errorMessage center-content">${failed}</h5>
 
-                    <div class="form-group row">
-                        <form:label path="title"
-                                    class="col-md-4 col-form-label text-md-right"> Job Title: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="title"
+                                        class="col-form-label"> Job Title: </form:label>
                             <form:input path="title" class="form-control" placeholder="Job Title"/>
                             <form:errors path="title" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="description"
-                                    class="col-md-4 col-form-label text-md-right"> Description:</form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="description"
+                                    class="col-form-label"> Description:</form:label>
                             <form:textarea path="description" class="form-control" placeholder="Description"/>
                             <form:errors path="description" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="url"
-                                    class="col-md-4 col-form-label text-md-right"> Link :</form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="url"
+                                        class="col-form-label"> Link :</form:label>
                             <form:input path="url" class="form-control" placeholder="Link"/>
                             <form:errors path="url" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="jobSearchWebsite"
-                                    class="col-md-4 col-form-label text-md-right"> Job Search Website: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="jobSearchWebsite"
+                                        class="col-form-label"> Job Search Website: </form:label>
                             <form:input path="jobSearchWebsite" class="form-control" placeholder="Website Name"/>
                             <form:errors path="jobSearchWebsite" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="location"
-                                    class="col-md-4 col-form-label text-md-right"> Location: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="location"
+                                        class="col-form-label"> Location: </form:label>
                             <form:input path="location" class="form-control" placeholder="Location"/>
                             <form:errors path="location" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="company.name"
-                                    class="col-md-4 col-form-label text-md-right"> Company: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="company.name"
+                                        class="col-form-label"> Company: </form:label>
                             <form:input path="company.name" class="form-control" placeholder="Company" readonly="true"/>
                             <form:errors path="company.name" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="salary"
-                                    class="col-md-4 col-form-label text-md-right"> Salary: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="salary"
+                                        class="col-form-label"> Salary: </form:label>
                             <form:input path="salary" class="form-control" placeholder="Salary"/>
                             <form:errors path="salary" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="status"
-                                    class="col-md-4 col-form-label text-md-right"> Status </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="status"
+                                        class="col-form-label"> Status </form:label>
                             <form:select path="status" class="form-control">
                                 <form:options items="${status}"/>
                             </form:select>
                         </div>
                         <form:errors path="status" cssClass="errorMessage"/>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="howAttractive"
-                                    class="col-md-4 col-form-label text-md-right"> How Attractive is the offer? </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="howAttractive"
+                                        class="col-form-label"> How Attractive is the offer? </form:label>
                             <form:select path="howAttractive" class="form-control">
                                 <form:options items="${attractiveness}"/>
                             </form:select>
                         </div>
                         <form:errors path="howAttractive" cssClass="errorMessage"/>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="appliedOn"
-                                    class="col-md-4 col-form-label text-md-right"> Applied On: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="appliedOn"
+                                        class="col-form-label"> Applied On: </form:label>
                             <form:input path="appliedOn" type="date" class="form-control" placeholder="yyyy-MM-dd"/>
                             <form:errors path="appliedOn" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <form:label path="notes"
-                                    class="col-md-4 col-form-label text-md-right"> Notes: </form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="notes"
+                                        class="col-form-label"> Notes: </form:label>
                             <form:textarea path="notes" class="form-control" placeholder="Additional Notes"/>
                             <form:errors path="notes" cssClass="errorMessage"/>
                         </div>
                     </div>
-                    <div class="col-md-6 offset-md-4">
-                        <input type="submit" class="btn btn-primary btn-block" value="Save">
-                        <form:hidden path="editedVersion" value="true"/>
-                        <form:hidden path="user.id"/>
-                        <form:hidden path="id"/>
-                        <form:hidden path="added"/>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="col-md-8 text-center mt-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Save">
+                            <a href="/user/offers/details/${jobOffer.id}" class="btn btn-block btn-link" role="button"> Discard </a>
+                            <form:hidden path="editedVersion" value="true"/>
+                            <form:hidden path="user.id"/>
+                            <form:hidden path="id"/>
+                            <form:hidden path="added"/>
+                        </div>
                     </div>
                 </form:form>
             </div>

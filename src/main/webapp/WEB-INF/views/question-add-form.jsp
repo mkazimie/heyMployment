@@ -34,23 +34,23 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="/user/categories/">Categories</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Add </li>
+            <li class="breadcrumb-item active" aria-current="page"> Add</li>
         </ol>
     </nav>
 
 
     <div class="container">
         <div class="card mx-auto mt-3">
-            <div class="card-header bg-dark form-header text-white text-center"> Add New Interview QA </div>
+            <div class="card-header bg-dark form-header text-white text-center"> Add New Interview QA</div>
             <div class="card-body">
                 <form:form method="post" modelAttribute="qDto" action="/user/questions/add">
 
                     <h5 class="errorMessage center-content">${failed}</h5>
 
-                    <div class="form-group row">
-                        <form:label path="interviewCategory"
-                                    class="col-md-4 col-form-label text-md-right"> Category:</form:label>
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="interviewCategory"
+                                        class="col-form-label"> Category:</form:label>
                             <form:input path="interviewCategory" value="${category.name}" class="form-control"
                                         placeholder="${category.name}"
                                         readonly="true"/>
@@ -58,31 +58,31 @@
                         </div>
                     </div>
 
-<%--                    question--%>
-                    <div class="form-group row">
-                        <form:label path="question"
-                                    class="col-md-4 col-form-label text-md-right"> Question:</form:label>
-                        <div class="col-md-6">
+                    <%--                    question--%>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="question"
+                                        class="col-form-label"> Question:</form:label>
                             <form:textarea path="question" class="form-control" placeholder="Question"/>
                             <form:errors path="question" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-<%--                    answer--%>
-                    <div class="form-group row">
-                        <form:label path="answer"
-                                    class="col-md-4 col-form-label text-md-right"> Answer:</form:label>
-                        <div class="col-md-6">
+                    <%--                    answer--%>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="answer"
+                                        class="col-form-label"> Answer:</form:label>
                             <form:textarea path="answer" class="form-control" placeholder="Answer"/>
                             <form:errors path="answer" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-<%--                    difficulty level--%>
-                    <div class="form-group row">
-                        <form:label path="difficulty"
-                                    class="col-md-4 col-form-label text-md-right"> Difficulty Level </form:label>
-                        <div class="col-md-6">
+                    <%--                    difficulty level--%>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="difficulty"
+                                        class="col-form-label"> Difficulty Level </form:label>
                             <form:select path="difficulty" class="form-control">
                                 <form:option value="Moderate" label="--Please Select--" selected="selected"/>
                                 <form:options items="${difficulty}"/>
@@ -91,18 +91,21 @@
                         </div>
                     </div>
 
-<%--                    ready?--%>
-                    <div class="form-group row">
-                        <form:label path="ready"
-                                    class="col-md-4 col-form-label text-md-right"> Ready? </form:label>
-                        <div class="col-md-6">
+                    <%--                    ready?--%>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="form-group col-md-8">
+                            <form:label path="ready"
+                                        class="col-form-label"> Ready? </form:label>
                             <form:checkbox path="ready" class="form-control"/>
                             <form:errors path="ready" cssClass="errorMessage"/>
                         </div>
                     </div>
 
-                    <div class="col-md-6 offset-md-4">
-                        <input type="submit" class="btn btn-primary btn-block" value="Save">
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div class="col-md-8 text-center mt-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Save">
+                            <a href="/user/categories/" class="btn btn-block btn-link" role="button"> Discard </a>
+                        </div>
                     </div>
                 </form:form>
             </div>

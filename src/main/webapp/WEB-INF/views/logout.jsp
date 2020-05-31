@@ -40,8 +40,8 @@
                     <div class="col text-center">
                         <input type="submit" class="btn btn-primary" value="Sign Out">
                     </div>
-                    <div class="text-center">
-                        <a href="/user/home" class="btn btn-link" role="button"> Go back </a>
+                    <div class="text-center mt-3">
+                        <a href="/user/home" class="btn btn-block btn-link" role="button"> Discard </a>
                     </div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </div>

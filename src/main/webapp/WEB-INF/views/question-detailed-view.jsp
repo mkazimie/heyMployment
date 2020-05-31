@@ -102,10 +102,9 @@
                 <div class="card-footer">
                     <div class="btn-wrapper text-center">
                         <a href="/user/questions/update/${question.id}"
-                           class="btn btn-primary"> Edit Question </a>
+                           class="btn btn-primary"> Edit </a>
                         <a href="/user/questions/confirm-delete/${question.id}"
-                           class="btn btn-dark"> Delete Question </a>
-
+                           class="btn btn-dark"> Delete </a>
                     </div>
                 </div>
             </div>
