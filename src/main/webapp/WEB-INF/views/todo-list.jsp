@@ -63,46 +63,54 @@
 
             <tbody>
             <c:forEach items="${todos}" var="todo">
-                <c:choose>
-                    <c:when test="${todo.deadline lt now}">
-                        <tr class="text-center table-danger">
-                    </c:when>
-                    <c:when test="${todo.hoursLeft ge -3 and todo.hoursLeft le 0}">
-                        <tr class="text-center table-warning">
-                    </c:when>
-                    <c:otherwise>
-                        <tr class="text-center">
-                    </c:otherwise>
-                </c:choose>
-                <td></td>
-                <td class="align-middle">${todo.name}</td>
-                <td class="align-middle">${todo.description}</td>
-                <c:choose>
-                    <c:when test="${not empty todo.jobOffer}">
-                        <td class="align-middle"><a
-                                href="/user/offers/details/${todo.jobOffer.id}">${todo.jobOffer.title}</a></td>
-                    </c:when>
-                    <c:otherwise>
-                        <td class="align-middle">n/d</td>
-                    </c:otherwise>
-                </c:choose>
-                <c:choose>
-                    <c:when test="${not empty todo.course}">
-                        <td
-                                class="align-middle"><a
-                                href="/user/courses/details/${todo.course.id}">${todo.course.name}</a></td>
-                    </c:when>
-                    <c:otherwise>
-                        <td class="align-middle">n/d</td>
-                    </c:otherwise>
-                </c:choose>
-                <td class="align-middle">${todo.formattedDeadline}</td>
-                <td class="align-middle"><a href="/user/todos/confirm-delete/${todo.id}"><i
-                        class="far fa-check-circle"></i>
-                </a></td>
-                <td class="align-middle"><a href="/user/todos/update/${todo.id}"> Edit </a> |
-                    <a href="/user/todos/confirm-delete/${todo.id}"> Delete </a>
-                </td>
+                <tr class="text-center">
+                    <td class="align-middle"></td>
+                    <td class="align-middle">${todo.name}</td>
+                    <td class="align-middle">${todo.description}</td>
+                    <c:choose>
+                        <c:when test="${not empty todo.jobOffer}">
+                            <td class="align-middle"><a
+                                    href="/user/offers/details/${todo.jobOffer.id}">${todo.jobOffer.title}</a></td>
+                        </c:when>
+                        <c:otherwise>
+                            <td class="align-middle">n/d</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${not empty todo.course}">
+                            <td
+                                    class="align-middle"><a
+                                    href="/user/courses/details/${todo.course.id}">${todo.course.name}</a></td>
+                        </c:when>
+                        <c:otherwise>
+                            <td class="align-middle">n/d</td>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:choose>
+                        <c:when test="${todo.deadline lt now}">
+                            <td class="align-middle"><i
+                                    class="fas fa-hourglass-end text-danger"></i> &nbsp;
+                                ${todo.formattedDeadline}
+                            </td>
+                        </c:when>
+                        <c:when test="${todo.hoursLeft ge -3 and todo.hoursLeft le 0}">
+                            <td class="align-middle"><i class="fas fa-hourglass-half
+                        text-warning"></i> &nbsp; ${todo.formattedDeadline}
+
+                            </td>
+                        </c:when>
+                        <c:otherwise>
+                            <td class="align-middle"><i class="fas fa-hourglass-start
+                        text-success"></i> &nbsp; ${todo.formattedDeadline}</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <td class="align-middle"><a href="/user/todos/confirm-delete/${todo.id}"><i
+                            class="far fa-check-circle"></i>
+                    </a></td>
+                    <td class="align-middle"><a href="/user/todos/update/${todo.id}"> Edit </a> |
+                        <a href="/user/todos/confirm-delete/${todo.id}"> Delete </a>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
