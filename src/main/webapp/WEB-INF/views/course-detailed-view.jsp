@@ -116,21 +116,28 @@
                             </thead>
                             <c:forEach items="${course.todos}" var="todo">
                             <tbody>
-                            <c:choose>
-                            <c:when test="${todo.deadline lt now}">
-                            <tr class="text-center table-danger">
-                                </c:when>
-                                <c:when test="${todo.hoursLeft ge -3 and todo.hoursLeft le 0}">
-                            <tr class="text-center table-warning">
-                                </c:when>
-                                <c:otherwise>
                             <tr class="text-center">
-                                </c:otherwise>
-                                </c:choose>
                                 <td></td>
                                 <td>${todo.name}</td>
                                 <td>${todo.description}</td>
-                                <td>${todo.formattedDeadline}</td>
+
+                                <c:choose>
+                                    <c:when test="${todo.deadline lt now}">
+                                        <td class="align-middle"><i
+                                                class="fas fa-hourglass-end text-danger"></i> &nbsp;
+                                                ${todo.formattedDeadline}
+                                        </td>
+                                    </c:when>
+                                    <c:when test="${todo.hoursLeft ge -3 and todo.hoursLeft le 0}">
+                                        <td class="align-middle"><i class="fas fa-hourglass-half
+                        text-warning"></i> &nbsp; ${todo.formattedDeadline}
+                                        </td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td class="align-middle"><i class="fas fa-hourglass-start
+                        text-success"></i> &nbsp; ${todo.formattedDeadline}</td>
+                                    </c:otherwise>
+                                </c:choose>
                                 <td><a href="/user/todos/confirm-delete/${todo.id}"><i class="far fa-check-circle"></i>
                                 </a></td>
                                 <td><a href="/user/todos/update/${todo.id}"> Edit </a> |
