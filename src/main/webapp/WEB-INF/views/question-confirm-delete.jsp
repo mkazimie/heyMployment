@@ -38,8 +38,7 @@
                 <a href="/user/categories/${qa.interviewCategory.id}/questions">${qa.interviewCategory.name}
                     Questions</a></li>
             <li class="breadcrumb-item">
-                <a href="/user/questions/${questionId}">
-                        Q${qa.id} Details </a></li>
+                <a href="/user/questions/${questionId}"> Details </a></li>
             <li class="breadcrumb-item active" aria-current="page"> Delete </li>
         </ol>
     </nav>

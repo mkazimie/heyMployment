@@ -219,6 +219,7 @@ public class InterviewCategoriesQuestionsController {
     @PostMapping("/categories/questions/filter")
     public String findByWord(@RequestParam String keyword, Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         List<InterviewQuestion> allByWord = questionService.findByWord(currentUser.getUser(), keyword);
+        allByWord.forEach(this::dateFormatConverted);
         model.addAttribute("allByWord", allByWord);
         return "questions-filtered";
     }

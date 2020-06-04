@@ -38,15 +38,14 @@
                 <a href="/user/categories/${cat.id}/questions">${cat.name}
                     Questions</a></li>
             <li class="breadcrumb-item">
-                <a href="/user/questions/${questionId}">
-                    Q${questionId} Details </a></li>
+                <a href="/user/questions/${questionId}"> Details </a></li>
             <li class="breadcrumb-item active" aria-current="page"> Edit</li>
         </ol>
     </nav>
 
     <div class="container">
         <div class="card mx-auto mt-3">
-            <div class="card-header bg-dark form-header text-white text-center"> Edit Interview QA</div>
+            <div class="card-header bg-dark form-header text-white text-center"> Edit Interview QA </div>
             <div class="card-body">
                 <form:form method="post" modelAttribute="qa" action="/user/questions/update">
 

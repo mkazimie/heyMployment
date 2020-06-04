@@ -54,7 +54,6 @@
             <tr class="text-center">
                 <th>#</th>
                 <th scope="col"> Question</th>
-                <th scope="col"> ID</th>
                 <th scope="col"> Has Answer</th>
                 <th scope="col"> Is Ready</th>
                 <th scope="col"> Added</th>
@@ -68,7 +67,6 @@
                 <tr class="text-center">
                     <td class="align-middle"></td>
                     <th scope="col" class="align-middle">${qa.question}</th>
-                    <td class="align-middle"> Q${qa.id}</td>
                     <c:choose>
                         <c:when test="${not empty qa.answer}">
                             <td class="align-middle">Yes</td>

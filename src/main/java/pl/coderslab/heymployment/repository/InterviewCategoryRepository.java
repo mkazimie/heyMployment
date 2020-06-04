@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface InterviewCategoryRepository extends JpaRepository<InterviewCategory, Long > {
 
-    @Query("SELECT c FROM InterviewCategory c WHERE c.user.id = ?1 ORDER BY c.name DESC")
+    @Query("SELECT c FROM InterviewCategory c WHERE c.user.id = ?1 ORDER BY c.name")
     List<InterviewCategory> findAllByUserId(long id);
 
    InterviewCategory findByName(String name);

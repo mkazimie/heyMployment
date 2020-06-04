@@ -40,9 +40,7 @@
     <div class="container ">
         <div class="card-deck mt-5">
             <div class="card border-secondary">
-                <h3 class="card-header bg-secondary text-center text-white text-uppercase">${course.name}</h3>
-                <img class="card-img-top card-img-adjust " src="/img/Optimized-markus-spiske-qjnAnF0jIGk-unsplash.jpg"
-                     alt="">
+                <h3 class="card-header bg-dark text-center text-white text-uppercase">${course.name}</h3>
                 <div class="card-body">
 
                     <div class="card-text ml-5 mr-5 mt-3">

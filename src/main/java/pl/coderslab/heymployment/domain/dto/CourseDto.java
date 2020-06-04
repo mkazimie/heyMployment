@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Date;
 
 
 @Data
@@ -39,7 +40,7 @@ public class CourseDto {
     @Size(min = 2, max = 50)
     private String organizedBy;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate finishDate;
 
     @NotBlank

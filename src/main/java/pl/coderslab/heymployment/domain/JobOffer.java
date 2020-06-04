@@ -100,17 +100,15 @@ public class JobOffer {
     @Transient
     private boolean editedVersion;
 
-//    @Transient
-//    private long daysFromApplied;
-//
-//    @Transient
-//    private long daysFromUpdated;
 
     @Transient
     private String formatAdded;
 
     @Transient
     private String formatUpdated;
+
+    @Transient
+    private String formatAppliedOn;
 
     public String getJobFullTitle(){
         return title + " - " + company.getName();

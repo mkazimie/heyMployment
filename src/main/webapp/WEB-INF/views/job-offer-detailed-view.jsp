@@ -39,10 +39,7 @@
     <div class="container">
         <div class="card-deck mr-30 ml-30 mt-5 mb-5">
             <div class="card border-secondary">
-                <h3 class="card-header bg-secondary text-center text-white text-uppercase">${jobOffer.title}</h3>
-                    <%--                <img class="card-img-top img-fluid img-scale"--%>
-                    <%--                     src="/img/undraw_online_information_4ui6%20(1).png"--%>
-                    <%--                     alt="Card image cap">--%>
+                <h3 class="card-header bg-info text-center text-white text-uppercase">${jobOffer.title}</h3>
                 <div class="card-body">
 
 
@@ -111,7 +108,7 @@
                                         <th scope="row"> Applied On</th>
                                         <c:choose>
                                             <c:when test="${not empty jobOffer.appliedOn}">
-                                                <td>${jobOffer.appliedOn}</td>
+                                                <td>${jobOffer.formatAppliedOn}</td>
                                             </c:when>
                                             <c:otherwise>
                                                 <td><a href="/user/offers/update/${jobOffer.id}"> Add </a>

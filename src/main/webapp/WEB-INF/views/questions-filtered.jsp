@@ -58,7 +58,6 @@
                 <th>#</th>
                 <th scope="col"> Question</th>
                 <th scope="col"> Category</th>
-                <th scope="col"> ID</th>
                 <th scope="col"> Has Answer</th>
                 <th scope="col"> Is Ready</th>
                 <th scope="col"> Added</th>
@@ -74,7 +73,6 @@
                     <th scope="col" class="align-middle">${qa.question}</th>
                     <td class="align-middle"><a href="/user/categories/${qa.interviewCategory.id}/questions/">
                             ${qa.interviewCategory.name}</a></td>
-                    <td class="align-middle"> Q${qa.id}</td>
                     <c:choose>
                         <c:when test="${not empty qa.answer}">
                             <td class="align-middle">Yes</td>
@@ -94,7 +92,7 @@
                     <td class="align-middle">${qa.formatAddedDate}</td>
                     <td class="align-middle">${qa.formatUpdatedDate}</td>
 
-                    <td class="align-middle"><a href="/user/categories/${qa.interviewCategory.id}/questions/${qa.id}"
+                    <td class="align-middle"><a href="/user/questions/${qa.id}"
                                                 class="btn btn-primary">
                         Details
                     </a></td>

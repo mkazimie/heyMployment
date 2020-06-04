@@ -7,16 +7,21 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.heymployment.domain.Company;
 import pl.coderslab.heymployment.domain.JobOffer;
+import pl.coderslab.heymployment.domain.Todo;
 import pl.coderslab.heymployment.domain.User;
 import pl.coderslab.heymployment.domain.dto.JobOfferDto;
 import pl.coderslab.heymployment.security.CurrentUser;
 import pl.coderslab.heymployment.service.CompanyService;
 import pl.coderslab.heymployment.service.JobOfferService;
 
+import javax.swing.text.DateFormatter;
 import javax.validation.Valid;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -97,9 +102,14 @@ public class JobOfferController {
     public String displayDetails(Model model, @PathVariable long id) {
         JobOffer jobOffer = jobOfferService.findById(id);
         dateFormatConverted(jobOffer);
-        jobOffer.getTodos().forEach(todo -> todo.setFormattedDeadline(todo.getDeadline()));
+        LocalDateTime now = LocalDateTime.now();
+        for (Todo todo : jobOffer.getTodos()) {
+            LocalDateTime deadline = todo.getDeadline();
+            todo.setFormattedDeadline(deadline);
+            todo.setHoursLeft(ChronoUnit.HOURS.between(deadline, now));
+        }
         model.addAttribute("jobOffer", jobOffer);
-        model.addAttribute("now", LocalDateTime.now());
+        model.addAttribute("now", now);
         return "job-offer-detailed-view";
     }
 
@@ -151,11 +161,16 @@ public class JobOfferController {
 
     private void dateFormatConverted(JobOffer offer) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM / HH:mm");
+        DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDateTime added = offer.getAdded();
         offer.setFormatAdded(displayWeekDay(added.getDayOfWeek()) + " / " + added.format(formatter));
         LocalDateTime updated = offer.getUpdated();
         if (updated != null) {
             offer.setFormatUpdated(displayWeekDay(updated.getDayOfWeek()) + " / " + updated.format(formatter));
+        }
+        LocalDate appliedOn = offer.getAppliedOn();
+        if (appliedOn != null) {
+            offer.setFormatAppliedOn(appliedOn.format(formatterDate));
         }
     }
 
@@ -186,20 +201,6 @@ public class JobOfferController {
         model.addAttribute("year", year);
         model.addAttribute("annualMapStatus", annualMapStatus);
         model.addAttribute("offersThisYear", offersThisYear.size());
-
-
-        //for pie chart (???)
-//
-//        // month
-//        Map<String, List<JobOffer>> monthlyMapLocation = offersByMonth.stream()
-//                .collect(Collectors.groupingBy(JobOffer::getLocation));
-//        model.addAttribute("monthlyMapLocation", monthlyMapLocation);
-//
-//        // year
-//        Map<String, List<JobOffer>> annualMapLocation = offersByMonth.stream()
-//                .collect(Collectors.groupingBy(JobOffer::getLocation));
-//        model.addAttribute("annualMapLocation", annualMapLocation);
-
         return "job-offer-report";
     }
 

@@ -97,7 +97,7 @@
                                 <c:forEach items="${company.jobOffers}" var="offer">
                                 <tbody>
                                 <tr class="text-center">
-                                    <td></td>
+                                    <td class="align-middle"></td>
                                     <td class="align-middle">${offer.title}</td>
                                     <td class="align-middle">${offer.status}</td>
                                     <td class="align-middle">${offer.howAttractive}</td>

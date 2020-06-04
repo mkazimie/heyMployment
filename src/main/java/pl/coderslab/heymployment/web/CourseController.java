@@ -13,6 +13,7 @@ import pl.coderslab.heymployment.service.TopicService;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
 
@@ -66,7 +67,6 @@ public class CourseController {
                                          @AuthenticationPrincipal CurrentUser currentUser, Model model) {
         List<Course> allByStatus = courseService.findAllByStatus(currentUser.getUser().getId(), status);
         model.addAttribute("allByStatus", allByStatus);
-//        model.addAttribute("specificHowMany", allByStatus.size());
         return "course-list";
     }
 
@@ -74,9 +74,14 @@ public class CourseController {
     @GetMapping("/details/{id}")
     public String displayDetails(Model model, @PathVariable long id) {
         Course course = courseService.findById(id);
-        course.getTodos().forEach(todo -> todo.setFormattedDeadline(todo.getDeadline()));
+        LocalDateTime now = LocalDateTime.now();
+        for (Todo todo : course.getTodos()) {
+            LocalDateTime deadline = todo.getDeadline();
+            todo.setFormattedDeadline(deadline);
+            todo.setHoursLeft(ChronoUnit.HOURS.between(deadline, now));
+        }
         model.addAttribute("course", course);
-        model.addAttribute("now", LocalDateTime.now());
+        model.addAttribute("now", now);
         return "course-detailed-view";
     }
 

@@ -69,7 +69,7 @@
                         <form:select path="jobOffer" class="form-control">
                             <c:choose>
                                 <c:when test="${not empty jobOffer}">
-                                    <form:option value="${jobOffer.id}" label="${jobOffer.title}" selected="selected"/>
+                                    <form:option value="${jobOffer.id}" label="${jobOffer.jobFullTitle}" selected="selected"/>
                                 </c:when>
                                 <c:otherwise>
                                     <form:option value="0" label="--Please Select" selected="selected"/>
@@ -87,7 +87,7 @@
                         <form:select path="course" class="form-control">
                             <c:choose>
                                 <c:when test="${not empty course}">
-                                    <form:option value="${course.id}" label="${course.name}" selected="selected"/>
+                                    <form:option value="${course.id}" label="${course.courseFullName}" selected="selected"/>
                                 </c:when>
                                 <c:otherwise>
                                     <form:option value="0" label="--Please Select" selected="selected"/>
@@ -102,8 +102,7 @@
                     <div class="form-group col-md-8">
                         <form:label path="deadline"
                                     class="col-form-label"> Deadline: </form:label>
-                        <form:input path="deadline" type="datetime-local" class="form-control"
-                                    placeholder="yyyy-MM-dd HH:mm"/>
+                        <form:input path="deadline" type="datetime-local" class="form-control"/>
                         <form:errors path="deadline" cssClass="errorMessage"/>
                     </div>
                 </div>
