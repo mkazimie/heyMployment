@@ -43,20 +43,20 @@
             <c:forEach items="${companies}" var="company" varStatus="count">
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="card h-100">
-                        <c:choose>
-                            <c:when test="${count.index % 3 == 0}">
+<%--                        <c:choose>--%>
+<%--                            <c:when test="${count.index % 3 == 0}">--%>
                                 <img class="card-img-top" src="/img/Optimized-sunyu-9aCD5kzPwa8-unsplash%20(1).jpg"
                                      alt="">
-                            </c:when>
-                            <c:when test="${count.index % 3 == 2}">
-                                <img class="card-img-top" src="/img/Optimized-nick-wessaert-JI01fn0U7Cg-unsplash.jpg"
-                                     alt="">
-                            </c:when>
-                            <c:when test="${count.index % 3 == 1}">
-                                <img class="card-img-top" src="/img/Optimized-scott-webb--udZnjsCzsE-unsplash.jpg"
-                                     alt="">
-                            </c:when>
-                        </c:choose>
+<%--                            </c:when>--%>
+<%--                            <c:when test="${count.index % 3 == 2}">--%>
+<%--                                <img class="card-img-top" src="/img/Optimized-nick-wessaert-JI01fn0U7Cg-unsplash.jpg"--%>
+<%--                                     alt="">--%>
+<%--                            </c:when>--%>
+<%--                            <c:when test="${count.index % 3 == 1}">--%>
+<%--                                <img class="card-img-top" src="/img/Optimized-scott-webb--udZnjsCzsE-unsplash.jpg"--%>
+<%--                                     alt="">--%>
+<%--                            </c:when>--%>
+<%--                        </c:choose>--%>
                             <%--                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
                         <div class="card-body">
                             <h4 class="card-title">${company.name} </h4>

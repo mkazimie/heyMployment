@@ -67,7 +67,7 @@ public class JobOffer {
     private String howAttractive;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Past
+    @PastOrPresent
     @Column(name = "applied_on")
     private LocalDate appliedOn;
 

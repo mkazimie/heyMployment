@@ -33,8 +33,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home </a></li>
-            <li class="breadcrumb-item"><a href="/user/categories/"> Categories </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Edit</li>
+            <li class="breadcrumb-item"><a href="/user/categories/"> Interview Categories </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Edit Category </li>
         </ol>
     </nav>
 

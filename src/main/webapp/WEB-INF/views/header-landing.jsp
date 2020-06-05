@@ -26,7 +26,7 @@
             </c:choose>
             <li class="nav-item">
 
-                <a class="nav-link" href="/"><i class="fas fa-info"></i>&nbsp; about </a>
+                <a class="nav-link" href="#about"><i class="fas fa-info"></i>&nbsp; about </a>
             </li>
             <li class="nav-item mr-4">
                 <a class="nav-link" href="#contact"><i class="far fa-envelope"></i>&nbsp; contact </a>

@@ -34,7 +34,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="/user/categories/"> Categories </a></li>
+            <li class="breadcrumb-item"><a href="/user/categories/"> Interview Categories </a></li>
             <li class="breadcrumb-item active" aria-current="page"> ${cat.name} </li>
         </ol>
 
@@ -43,7 +43,7 @@
     <div class="container mt-5 mx-auto ml-4 mr-4">
         <div class="row">
             <div class="col-sm-10 col-12">
-                <h1 class="bd-title"> Questions <a
+                <h1 class="bd-title"> ${cat.name} <a
                         href="/user/categories/${cat.id}/questions/add" class="btn btn-primary"> + </a></h1>
             </div>
         </div>

@@ -33,13 +33,12 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-4"><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="/user/categories/"> Categories</a></li>
+            <li class="breadcrumb-item"><a href="/user/categories/"> Interview Categories </a></li>
             <li class="breadcrumb-item">
-                <a href="/user/categories/${cat.id}/questions">${cat.name}
-                    Questions</a></li>
+                <a href="/user/categories/${cat.id}/questions">${cat.name}</a></li>
             <li class="breadcrumb-item">
-                <a href="/user/questions/${questionId}"> Details </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Edit</li>
+                <a href="/user/questions/${questionId}"> Question Details </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Edit </li>
         </ol>
     </nav>
 
