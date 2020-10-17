@@ -4,6 +4,12 @@
 heyMployment helps you manage your job applications, schedule tasks, prepare for your job interviews and document
  your learning pathway.
 
+#### User Panel
+![](./src/main/resources/static/img/user_panel.png)
+
+#### Admin Panel
+![](./src/main/resources/static/img/admin_panel.png)
+
 
 #### Requirements:
 
